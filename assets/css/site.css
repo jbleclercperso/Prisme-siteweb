@@ -345,6 +345,7 @@ html.gate-open body { overflow: hidden; }
   left: 0;
   right: 0;
   z-index: 200;
+  padding-top: env(safe-area-inset-top, 0px);
   transition: background 0.4s, box-shadow 0.4s, -webkit-backdrop-filter 0.4s, backdrop-filter 0.4s;
 }
 .nav.is-scrolled {
