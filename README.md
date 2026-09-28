@@ -1,7 +1,7 @@
 # Prisme — site web
 
 Site vitrine et de vente de **Prisme**, le logiciel Windows pour trier, organiser
-et regarder une collection de vidéos pour adultes (dépôt du logiciel :
+et regarder une collection adulte, vidéos et photos (dépôt du logiciel :
 `jbleclercperso/Prisme`, dont le dossier de données s'appelle encore `VideoSorter`).
 
 Site statique : HTML, CSS et JavaScript sans framework ni étape de construction.
@@ -69,9 +69,10 @@ Certains éléments sont des propositions commerciales, à confirmer ou corriger
 - **Identité** reprise de l'application : graphite (`#0e1116`), bleu d'action
   (`#4c8dff`), et le spectre rouge / jaune / bleu de l'icône du prisme.
 - **Toutes les fonctionnalités citées existent dans le code** de Prisme
-  (tri au clavier, 10 aperçus, Mur, mots-clés automatiques, menu radial, zoom ×6,
-  mosaïque, doublons, accès à distance, mode discret `Ctrl+K`, corbeille de
-  séance…). Les chiffres de performance (0,07 s contre 33 s) viennent des
+  (tri au clavier, 10 aperçus, Mur, mode photo et diaporama, lecteur flottant,
+  « À trier » et « Orphelins », mots-clés automatiques, menu radial, zoom ×6,
+  mosaïque, doublons, accès à distance, mode discret, corbeille de séance…).
+  Le site en parle par ce qu'elles apportent, sans le détail des raccourcis. Les chiffres de performance (0,07 s contre 33 s) viennent des
   mesures du README du logiciel.
 - La démo interactive reproduit la fiche de l'application ; `Ctrl+K` masque
   aussi le site derrière une page neutre, comme dans le logiciel.
