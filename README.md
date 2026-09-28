@@ -69,7 +69,7 @@ Certains éléments sont des propositions commerciales, à confirmer ou corriger
 - **Identité** reprise de l'application : graphite (`#0e1116`), bleu d'action
   (`#4c8dff`), et le spectre rouge / jaune / bleu de l'icône du prisme.
 - **Toutes les fonctionnalités citées existent dans le code** de Prisme
-  (tri au clavier, 10 aperçus, Mur, mode photo et diaporama, lecteur flottant,
+  (tri au clavier, favoris, 10 aperçus, Mur de 2 à 10 vidéos, mode photo et diaporama, lecteur flottant,
   « À trier » et « Orphelins », mots-clés automatiques, menu radial, zoom ×6,
   mosaïque, doublons, accès à distance, mode discret, corbeille de séance…).
   Le site en parle par ce qu'elles apportent, sans le détail des raccourcis. Les chiffres de performance (0,07 s contre 33 s) viennent des

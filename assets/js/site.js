@@ -187,6 +187,46 @@
     });
   }
 
+  /* ------------------------------------------------------------ Le Mur : de 2 à 10 vidéos */
+  var wall = $("#wallDemo");
+  if (wall) {
+    var grid = $(".wall", wall), countEl = $("[data-wall='count']", wall);
+    var ARTS = ["a5", "a12", "a3", "a9", "a7", "a2", "a10", "a6", "a1", "a11"];
+    var NAMES = ["story_ibiza_07", "backstage_02", "rooftop_story", "private_suite", "hotel_nuit",
+                 "velvet_night", "poolside", "neon_lounge", "golden_hour", "mirror_room"];
+    var COLS = { vertical: [0, 0, 2, 3, 4, 5, 6, 4, 4, 5, 5], horizontal: [0, 0, 2, 3, 2, 3, 3, 4, 4, 3, 5] };
+    var wallState = { n: 5, o: "vertical" };
+    var renderWall = function () {
+      var n = wallState.n, o = wallState.o, html = "";
+      for (var i = 0; i < n; i++) {
+        var left = 20 + ((i * 37) % 90);
+        html += '<div class="panel"><div class="art ' + ARTS[i] + '" style="--dur:' + (8 + i % 5) + 's"></div>' +
+          '<div class="panel-top"><span>' + NAMES[i] + (o === "vertical" ? "_story" : "_4K") + '.mp4</span><b>−' +
+          Math.floor(left / 60) + ":" + ("0" + left % 60).slice(-2) + '</b></div>' +
+          '<div class="panel-bot"><i>◂</i><i>❙❙</i><i>▸</i><i>☆</i><i>⤢</i></div>' +
+          '<span class="bar"><i style="--len:' + (10 + (i * 7) % 16) + 's"></i></span></div>';
+      }
+      grid.innerHTML = html;
+      grid.style.setProperty("--cols", COLS[o][n]);
+      wall.classList.toggle("is-h", o === "horizontal");
+      wall.classList.toggle("is-dense", n > 6);
+      countEl.textContent = n;
+      $$("[data-wall-o]", wall).forEach(function (b) {
+        b.setAttribute("aria-pressed", b.getAttribute("data-wall-o") === o ? "true" : "false");
+      });
+    };
+    $$("[data-wall-step]", wall).forEach(function (b) {
+      b.addEventListener("click", function () {
+        wallState.n = Math.max(2, Math.min(10, wallState.n + parseInt(b.getAttribute("data-wall-step"), 10)));
+        renderWall();
+      });
+    });
+    $$("[data-wall-o]", wall).forEach(function (b) {
+      b.addEventListener("click", function () { wallState.o = b.getAttribute("data-wall-o"); renderWall(); });
+    });
+    renderWall();
+  }
+
   /* ------------------------------------------------------------ Démo interactive */
   var app = $("#demoApp");
   if (!app) return;
@@ -211,11 +251,11 @@
     name: $("[data-demo='name']", app), meta: $("[data-demo='meta']", app), folder: $("[data-demo='folder']", app),
     art: $("[data-demo='art']", app), remain: $("[data-demo='remain']", app), res: $("[data-demo='res']", app),
     bar: $("[data-demo='bar']", app), toast: $("[data-demo='toast']", app), strip: $("[data-demo='strip']", app),
-    stars: $$("[data-demo='stars'] button", app), player: $("#demoPlayer"),
+    fav: $("[data-demo='fav']", app), player: $("#demoPlayer"),
     done: $("[data-demo='done']"), pace: $("[data-demo='pace']")
   };
   var counts = { "6": 0, "7": 0, "8": 0, "9": 0, "Delete": 0 };
-  var ratings = {};
+  var favs = {};
   var idx = 0, pos = 0, history = [], started = 0, decisions = 0, busy = false, live = false, toastTimer = 0;
 
   function fmt(s) {
@@ -240,8 +280,7 @@
       s.firstChild.textContent = fmt(it.dur * (i * 2 + 1) / 10);
     });
     pos = it.dur * 0.12;
-    var r = ratings[idx] || 0;
-    el.stars.forEach(function (b, i) { b.classList.toggle("on", i < r); });
+    showFav();
   }
 
   function toast(text) {
@@ -308,11 +347,16 @@
     toast("Annulé : la vidéo est revenue");
   }
 
-  function rate(n) {
-    var cur = ratings[idx] || 0;
-    ratings[idx] = cur === n ? 0 : n;
-    el.stars.forEach(function (b, i) { b.classList.toggle("on", i < ratings[idx]); });
-    toast(ratings[idx] ? "★".repeat(ratings[idx]) + "  en favori" : "Note retirée");
+  function showFav() {
+    var on = !!favs[idx];
+    el.fav.classList.toggle("on", on);
+    el.fav.setAttribute("aria-pressed", on ? "true" : "false");
+  }
+
+  function setFav(on) {
+    favs[idx] = on;
+    showFav();
+    toast(on ? "★  Ajoutée aux favoris" : "Retirée des favoris");
   }
 
   function handle(key, e) {
@@ -321,21 +365,17 @@
       decide(key);
     } else if (/^[1-5]$/.test(key)) {
       if (e) e.preventDefault();
-      rate(parseInt(key, 10));
+      setFav(!favs[idx]);
     } else if (key === "0") {
       if (e) e.preventDefault();
-      ratings[idx] = 0;
-      el.stars.forEach(function (b) { b.classList.remove("on"); });
-      toast("Note retirée");
+      setFav(false);
     }
   }
 
   $$(".cmd", app).forEach(function (b) {
     b.addEventListener("click", function (e) { e.stopPropagation(); handle(b.getAttribute("data-key")); });
   });
-  el.stars.forEach(function (b) {
-    b.addEventListener("click", function (e) { e.stopPropagation(); rate(parseInt(b.getAttribute("data-key"), 10)); });
-  });
+  el.fav.addEventListener("click", function (e) { e.stopPropagation(); setFav(!favs[idx]); });
 
   // Le clavier ne s'active que lorsque la démo est à l'écran (ou a le focus).
   function setLive(v) { live = v; app.classList.toggle("is-live", v); }

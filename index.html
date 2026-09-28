@@ -106,6 +106,7 @@
     <ul class="nav-links">
       <li><a href="#demo">Démo</a></li>
       <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+      <li><a href="#mur">Le Mur</a></li>
       <li><a href="#photos">Photos</a></li>
       <li><a href="#discretion">Discrétion</a></li>
       <li><a href="#tarifs">Tarifs</a></li>
@@ -266,11 +267,11 @@
       <div class="section-head center">
         <span class="eyebrow reveal">Démo interactive</span>
         <h2 class="h2 reveal" data-delay="1">Essayez. <em>Ici, maintenant.</em></h2>
-        <p class="lead reveal" data-delay="2">Voici la fiche de Prisme. Appuyez sur <kbd>6</kbd> <kbd>7</kbd> <kbd>8</kbd> pour ranger, <kbd>Suppr</kbd> pour écarter, <kbd>Espace</kbd> pour passer, <kbd>1</kbd>–<kbd>5</kbd> pour noter. Ou cliquez sur les boutons.</p>
+        <p class="lead reveal" data-delay="2">Voici la fiche de Prisme. Appuyez sur <kbd>6</kbd> <kbd>7</kbd> <kbd>8</kbd> pour ranger, <kbd>Suppr</kbd> pour écarter, <kbd>Espace</kbd> pour passer, <kbd>1</kbd> pour mettre en favori. Ou cliquez sur les boutons.</p>
       </div>
 
       <div class="demo-wrap reveal">
-        <div class="app demo-app" id="demoApp" tabindex="0" aria-label="Démo interactive de la fiche Prisme. Utilisez les touches 6, 7, 8, 9, Suppr, Espace, 1 à 5 et Ctrl+Z.">
+        <div class="app demo-app" id="demoApp" tabindex="0" aria-label="Démo interactive de la fiche Prisme. Utilisez les touches 6, 7, 8, 9, Suppr, Espace, 1 et Ctrl+Z.">
           <div class="app-titlebar"><img src="assets/img/prisme.svg" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
           <div class="app-header">
             <div class="seg hide-sm"><span>Dossiers</span><span class="on">Vidéos</span><span>Mots-clés</span><span>Mur</span></div>
@@ -296,17 +297,11 @@
           <div class="cmdbar">
             <button class="cmd del" type="button" data-key="Delete"><b>Suppr</b><span>Corbeille</span></button>
             <button class="cmd skip" type="button" data-key=" "><b>Espace</b><span>Passer</span></button>
-            <button class="cmd" type="button" data-key="6"><b>6</b><span>Favoris</span></button>
-            <button class="cmd" type="button" data-key="7"><b>7</b><span>Studio</span></button>
-            <button class="cmd" type="button" data-key="8"><b>8</b><span>Amateur</span></button>
+            <button class="cmd" type="button" data-key="6"><b>6</b><span>Studio</span></button>
+            <button class="cmd" type="button" data-key="7"><b>7</b><span>Amateur</span></button>
+            <button class="cmd" type="button" data-key="8"><b>8</b><span>Duo</span></button>
             <button class="cmd" type="button" data-key="9"><b>9</b><span>À revoir</span></button>
-            <div class="stars" data-demo="stars" aria-label="Note">
-              <button type="button" data-key="1" aria-label="1 étoile"><svg><use href="#i-star"/></svg></button>
-              <button type="button" data-key="2" aria-label="2 étoiles"><svg><use href="#i-star"/></svg></button>
-              <button type="button" data-key="3" aria-label="3 étoiles"><svg><use href="#i-star"/></svg></button>
-              <button type="button" data-key="4" aria-label="4 étoiles"><svg><use href="#i-star"/></svg></button>
-              <button type="button" data-key="5" aria-label="5 étoiles"><svg><use href="#i-star"/></svg></button>
-            </div>
+            <button class="fav" type="button" data-demo="fav" aria-pressed="false"><svg><use href="#i-star"/></svg><span>Favori</span></button>
           </div>
         </div>
 
@@ -315,9 +310,9 @@
           <h3>Vos destinations</h3>
           <p class="hint">Dans Prisme, jusqu'à 30 dossiers reçoivent chacun leur touche.</p>
           <ul class="dest-list">
-            <li data-dest="6"><span class="kbd">6</span> Favoris <span class="count">0</span></li>
-            <li data-dest="7"><span class="kbd">7</span> Studio <span class="count">0</span></li>
-            <li data-dest="8"><span class="kbd">8</span> Amateur <span class="count">0</span></li>
+            <li data-dest="6"><span class="kbd">6</span> Studio <span class="count">0</span></li>
+            <li data-dest="7"><span class="kbd">7</span> Amateur <span class="count">0</span></li>
+            <li data-dest="8"><span class="kbd">8</span> Duo <span class="count">0</span></li>
             <li data-dest="9"><span class="kbd">9</span> À revoir <span class="count">0</span></li>
             <li data-dest="Delete" class="trash"><span class="kbd">Suppr</span> Corbeille <span class="count">0</span></li>
           </ul>
@@ -344,9 +339,9 @@
         <article class="tile span-4 reveal">
           <span class="tile-kicker">Tri éclair</span>
           <h3>Une touche, une décision, et le suivant s'affiche</h3>
-          <p>Chaque dossier de rangement reçoit sa touche. Une touche pour noter, une pour écarter, une pour passer : une main note pendant que l'autre range, et la copie se fait en arrière-plan. Vous n'attendez jamais.</p>
+          <p>Chaque dossier de rangement reçoit sa touche. Une touche pour mettre en favori, une pour écarter, une pour passer : une main choisit pendant que l'autre range, et la copie se fait en arrière-plan. Vous n'attendez jamais.</p>
           <div class="tile-visual keys-demo" aria-hidden="true">
-            <span class="kbd k-gold">★ Noter</span><span class="kbd k-amber">6 Favoris</span><span class="kbd k-amber">7 Studio</span><span class="kbd k-amber">8 Amateur</span><span class="kbd k-amber">A Duo</span>
+            <span class="kbd k-gold">★ Favori</span><span class="kbd k-amber">6 Studio</span><span class="kbd k-amber">7 Amateur</span><span class="kbd k-amber">8 Duo</span><span class="kbd k-amber">A Solo</span>
             <span class="kbd k-red">Écarter</span><span class="kbd k-blue">Passer</span>
           </div>
         </article>
@@ -367,11 +362,11 @@
           <div class="tile-visual">
             <div class="radial" aria-hidden="true">
               <span class="center"></span>
-              <span class="opt" style="--a:0deg"><b>6</b> Favoris</span>
-              <span class="opt sel" style="--a:72deg"><b>7</b> Studio</span>
-              <span class="opt" style="--a:144deg"><b>8</b> Amateur</span>
+              <span class="opt" style="--a:0deg"><b>6</b> Studio</span>
+              <span class="opt sel" style="--a:72deg"><b>7</b> Amateur</span>
+              <span class="opt" style="--a:144deg"><b>8</b> Duo</span>
               <span class="opt" style="--a:216deg"><b>9</b> À revoir</span>
-              <span class="opt" style="--a:288deg"><b>A</b> Duo</span>
+              <span class="opt" style="--a:288deg"><b>A</b> Solo</span>
             </div>
           </div>
         </article>
@@ -428,9 +423,9 @@
 
         <article class="tile span-2 reveal">
           <span class="tile-kicker">Favoris</span>
-          <h3>Notez, retrouvez l'essentiel</h3>
-          <p>Cinq étoiles sur chaque vidéo et chaque dossier. Un onglet réunit vos favoris, et les notes suivent les fichiers même quand vous les déplacez.</p>
-          <div class="tile-visual stars-row" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg class="off"><use href="#i-star"/></svg></div>
+          <h3>Vos favoris, à portée de clic</h3>
+          <p>Une étoile sur une vidéo, une photo ou un dossier, et il rejoint vos favoris. Un onglet dédié, juste à côté du Mur, les réunit tous. Ils vous suivent même quand vous déplacez les fichiers.</p>
+          <div class="tile-visual fav-visual" aria-hidden="true"><span class="fav-star"><svg><use href="#i-star"/></svg></span><span class="seg"><span>Mur</span><span class="on">★ Favoris</span></span></div>
         </article>
 
         <article class="tile span-2 reveal" data-delay="1">
@@ -476,34 +471,38 @@
   <!-- ================================================================ LE MUR -->
   <section class="section" id="mur" style="padding-top:0">
     <div class="container">
-      <div class="feature flip">
-        <div class="feature-copy">
-          <span class="eyebrow reveal">Le Mur</span>
-          <h2 class="h2 reveal" data-delay="1">Trois vidéos à la fois. <em>Aucune bande noire.</em></h2>
-          <p class="lead reveal" data-delay="2">Une vidéo verticale laisse deux bandes noires sur un écran large. Le Mur en affiche plusieurs côte à côte, qui jouent toutes en même temps. Vous gardez celles qui vous plaisent, vous remplacez les autres.</p>
-          <ul class="checks reveal" data-delay="3">
-            <li><svg><use href="#i-check"/></svg><span><b>Chaque panneau vit sa vie</b> : sa lecture, sa position, sa molette, son remplacement.</span></li>
-            <li><svg><use href="#i-check"/></svg><span><b>Clic droit sur un panneau</b> : rangez-le sans quitter le Mur.</span></li>
-            <li><svg><use href="#i-check"/></svg><span><b>Verticales, horizontales ou toutes</b>, autant de panneaux que vous voulez, jusqu'au plein écran.</span></li>
-            <li><svg><use href="#i-check"/></svg><span><b>Tirage sans remise</b> : une nouvelle vidéo à chaque fois, jamais la même.</span></li>
-          </ul>
-        </div>
-        <div class="reveal" data-delay="1">
-          <div class="app wall-app" role="img" aria-label="Le Mur de Prisme : trois vidéos verticales jouées côte à côte">
+      <div class="section-head">
+        <span class="eyebrow reveal">Le Mur</span>
+        <h2 class="h2 reveal" data-delay="1">Jusqu'à dix vidéos à la fois. <em>Chacune son lecteur.</em></h2>
+        <p class="lead reveal" data-delay="2">Le Mur affiche de deux à dix vidéos côte à côte, qui jouent toutes en même temps. Choisissez combien, choisissez le format, et gardez celles qui vous plaisent. Essayez ci-dessous.</p>
+      </div>
+      <div class="wall-layout">
+        <div class="reveal">
+          <div class="app wall-app" id="wallDemo">
             <div class="app-titlebar"><img src="assets/img/prisme.svg" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
-            <div class="app-header">
-              <div class="seg"><span class="hide-sm">Dossiers</span><span class="hide-sm">Vidéos</span><span class="on">Mur</span></div>
+            <div class="app-header wall-controls">
+              <div class="seg hide-sm"><span>Dossiers</span><span>Vidéos</span><span class="on">Mur</span><span>★ Favoris</span></div>
               <span class="spacer"></span>
-              <span class="chip">− 3 +</span>
-              <span class="chip on">Verticales</span>
+              <div class="stepper" role="group" aria-label="Nombre de vidéos">
+                <button type="button" data-wall-step="-1" aria-label="Une vidéo de moins">−</button>
+                <b data-wall="count" aria-live="polite">5</b>
+                <button type="button" data-wall-step="1" aria-label="Une vidéo de plus">+</button>
+              </div>
+              <div class="seg seg-btn" role="group" aria-label="Format des vidéos">
+                <button type="button" data-wall-o="vertical" aria-pressed="true">Verticales</button>
+                <button type="button" data-wall-o="horizontal" aria-pressed="false">Horizontales</button>
+              </div>
             </div>
-            <div class="wall">
-              <div class="panel"><div class="art a5" style="--dur:9s"></div><div class="panel-top"><span>story_ibiza_07.mp4</span><b>−0:42</b></div><div class="panel-bot"><i>◂</i><i>❙❙</i><i>▸</i><i>☆</i><i>⤢</i></div><span class="bar"><i style="--len:14s"></i></span></div>
-              <div class="panel"><div class="art a12" style="--dur:11s"></div><div class="panel-top"><span>backstage_02.mp4</span><b>−1:18</b></div><div class="panel-bot"><i>◂</i><i>❙❙</i><i>▸</i><i style="color:#f5c542">★</i><i>⤢</i></div><span class="bar"><i style="--len:22s"></i></span></div>
-              <div class="panel"><div class="art a3" style="--dur:8s"></div><div class="panel-top"><span>rooftop_story.mp4</span><b>−0:27</b></div><div class="panel-bot"><i>◂</i><i>❙❙</i><i>▸</i><i>☆</i><i>⤢</i></div><span class="bar"><i style="--len:10s"></i></span></div>
-            </div>
+            <div class="wall" aria-label="Le Mur : vidéos jouées côte à côte"></div>
           </div>
         </div>
+        <ul class="checks wall-checks reveal" data-delay="1">
+          <li><svg><use href="#i-check"/></svg><span><b>De 2 à 10 vidéos à l'écran</b> : c'est vous qui choisissez combien.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Que des verticales, ou que des horizontales</b> : le Mur ne mélange pas les formats et remplit tout l'écran, sans bandes noires.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Chaque vidéo a son propre lecteur</b> : pause, avance, favori, ou une autre à la place, sans toucher aux voisines.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>En plein écran</b> : le Mur entier, ou une seule vidéo en grand.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Rangez sans quitter le Mur</b>, et découvrez toujours du neuf : une vidéo ne revient pas avant que toutes soient passées.</span></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -515,12 +514,12 @@
         <div class="feature-copy">
           <span class="eyebrow reveal">Photos</span>
           <h2 class="h2 reveal" data-delay="1">Vos photos aussi. <em>Avec le même soin.</em></h2>
-          <p class="lead reveal" data-delay="2">Un clic, et Prisme passe de vos vidéos à vos photos. Le même tri éclair, les mêmes notes, les mêmes destinations, et des outils pensés pour l'image fixe.</p>
+          <p class="lead reveal" data-delay="2">Un clic, et Prisme passe de vos vidéos à vos photos. Le même tri éclair, les mêmes favoris, les mêmes destinations, et des outils pensés pour l'image fixe.</p>
           <ul class="checks reveal" data-delay="3">
             <li><svg><use href="#i-check"/></svg><span><b>Diaporama</b> : les photos défilent toutes seules, au rythme que vous choisissez.</span></li>
             <li><svg><use href="#i-check"/></svg><span><b>Le Mur en photos</b> : jusqu'à dix images côte à côte, chacune en diaporama.</span></li>
             <li><svg><use href="#i-check"/></svg><span><b>Survolez un dossier</b> : ses photos défilent sur sa vignette, sans l'ouvrir.</span></li>
-            <li><svg><use href="#i-check"/></svg><span><b>Deux collections séparées</b> : chacune ses dossiers, ses notes, ses mots-clés. Une photo ne se range jamais parmi les films.</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>Deux collections séparées</b> : chacune ses dossiers, ses favoris, ses mots-clés. Une photo ne se range jamais parmi les films.</span></li>
             <li><svg><use href="#i-check"/></svg><span><b>Tous les formats</b>, HEIC des iPhone compris, remis droits automatiquement.</span></li>
           </ul>
         </div>
@@ -535,12 +534,12 @@
               <span class="chip on">− 6 +</span>
             </div>
             <div class="pwall">
-              <div class="ppanel" style="--o:0s"><div class="art a9"></div><div class="art a4"></div><div class="art a5"></div><span class="bar"><i></i></span></div>
-              <div class="ppanel" style="--o:-1.6s"><div class="art a12"></div><div class="art a7"></div><div class="art a2"></div><span class="bar"><i></i></span></div>
-              <div class="ppanel" style="--o:-3.1s"><div class="art a3"></div><div class="art a11"></div><div class="art a6"></div><span class="bar"><i></i></span></div>
-              <div class="ppanel" style="--o:-5.2s"><div class="art a10"></div><div class="art a1"></div><div class="art a8"></div><span class="bar"><i></i></span></div>
-              <div class="ppanel" style="--o:-7.4s"><div class="art a5"></div><div class="art a9"></div><div class="art a12"></div><span class="bar"><i></i></span></div>
-              <div class="ppanel" style="--o:-9.8s"><div class="art a2"></div><div class="art a10"></div><div class="art a3"></div><span class="bar"><i></i></span></div>
+              <div class="ppanel" style="--o:0s"><div class="art a9"></div><div class="art a4"></div><div class="art a5"></div></div>
+              <div class="ppanel" style="--o:-1.6s"><div class="art a12"></div><div class="art a7"></div><div class="art a2"></div></div>
+              <div class="ppanel" style="--o:-3.1s"><div class="art a3"></div><div class="art a11"></div><div class="art a6"></div></div>
+              <div class="ppanel" style="--o:-5.2s"><div class="art a10"></div><div class="art a1"></div><div class="art a8"></div></div>
+              <div class="ppanel" style="--o:-7.4s"><div class="art a5"></div><div class="art a9"></div><div class="art a12"></div></div>
+              <div class="ppanel" style="--o:-9.8s"><div class="art a2"></div><div class="art a10"></div><div class="art a3"></div></div>
             </div>
           </div>
         </div>
@@ -667,8 +666,8 @@
 
         <div class="privacy-points">
           <div class="reveal"><h4><svg><use href="#i-eyeoff"/></svg>Même depuis une autre fenêtre</h4><p>Prisme se masque aussi quand vous êtes dans un autre programme, sans jamais revenir au premier plan.</p></div>
-          <div class="reveal" data-delay="1"><h4><svg><use href="#i-cloud-off"/></svg>100 % local, zéro télémétrie</h4><p>Vos vidéos, vos notes et vos recherches restent sur votre ordinateur. Rien n'est envoyé, rien n'est analysé à distance.</p></div>
-          <div class="reveal"><h4><svg><use href="#i-folders"/></svg>Rien d'écrit dans vos dossiers</h4><p>Notes, favoris, index et vignettes vivent à part, dans les données de l'application. Vos dossiers restent propres.</p></div>
+          <div class="reveal" data-delay="1"><h4><svg><use href="#i-cloud-off"/></svg>100 % local, zéro télémétrie</h4><p>Vos vidéos, vos photos, vos favoris et vos recherches restent sur votre ordinateur. Rien n'est envoyé, rien n'est analysé à distance.</p></div>
+          <div class="reveal"><h4><svg><use href="#i-folders"/></svg>Rien d'écrit dans vos dossiers</h4><p>Favoris, index et vignettes vivent à part, dans les données de l'application. Vos dossiers restent propres.</p></div>
           <div class="reveal" data-delay="1"><h4><svg><use href="#i-lock"/></svg>Dossiers masqués</h4><p>Mettez certains dossiers de côté : ils disparaissent partout à la fois, listes, mots-clés, Mur, doublons et accès à distance.</p></div>
         </div>
       </div>
@@ -709,7 +708,7 @@
         <article class="safe reveal" data-delay="1"><span class="safe-ico"><svg><use href="#i-trash"/></svg></span><h3>Une corbeille de séance</h3><p>Ce que vous écartez attend dans une corbeille dédiée, d'où il revient d'un clic, jusqu'à ce que vous fermiez Prisme.</p></article>
         <article class="safe reveal" data-delay="2"><span class="safe-ico"><svg><use href="#i-copy"/></svg></span><h3>Jamais d'écrasement</h3><p>Un fichier du même nom existe déjà à destination ? Le nouveau est simplement suffixé. Rien n'est remplacé.</p></article>
         <article class="safe reveal"><span class="safe-ico"><svg><use href="#i-refund"/></svg></span><h3>Transferts en arrière-plan</h3><p>La copie continue pendant que vous triez, dans l'ordre de vos décisions. À la fermeture, Prisme attend que tout soit arrivé.</p></article>
-        <article class="safe reveal" data-delay="1"><span class="safe-ico"><svg><use href="#i-star"/></svg></span><h3>Vos notes vous suivent</h3><p>Déplacez un dossier, renommez une vidéo : ses étoiles la suivent. Vos favoris sont sauvegardés à chaque lancement.</p></article>
+        <article class="safe reveal" data-delay="1"><span class="safe-ico"><svg><use href="#i-star"/></svg></span><h3>Vos favoris vous suivent</h3><p>Déplacez un dossier, renommez une vidéo : elle reste dans vos favoris. Ils sont sauvegardés à chaque lancement.</p></article>
         <article class="safe reveal" data-delay="2"><span class="safe-ico"><svg><use href="#i-pencil"/></svg></span><h3>Renommer sur place</h3><p>Donnez enfin un vrai nom à vos fichiers, sans quitter la vidéo. L'extension est préservée automatiquement.</p></article>
       </div>
     </div>
@@ -794,11 +793,11 @@
       <div class="faq reveal">
         <details>
           <summary>Prisme envoie-t-il mes vidéos quelque part ?</summary>
-          <div class="answer-body"><p>Non. Prisme fonctionne entièrement sur votre ordinateur. Vos vidéos, vos notes, vos recherches et vos vignettes ne quittent jamais votre machine, et il n'y a aucune télémétrie.</p><p>La seule exception est celle que vous choisissez : l'accès à distance, que vous activez vous-même, protégé par votre mot de passe et coupable en un clic.</p></div>
+          <div class="answer-body"><p>Non. Prisme fonctionne entièrement sur votre ordinateur. Vos vidéos, vos photos, vos favoris, vos recherches et vos vignettes ne quittent jamais votre machine, et il n'y a aucune télémétrie.</p><p>La seule exception est celle que vous choisissez : l'accès à distance, que vous activez vous-même, protégé par votre mot de passe et coupable en un clic.</p></div>
         </details>
         <details>
           <summary>Est-ce que Prisme modifie mes fichiers ?</summary>
-          <div class="answer-body"><p>Uniquement quand vous le lui demandez : déplacer, renommer ou écarter une vidéo. Tout le reste (notes, favoris, index, vignettes) est rangé à part, dans les données de l'application. Rien n'est écrit dans vos dossiers.</p><p>Et chaque action peut être annulée.</p></div>
+          <div class="answer-body"><p>Uniquement quand vous le lui demandez : déplacer, renommer ou écarter une vidéo. Tout le reste (favoris, index, vignettes) est rangé à part, dans les données de l'application. Rien n'est écrit dans vos dossiers.</p><p>Et chaque action peut être annulée.</p></div>
         </details>
         <details>
           <summary>Mes vidéos sont sur un NAS ou un disque externe. Ça marche ?</summary>
@@ -810,7 +809,7 @@
         </details>
         <details>
           <summary>Prisme gère-t-il aussi les photos ?</summary>
-          <div class="answer-body"><p>Oui. Un clic fait passer Prisme de vos vidéos à vos photos, avec le même tri, les mêmes notes, un diaporama et le Mur. Les deux collections restent séparées : chacune a ses dossiers, ses notes et ses mots-clés.</p></div>
+          <div class="answer-body"><p>Oui. Un clic fait passer Prisme de vos vidéos à vos photos, avec le même tri, les mêmes favoris, un diaporama et le Mur. Les deux collections restent séparées : chacune a ses dossiers, ses favoris et ses mots-clés.</p></div>
         </details>
         <details>
           <summary>Sur quel système fonctionne Prisme ?</summary>
@@ -822,7 +821,7 @@
         </details>
         <details>
           <summary>Que se passe-t-il à la fin de l'essai ?</summary>
-          <div class="answer-body"><p>Rien d'automatique : aucune carte bancaire n'est demandée pour l'essai, donc aucun prélèvement surprise. Si Prisme vous plaît, vous choisissez une formule et retrouvez tous vos réglages, notes et favoris.</p></div>
+          <div class="answer-body"><p>Rien d'automatique : aucune carte bancaire n'est demandée pour l'essai, donc aucun prélèvement surprise. Si Prisme vous plaît, vous choisissez une formule et retrouvez tous vos réglages et vos favoris.</p></div>
         </details>
         <details>
           <summary>Qu'apparaît-il sur mon relevé bancaire ?</summary>
