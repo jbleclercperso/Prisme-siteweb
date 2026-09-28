@@ -192,8 +192,8 @@
   if (wall) {
     var grid = $(".wall", wall), countEl = $("[data-wall='count']", wall);
     var ARTS = ["a5", "a12", "a3", "a9", "a7", "a2", "a10", "a6", "a1", "a11"];
-    var NAMES = ["story_ibiza_07", "backstage_02", "rooftop_story", "private_suite", "hotel_nuit",
-                 "velvet_night", "poolside", "neon_lounge", "golden_hour", "mirror_room"];
+    var NAMES = ["amateur_story_07", "pov_selfie_02", "creator_shower", "milf_mirror", "couple_hotel",
+                 "lesbian_kiss_04", "cam_replay_12", "backstage_pov", "casting_22", "solo_bedroom"];
     var COLS = { vertical: [0, 0, 2, 3, 4, 5, 6, 4, 4, 5, 5], horizontal: [0, 0, 2, 3, 2, 3, 3, 4, 4, 3, 5] };
     var wallState = { n: 5, o: "vertical" };
     var renderWall = function () {
@@ -201,7 +201,7 @@
       for (var i = 0; i < n; i++) {
         var left = 20 + ((i * 37) % 90);
         html += '<div class="panel"><div class="art ' + ARTS[i] + '" style="--dur:' + (8 + i % 5) + 's"></div>' +
-          '<div class="panel-top"><span>' + NAMES[i] + (o === "vertical" ? "_story" : "_4K") + '.mp4</span><b>−' +
+          '<div class="panel-top"><span>' + NAMES[i] + (o === "vertical" ? "_vertical" : "_4K") + '.mp4</span><b>−' +
           Math.floor(left / 60) + ":" + ("0" + left % 60).slice(-2) + '</b></div>' +
           '<div class="panel-bot"><i>◂</i><i>❙❙</i><i>▸</i><i>☆</i><i>⤢</i></div>' +
           '<span class="bar"><i style="--len:' + (10 + (i * 7) % 16) + 's"></i></span></div>';
@@ -232,20 +232,20 @@
   if (!app) return;
 
   var ITEMS = [
-    { name: "golden_hour_suite.mp4", folder: "À trier", res: "4K", meta: "2160p · 3,2 Go", dur: 1122, art: "a1" },
-    { name: "velvet_night_07.mp4", folder: "À trier", res: "1080p", meta: "1080p · 1,4 Go", dur: 756, art: "a2" },
-    { name: "private_suite_lisbonne.mkv", folder: "À trier", res: "4K", meta: "2160p · 5,9 Go", dur: 1862, art: "a9" },
-    { name: "candlelight_22.mp4", folder: "À trier", res: "1080p", meta: "1080p · 880 Mo", dur: 524, art: "a4" },
-    { name: "after_party_03.mp4", folder: "À trier", res: "720p", meta: "720p · 640 Mo", dur: 1160, art: "a5" },
-    { name: "poolside_ibiza.mp4", folder: "À trier", res: "1080p", meta: "1080p · 1,1 Go", dur: 908, art: "a6" },
-    { name: "hotel_particulier_01.mov", folder: "À trier", res: "4K", meta: "2160p · 8,3 Go", dur: 2571, art: "a7" },
-    { name: "mirror_room.mp4", folder: "À trier", res: "1080p", meta: "1080p · 512 Mo", dur: 372, art: "a3" },
-    { name: "rooftop_sunset.mp4", folder: "À trier", res: "1080p", meta: "1080p · 2,0 Go", dur: 1653, art: "a10" },
-    { name: "silk_room_backstage.mp4", folder: "À trier", res: "4K", meta: "2160p · 2,7 Go", dur: 665, art: "a8" },
-    { name: "neon_lounge_12.mp4", folder: "À trier", res: "1080p", meta: "1080p · 790 Mo", dur: 587, art: "a11" },
-    { name: "slow_morning.mkv", folder: "À trier", res: "4K", meta: "2160p · 6,1 Go", dur: 1998, art: "a12" }
+    { name: "amateur_couple_weekend.mp4", folder: "À trier", res: "4K", meta: "2160p · 3,2 Go", dur: 1122, art: "a1" },
+    { name: "pov_casting_blonde.mp4", folder: "À trier", res: "1080p", meta: "1080p · 1,4 Go", dur: 756, art: "a2" },
+    { name: "milf_hotel_suite_4K.mkv", folder: "À trier", res: "4K", meta: "2160p · 5,9 Go", dur: 1862, art: "a9" },
+    { name: "lesbian_massage_02.mp4", folder: "À trier", res: "1080p", meta: "1080p · 880 Mo", dur: 524, art: "a4" },
+    { name: "backstage_studio_03.mp4", folder: "À trier", res: "720p", meta: "720p · 640 Mo", dur: 1160, art: "a5" },
+    { name: "threesome_villa_ibiza.mp4", folder: "À trier", res: "1080p", meta: "1080p · 1,1 Go", dur: 908, art: "a6" },
+    { name: "gonzo_scene_0412.mov", folder: "À trier", res: "4K", meta: "2160p · 8,3 Go", dur: 2571, art: "a7" },
+    { name: "solo_shower_720p.mp4", folder: "À trier", res: "720p", meta: "720p · 512 Mo", dur: 372, art: "a3" },
+    { name: "pov_girlfriend_4K.mp4", folder: "À trier", res: "4K", meta: "2160p · 2,0 Go", dur: 1653, art: "a10" },
+    { name: "casting_couch_19.mp4", folder: "À trier", res: "1080p", meta: "1080p · 2,7 Go", dur: 665, art: "a8" },
+    { name: "cam_show_replay_9.mp4", folder: "À trier", res: "1080p", meta: "1080p · 790 Mo", dur: 587, art: "a11" },
+    { name: "vintage_70s_classic.mkv", folder: "À trier", res: "720p", meta: "720p · 1,6 Go", dur: 1998, art: "a12" }
   ];
-  var LABELS = { "6": "Favoris", "7": "Studio", "8": "Amateur", "9": "À revoir", "Delete": "Corbeille" };
+  var LABELS = { "6": "Amateur", "7": "POV", "8": "MILF", "9": "À revoir", "Delete": "Corbeille" };
 
   var el = {
     name: $("[data-demo='name']", app), meta: $("[data-demo='meta']", app), folder: $("[data-demo='folder']", app),

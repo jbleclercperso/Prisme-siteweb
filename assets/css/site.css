@@ -491,7 +491,7 @@ html.no-js .reveal { opacity: 1; transform: none; }
   mask-image: radial-gradient(70% 60% at 50% 30%, #000 20%, transparent 75%);
 }
 
-.hero-copy { max-width: 860px; }
+.hero-copy { max-width: 1010px; }
 .hero-pill {
   display: inline-flex;
   align-items: center;
