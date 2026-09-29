@@ -71,7 +71,7 @@ Certains éléments sont des propositions commerciales, à confirmer ou corriger
 - **Toutes les fonctionnalités citées existent dans le code** de Prisme
   (tri au clavier, favoris, 10 aperçus, Mur de 2 à 10 vidéos, mode photo et diaporama, lecteur flottant,
   « À trier » et « Orphelins », mots-clés automatiques, menu radial, zoom ×6,
-  mosaïque, repérage des plans, Rafale, doublons, accès à distance, mode discret,
+  mosaïque, repérage des plans, Rafale, doublons, recherche sur le web, accès à distance, mode discret,
   dossiers masqués, corbeille de séance…), et chaque affirmation a été
   confrontée au code : diaporama à 6 s, 9 destinations dans le menu radial,
   jusqu'à 200 annulations, accès distant par tunnel Cloudflare ou Tailscale
