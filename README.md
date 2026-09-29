@@ -71,7 +71,11 @@ Certains éléments sont des propositions commerciales, à confirmer ou corriger
 - **Toutes les fonctionnalités citées existent dans le code** de Prisme
   (tri au clavier, favoris, 10 aperçus, Mur de 2 à 10 vidéos, mode photo et diaporama, lecteur flottant,
   « À trier » et « Orphelins », mots-clés automatiques, menu radial, zoom ×6,
-  mosaïque, doublons, accès à distance, mode discret, corbeille de séance…).
+  mosaïque, repérage des plans, Rafale, doublons, accès à distance, mode discret,
+  dossiers masqués, corbeille de séance…), et chaque affirmation a été
+  confrontée au code : diaporama à 6 s, 9 destinations dans le menu radial,
+  jusqu'à 200 annulations, accès distant par tunnel Cloudflare ou Tailscale
+  (HTTPS, PC allumé et Prisme ouvert), effacement définitif à la fermeture sur NAS.
   Le site en parle par ce qu'elles apportent, sans le détail des raccourcis. Les chiffres de performance (0,07 s contre 33 s) viennent des
   mesures du README du logiciel.
 - La démo interactive reproduit la fiche de l'application ; `Ctrl+K` masque
