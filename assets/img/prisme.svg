@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Prisme">
-  <rect width="256" height="256" rx="56" fill="#11141a"/>
-  <path d="M18 120h84" stroke="#eef1f6" stroke-width="12" stroke-linecap="round"/>
-  <path d="M160 128l76-22" stroke="#ea6a5c" stroke-width="12" stroke-linecap="round"/>
-  <path d="M160 128l76 16" stroke="#e8c35a" stroke-width="12" stroke-linecap="round"/>
-  <path d="M160 128l76 52" stroke="#5aa9e2" stroke-width="12" stroke-linecap="round"/>
-  <path d="M128 48L66 184h124z" fill="#262a33" stroke="#8b94a1" stroke-width="10" stroke-linejoin="round"/>
-</svg>

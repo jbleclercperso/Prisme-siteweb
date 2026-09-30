@@ -76,12 +76,13 @@ entre son e-mail, reçoit un lien, et y trouve factures, carte et résiliation.
    npm install
    STRIPE_SECRET_KEY=sk_test_… SITE_URL=https://www.prisme.app npm run stripe:setup
    ```
-   Le script crée le produit et ses trois prix (7,90 €/mois, 79 €/an, 149 € une
-   fois, TTC, retrouvés par leur *lookup key* `prisme_mensuel`, `prisme_annuel`,
-   `prisme_a_vie`), active l'espace client et déclare le webhook. Il affiche
-   l'adresse de l'espace client et le secret du webhook. On peut le relancer sans
-   risque : il ne crée que ce qui manque. Pour changer un prix, en créer un
-   nouveau dans Stripe et lui reporter la *lookup key*.
+   Le script crée le produit et son prix (4,99 €/mois TTC, retrouvé par sa
+   *lookup key* `prisme_mensuel`), active l'espace client et déclare le webhook.
+   Il affiche l'adresse de l'espace client et le secret du webhook. On peut le
+   relancer sans risque : il ne crée que ce qui manque. Pour changer le prix,
+   modifier le montant dans `scripts/stripe-setup.mjs` et relancer le script :
+   un nouveau prix reprend la *lookup key*, l'ancien est désactivé, et les
+   abonnements déjà en cours gardent leur prix.
 3. Dans Netlify, *Site › Configuration › Environment variables* :
    `STRIPE_SECRET_KEY` et `STRIPE_WEBHOOK_SECRET` (et `STRIPE_AUTOMATIC_TAX=on`
    si Stripe Tax calcule la TVA).
@@ -140,9 +141,9 @@ la précédente, la télé reste appairée.
 
 Certains éléments sont des propositions commerciales, à confirmer ou corriger :
 
-- [ ] **Prix** : 7,90 €/mois, 79 €/an, 149 € à vie (`index.html`, section `#tarifs`)
+- [ ] **Prix** : 4,99 €/mois, une seule formule (`index.html`, section `#tarifs`, et `scripts/stripe-setup.mjs`)
 - [ ] **Promesses** : essai 14 jours sans carte, 2 ordinateurs par licence,
-      satisfait ou remboursé 14 jours, libellé bancaire discret, support prioritaire
+      satisfait ou remboursé 14 jours, libellé bancaire discret, support par e-mail
 - [ ] **Nom de domaine** : `prisme.app` est utilisé partout en attendant
       (`index.html` balises `canonical`/`og:*`, `robots.txt`, `sitemap.xml`,
       adresses `contact@prisme.app`)

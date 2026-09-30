@@ -5,8 +5,10 @@
 //
 // Crée ce qui manque, et laisse tel quel ce qui existe déjà : on peut le
 // relancer sans risque, en mode test puis en mode réel (sk_live_…).
-//   1. le produit « Prisme » et ses trois prix, retrouvés ensuite par leur
-//      lookup key (7,90 €/mois, 79 €/an, 149 € une fois, TTC) ;
+//   1. le produit « Prisme » et son prix, 4,99 €/mois TTC, retrouvé ensuite
+//      par sa lookup key. Si le montant a changé ici, un nouveau prix
+//      reprend la lookup key et l'ancien est désactivé : les abonnements
+//      déjà en cours gardent leur prix d'origine ;
 //   2. l'espace client (portail Stripe) : factures, carte, résiliation, et
 //      son adresse de connexion par e-mail, à reporter dans config.js ;
 //   3. avec SITE_URL, le webhook /api/webhook et son secret, à reporter
@@ -14,10 +16,11 @@
 import Stripe from "stripe";
 import { PLANS, WEBHOOK_EVENTS } from "../netlify/lib/stripe.mjs";
 
+// Seule la formule mensuelle est proposée sur le site. Les formules annuelle
+// et à vie restent connues des fonctions (licences déjà émises), mais aucun
+// prix n'est plus créé pour elles.
 const PRICES = {
-  [PLANS.monthly.lookupKey]: { unit_amount: 790, recurring: { interval: "month" }, nickname: "Prisme mensuel" },
-  [PLANS.yearly.lookupKey]: { unit_amount: 7900, recurring: { interval: "year" }, nickname: "Prisme annuel" },
-  [PLANS.lifetime.lookupKey]: { unit_amount: 14900, nickname: "Prisme à vie" },
+  [PLANS.monthly.lookupKey]: { unit_amount: 499, recurring: { interval: "month" }, nickname: "Prisme mensuel" },
 };
 
 const key = process.env.STRIPE_SECRET_KEY;
@@ -47,18 +50,29 @@ if (!product) {
   console.log("Produit créé :", product);
 }
 for (const [lookupKey, spec] of Object.entries(PRICES)) {
-  if (found.has(lookupKey)) {
-    console.log(`Prix ${lookupKey} : déjà là (${found.get(lookupKey).id})`);
+  const old = found.get(lookupKey);
+  const same = old && old.unit_amount === spec.unit_amount
+    && (old.recurring?.interval || null) === (spec.recurring?.interval || null);
+  if (same) {
+    console.log(`Prix ${lookupKey} : déjà là (${old.id})`);
     continue;
   }
+  // Un prix Stripe ne se modifie pas : on en crée un nouveau, qui reprend la
+  // lookup key, et l'ancien ne peut plus être choisi.
   const price = await stripe.prices.create({
     product,
     currency: "eur",
     tax_behavior: "inclusive",
     lookup_key: lookupKey,
+    transfer_lookup_key: Boolean(old),
     ...spec,
   });
-  console.log(`Prix ${lookupKey} : créé (${price.id})`);
+  if (old) {
+    await stripe.prices.update(old.id, { active: false });
+    console.log(`Prix ${lookupKey} : ${old.unit_amount / 100} € remplacé par ${spec.unit_amount / 100} € (${price.id})`);
+  } else {
+    console.log(`Prix ${lookupKey} : créé (${price.id})`);
+  }
 }
 
 // 2. Espace client
