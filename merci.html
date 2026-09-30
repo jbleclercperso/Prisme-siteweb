@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Conditions générales de vente — Prisme</title>
-  <meta name="description" content="Conditions générales de vente du logiciel Prisme.">
+  <title>Merci — Prisme</title>
+  <meta name="description" content="Votre commande Prisme.">
+  <meta name="robots" content="noindex">
   <meta name="rating" content="adult">
   <meta name="theme-color" content="#07080b">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -93,40 +94,41 @@
 
 <main id="contenu">
   <section class="page">
-    <div class="container prose">
-      <h1>Conditions générales de vente</h1>
-      <p class="updated">Dernière mise à jour : <span class="todo">[date]</span></p>
-      <div class="note-box">Modèle de travail, à adapter à votre prestataire de paiement et à faire valider par un professionnel du droit avant l'ouverture des ventes.</div>
+    <div class="container">
+      <div class="thanks" id="thanks" data-state="loading" aria-live="polite">
+        <img src="assets/img/prisme.svg" alt="" width="72" height="72">
 
-      <h2>1. Objet</h2>
-      <p>Les présentes conditions régissent la vente de licences d'utilisation du logiciel Prisme (ci-après « le Logiciel ») par <span class="todo">[raison sociale]</span> (ci-après « l'Éditeur ») à toute personne physique majeure agissant en qualité de consommateur (ci-après « le Client »).</p>
+        <div class="thanks-state" data-when="loading">
+          <h1 class="display thanks-title">Un instant…</h1>
+          <p class="lead">Nous vérifions votre paiement auprès de Stripe.</p>
+        </div>
 
-      <h2>2. Accès réservé aux majeurs</h2>
-      <p>Le Logiciel est destiné à l'organisation de contenus pour adultes. Toute commande implique que le Client déclare être âgé d'au moins 18 ans. L'Éditeur ne fournit, ne vend ni ne distribue aucun contenu vidéo : le Client utilise le Logiciel avec des fichiers qu'il détient légalement et dont il est seul responsable.</p>
+        <div class="thanks-state" data-when="paid">
+          <span class="eyebrow">Paiement confirmé</span>
+          <h1 class="display thanks-title">Merci, <em>et bienvenue.</em></h1>
+          <p class="lead"><b data-thanks-plan>Prisme</b> est à vous. Le reçu part à <b data-thanks-email>votre adresse</b>, avec votre facture.</p>
+          <div class="thanks-actions">
+            <a class="btn btn-primary" href="telecharger.html" data-link="trial"><svg><use href="#i-download"/></svg>Télécharger Prisme</a>
+            <a class="btn btn-ghost" href="index.html#tarifs" data-link="account">Mon compte</a>
+          </div>
+          <p class="muted thanks-note">Déjà installé pour l'essai ? Vos réglages et vos favoris sont conservés. Factures, carte bancaire et résiliation se gèrent depuis « Mon compte », avec cette même adresse e-mail.</p>
+        </div>
 
-      <h2>3. Offres et prix</h2>
-      <p>Les offres disponibles sont présentées sur la page Tarifs : essai gratuit de 14 jours, abonnement mensuel ou annuel, licence à vie. Les prix sont indiqués en euros, toutes taxes comprises. <span class="todo">[Préciser les prix définitifs et le nombre d'ordinateurs par licence]</span></p>
+        <div class="thanks-state" data-when="pending">
+          <span class="eyebrow">Paiement en cours</span>
+          <h1 class="display thanks-title">Merci, <em>c'est presque fait.</em></h1>
+          <p class="lead">Votre banque confirme encore le paiement, ce qui peut prendre quelques jours pour un prélèvement. Un e-mail vous préviendra à <b data-thanks-email>votre adresse</b> dès qu'il sera validé.</p>
+        </div>
 
-      <h2>4. Commande et paiement</h2>
-      <p>Le paiement est traité par la société Stripe, prestataire de services de paiement, sur sa page de paiement sécurisée. Le libellé figurant sur le relevé bancaire est <span class="todo">[libellé exact, réglé dans Stripe]</span>. L'Éditeur n'a jamais accès aux données de carte bancaire. Un reçu et une facture sont adressés au Client par e-mail dès le paiement, et restent disponibles depuis l'espace client.</p>
-
-      <h2>5. Abonnement et résiliation</h2>
-      <p>L'abonnement est reconduit tacitement à chaque échéance. Il peut être résilié à tout moment depuis l'espace client ; la résiliation prend effet à la fin de la période en cours.</p>
-
-      <h2>6. Droit de rétractation et garantie</h2>
-      <p>Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation ne peut être exercé pour la fourniture d'un contenu numérique dont l'exécution a commencé avec l'accord exprès du Client. Indépendamment de ce qui précède, l'Éditeur propose une garantie commerciale « satisfait ou remboursé » de 14 jours à compter du premier paiement, sur simple demande à <a href="mailto:contact@prisme.app" data-link="contact">contact@prisme.app</a>. <span class="todo">[Confirmer cette garantie]</span></p>
-
-      <h2>7. Licence d'utilisation</h2>
-      <p>Le Client bénéficie d'un droit d'utilisation personnel, non exclusif et non cessible du Logiciel, sur le nombre d'ordinateurs prévu par son offre. Toute revente, redistribution ou décompilation est interdite, dans les limites prévues par la loi.</p>
-
-      <h2>8. Responsabilité</h2>
-      <p>Le Logiciel déplace, renomme et supprime des fichiers uniquement à la demande du Client, et propose des mécanismes d'annulation. Il appartient néanmoins au Client de conserver des sauvegardes de ses données.</p>
-
-      <h2>9. Données personnelles</h2>
-      <p>Voir la <a href="confidentialite.html">politique de confidentialité</a>.</p>
-
-      <h2>10. Litiges</h2>
-      <p>Les présentes conditions sont soumises au droit français. En cas de litige, le Client peut recourir gratuitement au médiateur de la consommation <span class="todo">[nom et coordonnées du médiateur]</span>, ou à la plateforme européenne de règlement en ligne des litiges.</p>
+        <div class="thanks-state" data-when="unknown">
+          <h1 class="display thanks-title">Merci pour <em>votre visite.</em></h1>
+          <p class="lead">Nous ne retrouvons pas de paiement lié à cette page. Si vous venez de payer, le reçu de Stripe fait foi : vérifiez vos e-mails, ou écrivez-nous, nous répondons à chaque message.</p>
+          <div class="thanks-actions">
+            <a class="btn btn-ghost" href="mailto:contact@prisme.app" data-link="contact"><svg><use href="#i-mail"/></svg>Nous écrire</a>
+            <a class="btn btn-ghost" href="index.html#tarifs">Voir les tarifs</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </main>

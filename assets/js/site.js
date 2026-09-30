@@ -164,6 +164,72 @@
     if (veil && veil.style.display !== "none") toggleVeil();
   });
 
+  /* ------------------------------------------------------------ Paiement Stripe */
+  // Chaque bouton de tarif demande une page de paiement à /api/checkout, puis
+  // s'y rend. En cas d'échec, le lien d'origine reste là : rien n'est perdu.
+  if (cfg.checkout && window.fetch) {
+    var checkoutError = $("[data-checkout-error]");
+    var reset = function (btn) {
+      btn.removeAttribute("aria-busy");
+      btn.textContent = btn.getAttribute("data-label") || btn.textContent;
+    };
+    $$("[data-checkout]").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (btn.getAttribute("aria-busy") === "true") return;
+        var plan = btn.getAttribute("data-checkout");
+        if (plan === "subscribe") {
+          var yearly = $("[data-billing='yearly']");
+          plan = yearly && yearly.getAttribute("aria-pressed") === "false" ? "monthly" : "yearly";
+        }
+        btn.setAttribute("data-label", btn.textContent);
+        btn.setAttribute("aria-busy", "true");
+        btn.textContent = "Ouverture du paiement…";
+        if (checkoutError) checkoutError.hidden = true;
+        fetch("/api/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ plan: plan })
+        }).then(function (r) {
+          return r.json().then(function (data) {
+            if (!r.ok || !data.url) throw new Error(data.error || r.status);
+            location.href = data.url;
+          });
+        }).catch(function () {
+          reset(btn);
+          if (checkoutError) checkoutError.hidden = false;
+        });
+      });
+    });
+    // Revenu de Stripe par « Retour », la page sort du cache telle qu'on l'a
+    // quittée : le bouton ne doit pas rester sur « Ouverture du paiement… ».
+    window.addEventListener("pageshow", function (e) {
+      if (e.persisted) $$("[data-checkout][aria-busy]").forEach(reset);
+    });
+  }
+
+  /* ------------------------------------------------------------ Remerciement après paiement */
+  var thanks = $("#thanks");
+  if (thanks) {
+    var sid = (location.search.match(/[?&]session_id=([^&]+)/) || [])[1];
+    var show = function (state, data) {
+      thanks.setAttribute("data-state", state);
+      if (data && data.email) $$("[data-thanks-email]", thanks).forEach(function (el) { el.textContent = data.email; });
+      if (data && data.plan) $$("[data-thanks-plan]", thanks).forEach(function (el) {
+        el.textContent = { monthly: "Prisme, formule mensuelle", yearly: "Prisme, formule annuelle", lifetime: "Prisme à vie" }[data.plan] || "Prisme";
+      });
+    };
+    if (!sid || !window.fetch) show("unknown");
+    else {
+      fetch("/api/session?session_id=" + encodeURIComponent(sid)).then(function (r) {
+        return r.json().then(function (data) {
+          if (!r.ok) throw new Error(data.error || r.status);
+          show(data.status === "paid" ? "paid" : data.status === "pending" ? "pending" : "unknown", data);
+        });
+      }).catch(function () { show("unknown"); });
+    }
+  }
+
   /* ------------------------------------------------------------ Téléchargement / accès anticipé */
   var ready = $("[data-download-ready]");
   if (ready && cfg.links && cfg.links.trial) ready.hidden = false;

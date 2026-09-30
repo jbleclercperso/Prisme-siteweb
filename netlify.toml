@@ -1,6 +1,55 @@
-# Déploiement Netlify : site statique, aucune étape de construction.
+# Déploiement Netlify : pages statiques, sans étape de construction, et trois
+# fonctions pour le paiement Stripe (netlify/functions, servies sous /api/…).
 [build]
   publish = "."
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Le site est publié depuis la racine du dépôt : ce qui n'est pas une page
+# (dépendances, fonctions, scripts, notes) ne doit pas être servi.
+[[redirects]]
+  from = "/node_modules/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/scripts/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package-lock.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/merci.html"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "no-store"
 
 [[headers]]
   for = "/*"

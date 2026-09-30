@@ -10,14 +10,21 @@ window.PRISME_CONFIG = {
   links: {
     // Page ou fichier de l'essai gratuit (ex. « https://…/Prisme-Setup.exe »)
     trial: "",
-    // Liens de paiement (Paddle, Lemon Squeezy, FastSpring, Stripe Checkout…)
+    // Liens de paiement, si l'on n'utilise pas le paiement Stripe intégré
+    // ci-dessous (Paddle, Lemon Squeezy, lien de paiement Stripe…)
     subscribe: "",
     lifetime: "",
-    // Espace client (gestion de l'abonnement, factures, licence)
+    // Espace client : l'adresse de connexion au portail client Stripe
+    // (« https://billing.stripe.com/p/login/… », donnée par
+    // `npm run stripe:setup`) — factures, carte, résiliation.
     account: "",
     // Adresse de contact
     contact: "mailto:contact@prisme.app"
   },
+  // Paiement Stripe intégré : passer à true une fois les clés posées dans
+  // Netlify (voir le README). Les boutons de tarifs ouvrent alors la page de
+  // paiement Stripe ; à false, ils mènent à la page d'accès anticipé.
+  checkout: false,
   // Adresse de repli quand on refuse le contrôle d'âge
   exitUrl: "https://www.google.fr/"
 };

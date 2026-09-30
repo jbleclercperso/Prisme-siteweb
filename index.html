@@ -762,7 +762,7 @@
             <li><svg><use href="#i-tick"/></svg>Jusqu'à 2 ordinateurs</li>
             <li><svg><use href="#i-tick"/></svg>Support prioritaire par e-mail</li>
           </ul>
-          <a class="btn btn-primary btn-block" href="telecharger.html" data-link="subscribe">Choisir Prisme</a>
+          <a class="btn btn-primary btn-block" href="telecharger.html" data-link="subscribe" data-checkout="subscribe">Choisir Prisme</a>
         </article>
 
         <article class="plan reveal" data-delay="2">
@@ -776,12 +776,14 @@
             <li><svg><use href="#i-tick"/></svg>Jusqu'à 2 ordinateurs</li>
             <li><svg><use href="#i-tick"/></svg>Aucun abonnement</li>
           </ul>
-          <a class="btn btn-ghost btn-block" href="telecharger.html" data-link="lifetime">Acheter la licence</a>
+          <a class="btn btn-ghost btn-block" href="telecharger.html" data-link="lifetime" data-checkout="lifetime">Acheter la licence</a>
         </article>
       </div>
 
+      <p class="checkout-error" data-checkout-error role="alert" hidden>La page de paiement n'a pas pu s'ouvrir. Réessayez dans un instant, ou <a href="mailto:contact@prisme.app" data-link="contact">écrivez-nous</a>.</p>
+
       <div class="plans-foot reveal">
-        <span><svg><use href="#i-card"/></svg>Paiement sécurisé</span>
+        <span><svg><use href="#i-card"/></svg>Paiement sécurisé par Stripe</span>
         <span><svg><use href="#i-eyeoff"/></svg>Libellé discret sur votre relevé</span>
         <span><svg><use href="#i-refund"/></svg>Satisfait ou remboursé 14 jours</span>
         <span><svg><use href="#i-mail"/></svg>Un humain répond à vos questions</span>
@@ -838,6 +840,18 @@
         <details>
           <summary>Que se passe-t-il à la fin de l'essai ?</summary>
           <div class="answer-body"><p>Rien d'automatique : aucune carte bancaire n'est demandée pour l'essai, donc aucun prélèvement surprise. Si Prisme vous plaît, vous choisissez une formule et retrouvez tous vos réglages et vos favoris.</p></div>
+        </details>
+        <details>
+          <summary>Comment se passe le paiement ?</summary>
+          <div class="answer-body"><p>Sur la page de paiement sécurisée de Stripe, par carte bancaire. Nous ne voyons jamais vos numéros de carte. Le reçu et la facture arrivent aussitôt par e-mail, à l'adresse de votre choix.</p></div>
+        </details>
+        <details>
+          <summary>Comment gérer ou résilier mon abonnement ?</summary>
+          <div class="answer-body"><p>Depuis « Mon compte » : entrez l'adresse e-mail utilisée pour le paiement, un lien de connexion vous est envoyé. Vous y retrouvez vos factures, changez de carte, ou résiliez en un clic. La résiliation prend effet à la fin de la période déjà payée, sans frais.</p></div>
+        </details>
+        <details>
+          <summary>Puis-je être remboursé ?</summary>
+          <div class="answer-body"><p>Oui. Pendant les 14 jours qui suivent votre premier paiement, un simple e-mail suffit : nous vous remboursons intégralement, sans justification.</p></div>
         </details>
         <details>
           <summary>Qu'apparaît-il sur mon relevé bancaire ?</summary>
