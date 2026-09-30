@@ -215,6 +215,20 @@
     var show = function (state, data) {
       thanks.setAttribute("data-state", state);
       if (data && data.email) $$("[data-thanks-email]", thanks).forEach(function (el) { el.textContent = data.email; });
+      var box = $("[data-thanks-licence]", thanks);
+      if (box && data && data.licence) {
+        $("[data-thanks-key]", box).textContent = data.licence;
+        box.hidden = false;
+        var copy = $("[data-copy-key]", box);
+        copy.addEventListener("click", function () {
+          var done = function () { copy.textContent = "Copiée"; setTimeout(function () { copy.textContent = "Copier la clé"; }, 1800); };
+          if (navigator.clipboard) navigator.clipboard.writeText(data.licence).then(done, function () {});
+          else {
+            var range = document.createRange(); range.selectNodeContents($("[data-thanks-key]", box));
+            var sel = getSelection(); sel.removeAllRanges(); sel.addRange(range);
+          }
+        });
+      }
       if (data && data.plan) $$("[data-thanks-plan]", thanks).forEach(function (el) {
         el.textContent = { monthly: "Prisme, formule mensuelle", yearly: "Prisme, formule annuelle", lifetime: "Prisme à vie" }[data.plan] || "Prisme";
       });

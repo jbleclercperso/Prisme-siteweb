@@ -60,6 +60,7 @@ bancaire. Trois fonctions Netlify, dans `netlify/functions/`, font le lien :
 | `POST /api/checkout` | ouvre la page de paiement Stripe pour `monthly`, `yearly` ou `lifetime` |
 | `GET /api/session` | dit à `merci.html` si le paiement est passé (payé, en attente, inconnu) |
 | `POST /api/webhook` | reçoit les événements de Stripe, signature vérifiée : c'est là qu'un achat s'honore |
+| `POST /api/licence` | prolonge la clé d'un abonnement en cours (voir Licences) |
 
 L'espace client (« Mon compte ») est le **portail client de Stripe** : l'acheteur
 entre son e-mail, reçoit un lien, et y trouve factures, carte et résiliation.
@@ -89,8 +90,35 @@ entre son e-mail, reçoit un lien, et y trouve factures, carte et résiliation.
    2 à 4 avec la clé `sk_live_…`.
 
 Les événements reçus s'affichent dans le journal des fonctions Netlify
-(*Logs › Functions › webhook*). L'envoi d'une clé de licence viendra dans
-`netlify/functions/webhook.mjs`, quand Prisme saura en vérifier une.
+(*Logs › Functions › webhook*).
+
+### Licences
+
+Prisme s'essaie 14 jours, puis demande une **clé de licence** : un petit texte
+signé par le site (Ed25519), que Prisme vérifie seul, sans connexion. Personne
+ne peut en fabriquer sans la clé privée, qui ne vit que dans Netlify.
+
+- **Après l'achat**, la clé s'affiche sur `merci.html` (bouton « Copier ») et
+  se range dans la fiche du client Stripe, champ `prisme_licence` : c'est là
+  que le support la retrouve si elle est perdue.
+- **Un abonnement** reçoit une clé valable jusqu'à la fin de la période payée,
+  plus 7 jours. Dans ses derniers jours, Prisme demande à `POST /api/licence`
+  une clé prolongée, en n'envoyant que la clé ; une fois l'abonnement arrêté,
+  la réponse est « terminé ». **Une licence à vie ne se connecte jamais.**
+
+**Mise en route, une seule fois :**
+
+1. `npm run licence:keys` : affiche la clé privée et la clé publique.
+2. La clé privée dans Netlify, variable `PRISME_LICENCE_PRIVATE`, et une copie
+   dans un gestionnaire de mots de passe. **Ne jamais en changer** : toutes les
+   licences vendues deviendraient invalides.
+3. La clé publique dans Prisme : `videosorter/licence.py`, ligne `PUBLIC_KEY`.
+
+Pour vous-même, un testeur ou un geste commercial, une licence à vie s'émet à
+la main : `PRISME_LICENCE_PRIVATE=… npm run licence:issue -- --email vous@exemple.fr`.
+
+La limite de deux ordinateurs par licence n'est pas contrôlée : elle relève de
+la confiance, et des conditions de vente.
 
 ## À valider avant l'ouverture
 
@@ -110,8 +138,7 @@ Certains éléments sont des propositions commerciales, à confirmer ou corriger
 - [ ] **TVA** : avec Stripe, c'est l'Éditeur qui vend, donc qui déclare la TVA des
       clients européens (guichet OSS). Stripe Tax peut la calculer ; Paddle ou
       Lemon Squeezy, revendeurs, s'en chargeraient eux-mêmes
-- [ ] **Licence** : Prisme ne vérifie encore ni l'essai de 14 jours ni une clé de
-      licence ; le paiement fonctionne, mais rien ne distingue encore un client
+- [ ] **Licences** : poser la paire de clés (voir Licences) avant la première vente
 
 ## Choix de conception
 
@@ -145,8 +172,10 @@ assets/
   fonts/            Inter, Instrument Serif, JetBrains Mono (licence OFL)
   img/              logo, icônes, image de partage
 netlify/
-  functions/        checkout, session, webhook : le paiement Stripe
+  functions/        checkout, session, webhook, licence : paiement et licences
   lib/stripe.mjs    formules, client Stripe, événements suivis
+  lib/licence.mjs   fabrication et lecture des clés de licence
 scripts/
   stripe-setup.mjs  prépare le compte Stripe (produit, prix, espace client, webhook)
+  licence-keys.mjs  paire de clés des licences, et licence émise à la main
 ```

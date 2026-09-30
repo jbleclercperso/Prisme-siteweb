@@ -2,9 +2,11 @@
   "name": "prisme-siteweb",
   "private": true,
   "type": "module",
-  "description": "Site de Prisme : pages statiques, et trois fonctions Netlify pour le paiement Stripe.",
+  "description": "Site de Prisme : pages statiques, et quatre fonctions Netlify pour le paiement Stripe et les licences.",
   "scripts": {
-    "stripe:setup": "node scripts/stripe-setup.mjs"
+    "stripe:setup": "node scripts/stripe-setup.mjs",
+    "licence:keys": "node scripts/licence-keys.mjs",
+    "licence:issue": "node scripts/licence-keys.mjs issue"
   },
   "engines": {
     "node": ">=18"

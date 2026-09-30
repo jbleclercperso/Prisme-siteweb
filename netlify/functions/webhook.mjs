@@ -7,12 +7,14 @@
 // C'est ici, et seulement ici, qu'un achat doit être honoré : la page de
 // remerciement peut ne jamais s'afficher (onglet fermé, réseau coupé), le
 // webhook, lui, est rejoué par Stripe jusqu'à ce qu'il réponde 200.
+import { licenceForSession, privateKey } from "../lib/licence.mjs";
 import { json, stripeClient } from "../lib/stripe.mjs";
 
-// Ce qu'il faut faire de chaque événement. Pour l'instant, chacun est
-// consigné dans le journal des fonctions Netlify ; c'est là que viendra
-// l'envoi de la clé de licence quand Prisme saura en vérifier une.
-async function handle(event) {
+// Ce qu'il faut faire de chaque événement. Chacun est consigné dans le
+// journal des fonctions Netlify ; un achat payé reçoit en plus sa clé de
+// licence, gardée dans la fiche du client Stripe (champ « prisme_licence ») :
+// c'est là que le support la retrouve si l'acheteur l'a perdue.
+async function handle(event, stripe) {
   const o = event.data.object;
   switch (event.type) {
     case "checkout.session.completed":
@@ -21,6 +23,10 @@ async function handle(event) {
         console.log("paiement en attente", o.id, o.metadata?.plan);
       } else {
         console.log("achat", o.id, o.metadata?.plan, o.customer);
+        const licence = await licenceForSession(stripe, o, privateKey());
+        if (licence && o.customer) {
+          await stripe.customers.update(o.customer, { metadata: { prisme_licence: licence } });
+        }
       }
       break;
     case "checkout.session.async_payment_failed":
@@ -59,7 +65,7 @@ export default async (req) => {
   }
 
   try {
-    await handle(event);
+    await handle(event, stripe);
   } catch (err) {
     // Une erreur rend 500 : Stripe rejouera l'événement plus tard.
     console.error("webhook", event.type, err.message);

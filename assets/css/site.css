@@ -1889,3 +1889,8 @@ html.no-js .reveal { opacity: 1; transform: none; }
 .thanks[data-state="paid"] [data-when="paid"],
 .thanks[data-state="pending"] [data-when="pending"],
 .thanks[data-state="unknown"] [data-when="unknown"] { display: block; }
+.licence-box { display: grid; gap: 12px; justify-items: center; margin: 28px auto 0; padding: 20px; max-width: 560px; border-radius: 14px; background: #11151b; box-shadow: inset 0 0 0 1px var(--line); }
+.licence-box[hidden] { display: none; }
+.licence-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.licence-box code { display: block; width: 100%; padding: 12px; border-radius: 9px; background: rgba(0, 0, 0, 0.35); color: #e9eef4; font-family: var(--mono); font-size: 0.78rem; line-height: 1.5; word-break: break-all; text-align: left; user-select: all; }
+.licence-box p { margin: 0; font-size: 0.88rem; }
