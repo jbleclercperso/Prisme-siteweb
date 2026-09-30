@@ -21,6 +21,10 @@
     if (url) a.setAttribute("href", url);
   });
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+  // L'adresse à taper sur la télé : celle du site tel qu'il est servi.
+  if (/\./.test(location.hostname) && !/^\d+\.\d+\.\d+\.\d+$/.test(location.hostname)) {
+    $$("[data-tv-host]").forEach(function (el) { el.textContent = location.host.replace(/^www\./, ""); });
+  }
 
   /* ------------------------------------------------------------ Contrôle d'âge */
   var gate = $(".gate");

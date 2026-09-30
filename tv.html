@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Confidentialité — Prisme</title>
-  <meta name="description" content="Politique de confidentialité de Prisme : le logiciel fonctionne 100 % en local.">
+  <title>Prisme TV — Votre bibliothèque sur la télé</title>
+  <meta name="description" content="Installez Prisme TV sur Fire TV, Android TV ou Google TV : votre bibliothèque Prisme sur grand écran, à la télécommande.">
   <meta name="rating" content="adult">
   <meta name="theme-color" content="#07080b">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -93,36 +93,50 @@
 
 <main id="contenu">
   <section class="page">
-    <div class="container prose">
-      <h1>Confidentialité</h1>
-      <p class="updated">Dernière mise à jour : <span class="todo">[date]</span></p>
-      <p class="lead" style="margin-top:24px">Pour un logiciel comme Prisme, la confidentialité n'est pas une option. Voici, sans jargon, ce que nous savons de vous, et surtout ce que nous ne savons pas.</p>
+    <div class="container tv-page">
+      <div class="section-head">
+        <span class="eyebrow">Prisme TV</span>
+        <h1 class="display" style="font-size:clamp(2.4rem,5vw,4rem);margin-top:20px">Votre bibliothèque, <em>sur grand écran.</em></h1>
+        <p class="lead" style="margin-top:24px">Prisme TV affiche votre collection sur la télé : vos dossiers, vos favoris, la recherche, et la lecture à la télécommande. Les vidéos viennent de votre PC, par le Wi-Fi de la maison ; rien n'est copié sur la télé.</p>
+      </div>
 
-      <h2>Le logiciel : rien ne sort de votre ordinateur</h2>
-      <p>Prisme fonctionne entièrement en local. Vos vidéos, leurs noms, vos favoris, vos recherches, l'index et les vignettes restent sur votre machine, dans le dossier de données de l'application. Le logiciel n'envoie aucune télémétrie ni statistique d'utilisation, et ne vérifie aucune mise à jour en ligne.</p>
-      <p>La clé de licence se vérifie sur votre ordinateur, sans connexion. Seul un abonnement contacte notre site, dans les derniers jours de chaque période, pour obtenir sa clé prolongée : il n'envoie que la clé elle-même (formule, adresse e-mail d'achat, identifiants Stripe), jamais rien de votre collection. Une licence à vie ne se connecte jamais.</p>
-      <p>L'accès à distance reste fermé tant que vous n'avez pas choisi de mot de passe. Une fois ce mot de passe posé, votre collection est servie depuis votre propre ordinateur, protégée par ce mot de passe, qui n'est jamais stocké en clair. Pour être joignable sans ouvrir de port sur votre box, la liaison passe par une adresse sécurisée (HTTPS) fournie par un service de tunnel, Cloudflare ou Tailscale selon votre choix : les vidéos que vous regardez à distance transitent donc par ce service. Le journal des accès reste sur votre machine. Vous pouvez couper l'accès à tout moment.</p>
-      <p>La recherche de vidéos sur le web, facultative, ne fonctionne que lorsque vous la lancez : les mots et critères que vous cherchez sont alors transmis directement aux sites que vous avez vous-même enregistrés, comme si vous les visitiez, et les vidéos que vous choisissez de télécharger viennent de ces sites. Rien de votre collection n'est envoyé.</p>
+      <div class="tv-grid">
+        <article class="tv-card">
+          <h2 class="h3">Ce qu'il faut</h2>
+          <ul class="checks">
+            <li><svg><use href="#i-check"/></svg><span><b>Une télé Fire TV, Android TV ou Google TV</b>, ou une box et une clé qui en sont équipées.</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>Prisme ouvert sur le PC</b>, avec le partage à distance activé (⋯ › Connexion › Partage à distance).</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>Le PC et la télé sur le même réseau</b>. Le PC ne doit pas se mettre en veille pendant qu'on regarde ; son écran, lui, peut s'éteindre.</span></li>
+          </ul>
+          <p class="muted tv-note">Comme toute application pour adultes, Prisme TV n'est pas proposée dans les magasins d'Amazon et de Google : elle s'installe à partir d'un fichier, une fois pour toutes.</p>
+        </article>
 
-      <h2>Le site : pas de traceur</h2>
-      <p>Ce site n'utilise ni cookie publicitaire, ni outil de mesure d'audience, ni police ou script chargé depuis un service tiers. Seule une préférence technique est enregistrée dans votre navigateur : la confirmation de votre majorité, pour ne pas vous la redemander.</p>
+        <article class="tv-card">
+          <h2 class="h3">Installer en cinq minutes</h2>
+          <ol class="tv-steps">
+            <li><b>Installez l'application Downloader</b>, gratuite, depuis le magasin d'applications de la télé.</li>
+            <li><b>Autorisez-la à installer des applications.</b> Fire TV : Paramètres › Ma Fire TV › Options pour les développeurs › Installer des applications inconnues › Downloader. Android TV : Paramètres › Applications › Sécurité › Sources inconnues › Downloader. <span class="muted">Menu introuvable ? Dans « À propos », appuyez sept fois sur le nom de l'appareil (ou sur « Build ») pour le faire apparaître.</span></li>
+            <li><b>Dans Downloader, tapez l'adresse</b> ci-dessous, puis choisissez « Installer ».
+              <span class="tv-address"><span data-tv-host>prisme.app</span>/tv.apk</span>
+            </li>
+            <li><b>Ouvrez Prisme TV.</b> Elle trouve votre PC toute seule : sur le PC, Prisme vous demande d'autoriser la télé. C'est tout.</li>
+          </ol>
+          <p class="tv-download"><a class="btn btn-ghost" href="tv.apk" download><svg><use href="#i-download"/></svg>Télécharger Prisme TV (APK)</a></p>
+        </article>
+      </div>
 
-      <h2>Les données que nous traitons</h2>
-      <ul>
-        <li><b>Accès anticipé</b> : votre adresse e-mail, uniquement pour vous prévenir du lancement. Elle est supprimée ensuite si vous ne devenez pas client.</li>
-        <li><b>Achat</b> : votre adresse e-mail et les informations de facturation, traitées par notre prestataire de paiement, Stripe, qui les conserve pour gérer votre abonnement, vos factures et vos remboursements. Nous n'avons jamais accès à vos données bancaires.</li>
-        <li><b>Support</b> : le contenu des messages que vous nous envoyez.</li>
-      </ul>
-      <p>Ces données ne sont jamais vendues ni partagées à des fins publicitaires.</p>
-
-      <h2>Responsable du traitement</h2>
-      <p><span class="todo">[Raison sociale et adresse]</span> — <a href="mailto:contact@prisme.app" data-link="contact">contact@prisme.app</a></p>
-
-      <h2>Vos droits</h2>
-      <p>Conformément au RGPD, vous pouvez accéder à vos données, les rectifier, les supprimer ou vous opposer à leur traitement en nous écrivant. Vous pouvez également introduire une réclamation auprès de la CNIL (cnil.fr).</p>
-
-      <h2>Hébergement</h2>
-      <p>Le site est hébergé par <span class="todo">[hébergeur]</span>. Les données du formulaire d'accès anticipé sont conservées par <span class="todo">[hébergeur ou outil d'e-mailing]</span>.</p>
+      <div class="tv-remote">
+        <h2 class="h3">À la télécommande</h2>
+        <table>
+          <tr><th>Touche</th><th>Dans la bibliothèque</th><th>Pendant une vidéo</th></tr>
+          <tr><td>Flèches</td><td>aller d'une vignette à l'autre</td><td>← → : dix secondes en arrière, en avant · ↑ : la barre de lecture</td></tr>
+          <tr><td>OK</td><td>ouvrir le dossier, lancer la vidéo</td><td>pause, reprise</td></tr>
+          <tr><td>Retour</td><td>revenir au dossier précédent</td><td>fermer la vidéo</td></tr>
+          <tr><td>Lecture, retour rapide, avance rapide</td><td></td><td>pause ; trente secondes en arrière, en avant</td></tr>
+          <tr><td>☰ Menu</td><td>recharger, ou changer de PC</td><td></td></tr>
+        </table>
+        <p class="muted tv-note">La télé ne trouve pas le PC (certaines box isolent les appareils du Wi-Fi) ? Choisissez « Saisir l'adresse à la main » et tapez l'adresse du PC, par exemple 192.168.1.20, ou le lien d'invitation affiché dans Partage à distance. Pour déconnecter une télé : Partage à distance › « Nouveau lien ».</p>
+      </div>
     </div>
   </section>
 </main>

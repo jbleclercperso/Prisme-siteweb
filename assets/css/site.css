@@ -1863,16 +1863,6 @@ html.no-js .reveal { opacity: 1; transform: none; }
 .tile-wide .tile-visual { margin-top: 0; padding-top: 0; }
 @media (max-width: 800px) { .tile-wide { grid-template-columns: minmax(0, 1fr); } .tile-wide .tile-visual { padding-top: 6px; } }
 
-/* Recherche sur le web : visuel à gauche, texte à droite */
-@media (min-width: 801px) { .tile-flip > .tile-visual { order: -1; } }
-.web-search { display: grid; gap: 12px; font-size: 12.5px; line-height: 1.4; padding: 14px; border-radius: 14px; background: #16191e; box-shadow: inset 0 0 0 1px var(--line); }
-.ws-form { display: flex; flex-wrap: wrap; gap: 6px; }
-.ws-form .chip.search { width: auto; flex: 1 1 140px; color: #cdd5df; }
-.ws-results { display: grid; gap: 8px; }
-.ws-row { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; align-items: center; padding: 7px; border-radius: 9px; background: #1a1f27; box-shadow: inset 0 0 0 1px #2b323d; }
-.ws-row .art { aspect-ratio: 16 / 10; border-radius: 6px; }
-.ws-row b { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #e9eef4; font-size: 0.8rem; font-weight: 600; }
-.ws-row span { display: block; margin-top: 3px; color: #8b94a1; font-size: 0.72rem; }
 
 /* Paiement : message d'échec sous les tarifs, page de remerciement */
 .checkout-error { max-width: 560px; margin: 20px auto 0; text-align: center; color: var(--red); font-size: 0.95rem; }
@@ -1894,3 +1884,56 @@ html.no-js .reveal { opacity: 1; transform: none; }
 .licence-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 .licence-box code { display: block; width: 100%; padding: 12px; border-radius: 9px; background: rgba(0, 0, 0, 0.35); color: #e9eef4; font-family: var(--mono); font-size: 0.78rem; line-height: 1.5; word-break: break-all; text-align: left; user-select: all; }
 .licence-box p { margin: 0; font-size: 0.88rem; }
+
+/* Recherche & téléchargement : la fenêtre de recherche, et ce qu'elle apporte */
+.ws-layout { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 48px; align-items: center; margin-top: 48px; }
+@media (max-width: 960px) { .ws-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
+.ws-app { font-size: 12px; }
+.ws-body { display: grid; grid-template-columns: 170px minmax(0, 1fr); background: #0e1116; min-height: 360px; }
+.ws-side { display: flex; flex-direction: column; gap: 6px; padding: 14px 12px; background: #11151b; border-right: 1px solid #1c222b; color: #b9c2cd; }
+.ws-side b { margin-top: 6px; color: #e9eef4; font-size: 11.5px; font-weight: 600; }
+.ws-site { display: flex; align-items: center; gap: 7px; color: #6f7885; }
+.ws-site::before { content: ""; width: 11px; height: 11px; border-radius: 3px; box-shadow: inset 0 0 0 1px #39414d; }
+.ws-site.on { color: #cdd5df; }
+.ws-site.on::before { background: #2f6fed; box-shadow: none; }
+.ws-query { padding: 7px 8px; border-radius: 6px; background: #151a21; box-shadow: inset 0 0 0 1px #262e39; color: #e9eef4; font-family: var(--mono); font-size: 11px; line-height: 1.5; }
+.ws-filter { display: flex; justify-content: space-between; color: #8b94a1; font-size: 11px; }
+.ws-filter i { font-style: normal; color: #e9eef4; }
+.ws-go { margin-top: 6px; padding: 7px; border-radius: 6px; background: #2f6fed; color: #fff; text-align: center; font-weight: 600; }
+.ws-results { padding: 12px; display: grid; gap: 10px; align-content: start; }
+.ws-count { color: #8b94a1; font-size: 11px; }
+.ws-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.ws-card { display: grid; gap: 6px; padding: 6px; border-radius: 9px; background: #151a21; box-shadow: inset 0 0 0 1px #232a34; }
+.ws-card .art { position: relative; aspect-ratio: 16 / 10; border-radius: 6px; }
+.ws-card em { font-style: normal; color: #8b94a1; font-size: 10.5px; }
+.ws-dur, .ws-q { position: absolute; bottom: 5px; padding: 1px 5px; border-radius: 4px; background: rgba(0, 0, 0, 0.72); color: #fff; font-size: 10px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.ws-dur { right: 5px; }
+.ws-q { left: 5px; }
+.ws-btn { position: relative; overflow: hidden; padding: 5px; border-radius: 6px; background: #1d2a40; color: #cfe0ff; box-shadow: inset 0 0 0 1px #2f6fed; text-align: center; font-size: 10.5px; font-weight: 600; white-space: nowrap; }
+.ws-btn.prog { background: #1a1f27; color: #e9eef4; box-shadow: inset 0 0 0 1px #2b323d; }
+.ws-btn.prog i { position: absolute; inset: 0 auto 0 0; background: rgba(47, 111, 237, 0.35); }
+.ws-btn.done { background: #1a2a22; color: #4fc28a; box-shadow: inset 0 0 0 1px rgba(79, 194, 138, 0.4); }
+@media (max-width: 560px) {
+  .ws-body { grid-template-columns: minmax(0, 1fr); }
+  .ws-side { display: none; }
+  .ws-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.ws-checks { margin-top: 0; }
+
+/* Prisme TV */
+.tv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 48px; }
+@media (max-width: 900px) { .tv-grid { grid-template-columns: minmax(0, 1fr); } }
+.tv-card, .tv-remote { padding: clamp(22px, 3vw, 34px); border-radius: 18px; background: #0f1217; box-shadow: inset 0 0 0 1px var(--line); }
+.tv-card .checks { margin-top: 18px; }
+.tv-note { margin-top: 18px; font-size: 0.92rem; }
+.tv-steps { margin: 18px 0 0; padding-left: 22px; display: grid; gap: 14px; line-height: 1.55; color: var(--muted); }
+.tv-steps b { color: var(--text, #e9eef4); }
+.tv-steps .muted { display: block; margin-top: 4px; font-size: 0.9rem; }
+.tv-address { display: block; margin-top: 10px; padding: 12px 16px; border-radius: 10px; background: rgba(0, 0, 0, 0.35); box-shadow: inset 0 0 0 1px var(--line); font-family: var(--mono); font-size: 1.2rem; color: #fff; letter-spacing: 0.02em; }
+.tv-download { margin-top: 22px; }
+.tv-remote { margin-top: 24px; }
+.tv-remote table { width: 100%; margin-top: 16px; border-collapse: collapse; font-size: 0.95rem; }
+.tv-remote th { text-align: left; color: var(--muted); font-weight: 500; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--line); }
+.tv-remote td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--muted); }
+.tv-remote td:first-child { color: #fff; white-space: nowrap; font-weight: 600; }
+@media (max-width: 600px) { .tv-remote table, .tv-remote tbody, .tv-remote tr, .tv-remote td { display: block; } .tv-remote th { display: none; } .tv-remote td { border: 0; padding: 2px 0; } .tv-remote tr { padding: 10px 0; border-bottom: 1px solid var(--line); } }

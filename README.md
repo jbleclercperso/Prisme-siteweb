@@ -16,6 +16,7 @@ ce qui tient la promesse « rien n'est envoyé » jusque sur le site.
 | `telecharger.html` | Essai gratuit — pour l'instant formulaire d'accès anticipé |
 | `cgv.html`, `confidentialite.html`, `mentions-legales.html` | Pages légales (modèles à compléter) |
 | `merci.html` | Retour de Stripe après un paiement |
+| `tv.html` | Installer Prisme TV sur la télé (Fire TV, Android TV) |
 | `404.html` | Page introuvable |
 
 ## Voir le site en local
@@ -119,6 +120,21 @@ la main : `PRISME_LICENCE_PRIVATE=… npm run licence:issue -- --email vous@exem
 
 La limite de deux ordinateurs par licence n'est pas contrôlée : elle relève de
 la confiance, et des conditions de vente.
+
+## Prisme TV
+
+`telechargements/Prisme-TV.apk` est l'application pour la télé, servie aussi à
+l'adresse courte **`/tv.apk`**, celle qu'on tape dans Downloader sur la télé.
+Elle est construite par GitHub dans le dépôt de l'application (dossier `tv/`),
+qui la dépose seule sur sa branche `apk`. Pour mettre à jour celle du site :
+
+```bash
+git -C ../videosorter fetch origin +apk:refs/remotes/origin/apk
+git -C ../videosorter show origin/apk:Prisme-TV.apk > telechargements/Prisme-TV.apk
+```
+
+Toutes les versions portent la même signature : elles s'installent par-dessus
+la précédente, la télé reste appairée.
 
 ## À valider avant l'ouverture
 

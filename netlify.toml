@@ -9,6 +9,24 @@
 
 # Le site est publié depuis la racine du dépôt : ce qui n'est pas une page
 # (dépendances, fonctions, scripts, notes) ne doit pas être servi.
+# Prisme TV : l'adresse courte à taper dans Downloader, sur la télé.
+[[redirects]]
+  from = "/tv.apk"
+  to = "/telechargements/Prisme-TV.apk"
+  status = 200
+
+[[redirects]]
+  from = "/tv"
+  to = "/tv.html"
+  status = 301
+
+[[headers]]
+  for = "/telechargements/*.apk"
+  [headers.values]
+    Content-Type = "application/vnd.android.package-archive"
+    Content-Disposition = "attachment; filename=Prisme-TV.apk"
+    Cache-Control = "no-cache"
+
 [[redirects]]
   from = "/node_modules/*"
   to = "/404.html"
