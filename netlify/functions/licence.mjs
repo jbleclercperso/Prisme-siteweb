@@ -1,4 +1,4 @@
-// Prolonge la clé d'un abonnement. Prisme l'appelle de lui-même dans les
+// Prolonge la clé d'un abonnement. Prism l'appelle de lui-même dans les
 // derniers jours de sa clé, une fois par jour au plus, en n'envoyant que
 // la clé : rien de la collection.
 //
