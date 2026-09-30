@@ -5,8 +5,8 @@
 //
 // Crée ce qui manque, et laisse tel quel ce qui existe déjà : on peut le
 // relancer sans risque, en mode test puis en mode réel (sk_live_…).
-//   1. le produit « Prisme » et son prix, 4,99 €/mois TTC, retrouvé ensuite
-//      par sa lookup key. Si le montant a changé ici, un nouveau prix
+//   1. le produit « Prisme » et ses trois prix (4,99 €/mois, 49,90 €/an,
+//      99 € une fois, TTC), retrouvés ensuite par leur lookup key. Si le montant a changé ici, un nouveau prix
 //      reprend la lookup key et l'ancien est désactivé : les abonnements
 //      déjà en cours gardent leur prix d'origine ;
 //   2. l'espace client (portail Stripe) : factures, carte, résiliation, et
@@ -16,11 +16,10 @@
 import Stripe from "stripe";
 import { PLANS, WEBHOOK_EVENTS } from "../netlify/lib/stripe.mjs";
 
-// Seule la formule mensuelle est proposée sur le site. Les formules annuelle
-// et à vie restent connues des fonctions (licences déjà émises), mais aucun
-// prix n'est plus créé pour elles.
 const PRICES = {
   [PLANS.monthly.lookupKey]: { unit_amount: 499, recurring: { interval: "month" }, nickname: "Prisme mensuel" },
+  [PLANS.yearly.lookupKey]: { unit_amount: 4990, recurring: { interval: "year" }, nickname: "Prisme annuel" },
+  [PLANS.lifetime.lookupKey]: { unit_amount: 9900, nickname: "Prisme à vie" },
 };
 
 const key = process.env.STRIPE_SECRET_KEY;

@@ -33,7 +33,7 @@
     "applicationCategory": "MultimediaApplication",
     "description": "Logiciel pour trier, organiser et regarder une collection de vidéos et photos pornographiques. 100 % local.",
     "contentRating": "adult",
-    "offers": { "@type": "Offer", "price": "4.99", "priceCurrency": "EUR", "description": "Abonnement mensuel, sans engagement" }
+    "offers": { "@type": "AggregateOffer", "lowPrice": "4.99", "highPrice": "99", "priceCurrency": "EUR", "offerCount": "3" }
   }
   </script>
 </head>
@@ -131,28 +131,11 @@
     <div class="hero-glow"></div>
     <div class="hero-grid"></div>
 
-    <svg class="beam" viewBox="0 0 520 360" fill="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="gw" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".9"/></linearGradient>
-        <linearGradient id="gr" x1="0" x2="1"><stop offset="0" stop-color="#ef6a5b"/><stop offset="1" stop-color="#ef6a5b" stop-opacity="0"/></linearGradient>
-        <linearGradient id="gy" x1="0" x2="1"><stop offset="0" stop-color="#f2c64b"/><stop offset="1" stop-color="#f2c64b" stop-opacity="0"/></linearGradient>
-        <linearGradient id="gb" x1="0" x2="1"><stop offset="0" stop-color="#5aa9e2"/><stop offset="1" stop-color="#5aa9e2" stop-opacity="0"/></linearGradient>
-        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      </defs>
-      <path class="ray-in" d="M0 176 L206 176" stroke="url(#gw)" stroke-width="3" filter="url(#glow)"/>
-      <g class="ray-out" filter="url(#glow)">
-        <path d="M262 180 L520 118" stroke="url(#gr)" stroke-width="5" stroke-linecap="round"/>
-        <path d="M262 180 L520 196" stroke="url(#gy)" stroke-width="5" stroke-linecap="round"/>
-        <path d="M262 180 L520 282" stroke="url(#gb)" stroke-width="5" stroke-linecap="round"/>
-      </g>
-      <g class="prism-shape">
-        <path d="M232 70 L150 262 L314 262 Z" fill="rgba(38,42,51,.55)" stroke="rgba(160,170,184,.7)" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M232 70 L150 262 L314 262 Z" fill="url(#gw)" opacity=".05"/>
-      </g>
-    </svg>
+    <div class="hero-logo" aria-hidden="true"><img src="assets/img/prisme-hero.webp" alt="" width="600" height="600" fetchpriority="high"></div>
 
     <div class="container">
       <div class="hero-copy">
+        <img class="hero-logo-sm" src="assets/img/prisme-hero.webp" alt="" width="600" height="600" aria-hidden="true">
         <a class="hero-pill reveal" href="#demo"><b>18+</b> Le logiciel de tri pour votre porno, vidéos &amp; photos</a>
         <h1 class="display reveal" data-delay="1">Des milliers de vidéos&nbsp;X.<br><em>Une touche</em> pour décider.</h1>
         <p class="lead reveal" data-delay="2">Prisme est le logiciel pensé pour trier, organiser et regarder votre collection porno, vidéos comme photos. Des aperçus pour juger une scène d'un coup d'œil, une touche pour la ranger dans la bonne catégorie, la suivante s'affiche aussitôt. Et tout reste chez vous.</p>
@@ -451,28 +434,33 @@
       </div>
       <div class="ws-layout">
         <div class="reveal">
-          <div class="app ws-app" role="img" aria-label="La recherche vidéo de Prisme : trois sites interrogés, les vidéos trouvées en liste, un téléchargement en cours">
+          <div class="app ws-app" role="img" aria-label="La recherche vidéo de Prisme : trois sites interrogés, des résultats en vignettes, un téléchargement en cours">
             <div class="app-titlebar"><img src="assets/img/prisme.png" alt=""> Recherche vidéo sur le web <span class="win-ctrls"><i></i><i></i><i></i></span></div>
             <div class="ws-body">
-              <div class="ws-form">
-                <div class="ws-field"><label>Mots-clés</label><span class="ws-input">casting amateur pov</span></div>
-                <div class="ws-field"><label>Sites</label><span class="ws-input">site n°1, site n°2, site n°3</span></div>
-                <div class="ws-filters">
-                  <span>Durée min. <i>10 min</i></span>
-                  <span>Résolution min. <i>1080p</i></span>
-                  <span>Résultats max. <i>40</i></span>
-                  <span class="ws-go">Rechercher</span>
+              <aside class="ws-side">
+                <b>Sites</b>
+                <span class="ws-site on">site n°1</span>
+                <span class="ws-site on">site n°2</span>
+                <span class="ws-site on">site n°3</span>
+                <span class="ws-site">site n°4</span>
+                <b>Recherches — une par ligne</b>
+                <span class="ws-query">casting amateur<br>pov 4k</span>
+                <span class="ws-filter">Durée minimum <i>10 min</i></span>
+                <span class="ws-filter">Qualité minimum <i>1080p</i></span>
+                <span class="ws-filter">Par site <i>40</i></span>
+                <span class="ws-go">Rechercher</span>
+              </aside>
+              <div class="ws-results">
+                <div class="ws-count">126 vidéos · 3 sites</div>
+                <div class="ws-grid">
+                  <div class="ws-card"><div class="art a2"><span class="ws-dur">24:10</span><span class="ws-q">1080p</span></div><em>site n°1</em><span class="ws-btn">Télécharger</span></div>
+                  <div class="ws-card"><div class="art a9"><span class="ws-dur">31:02</span><span class="ws-q">4K</span></div><em>site n°3</em><span class="ws-btn prog"><i style="width:62%"></i>62 %</span></div>
+                  <div class="ws-card"><div class="art a6"><span class="ws-dur">18:42</span><span class="ws-q">1080p</span></div><em>site n°2</em><span class="ws-btn done">✓ Dans la collection</span></div>
+                  <div class="ws-card"><div class="art a10"><span class="ws-dur">41:05</span><span class="ws-q">4K</span></div><em>site n°1</em><span class="ws-btn">Télécharger</span></div>
+                  <div class="ws-card"><div class="art a4"><span class="ws-dur">12:36</span><span class="ws-q">1080p</span></div><em>site n°2</em><span class="ws-btn">Télécharger</span></div>
+                  <div class="ws-card"><div class="art a12"><span class="ws-dur">27:33</span><span class="ws-q">4K</span></div><em>site n°3</em><span class="ws-btn">Télécharger</span></div>
                 </div>
               </div>
-              <div class="ws-table">
-                <div class="ws-row ws-head"><span></span><span>Titre</span><span>Durée</span><span class="ws-hq">Résolution</span><span class="ws-src">Source</span><span></span></div>
-                <div class="ws-row"><div class="art a2"></div><b>Casting amateur, la scène complète</b><span>24:10</span><span class="ws-hq">1080p</span><span class="ws-src">site n°1</span><span class="ws-btn">Télécharger</span></div>
-                <div class="ws-row"><div class="art a9"></div><b>POV en 4K, première fois</b><span>31:02</span><span class="ws-hq">2160p</span><span class="ws-src">site n°3</span><span class="ws-btn prog"><i style="width:62%"></i>62 %</span></div>
-                <div class="ws-row"><div class="art a6"></div><b>Couple amateur, week-end à la mer</b><span>18:42</span><span class="ws-hq">1080p</span><span class="ws-src">site n°2</span><span class="ws-btn done">✓ Collection</span></div>
-                <div class="ws-row"><div class="art a10"></div><b>Casting, version longue</b><span>41:05</span><span class="ws-hq">2160p</span><span class="ws-src">site n°1</span><span class="ws-btn">Télécharger</span></div>
-                <div class="ws-row"><div class="art a4"></div><b>POV amateur, en extérieur</b><span>12:36</span><span class="ws-hq">1080p</span><span class="ws-src">site n°2</span><span class="ws-btn">Télécharger</span></div>
-              </div>
-              <div class="ws-log">site n°2 exploré : 18 vidéos retenues · 126 vidéos trouvées sur 3 sites</div>
             </div>
           </div>
         </div>
@@ -742,25 +730,51 @@
       <div class="section-head center">
         <span class="eyebrow reveal">Tarifs</span>
         <h2 class="h2 reveal" data-delay="1">Simple, clair, <em>sans surprise.</em></h2>
-        <p class="lead reveal" data-delay="2">Un seul abonnement, toutes les fonctionnalités. Sans engagement : vous arrêtez quand vous voulez.</p>
+        <p class="lead reveal" data-delay="2">Toutes les formules comprennent toutes les fonctionnalités : tri, aperçus et Mur, recherche et téléchargement web, mots-clés, doublons et favoris, mode discret et accès à distance.</p>
       </div>
 
-      <div class="plans plans-solo">
-        <article class="plan featured reveal" data-delay="1">
-          <h3>Prisme</h3>
-          <p class="plan-desc">L'abonnement complet, avec toutes les nouveautés dès leur sortie.</p>
+      <div class="plans">
+        <article class="plan reveal">
+          <h3>Mensuel</h3>
+          <p class="plan-desc">Pour commencer sans vous engager.</p>
           <div class="price"><b>4,99 €</b><span>/ mois</span></div>
           <p class="price-sub">Sans engagement, résiliable à tout moment</p>
           <ul>
-            <li><svg><use href="#i-tick"/></svg>Vidéos et photos : tri, aperçus, Mur</li>
-            <li><svg><use href="#i-tick"/></svg>Recherche et téléchargement web</li>
-            <li><svg><use href="#i-tick"/></svg>Mots-clés, doublons, favoris</li>
-            <li><svg><use href="#i-tick"/></svg>Mode discret et accès à distance</li>
+            <li><svg><use href="#i-tick"/></svg>Toutes les fonctionnalités</li>
             <li><svg><use href="#i-tick"/></svg>Toutes les mises à jour incluses</li>
             <li><svg><use href="#i-tick"/></svg>Jusqu'à 2 ordinateurs</li>
             <li><svg><use href="#i-tick"/></svg>Support par e-mail</li>
           </ul>
-          <a class="btn btn-primary btn-block" href="telecharger.html" data-link="subscribe" data-checkout="monthly">Choisir Prisme</a>
+          <a class="btn btn-ghost btn-block" href="telecharger.html" data-link="subscribe" data-checkout="monthly">Choisir le mensuel</a>
+        </article>
+
+        <article class="plan featured reveal" data-delay="1">
+          <span class="plan-flag">2 mois offerts</span>
+          <h3>Annuel</h3>
+          <p class="plan-desc">Le même abonnement, deux mois moins cher.</p>
+          <div class="price"><b>49,90 €</b><span>/ an</span></div>
+          <p class="price-sub">Soit 4,16 € par mois · résiliable à tout moment</p>
+          <ul>
+            <li><svg><use href="#i-tick"/></svg>Toutes les fonctionnalités</li>
+            <li><svg><use href="#i-tick"/></svg>Toutes les mises à jour incluses</li>
+            <li><svg><use href="#i-tick"/></svg>Jusqu'à 2 ordinateurs</li>
+            <li><svg><use href="#i-tick"/></svg>Support prioritaire par e-mail</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="telecharger.html" data-link="subscribe" data-checkout="yearly">Choisir l'annuel</a>
+        </article>
+
+        <article class="plan reveal" data-delay="2">
+          <h3>À vie</h3>
+          <p class="plan-desc">Un seul paiement, à vous pour toujours.</p>
+          <div class="price"><b>99 €</b><span>une fois</span></div>
+          <p class="price-sub">Licence perpétuelle</p>
+          <ul>
+            <li><svg><use href="#i-tick"/></svg>Toutes les fonctionnalités</li>
+            <li><svg><use href="#i-tick"/></svg>Mises à jour de la version 1 incluses</li>
+            <li><svg><use href="#i-tick"/></svg>Jusqu'à 2 ordinateurs</li>
+            <li><svg><use href="#i-tick"/></svg>Aucun abonnement</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="telecharger.html" data-link="lifetime" data-checkout="lifetime">Acheter la licence</a>
         </article>
       </div>
 

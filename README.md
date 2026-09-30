@@ -76,10 +76,11 @@ entre son e-mail, reçoit un lien, et y trouve factures, carte et résiliation.
    npm install
    STRIPE_SECRET_KEY=sk_test_… SITE_URL=https://www.prisme.app npm run stripe:setup
    ```
-   Le script crée le produit et son prix (4,99 €/mois TTC, retrouvé par sa
-   *lookup key* `prisme_mensuel`), active l'espace client et déclare le webhook.
+   Le script crée le produit et ses trois prix (4,99 €/mois, 49,90 €/an, 99 € une
+   fois, TTC, retrouvés par leur *lookup key* `prisme_mensuel`, `prisme_annuel`,
+   `prisme_a_vie`), active l'espace client et déclare le webhook.
    Il affiche l'adresse de l'espace client et le secret du webhook. On peut le
-   relancer sans risque : il ne crée que ce qui manque. Pour changer le prix,
+   relancer sans risque : il ne crée que ce qui manque. Pour changer un prix,
    modifier le montant dans `scripts/stripe-setup.mjs` et relancer le script :
    un nouveau prix reprend la *lookup key*, l'ancien est désactivé, et les
    abonnements déjà en cours gardent leur prix.
@@ -141,7 +142,7 @@ la précédente, la télé reste appairée.
 
 Certains éléments sont des propositions commerciales, à confirmer ou corriger :
 
-- [ ] **Prix** : 4,99 €/mois, une seule formule (`index.html`, section `#tarifs`, et `scripts/stripe-setup.mjs`)
+- [ ] **Prix** : 4,99 €/mois, 49,90 €/an, 99 € à vie (`index.html`, section `#tarifs`, et `scripts/stripe-setup.mjs`)
 - [ ] **Promesses** : essai 14 jours sans carte, 2 ordinateurs par licence,
       satisfait ou remboursé 14 jours, libellé bancaire discret, support par e-mail
 - [ ] **Nom de domaine** : `prisme.app` est utilisé partout en attendant
