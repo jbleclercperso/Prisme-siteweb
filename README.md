@@ -142,7 +142,10 @@ la précédente, la télé reste appairée.
 
 Certains éléments sont des propositions commerciales, à confirmer ou corriger :
 
-- [ ] **Prix** : 4,99 €/mois, 49,90 €/an, 99 € à vie (`index.html`, section `#tarifs`, et `scripts/stripe-setup.mjs`)
+- [ ] **Prix** : 4,99 €/mois, 49,90 €/an, 149 € à vie, vendue 99 € en offre de lancement
+      (`index.html`, section `#tarifs`, et `scripts/stripe-setup.mjs`). À la fin de l'offre :
+      passer `prisme_a_vie` à 14900 dans le script et le relancer, retirer le prix barré et
+      le bandeau « Offre de lancement », corriger les CGV.
 - [ ] **Promesses** : essai 14 jours sans carte, 2 ordinateurs par licence,
       satisfait ou remboursé 14 jours, libellé bancaire discret, support par e-mail
 - [ ] **Nom de domaine** : `prisme.app` est utilisé partout en attendant

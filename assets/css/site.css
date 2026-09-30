@@ -1497,6 +1497,8 @@ html.no-js .reveal { opacity: 1; transform: none; }
   color: #0a0b0e;
   background: var(--spectrum);
 }
+.plan-flag-launch { background: #f2c64b; }
+.price s { align-self: baseline; color: var(--muted); font-size: 1.35rem; font-weight: 500; text-decoration-thickness: 2px; text-decoration-color: rgba(239, 106, 91, 0.85); }
 .plan h3 { font-size: 1.15rem; }
 .plan .plan-desc { margin: 8px 0 26px; color: var(--muted); font-size: 0.93rem; min-height: 3em; }
 .price { display: flex; align-items: baseline; gap: 8px; }
