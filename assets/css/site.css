@@ -369,6 +369,7 @@ html.gate-open body { overflow: hidden; }
   letter-spacing: -0.03em;
 }
 .brand img { width: 32px; height: 32px; border-radius: 9px; }
+.brand img.brand-word { width: auto; height: 14px; border-radius: 0; }
 .nav-links {
   display: flex;
   gap: 4px;
