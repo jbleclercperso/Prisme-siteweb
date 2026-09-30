@@ -1,6 +1,6 @@
-# Prism — site web
+# Prisme — site web
 
-Site vitrine et de vente de **Prism**, le logiciel Windows pour trier, organiser
+Site vitrine et de vente de **Prisme**, le logiciel Windows pour trier, organiser
 et regarder une collection adulte, vidéos et photos (dépôt du logiciel :
 `jbleclercperso/Prisme`, dont le dossier de données s'appelle encore `VideoSorter`).
 
@@ -16,7 +16,7 @@ ce qui tient la promesse « rien n'est envoyé » jusque sur le site.
 | `telecharger.html` | Essai gratuit — pour l'instant formulaire d'accès anticipé |
 | `cgv.html`, `confidentialite.html`, `mentions-legales.html` | Pages légales (modèles à compléter) |
 | `merci.html` | Retour de Stripe après un paiement |
-| `tv.html` | Installer Prism TV sur la télé (Fire TV, Android TV) |
+| `tv.html` | Installer Prisme TV sur la télé (Fire TV, Android TV) |
 | `404.html` | Page introuvable |
 
 ## Voir le site en local
@@ -97,15 +97,15 @@ Les événements reçus s'affichent dans le journal des fonctions Netlify
 
 ### Licences
 
-Prism s'essaie 14 jours, puis demande une **clé de licence** : un petit texte
-signé par le site (Ed25519), que Prism vérifie seul, sans connexion. Personne
+Prisme s'essaie 14 jours, puis demande une **clé de licence** : un petit texte
+signé par le site (Ed25519), que Prisme vérifie seul, sans connexion. Personne
 ne peut en fabriquer sans la clé privée, qui ne vit que dans Netlify.
 
 - **Après l'achat**, la clé s'affiche sur `merci.html` (bouton « Copier ») et
   se range dans la fiche du client Stripe, champ `prisme_licence` : c'est là
   que le support la retrouve si elle est perdue.
 - **Un abonnement** reçoit une clé valable jusqu'à la fin de la période payée,
-  plus 7 jours. Dans ses derniers jours, Prism demande à `POST /api/licence`
+  plus 7 jours. Dans ses derniers jours, Prisme demande à `POST /api/licence`
   une clé prolongée, en n'envoyant que la clé ; une fois l'abonnement arrêté,
   la réponse est « terminé ». **Une licence à vie ne se connecte jamais.**
 
@@ -115,7 +115,7 @@ ne peut en fabriquer sans la clé privée, qui ne vit que dans Netlify.
 2. La clé privée dans Netlify, variable `PRISME_LICENCE_PRIVATE`, et une copie
    dans un gestionnaire de mots de passe. **Ne jamais en changer** : toutes les
    licences vendues deviendraient invalides.
-3. La clé publique dans Prism : `videosorter/licence.py`, ligne `PUBLIC_KEY`.
+3. La clé publique dans Prisme : `videosorter/licence.py`, ligne `PUBLIC_KEY`.
 
 Pour vous-même, un testeur ou un geste commercial, une licence à vie s'émet à
 la main : `PRISME_LICENCE_PRIVATE=… npm run licence:issue -- --email vous@exemple.fr`.
@@ -123,7 +123,7 @@ la main : `PRISME_LICENCE_PRIVATE=… npm run licence:issue -- --email vous@exem
 La limite de deux ordinateurs par licence n'est pas contrôlée : elle relève de
 la confiance, et des conditions de vente.
 
-## Prism TV
+## Prisme TV
 
 `telechargements/Prisme-TV.apk` est l'application pour la télé, servie aussi à
 l'adresse courte **`/tv.apk`**, celle qu'on tape dans Downloader sur la télé.
@@ -170,15 +170,15 @@ Certains éléments sont des propositions commerciales, à confirmer ou corriger
   balise `<meta name="rating" content="adult">` pour les filtres parentaux.
 - **Identité** reprise de l'application : graphite (`#0e1116`), bleu d'action
   (`#4c8dff`), et le spectre rouge / jaune / bleu de l'icône du prisme.
-- **Toutes les fonctionnalités citées existent dans le code** de Prism
+- **Toutes les fonctionnalités citées existent dans le code** de Prisme
   (tri au clavier, favoris, 10 aperçus, Mur de 2 à 10 vidéos, mode photo et diaporama, lecteur flottant,
   « À trier » et « Orphelins », mots-clés automatiques, menu radial, zoom ×6,
   mosaïque, repérage des plans, Rafale, doublons, recherche sur le web, accès à distance,
-  publication sur le NAS, application Prism TV, mode discret,
+  publication sur le NAS, application Prisme TV, mode discret,
   dossiers masqués, corbeille de séance…), et chaque affirmation a été
   confrontée au code : diaporama à 6 s, 9 destinations dans le menu radial,
   jusqu'à 200 annulations, accès distant par tunnel Cloudflare ou Tailscale
-  (HTTPS, PC allumé et Prism ouvert), effacement définitif à la fermeture sur NAS.
+  (HTTPS, PC allumé et Prisme ouvert), effacement définitif à la fermeture sur NAS.
   Le site en parle par ce qu'elles apportent, sans le détail des raccourcis. Les chiffres de performance (0,07 s contre 33 s) viennent des
   mesures du README du logiciel.
 - La démo interactive reproduit la fiche de l'application ; `Ctrl+K` masque

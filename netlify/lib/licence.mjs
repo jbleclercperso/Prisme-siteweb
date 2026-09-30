@@ -1,5 +1,5 @@
-// Les clés de licence de Prism : fabriquées et signées ici, vérifiées par
-// Prism seul, sans connexion (videosorter/licence.py).
+// Les clés de licence de Prisme : fabriquées et signées ici, vérifiées par
+// Prisme seul, sans connexion (videosorter/licence.py).
 //
 //   PRISME1-<contenu en base64url>.<signature Ed25519 en base64url>
 //

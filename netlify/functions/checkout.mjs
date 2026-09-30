@@ -34,7 +34,7 @@ export default async (req) => {
       billing_address_collection: "auto",
       custom_text: {
         submit: {
-          message: "En payant, vous acceptez les conditions de vente de Prism et demandez l'accès immédiat au logiciel. Satisfait ou remboursé pendant 14 jours.",
+          message: "En payant, vous acceptez les conditions de vente de Prisme et demandez l'accès immédiat au logiciel. Satisfait ou remboursé pendant 14 jours.",
         },
       },
       metadata: { plan: plan.lookupKey },

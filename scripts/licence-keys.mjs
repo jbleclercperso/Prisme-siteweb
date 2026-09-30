@@ -1,10 +1,10 @@
-// Les clés de licence de Prism.
+// Les clés de licence de Prisme.
 //
 //   npm run licence:keys
 //     Fabrique la paire de clés, une fois pour toutes :
 //     - la clé privée, à mettre dans Netlify (variable PRISME_LICENCE_PRIVATE),
 //       et nulle part ailleurs : qui l'a peut fabriquer des licences ;
-//     - la clé publique, à coller dans Prism (videosorter/licence.py, PUBLIC_KEY).
+//     - la clé publique, à coller dans Prisme (videosorter/licence.py, PUBLIC_KEY).
 //
 //   PRISME_LICENCE_PRIVATE=… npm run licence:issue -- --email vous@exemple.fr [--plan lifetime]
 //     Émet une licence à la main : pour vous, un testeur, un geste commercial.
@@ -39,7 +39,7 @@ if (command === "issue") {
   const { privateKey: priv } = crypto.generateKeyPairSync("ed25519");
   console.log("Clé privée : dans Netlify, variable PRISME_LICENCE_PRIVATE (à garder secrète) :");
   console.log("  " + priv.export({ format: "der", type: "pkcs8" }).toString("base64"));
-  console.log("\nClé publique : dans Prism, videosorter/licence.py :");
+  console.log("\nClé publique : dans Prisme, videosorter/licence.py :");
   console.log(`  PUBLIC_KEY = "${publicKeyBase64(priv)}"`);
   console.log("\nGardez aussi une copie de la clé privée hors de Netlify (gestionnaire de mots de passe) :");
   console.log("la perdre obligerait à changer de paire, et donc à renvoyer une clé à chaque client.");

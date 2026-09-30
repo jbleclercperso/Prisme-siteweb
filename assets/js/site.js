@@ -1,4 +1,4 @@
-/* Prism — comportements du site. Aucun traceur, aucune dépendance. */
+/* Prisme — comportements du site. Aucun traceur, aucune dépendance. */
 (function () {
   "use strict";
 
@@ -234,7 +234,7 @@
         });
       }
       if (data && data.plan) $$("[data-thanks-plan]", thanks).forEach(function (el) {
-        el.textContent = { monthly: "Prism, formule mensuelle", yearly: "Prism, formule annuelle", lifetime: "Prism à vie" }[data.plan] || "Prism";
+        el.textContent = { monthly: "Prisme, formule mensuelle", yearly: "Prisme, formule annuelle", lifetime: "Prisme à vie" }[data.plan] || "Prisme";
       });
     };
     if (!sid || !window.fetch) show("unknown");

@@ -1,5 +1,5 @@
 /*
- * Réglages du site Prism — le seul fichier à modifier pour brancher la vente.
+ * Réglages du site Prisme — le seul fichier à modifier pour brancher la vente.
  *
  * Chaque bouton du site porte un attribut data-link="…". Quand la valeur
  * correspondante ci-dessous est renseignée, le bouton pointe vers elle ;

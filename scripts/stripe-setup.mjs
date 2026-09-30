@@ -1,11 +1,11 @@
-// Prépare le compte Stripe pour Prism, en une commande :
+// Prépare le compte Stripe pour Prisme, en une commande :
 //
 //   npm install
 //   STRIPE_SECRET_KEY=sk_test_… SITE_URL=https://www.prisme.app npm run stripe:setup
 //
 // Crée ce qui manque, et laisse tel quel ce qui existe déjà : on peut le
 // relancer sans risque, en mode test puis en mode réel (sk_live_…).
-//   1. le produit « Prism » et ses trois prix (4,99 €/mois, 49,90 €/an,
+//   1. le produit « Prisme » et ses trois prix (4,99 €/mois, 49,90 €/an,
 //      99 € une fois, TTC), retrouvés ensuite par leur lookup key. Si le montant a changé ici, un nouveau prix
 //      reprend la lookup key et l'ancien est désactivé : les abonnements
 //      déjà en cours gardent leur prix d'origine ;
@@ -17,9 +17,9 @@ import Stripe from "stripe";
 import { PLANS, WEBHOOK_EVENTS } from "../netlify/lib/stripe.mjs";
 
 const PRICES = {
-  [PLANS.monthly.lookupKey]: { unit_amount: 499, recurring: { interval: "month" }, nickname: "Prism mensuel" },
-  [PLANS.yearly.lookupKey]: { unit_amount: 4990, recurring: { interval: "year" }, nickname: "Prism annuel" },
-  [PLANS.lifetime.lookupKey]: { unit_amount: 9900, nickname: "Prism à vie" },
+  [PLANS.monthly.lookupKey]: { unit_amount: 499, recurring: { interval: "month" }, nickname: "Prisme mensuel" },
+  [PLANS.yearly.lookupKey]: { unit_amount: 4990, recurring: { interval: "year" }, nickname: "Prisme annuel" },
+  [PLANS.lifetime.lookupKey]: { unit_amount: 9900, nickname: "Prisme à vie" },
 };
 
 const key = process.env.STRIPE_SECRET_KEY;
@@ -42,14 +42,11 @@ if (!product) {
 }
 if (!product) {
   product = (await stripe.products.create({
-    name: "Prism",
+    name: "Prisme",
     description: "Logiciel Windows pour trier, organiser et regarder une collection de vidéos et de photos.",
     metadata: { app: "prisme" },
   })).id;
   console.log("Produit créé :", product);
-} else {
-  // Le produit s'appelait « Prisme » : il prend le nom actuel.
-  await stripe.products.update(product, { name: "Prism" });
 }
 for (const [lookupKey, spec] of Object.entries(PRICES)) {
   const old = found.get(lookupKey);
@@ -81,7 +78,7 @@ for (const [lookupKey, spec] of Object.entries(PRICES)) {
 const configs = await stripe.billingPortal.configurations.list({ is_default: true, limit: 1 });
 const portalSettings = {
   business_profile: {
-    headline: "Prism — votre abonnement, vos factures",
+    headline: "Prisme — votre abonnement, vos factures",
     ...(site && { privacy_policy_url: `${site}/confidentialite.html`, terms_of_service_url: `${site}/cgv.html` }),
   },
   features: {
