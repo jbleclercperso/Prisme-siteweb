@@ -12,7 +12,7 @@
   <link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="64x64">
   <link rel="apple-touch-icon" href="assets/img/icon-180.png">
   <link rel="stylesheet" href="assets/css/site.css">
-  <script>document.documentElement.classList.remove('no-js');try{if(localStorage.getItem('prisme-age')!=='ok')document.documentElement.classList.add('gate-open')}catch(e){document.documentElement.classList.add('gate-open')}</script>
+  <script>document.documentElement.classList.remove('no-js');try{var c=new URLSearchParams(location.search).get('couleur');if(c)localStorage.setItem('prisme-couleur',c.toLowerCase());if(localStorage.getItem('prisme-couleur')==='10556e'){document.documentElement.classList.add('c-10556e');document.querySelector('meta[name=theme-color]').content='#10556e'}}catch(e){}try{if(localStorage.getItem('prisme-age')!=='ok')document.documentElement.classList.add('gate-open')}catch(e){document.documentElement.classList.add('gate-open')}</script>
   <script src="assets/js/config.js" defer></script>
   <script src="assets/js/site.js" defer></script>
 </head>

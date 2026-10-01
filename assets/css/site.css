@@ -1965,3 +1965,36 @@ html.no-js .reveal { opacity: 1; transform: none; }
 .tv-remote td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--muted); }
 .tv-remote td:first-child { color: #fff; white-space: nowrap; font-weight: 600; }
 @media (max-width: 600px) { .tv-remote table, .tv-remote tbody, .tv-remote tr, .tv-remote td { display: block; } .tv-remote th { display: none; } .tv-remote td { border: 0; padding: 2px 0; } .tv-remote tr { padding: 10px 0; border-bottom: 1px solid var(--line); } }
+
+/* ==========================================================================
+   Variante de couleur à comparer : le fond bleu nuit remplacé par #10556E.
+   S'active avec ?couleur=10556E (retenu d'une page à l'autre), ?couleur=origine
+   pour revenir. Les fenêtres de l'application restent dans leur graphite.
+   ========================================================================== */
+:root.c-10556e {
+  --bg: #10556e;
+  --bg-2: #175a73;
+  --panel: #1c5e77;
+  --surface: #24657e;
+  --surface-2: #2c6b85;
+  --surface-3: #37758f;
+  --text-2: #e0ebf0;
+  --muted: #c7dbe5;
+  --dim: #a4bcc7;
+}
+.c-10556e .gate { background: rgba(12, 83, 107, 0.72); }
+.c-10556e .gate-card { background: linear-gradient(180deg, rgba(44, 107, 133, 0.96), rgba(28, 94, 119, 0.98)); }
+.c-10556e .nav.is-scrolled { background: rgba(16, 85, 110, 0.72); }
+.c-10556e .nav.is-open { background: rgba(16, 85, 110, 0.96); }
+.c-10556e .privacy {
+  background:
+    radial-gradient(60% 80% at 100% 0%, rgba(76, 141, 255, 0.12), transparent 60%),
+    radial-gradient(50% 70% at 0% 100%, rgba(239, 106, 91, 0.08), transparent 60%),
+    linear-gradient(180deg, #20617a, #175a73);
+}
+.c-10556e .plan.featured {
+  background:
+    linear-gradient(180deg, #2c6b85, #1c5e77) padding-box,
+    var(--spectrum) border-box;
+}
+.c-10556e .tv-card, .c-10556e .tv-remote { background: #1e5f78; }
