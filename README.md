@@ -53,8 +53,13 @@ traduire ; ajouter la colonne `de` au tableau `PAGES` de `langue.js`, un bloc
 `de` à `TEXT` dans `site.js` et à `LOCALES` dans `netlify/lib/stripe.mjs` ;
 compléter les balises `hreflang`, le sélecteur de langue et le `sitemap.xml`.
 
-**Prix** : euros sur les pages françaises, dollars sur les pages anglaises, au
-même montant. Les deux sont portés par les mêmes prix Stripe (voir plus bas).
+**Prix** : toujours en euros sur les pages françaises. Sur les pages anglaises,
+en euros pour un visiteur de la zone euro (un Allemand, un Espagnol…) et en
+dollars ailleurs, au même montant : la page demande la monnaie à
+`/api/currency`, qui la déduit du pays (Netlify le connaît par l'adresse IP),
+et la page de paiement Stripe reprend la monnaie affichée. La liste des pays
+qui paient en euros est dans `netlify/lib/monnaie.mjs`. Les deux monnaies sont
+portées par les mêmes prix Stripe (voir plus bas).
 
 ## Voir le site en local
 
@@ -91,12 +96,13 @@ Laissés vides, les boutons mènent à la page d'accès anticipé.
 ### Paiement Stripe
 
 Le paiement passe par **Stripe Checkout** : le site ne voit jamais une carte
-bancaire. Trois fonctions Netlify, dans `netlify/functions/`, font le lien :
+bancaire. Des fonctions Netlify, dans `netlify/functions/`, font le lien :
 
 | Adresse | Rôle |
 |---|---|
 | `POST /api/checkout` | ouvre la page de paiement Stripe pour `monthly`, `yearly` ou `lifetime` |
 | `GET /api/session` | dit à `merci.html` si le paiement est passé (payé, en attente, inconnu) |
+| `GET /api/currency` | dit aux pages anglaises s'il faut afficher les prix en euros ou en dollars |
 | `POST /api/webhook` | reçoit les événements de Stripe, signature vérifiée : c'est là qu'un achat s'honore |
 | `POST /api/licence` | prolonge la clé d'un abonnement en cours (voir Licences) |
 
@@ -186,10 +192,10 @@ Certains éléments sont des propositions commerciales, à confirmer ou corriger
       et `scripts/stripe-setup.mjs`). À la fin de l'offre : passer `prisme_a_vie` à 14900
       (euros et dollars) dans le script et le relancer, retirer le prix barré et le bandeau
       « Offre de lancement » dans les deux langues, corriger les CGV.
-- [ ] **Logiciel en anglais** : les pages anglaises citent les menus de Prisme et de
-      Prisme TV en anglais (« Trial », ⋯ › Help › License…, Remote sharing…). Ils doivent
-      exister tels quels dans les deux applications, sinon corriger `en/thanks.html` et
-      `en/tv.html`.
+- [ ] **Logiciel en anglais** (prévu avant le lancement) : les pages anglaises citent les
+      menus de Prisme et de Prisme TV en anglais (« Trial », ⋯ › Help › License…, Remote
+      sharing…). Vérifier qu'ils portent ces noms dans les applications traduites, sinon
+      corriger `en/thanks.html` et `en/tv.html`.
 - [ ] **Promesses** : essai 14 jours sans carte, 2 ordinateurs par licence,
       satisfait ou remboursé 14 jours, libellé bancaire discret, support par e-mail
 - [ ] **Nom de domaine** : `prisme.app` est utilisé partout en attendant
@@ -241,8 +247,9 @@ assets/
 en/                 les pages en anglais
 netlify/
   edge-functions/   langue.js : chaque visiteur vers les pages de sa langue
-  functions/        checkout, session, webhook, licence : paiement et licences
-  lib/stripe.mjs    formules, monnaie et pages de retour par langue, client Stripe, événements suivis
+  functions/        checkout, session, currency, webhook, licence : paiement et licences
+  lib/stripe.mjs    formules, pages de retour par langue, client Stripe, événements suivis
+  lib/monnaie.mjs   euros ou dollars, selon la langue et le pays
   lib/licence.mjs   fabrication et lecture des clés de licence
 scripts/
   stripe-setup.mjs  prépare le compte Stripe (produit, prix, espace client, webhook)

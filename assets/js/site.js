@@ -162,6 +162,19 @@
     });
   });
 
+  // La monnaie des tarifs : l'euro en français ; sur les autres pages, l'euro
+  // dans la zone euro et le dollar ailleurs, selon le pays que donne
+  // /api/currency. La page de paiement reprend la monnaie affichée.
+  var currency = lang === "fr" ? "eur" : "usd";
+  if (lang !== "fr" && window.fetch && ($$("[data-eur]").length || $$("[data-checkout]").length)) {
+    fetch("/api/currency").then(function (r) { return r.json(); }).then(function (data) {
+      if (data.currency !== "eur") return;
+      currency = "eur";
+      $$("[data-eur]").forEach(function (el) { el.textContent = el.getAttribute("data-eur"); });
+      $$("[data-eur-label]").forEach(function (el) { el.setAttribute("aria-label", el.getAttribute("data-eur-label")); });
+    }).catch(function () {});
+  }
+
   /* ------------------------------------------------------------ Clavier décoratif */
   var kb = $("#keyboard");
   if (kb && !reduced) {
@@ -253,7 +266,7 @@
         fetch("/api/checkout", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ plan: plan, lang: lang })
+          body: JSON.stringify({ plan: plan, lang: lang, currency: currency })
         }).then(function (r) {
           return r.json().then(function (data) {
             if (!r.ok || !data.url) throw new Error(data.error || r.status);

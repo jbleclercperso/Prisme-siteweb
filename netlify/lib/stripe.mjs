@@ -16,19 +16,18 @@ export const PLANS = {
   lifetime: { lookupKey: "prisme_a_vie", mode: "payment" },
 };
 
-// Chaque langue du site a sa monnaie, ses pages de retour et sa phrase sous
-// le bouton de paiement. Les prix en dollars sont des « options de monnaie »
-// des mêmes prix Stripe (scripts/stripe-setup.mjs) : même lookup key.
+// Chaque langue du site a ses pages de retour et sa phrase sous le bouton
+// de paiement. La monnaie, elle, dépend aussi du pays (lib/monnaie.mjs) : les
+// prix en dollars sont des « options de monnaie » des mêmes prix Stripe
+// (scripts/stripe-setup.mjs), sous la même lookup key.
 export const LOCALES = {
   fr: {
-    currency: "eur",
     locale: "fr",
     success: "/merci.html",
     cancel: "/index.html#tarifs",
     submit: "En payant, vous acceptez les conditions de vente de Prisme et demandez l'accès immédiat au logiciel. Satisfait ou remboursé pendant 14 jours.",
   },
   en: {
-    currency: "usd",
     // « auto » : la page Stripe suit la langue du navigateur (un Allemand
     // la voit en allemand), le site n'ayant pas encore toutes les langues.
     locale: "auto",
