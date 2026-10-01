@@ -6,6 +6,58 @@
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var cfg = window.PRISME_CONFIG || { links: {} };
 
+  /* ------------------------------------------------------------ Langue */
+  // Les textes que ce script écrit lui-même, dans la langue de la page
+  // (<html lang="…">). Ajouter une langue : un bloc de plus, sur le modèle de en.
+  var lang = (root.getAttribute("lang") || "fr").slice(0, 2);
+  var TEXT = {
+    fr: {
+      opening: "Ouverture du paiement…",
+      copy: "Copier la clé", copied: "Copiée",
+      plans: { monthly: "Prisme, formule mensuelle", yearly: "Prisme, formule annuelle", lifetime: "Prisme à vie" },
+      decimal: ",", gb: "Go", mb: "Mo",
+      labels: { "6": "Amateur", "7": "POV", "8": "MILF", "9": "À revoir", "Delete": "Corbeille" },
+      trashed: "Mise à la corbeille de séance",
+      sent: function (to) { return "Envoyée vers « " + to + " »"; },
+      skipped: "Passée, sans rien toucher",
+      nothingToUndo: "Rien à annuler",
+      undone: "Annulé : la vidéo est revenue",
+      faved: "★  Ajoutée aux favoris", unfaved: "Retirée des favoris",
+      veil: {
+        title: "Indexation des sauvegardes",
+        sub: "Analyse en cours — 5 572 éléments examinés, dernier type traité : .docx",
+        head: ["Volume", "Éléments", "Taille", "Dernier passage"],
+        rows: [["Modèles", "82 824", "69,8 Go", "28/09 14:44"], ["Correspondance", "31 869", "282,9 Go", "28/09 05:14"],
+               ["Ressources", "22 073", "204,6 Go", "26/09 05:09"], ["Comptabilité", "53 673", "269,6 Go", "26/09 18:05"],
+               ["Sauvegarde système", "44 285", "275,5 Go", "27/09 16:33"], ["Archives 2023", "11 671", "246,5 Go", "27/09 18:26"]],
+        next: "Prochain passage planifié à 00:07"
+      }
+    },
+    en: {
+      opening: "Opening checkout…",
+      copy: "Copy key", copied: "Copied",
+      plans: { monthly: "Prisme, monthly plan", yearly: "Prisme, yearly plan", lifetime: "Prisme Lifetime" },
+      decimal: ".", gb: "GB", mb: "MB",
+      labels: { "6": "Amateur", "7": "POV", "8": "MILF", "9": "Rewatch", "Delete": "Trash" },
+      trashed: "Moved to the session trash",
+      sent: function (to) { return "Sent to “" + to + "”"; },
+      skipped: "Skipped, left untouched",
+      nothingToUndo: "Nothing to undo",
+      undone: "Undone: the video is back",
+      faved: "★  Added to favorites", unfaved: "Removed from favorites",
+      veil: {
+        title: "Backup indexing",
+        sub: "Scan in progress — 5,572 items checked, last file type: .docx",
+        head: ["Volume", "Items", "Size", "Last pass"],
+        rows: [["Templates", "82,824", "69.8 GB", "Sep 28 14:44"], ["Correspondence", "31,869", "282.9 GB", "Sep 28 05:14"],
+               ["Resources", "22,073", "204.6 GB", "Sep 26 05:09"], ["Accounting", "53,673", "269.6 GB", "Sep 26 18:05"],
+               ["System backup", "44,285", "275.5 GB", "Sep 27 16:33"], ["Archives 2023", "11,671", "246.5 GB", "Sep 27 18:26"]],
+        next: "Next pass scheduled at 00:07"
+      }
+    }
+  };
+  var T = TEXT[lang] || TEXT.fr;
+
   function $(sel, ctx) { return (ctx || document).querySelector(sel); }
   function $$(sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
   function store(key, value) {
@@ -20,6 +72,13 @@
     var url = cfg.links && cfg.links[a.getAttribute("data-link")];
     if (url) a.setAttribute("href", url);
   });
+  // Le lien FR / EN garde l'adresse en cours : paramètres (?session_id=…) et ancre.
+  $$("a[hreflang][href*='lang=']").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var q = location.search.replace(/^\?/, "").replace(/(^|&)lang=[^&]*/g, "").replace(/^&/, "");
+      a.setAttribute("href", a.getAttribute("href").split("#")[0] + (q ? "&" + q : "") + location.hash);
+    });
+  });
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
   // L'adresse à taper sur la télé : celle du site tel qu'il est servi.
   if (/\./.test(location.hostname) && !/^\d+\.\d+\.\d+\.\d+$/.test(location.hostname)) {
@@ -31,7 +90,8 @@
   if (gate) {
     var enter = $("[data-gate='enter']", gate);
     var leave = $(".gate-actions a", gate);
-    if (leave && cfg.exitUrl) leave.setAttribute("href", cfg.exitUrl);
+    var exitUrl = cfg.exitUrl && (typeof cfg.exitUrl === "string" ? cfg.exitUrl : cfg.exitUrl[lang] || cfg.exitUrl.fr);
+    if (leave && exitUrl) leave.setAttribute("href", exitUrl);
     if (root.classList.contains("gate-open") && enter) {
       setTimeout(function () { enter.focus(); }, 50);
     }
@@ -133,19 +193,19 @@
       "font:14px/1.5 'Segoe UI',system-ui,sans-serif;padding:48px 8vw;overflow:auto;display:none";
     veil.innerHTML =
       "<div style='max-width:900px;margin:0 auto'>" +
-      "<h1 style='font-size:20px;font-weight:600;color:#1f2733;margin:0 0 6px;letter-spacing:0'>Indexation des sauvegardes</h1>" +
-      "<div style='color:#6b7483;margin-bottom:18px'>Analyse en cours — 5 572 éléments examinés, dernier type traité : .docx</div>" +
+      "<h1 style='font-size:20px;font-weight:600;color:#1f2733;margin:0 0 6px;letter-spacing:0'>" + T.veil.title + "</h1>" +
+      "<div style='color:#6b7483;margin-bottom:18px'>" + T.veil.sub + "</div>" +
       "<div style='height:8px;border-radius:4px;background:#dfe3e8;margin-bottom:24px;overflow:hidden'><i style='display:block;height:100%;width:62%;background:#9aa5b4'></i></div>" +
       "<table style='width:100%;border-collapse:collapse;font-size:13px'>" +
-      "<tr style='color:#8a93a1;text-align:left'><th style='font-weight:500;padding:6px 0;border-bottom:1px solid #e3e6ea'>Volume</th><th style='font-weight:500;text-align:right;border-bottom:1px solid #e3e6ea'>Éléments</th><th style='font-weight:500;text-align:right;border-bottom:1px solid #e3e6ea'>Taille</th><th style='font-weight:500;text-align:right;border-bottom:1px solid #e3e6ea'>Dernier passage</th></tr>" +
-      [["Modèles", "82 824", "69,8 Go", "28/09 14:44"], ["Correspondance", "31 869", "282,9 Go", "28/09 05:14"],
-       ["Ressources", "22 073", "204,6 Go", "26/09 05:09"], ["Comptabilité", "53 673", "269,6 Go", "26/09 18:05"],
-       ["Sauvegarde système", "44 285", "275,5 Go", "27/09 16:33"], ["Archives 2023", "11 671", "246,5 Go", "27/09 18:26"]]
+      "<tr style='color:#8a93a1;text-align:left'>" + T.veil.head.map(function (h, i) {
+        return "<th style='font-weight:500;" + (i ? "text-align:right;" : "padding:6px 0;") + "border-bottom:1px solid #e3e6ea'>" + h + "</th>";
+      }).join("") + "</tr>" +
+      T.veil.rows
         .map(function (r) {
           return "<tr><td style='padding:7px 0;border-bottom:1px solid #eef0f3'>" + r[0] + "</td>" +
             r.slice(1).map(function (c) { return "<td style='text-align:right;border-bottom:1px solid #eef0f3'>" + c + "</td>"; }).join("") + "</tr>";
         }).join("") +
-      "</table><div style='margin-top:18px;color:#8a93a1;font-size:12px'>Prochain passage planifié à 00:07</div></div>";
+      "</table><div style='margin-top:18px;color:#8a93a1;font-size:12px'>" + T.veil.next + "</div></div>";
     document.body.appendChild(veil);
   }
   var savedTitle = document.title;
@@ -153,7 +213,7 @@
     if (!veil) buildVeil();
     var on = veil.style.display === "none";
     veil.style.display = on ? "block" : "none";
-    document.title = on ? "Indexation des sauvegardes" : savedTitle;
+    document.title = on ? T.veil.title : savedTitle;
     if (quiet) quiet.classList.toggle("is-quiet", on);
   }
   document.addEventListener("keydown", function (e) {
@@ -188,12 +248,12 @@
         }
         btn.setAttribute("data-label", btn.textContent);
         btn.setAttribute("aria-busy", "true");
-        btn.textContent = "Ouverture du paiement…";
+        btn.textContent = T.opening;
         if (checkoutError) checkoutError.hidden = true;
         fetch("/api/checkout", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ plan: plan })
+          body: JSON.stringify({ plan: plan, lang: lang })
         }).then(function (r) {
           return r.json().then(function (data) {
             if (!r.ok || !data.url) throw new Error(data.error || r.status);
@@ -225,7 +285,7 @@
         box.hidden = false;
         var copy = $("[data-copy-key]", box);
         copy.addEventListener("click", function () {
-          var done = function () { copy.textContent = "Copiée"; setTimeout(function () { copy.textContent = "Copier la clé"; }, 1800); };
+          var done = function () { copy.textContent = T.copied; setTimeout(function () { copy.textContent = T.copy; }, 1800); };
           if (navigator.clipboard) navigator.clipboard.writeText(data.licence).then(done, function () {});
           else {
             var range = document.createRange(); range.selectNodeContents($("[data-thanks-key]", box));
@@ -234,7 +294,7 @@
         });
       }
       if (data && data.plan) $$("[data-thanks-plan]", thanks).forEach(function (el) {
-        el.textContent = { monthly: "Prisme, formule mensuelle", yearly: "Prisme, formule annuelle", lifetime: "Prisme à vie" }[data.plan] || "Prisme";
+        el.textContent = T.plans[data.plan] || "Prisme";
       });
     };
     if (!sid || !window.fetch) show("unknown");
@@ -254,7 +314,7 @@
   var wl = $("#waitlist");
   if (wl) {
     var form = $("form", wl);
-    if (/[?&]merci/.test(location.search)) wl.classList.add("is-done");
+    if (/[?&](merci|thanks)\b/.test(location.search)) wl.classList.add("is-done");
     form.addEventListener("submit", function (e) {
       if (!window.fetch) return;
       e.preventDefault();
@@ -315,21 +375,26 @@
   var app = $("#demoApp");
   if (!app) return;
 
+  // Taille en Go : affichée en Mo sous 1 Go, avec la virgule ou le point selon la langue.
   var ITEMS = [
-    { name: "amateur_couple_weekend.mp4", folder: "À trier", res: "4K", meta: "2160p · 3,2 Go", dur: 1122, art: "a1" },
-    { name: "pov_casting_blonde.mp4", folder: "À trier", res: "1080p", meta: "1080p · 1,4 Go", dur: 756, art: "a2" },
-    { name: "milf_hotel_suite_4K.mkv", folder: "À trier", res: "4K", meta: "2160p · 5,9 Go", dur: 1862, art: "a9" },
-    { name: "lesbian_massage_02.mp4", folder: "À trier", res: "1080p", meta: "1080p · 880 Mo", dur: 524, art: "a4" },
-    { name: "backstage_studio_03.mp4", folder: "À trier", res: "720p", meta: "720p · 640 Mo", dur: 1160, art: "a5" },
-    { name: "threesome_villa_ibiza.mp4", folder: "À trier", res: "1080p", meta: "1080p · 1,1 Go", dur: 908, art: "a6" },
-    { name: "gonzo_scene_0412.mov", folder: "À trier", res: "4K", meta: "2160p · 8,3 Go", dur: 2571, art: "a7" },
-    { name: "solo_shower_720p.mp4", folder: "À trier", res: "720p", meta: "720p · 512 Mo", dur: 372, art: "a3" },
-    { name: "pov_girlfriend_4K.mp4", folder: "À trier", res: "4K", meta: "2160p · 2,0 Go", dur: 1653, art: "a10" },
-    { name: "casting_couch_19.mp4", folder: "À trier", res: "1080p", meta: "1080p · 2,7 Go", dur: 665, art: "a8" },
-    { name: "cam_show_replay_9.mp4", folder: "À trier", res: "1080p", meta: "1080p · 790 Mo", dur: 587, art: "a11" },
-    { name: "vintage_70s_classic.mkv", folder: "À trier", res: "720p", meta: "720p · 1,6 Go", dur: 1998, art: "a12" }
+    { name: "amateur_couple_weekend.mp4", res: "4K", gb: 3.2, dur: 1122, art: "a1" },
+    { name: "pov_casting_blonde.mp4", res: "1080p", gb: 1.4, dur: 756, art: "a2" },
+    { name: "milf_hotel_suite_4K.mkv", res: "4K", gb: 5.9, dur: 1862, art: "a9" },
+    { name: "lesbian_massage_02.mp4", res: "1080p", gb: 0.88, dur: 524, art: "a4" },
+    { name: "backstage_studio_03.mp4", res: "720p", gb: 0.64, dur: 1160, art: "a5" },
+    { name: "threesome_villa_ibiza.mp4", res: "1080p", gb: 1.1, dur: 908, art: "a6" },
+    { name: "gonzo_scene_0412.mov", res: "4K", gb: 8.3, dur: 2571, art: "a7" },
+    { name: "solo_shower_720p.mp4", res: "720p", gb: 0.512, dur: 372, art: "a3" },
+    { name: "pov_girlfriend_4K.mp4", res: "4K", gb: 2.0, dur: 1653, art: "a10" },
+    { name: "casting_couch_19.mp4", res: "1080p", gb: 2.7, dur: 665, art: "a8" },
+    { name: "cam_show_replay_9.mp4", res: "1080p", gb: 0.79, dur: 587, art: "a11" },
+    { name: "vintage_70s_classic.mkv", res: "720p", gb: 1.6, dur: 1998, art: "a12" }
   ];
-  var LABELS = { "6": "Amateur", "7": "POV", "8": "MILF", "9": "À revoir", "Delete": "Corbeille" };
+  var LABELS = T.labels;
+  function meta(it) {
+    var size = it.gb < 1 ? Math.round(it.gb * 1000) + " " + T.mb : it.gb.toFixed(1).replace(".", T.decimal) + " " + T.gb;
+    return (it.res === "4K" ? "2160p" : it.res) + " · " + size;
+  }
 
   var el = {
     name: $("[data-demo='name']", app), meta: $("[data-demo='meta']", app), folder: $("[data-demo='folder']", app),
@@ -352,7 +417,7 @@
   function render(animIn) {
     var it = item();
     el.name.textContent = it.name;
-    el.meta.textContent = it.meta;
+    el.meta.textContent = meta(it);
     el.res.textContent = it.res + " · " + it.name;
     var art = document.createElement("div");
     art.className = "art " + it.art + (animIn && !reduced ? " fly-in" : "");
@@ -391,7 +456,7 @@
     el.done.textContent = decisions;
     if (decisions >= 2) {
       var per = (Date.now() - started) / 1000 / (decisions - 1);
-      el.pace.textContent = per < 10 ? per.toFixed(1).replace(".", ",") + " s" : Math.round(per) + " s";
+      el.pace.textContent = per < 10 ? per.toFixed(1).replace(".", T.decimal) + " s" : Math.round(per) + " s";
     }
   }
 
@@ -406,10 +471,10 @@
       decisions++;
       if (!started) started = Date.now();
       history.push({ key: key, idx: idx });
-      toast(key === "Delete" ? "Mise à la corbeille de séance" : "Envoyée vers « " + LABELS[key] + " »");
+      toast(key === "Delete" ? T.trashed : T.sent(LABELS[key]));
     } else {
       history.push({ key: " ", idx: idx });
-      toast("Passée, sans rien toucher");
+      toast(T.skipped);
     }
     stats();
     busy = true;
@@ -419,7 +484,7 @@
 
   function undo() {
     var last = history.pop();
-    if (!last) { toast("Rien à annuler"); return; }
+    if (!last) { toast(T.nothingToUndo); return; }
     if (last.key !== " ") {
       counts[last.key]--;
       bump(last.key);
@@ -428,7 +493,7 @@
     idx = last.idx;
     render(true);
     stats();
-    toast("Annulé : la vidéo est revenue");
+    toast(T.undone);
   }
 
   function showFav() {
@@ -440,7 +505,7 @@
   function setFav(on) {
     favs[idx] = on;
     showFav();
-    toast(on ? "★  Ajoutée aux favoris" : "Retirée des favoris");
+    toast(on ? T.faved : T.unfaved);
   }
 
   function handle(key, e) {

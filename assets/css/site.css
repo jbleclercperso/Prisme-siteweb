@@ -389,6 +389,16 @@ html.gate-open body { overflow: hidden; }
 .nav-cta { display: flex; align-items: center; gap: 10px; }
 .nav-login { font-size: 0.92rem; color: var(--muted); padding: 8px 10px; }
 .nav-login:hover { color: var(--text); }
+.nav-lang {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 5px 9px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px var(--line-2);
+}
+.nav-lang:hover { color: var(--text); }
 
 .nav-toggle {
   display: none;
@@ -556,7 +566,11 @@ html.no-js .reveal { opacity: 1; transform: none; }
 @keyframes logo-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 @media (max-width: 1200px) { .hero-logo { top: 72px; width: 22vw; } }
 .nav-links a, .nav-login { white-space: nowrap; }
-@media (min-width: 961px) and (max-width: 1140px) { .nav-links { gap: 0; } .nav-links a { padding-inline: 7px; font-size: 0.84rem; } }
+.brand { flex-shrink: 0; }
+/* Entre la tablette et le grand écran, le menu se resserre ; « Mon compte »
+   reste dans le pied de page et dans le menu mobile. */
+@media (min-width: 961px) and (max-width: 1280px) { .nav-inner { gap: 16px; } .nav-links { gap: 0; } .nav-links a { padding-inline: 8px; } }
+@media (min-width: 961px) and (max-width: 1140px) { .nav-links a { padding-inline: 6px; font-size: 0.82rem; } .nav-login { display: none; } }
 @media (max-width: 960px) {
   .hero-logo { display: none; }
 }

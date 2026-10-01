@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Prisme — The software to sort and watch your porn collection</title>
+  <meta name="description" content="Prisme is the Windows software built for porn collections, videos and photos: ten previews at a glance, one key to file, automatic keywords, the Wall, slideshow, floating player, duplicates, discreet mode. 100% local.">
+  <meta name="rating" content="adult">
+  <meta name="theme-color" content="#07080b">
+  <link rel="canonical" href="https://www.prisme.app/en/">
+  <link rel="alternate" hreflang="fr" href="https://www.prisme.app/">
+  <link rel="alternate" hreflang="en" href="https://www.prisme.app/en/">
+  <link rel="alternate" hreflang="x-default" href="https://www.prisme.app/en/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:site_name" content="Prisme">
+  <meta property="og:title" content="Prisme — Thousands of videos. One key to decide.">
+  <meta property="og:description" content="The Windows software to sort, organize and watch your porn collection, videos and photos. 100% local, completely discreet.">
+  <meta property="og:image" content="https://www.prisme.app/assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
+  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/instrument-serif-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script>document.documentElement.classList.remove('no-js');try{if(localStorage.getItem('prisme-age')!=='ok')document.documentElement.classList.add('gate-open')}catch(e){document.documentElement.classList.add('gate-open')}</script>
+  <script src="/assets/js/config.js" defer></script>
+  <script src="/assets/js/site.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Prisme",
+    "operatingSystem": "Windows 10, Windows 11",
+    "applicationCategory": "MultimediaApplication",
+    "description": "Software to sort, organize and watch a collection of pornographic videos and photos. 100% local.",
+    "contentRating": "adult",
+    "offers": { "@type": "AggregateOffer", "lowPrice": "4.99", "highPrice": "99", "priceCurrency": "USD", "offerCount": "3" }
+  }
+  </script>
+</head>
+<body>
+
+<!-- Icons (Lucide, ISC license) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.53 13.53 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="2" x2="22" y1="2" y2="22"/></symbol>
+    <symbol id="i-drive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="2" y1="12" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><line x1="6" x2="6.01" y1="16" y2="16"/><line x1="10" x2="10.01" y1="16" y2="16"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></symbol>
+    <symbol id="i-folders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 17a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.9a2 2 0 0 1-1.69-.9l-.81-1.2a2 2 0 0 0-1.67-.9H8a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2Z"/><path d="M2 8v11a2 2 0 0 0 2 2h14"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.56v16.01a.5.5 0 0 1-.6.49l-6.8-1.36A1 1 0 0 1 5 18.72V5.28a1 1 0 0 1 .8-.98l6.6-1.32a.5.5 0 0 1 .6.49Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M11.52 2.3a.53.53 0 0 1 .95 0l2.31 4.68a2.12 2.12 0 0 0 1.6 1.16l5.16.76a.53.53 0 0 1 .3.9l-3.74 3.64a2.12 2.12 0 0 0-.61 1.88l.88 5.14a.53.53 0 0 1-.77.56l-4.62-2.43a2.12 2.12 0 0 0-1.97 0L6.4 21.01a.53.53 0 0 1-.77-.56l.88-5.14a2.12 2.12 0 0 0-.61-1.88L2.16 9.8a.53.53 0 0 1 .3-.9l5.16-.76a2.12 2.12 0 0 0 1.6-1.16z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></symbol>
+    <symbol id="i-refund" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-signal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></symbol>
+    <symbol id="i-volx" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6A1.4 1.4 0 0 1 5.4 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></symbol>
+    <symbol id="i-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2.5a1 1 0 0 1-.8-.4l-.9-1.2A1 1 0 0 0 15 3h-2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z"/><path d="M20 21a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-2.9a1 1 0 0 1-.88-.55l-.42-.85a1 1 0 0 0-.92-.6H13a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z"/><path d="M3 5a2 2 0 0 0 2 2h3"/><path d="M3 3v13a2 2 0 0 0 2 2h3"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-dots" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-cloud-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 2 20 20"/><path d="M5.78 5.78A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.31-.2"/><path d="M21.53 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7 7 0 0 0 9.66 5.02"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 12h4"/><path d="M10 16h4"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.17 6.81a1 1 0 0 0-3.99-3.99L3.84 16.17a2 2 0 0 0-.5.83l-1.32 4.35a.5.5 0 0 0 .62.62l4.35-1.32a2 2 0 0 0 .83-.5z"/></symbol>
+    <symbol id="i-dices" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="12" height="12" x="2" y="10" rx="2" ry="2"/><path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6"/><path d="M6 18h.01"/><path d="M10 14h.01"/><path d="M15 6h.01"/><path d="M18 9h.01"/></symbol>
+    <symbol id="i-pip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 9V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h4"/><rect width="10" height="7" x="12" y="13" rx="2"/></symbol>
+    <symbol id="i-clapper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></symbol>
+    <symbol id="i-question"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#contenu">Skip to content</a>
+
+<!-- Age check -->
+<div class="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" aria-describedby="gate-desc">
+  <div class="gate-card">
+    <img src="/assets/img/prisme.png" alt="" width="64" height="64">
+    <span class="gate-badge">18+</span>
+    <h2 id="gate-title">Adults only</h2>
+    <p id="gate-desc">Prisme is software for managing pornographic videos and photos. This site shows no explicit images, but it talks openly about porn and is intended for adults only.</p>
+    <div class="gate-actions">
+      <button class="btn btn-primary btn-block" type="button" data-gate="enter">I am 18 or older — Enter</button>
+      <a class="btn btn-ghost btn-block" href="https://www.google.com/" rel="nofollow">Leave</a>
+    </div>
+    <p class="gate-legal">By entering, you confirm that you are of legal age in your country.</p>
+  </div>
+</div>
+
+<!-- Navigation -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top" aria-label="Prisme, home">
+      <img src="/assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="/assets/img/prism-lettrage.png" alt="Prism" width="97" height="14">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#fonctionnalites">Features</a></li>
+      <li><a href="#recherche">Search</a></li>
+      <li><a href="#mur">The Wall</a></li>
+      <li><a href="#photos">Photos</a></li>
+      <li><a href="#discretion">Discretion</a></li>
+      <li><a href="#tarifs">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="nav-lang" href="/?lang=fr" hreflang="fr" lang="fr" title="Français">FR</a>
+      <a class="nav-login" href="#tarifs" data-link="account">My account</a>
+      <a class="btn btn-primary btn-sm" href="/en/download.html" data-link="trial">Free trial</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <!-- ================================================================ HERO -->
+  <section class="hero" id="top">
+    <div class="hero-glow"></div>
+    <div class="hero-grid"></div>
+
+    <div class="hero-logo" aria-hidden="true"><picture><source media="(max-width: 960px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><img src="/assets/img/prisme-hero.webp" alt="" width="600" height="600" fetchpriority="high"></picture></div>
+
+    <div class="container">
+      <div class="hero-copy">
+        <a class="hero-pill reveal" href="#demo"><b>18+</b> The sorting software for your porn, videos &amp; photos</a>
+        <h1 class="display reveal" data-delay="1">Thousands of porn&nbsp;videos.<br><em>One key</em> to decide.</h1>
+        <p class="lead reveal" data-delay="2">Prisme is the software built to sort, organize and watch your porn collection, videos and photos alike. Previews to judge a scene at a glance, one key to file it in the right category, and the next one appears instantly. And everything stays on your computer.</p>
+        <div class="hero-actions reveal" data-delay="3">
+          <div>
+            <a class="btn btn-primary" href="/en/download.html" data-link="trial">
+              <svg><use href="#i-download"/></svg>
+              Try it free
+            </a>
+            <span class="btn-note">14 days · no credit card · Windows 10 &amp; 11</span>
+          </div>
+          <a class="btn btn-ghost" href="#demo">Try the online demo <svg><use href="#i-down"/></svg></a>
+        </div>
+        <ul class="trust-row reveal" data-delay="4">
+          <li><svg><use href="#i-cloud-off"/></svg>100% local, nothing is sent</li>
+          <li><svg><use href="#i-eyeoff"/></svg>Discreet mode in one key</li>
+          <li><svg><use href="#i-shield"/></svg>Nothing is ever deleted by mistake</li>
+        </ul>
+      </div>
+
+      <!-- The board, as it looks in the app -->
+      <div class="showcase reveal" data-delay="2">
+        <div class="app" aria-label="Preview of the Prisme app: the board" role="img">
+          <div class="app-titlebar"><img src="/assets/img/prisme.png" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
+          <div class="app-header">
+            <span class="app-icon-btn hide-sm"><svg><use href="#i-clapper"/></svg></span>
+            <div class="seg"><span>Folders</span><span class="on">Videos</span><span>Keywords</span><span>Wall</span><span>★ Favorites</span></div>
+            <span class="app-icon-btn"><svg><use href="#i-up"/></svg></span>
+            <div class="crumbs"><b>Porn</b><span class="hide-sm">· 1,284 videos · 612 GB</span></div>
+            <span class="spacer"></span>
+            <span class="app-icon-btn share hide-sm" title="Random"><svg><use href="#i-dices"/></svg></span>
+            <span class="app-icon-btn hide-sm"><svg><use href="#i-tree"/></svg></span>
+            <span class="app-icon-btn"><svg><use href="#i-volx"/></svg></span>
+            <span class="app-icon-btn hide-sm"><svg><use href="#i-pip"/></svg></span>
+            <span class="app-icon-btn"><svg><use href="#i-dots"/></svg></span>
+          </div>
+          <div class="app-toolbar">
+            <span class="chip search">search…</span>
+            <span class="chip">Duration</span>
+            <span class="chip">Size</span>
+            <span class="chip">Resolution</span>
+            <span class="chip on">Unwatched</span>
+            <span class="chip">All formats</span>
+            <span class="chip">− 5 +</span>
+            <span class="chip">1–40 of 1,284</span>
+          </div>
+          <div class="board">
+            <div class="card"><div class="art a1"><span class="badge-time">24:10</span></div><div class="card-cap">4K · <b>amateur_couple_weekend.mp4</b></div></div>
+            <div class="card"><div class="art a2"><span class="badge-time">12:36</span></div><div class="card-cap">1080p · <b>pov_casting_blonde.mp4</b></div></div>
+            <div class="card hot"><div class="art a9"><span class="badge-time">31:02</span><i class="prog"></i></div><div class="card-cap">4K · <b>milf_hotel_suite_4K.mkv</b></div></div>
+            <div class="card"><div class="art a4"><span class="badge-time">08:44</span></div><div class="card-cap">1080p · <b>lesbian_massage_02.mp4</b></div></div>
+            <div class="card"><div class="art a5"><span class="badge-time">19:20</span></div><div class="card-cap">720p · <b>backstage_studio_03.mp4</b></div></div>
+            <div class="card"><div class="art a6"><span class="badge-time">15:08</span></div><div class="card-cap">1080p · <b>threesome_villa_ibiza.mp4</b></div></div>
+            <div class="card"><div class="art a7"><span class="badge-time">42:51</span></div><div class="card-cap">4K · <b>gonzo_scene_0412.mov</b></div></div>
+            <div class="card"><div class="art a3"><span class="badge-time">06:12</span></div><div class="card-cap">1080p · <b>solo_shower_720p.mp4</b></div></div>
+            <div class="card"><div class="art a10"><span class="badge-time">27:33</span></div><div class="card-cap">1080p · <b>couple_amateur_hotel.mp4</b></div></div>
+            <div class="card"><div class="art a8"><span class="badge-time">11:05</span></div><div class="card-cap">4K · <b>pov_girlfriend_4K.mp4</b></div></div>
+            <div class="card"><div class="art a11"><span class="badge-time">09:47</span></div><div class="card-cap">1080p · <b>casting_couch_19.mp4</b></div></div>
+            <div class="card"><div class="art a12"><span class="badge-time">33:18</span></div><div class="card-cap">4K · <b>vintage_70s_classic.mkv</b></div></div>
+            <div class="card"><div class="art a1" style="--x1:70%;--y1:30%"><span class="badge-time">14:29</span></div><div class="card-cap">720p · <b>cam_show_replay_9.wmv</b></div></div>
+            <div class="card"><div class="art a5" style="--x1:60%;--y1:70%"><span class="badge-time">21:40</span></div><div class="card-cap">1080p · <b>duo_paris_night.mp4</b></div></div>
+            <div class="card"><div class="art a4" style="--x1:25%;--y1:30%"><span class="badge-time">16:03</span></div><div class="card-cap">4K · <b>milf_casting_summer_04.mp4</b></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formats -->
+  <section class="section-tight" aria-label="Supported formats">
+    <div class="container">
+      <div class="formats reveal">
+        <span class="formats-label">Your videos downloaded from tube sites, your packs, your photos: on a local drive, an external drive or a NAS</span>
+        <b>MP4</b><b>MKV</b><b>MOV</b><b>AVI</b><b>WMV</b><b>WEBM</b><b>FLV</b><b>TS</b><span class="formats-sep" aria-hidden="true"></span><b>JPEG</b><b>PNG</b><b>WEBP</b><b>HEIC</b><b>GIF</b><b>TIFF</b>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ================================================================ THE PROBLEM -->
+  <section class="section" id="constat">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">The problem</span>
+        <h2 class="h2 reveal" data-delay="1">A porn collection grows.<br><em>So does the mess.</em></h2>
+        <p class="lead reveal" data-delay="2">Years of downloads from tube sites, entire packs, scenes grabbed on the fly, drives filling up. Regular video players were never designed for porn.</p>
+      </div>
+      <div class="pains">
+        <article class="pain reveal">
+          <div class="pain-ico"><svg><use href="#i-folders"/></svg></div>
+          <h3>Endless folders</h3>
+          <p><code>To sort</code>, <code>Amateur 2</code>, <code>New folder (37)</code>… You know the scene is in there somewhere. You just don't know where anymore.</p>
+        </article>
+        <article class="pain reveal" data-delay="1">
+          <div class="pain-ico"><svg><use href="#i-play"/></svg></div>
+          <h3>Open it to find out</h3>
+          <p><code>scene_0412_final.mp4</code> tells you neither who nor what. You have to launch every video, skip ahead, close it, start over. The mood is gone before you find it.</p>
+        </article>
+        <article class="pain reveal" data-delay="2">
+          <div class="pain-ico"><svg><use href="#i-copy"/></svg></div>
+          <h3>Duplicates everywhere</h3>
+          <p>The same scene downloaded from three tube sites, in 720p, 1080p and 4K, under three different names. Hundreds of gigabytes for nothing.</p>
+        </article>
+        <article class="pain reveal" data-delay="3">
+          <div class="pain-ico"><svg><use href="#i-door"/></svg></div>
+          <h3>The fear of being seen</h3>
+          <p>A door opening, a shared screen, a player showing your latest porn videos on its home screen. With porn, discretion is not a detail.</p>
+        </article>
+      </div>
+      <p class="answer reveal"><img src="/assets/img/prisme.png" alt="" width="40" height="40">Prisme was designed for these four problems.</p>
+    </div>
+  </section>
+
+  <!-- ================================================================ DEMO -->
+  <section class="section" id="demo" style="padding-top:0">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow reveal">Interactive demo</span>
+        <h2 class="h2 reveal" data-delay="1">Try it. <em>Right here, right now.</em></h2>
+        <p class="lead reveal" data-delay="2">Here is Prisme's video view, with videos to file by category. Press <kbd>6</kbd> <kbd>7</kbd> <kbd>8</kbd> to file (in Prisme, up to 30 customizable shortcuts), <kbd>Del</kbd> to discard, <kbd>Space</kbd> to skip, <kbd>1</kbd> to add to favorites. Or click the buttons.</p>
+      </div>
+
+      <div class="demo-wrap reveal">
+        <div class="app demo-app" id="demoApp" tabindex="0" aria-label="Interactive demo: sort porn videos just like in Prisme. Use the keys 6, 7, 8, 9, Del, Space, 1 and Ctrl+Z.">
+          <div class="app-titlebar"><img src="/assets/img/prisme.png" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
+          <div class="app-header">
+            <div class="seg hide-sm"><span>Folders</span><span class="on">Videos</span><span>Keywords</span><span>Wall</span></div>
+            <span class="app-icon-btn"><svg><use href="#i-up"/></svg></span>
+            <div class="crumbs"><span class="hide-sm">Collection</span><i class="hide-sm">›</i><span class="hide-sm" data-demo="folder">To sort</span><i class="hide-sm">›</i><b data-demo="name">amateur_couple_weekend.mp4</b><span class="meta" data-demo="meta">2160p · 3.2 GB</span></div>
+          </div>
+          <div class="fiche">
+            <div class="player" id="demoPlayer">
+              <div class="art a1" data-demo="art"></div>
+              <span class="remain" data-demo="remain">−18:42</span>
+              <span class="res" data-demo="res">4K · amateur_couple_weekend.mp4</span>
+              <span class="bar"><i data-demo="bar"></i></span>
+              <span class="toast" data-demo="toast"></span>
+            </div>
+            <div class="strip" data-demo="strip">
+              <div class="art a1"><span>2:10</span></div>
+              <div class="art a1" style="--x1:60%"><span>7:45</span></div>
+              <div class="art a1" style="--x1:40%;--y1:70%"><span>12:20</span></div>
+              <div class="art a1" style="--x1:75%;--y1:30%"><span>17:02</span></div>
+              <div class="art a1" style="--x1:20%;--y1:55%"><span>22:40</span></div>
+            </div>
+          </div>
+          <div class="cmdbar">
+            <button class="cmd del" type="button" data-key="Delete"><b>Del</b><span>Trash</span></button>
+            <button class="cmd skip" type="button" data-key=" "><b>Space</b><span>Skip</span></button>
+            <button class="cmd" type="button" data-key="6"><b>6</b><span>Amateur</span></button>
+            <button class="cmd" type="button" data-key="7"><b>7</b><span>POV</span></button>
+            <button class="cmd" type="button" data-key="8"><b>8</b><span>MILF</span></button>
+            <button class="cmd" type="button" data-key="9"><b>9</b><span>Rewatch</span></button>
+            <button class="fav" type="button" data-demo="fav" aria-pressed="false"><svg><use href="#i-star"/></svg><span>Favorite</span></button>
+          </div>
+        </div>
+
+        <aside class="demo-side" aria-live="polite">
+          <span class="live-dot">Keyboard active</span>
+          <h3>Your categories</h3>
+          <p class="hint">In Prisme, up to 30 folders (categories, performers, studios…) each get their own key.</p>
+          <ul class="dest-list">
+            <li data-dest="6"><span class="kbd">6</span> Amateur <span class="count">0</span></li>
+            <li data-dest="7"><span class="kbd">7</span> POV <span class="count">0</span></li>
+            <li data-dest="8"><span class="kbd">8</span> MILF <span class="count">0</span></li>
+            <li data-dest="9"><span class="kbd">9</span> Rewatch <span class="count">0</span></li>
+            <li data-dest="Delete" class="trash"><span class="kbd">Del</span> Trash <span class="count">0</span></li>
+          </ul>
+          <p class="demo-undo">Made a mistake? <kbd>Ctrl</kbd> + <kbd>Z</kbd> puts everything back.</p>
+          <div class="demo-stats">
+            <div><b data-demo="done">0</b>videos sorted</div>
+            <div><b data-demo="pace">—</b>per video</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ FEATURES -->
+  <section class="section" id="fonctionnalites" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Features</span>
+        <h2 class="h2 reveal" data-delay="1">Every detail designed to <em>sort, find and watch.</em></h2>
+        <p class="lead reveal" data-delay="2">Prisme isn't just another player. It's a tool dedicated to porn, refined gesture by gesture, so that nothing stands between the urge and the right scene.</p>
+      </div>
+
+      <div class="bento">
+        <article class="tile span-4 reveal">
+          <span class="tile-kicker">Lightning sorting</span>
+          <h3>One key, one decision, and the next one appears</h3>
+          <p><b>30 shortcuts, entirely yours.</b> You pick the key, you pick the folder it sends the video to: 6 to your amateur folder, 7 to POV, A to your favorite performer's folder, any folder in your collection. One key to add to favorites, one to discard, one to skip, and copying happens in the background. You never wait.</p>
+          <div class="tile-visual keys-demo" aria-hidden="true">
+            <span class="kbd k-gold">★ Favorite</span><span class="kbd k-amber">6 Amateur</span><span class="kbd k-amber">7 POV</span><span class="kbd k-amber">8 MILF</span><span class="kbd k-amber">A Lesbian</span>
+            <span class="kbd k-red">Discard</span><span class="kbd k-blue">Skip</span><span class="keys-more">… and up to 30 keys, each to the folder of your choice</span>
+          </div>
+        </article>
+
+        <article class="tile span-2 reveal" data-delay="1">
+          <span class="tile-kicker">Previews</span>
+          <h3>See everything without opening anything</h3>
+          <p>Click a folder: ten of its videos appear as thumbnails, from the first file to the last. Hover over one and a clip starts playing on a loop. During playback, five moments line up to the right of the picture, matched to scene changes: one click and you're there.</p>
+          <div class="tile-visual mini-strip" aria-hidden="true">
+            <div class="art a7"></div><div class="art a7 hot" style="--x1:60%"></div><div class="art a7" style="--x1:80%;--y1:60%"></div><div class="art a7" style="--x1:20%;--y1:70%"></div><div class="art a7" style="--x1:50%;--y1:20%"></div>
+          </div>
+        </article>
+
+        <article class="tile span-3 reveal">
+          <span class="tile-kicker">Right click</span>
+          <h3>The radial menu</h3>
+          <p>Right-click the picture: your first nine categories open in a circle around the mouse, like in a game. You file the scene without stopping playback, even on the Wall and in the floating player.</p>
+          <div class="tile-visual">
+            <div class="radial" aria-hidden="true">
+              <span class="center"></span>
+              <span class="opt" style="--a:0deg"><b>6</b> Amateur</span>
+              <span class="opt sel" style="--a:72deg"><b>7</b> POV</span>
+              <span class="opt" style="--a:144deg"><b>8</b> MILF</span>
+              <span class="opt" style="--a:216deg"><b>9</b> Rewatch</span>
+              <span class="opt" style="--a:288deg"><b>A</b> Lesbian</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="tile span-3 reveal" data-delay="1">
+          <span class="tile-kicker">Zoom</span>
+          <h3>6× zoom, right where you're looking</h3>
+          <p>Hold the click and scroll: the picture enlarges up to six times, centered exactly under the mouse. A right-click resets it. Without zoom, the wheel moves through the video, and dragging across the picture scrubs through all of it.</p>
+          <div class="tile-visual">
+            <div class="zoom-demo" aria-hidden="true"><div class="art a9"></div><span class="zlabel">×2.6</span></div>
+          </div>
+        </article>
+
+
+        <article class="tile span-6 tile-wide reveal">
+          <div>
+          <span class="tile-kicker">Automatic keywords</span>
+          <h3>Your porn categories create themselves</h3>
+          <p>Prisme reads your file names, and even the titles hidden in their metadata, splits them up intelligently and turns them into categories: amateur, POV, MILF, lesbian, casting, performer or studio names. Without typing a thing. Technical jargon (<em>1080p, x264, web…</em>) is set aside, and meaningless names (<em>0x56b47…, IMG_2041</em>) are gathered in “To sort”. Add your own keywords whenever you like.</p>
+          </div>
+          <div class="tile-visual tags-demo" aria-hidden="true">
+            <div class="fname"><em class="w1">Amateur</em><em class="w3">POV</em><em class="w2">Casting</em>_<s>1080p</s>_<s>x264</s>.mp4</div>
+            <div class="tag-row">
+              <span class="tag t1">Amateur <i>214</i></span>
+              <span class="tag t2">Casting <i>96</i></span>
+              <span class="tag t3">POV <i>71</i></span>
+              <span class="tag">MILF <i>58</i></span>
+              <span class="tag">Lesbian <i>43</i></span>
+            </div>
+          </div>
+        </article>
+        <article class="tile span-2 reveal">
+          <span class="tile-kicker">Favorites</span>
+          <h3>Your favorites, one click away</h3>
+          <p>Star a scene, a photo or a performer's folder, and it joins your favorites. A dedicated tab, right next to the Wall, brings them all together. They follow you even when you move the files.</p>
+          <div class="tile-visual fav-visual" aria-hidden="true"><span class="fav-star"><svg><use href="#i-star"/></svg></span><span class="seg"><span>Wall</span><span class="on">★ Favorites</span></span></div>
+        </article>
+
+        <article class="tile span-2 reveal" data-delay="1">
+          <span class="tile-kicker">Random</span>
+          <h3>Let yourself be surprised</h3>
+          <p>A random video from all your porn, <b>never the same one twice</b> until you've seen everything, or only from the open folder. And Burst mode moves on by itself after eight seconds without a decision.</p>
+        </article>
+
+        <article class="tile span-2 reveal" data-delay="2">
+          <span class="tile-kicker">Unwatched</span>
+          <h3>What you've never watched</h3>
+          <p>A filter keeps only what has been neither sorted nor watched for more than five seconds. Scenes forgotten at the bottom of the drive resurface, even on the Wall.</p>
+        </article>
+
+        <article class="tile span-6 tile-wide reveal">
+          <div>
+            <span class="tile-kicker">Floating player</span>
+            <h3>The video keeps playing, on top of everything else</h3>
+            <p>Opening a folder, a tube site in your browser? The video moves by itself into an always-on-top window, frameless, matching the picture's proportions, or on demand. Move it wherever you want, size it however you want, up to full screen. It resumes at the exact moment, and you can even sort from it.</p>
+          </div>
+          <div class="tile-visual">
+            <div class="desk" aria-hidden="true">
+              <div class="desk-win"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="desk-float"><div class="art a9"></div><span class="badge-time">−12:40</span><span class="bar"><i></i></span></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ SEARCH & DOWNLOAD -->
+  <section class="section" id="recherche" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Search &amp; download</span>
+        <h2 class="h2 reveal" data-delay="1">All your sites. <em>One single search.</em></h2>
+        <p class="lead reveal" data-delay="2">Save the sites where you find your porn, type what you're looking for: Prisme queries each of them with its own search, filters by duration and quality, and gathers every video found in a single window. Like a scene? One click, and it lands in your collection, in the best quality.</p>
+      </div>
+      <div class="ws-layout">
+        <div class="reveal">
+          <div class="app ws-app" role="img" aria-label="Prisme's video search: three sites queried, results as thumbnails, one download in progress">
+            <div class="app-titlebar"><img src="/assets/img/prisme.png" alt=""> Web video search <span class="win-ctrls"><i></i><i></i><i></i></span></div>
+            <div class="ws-body">
+              <aside class="ws-side">
+                <b>Sites</b>
+                <span class="ws-site on">site #1</span>
+                <span class="ws-site on">site #2</span>
+                <span class="ws-site on">site #3</span>
+                <span class="ws-site">site #4</span>
+                <b>Searches — one per line</b>
+                <span class="ws-query">casting amateur<br>pov 4k</span>
+                <span class="ws-filter">Minimum duration <i>10 min</i></span>
+                <span class="ws-filter">Minimum quality <i>1080p</i></span>
+                <span class="ws-filter">Per site <i>40</i></span>
+                <span class="ws-go">Search</span>
+              </aside>
+              <div class="ws-results">
+                <div class="ws-count">126 videos · 3 sites</div>
+                <div class="ws-grid">
+                  <div class="ws-card"><div class="art a2"><span class="ws-dur">24:10</span><span class="ws-q">1080p</span></div><em>site #1</em><span class="ws-btn">Download</span></div>
+                  <div class="ws-card"><div class="art a9"><span class="ws-dur">31:02</span><span class="ws-q">4K</span></div><em>site #3</em><span class="ws-btn prog"><i style="width:62%"></i>62%</span></div>
+                  <div class="ws-card"><div class="art a6"><span class="ws-dur">18:42</span><span class="ws-q">1080p</span></div><em>site #2</em><span class="ws-btn done">✓ In your collection</span></div>
+                  <div class="ws-card"><div class="art a10"><span class="ws-dur">41:05</span><span class="ws-q">4K</span></div><em>site #1</em><span class="ws-btn">Download</span></div>
+                  <div class="ws-card"><div class="art a4"><span class="ws-dur">12:36</span><span class="ws-q">1080p</span></div><em>site #2</em><span class="ws-btn">Download</span></div>
+                  <div class="ws-card"><div class="art a12"><span class="ws-dur">27:33</span><span class="ws-q">4K</span></div><em>site #3</em><span class="ws-btn">Download</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="checks ws-checks reveal" data-delay="1">
+          <li><svg><use href="#i-check"/></svg><span><b>Your sites, not ours</b>: as many as you want, checked or unchecked for each search.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Several searches at once</b>, one per line, with minimum duration and quality and the number of results you want.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>One-click download</b>, to the folder of your choice: the best quality available, picture and sound combined. You keep sorting in the meantime.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Even where the site doesn't allow downloads</b>: Prisme fetches the video's source file and saves it, in full.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Sites that ask for your age</b>: Prisme reuses the verification already done in your browser.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Found a video elsewhere?</b> Paste its link, and it lands in your collection.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ THE WALL -->
+  <section class="section" id="mur" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">The Wall</span>
+        <h2 class="h2 reveal" data-delay="1">Up to ten videos at once. <em>Each with its own player.</em></h2>
+        <p class="lead reveal" data-delay="2">The Wall shows two to ten scenes side by side, all playing at the same time. Perfect for vertical videos from amateurs and creators. Choose how many, choose the format, keep the ones that turn you on. Try it below.</p>
+      </div>
+      <div class="wall-layout">
+        <div class="reveal">
+          <div class="app wall-app" id="wallDemo">
+            <div class="app-titlebar"><img src="/assets/img/prisme.png" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
+            <div class="app-header wall-controls">
+              <div class="seg hide-sm"><span>Folders</span><span>Videos</span><span class="on">Wall</span><span>★ Favorites</span></div>
+              <span class="spacer"></span>
+              <div class="stepper" role="group" aria-label="Number of videos">
+                <button type="button" data-wall-step="-1" aria-label="One video fewer">−</button>
+                <b data-wall="count" aria-live="polite">5</b>
+                <button type="button" data-wall-step="1" aria-label="One more video">+</button>
+              </div>
+              <div class="seg seg-btn" role="group" aria-label="Video format">
+                <button type="button" data-wall-o="vertical" aria-pressed="true">Vertical</button>
+                <button type="button" data-wall-o="horizontal" aria-pressed="false">Horizontal</button>
+              </div>
+            </div>
+            <div class="wall" aria-label="The Wall: videos playing side by side"></div>
+          </div>
+        </div>
+        <ul class="checks wall-checks reveal" data-delay="1">
+          <li><svg><use href="#i-check"/></svg><span><b>2 to 10 videos on screen</b>: you choose how many.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Only vertical, or only horizontal</b>: the Wall picks the layout that shows the most picture and fills the screen. Or all formats mixed, if you prefer.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Each video has its own player</b>: pause with a click, skip ahead with the wheel, add to favorites, or swap in another one, without touching its neighbors. The sound follows the mouse.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Full screen</b>: the whole Wall, or a single video blown up.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Never the same one twice</b>: a video won't come back until all the others have played.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>“Unwatched”</b>: the Wall shows only what you've never watched or filed, to rediscover the depths of your collection.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ PHOTOS -->
+  <section class="section" id="photos" style="padding-top:0">
+    <div class="container">
+      <div class="feature">
+        <div class="feature-copy">
+          <span class="eyebrow reveal">Photos</span>
+          <h2 class="h2 reveal" data-delay="1">Your photos too. <em>With the same care.</em></h2>
+          <p class="lead reveal" data-delay="2">Galleries, packs, photos of your favorite creators: one click, and Prisme switches from your videos to your photos. The same lightning sorting, the same favorites, the same categories, and tools designed for still images.</p>
+        </div>
+        <div class="reveal" data-delay="1">
+          <div class="app" role="img" aria-label="Prisme's photo Wall: six photos in slideshows, side by side">
+            <div class="app-titlebar"><img src="/assets/img/prisme.png" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
+            <div class="app-header">
+              <span class="app-icon-btn kind"><svg><use href="#i-image"/></svg></span>
+              <div class="seg"><span class="hide-sm">Folders</span><span class="hide-sm">Photos</span><span class="on">Wall</span></div>
+              <span class="spacer"></span>
+              <span class="chip hide-sm">Slideshow · 6 s</span>
+              <span class="chip on">− 6 +</span>
+            </div>
+            <div class="pwall">
+              <div class="ppanel" style="--o:0s"><div class="art a9"></div><div class="art a4"></div><div class="art a5"></div></div>
+              <div class="ppanel" style="--o:-1.6s"><div class="art a12"></div><div class="art a7"></div><div class="art a2"></div></div>
+              <div class="ppanel" style="--o:-3.1s"><div class="art a3"></div><div class="art a11"></div><div class="art a6"></div></div>
+              <div class="ppanel" style="--o:-5.2s"><div class="art a10"></div><div class="art a1"></div><div class="art a8"></div></div>
+              <div class="ppanel" style="--o:-7.4s"><div class="art a5"></div><div class="art a9"></div><div class="art a12"></div></div>
+              <div class="ppanel" style="--o:-9.8s"><div class="art a2"></div><div class="art a10"></div><div class="art a3"></div></div>
+            </div>
+          </div>
+        </div>
+        <ul class="checks feature-more reveal" data-delay="3">
+            <li><svg><use href="#i-check"/></svg><span><b>Slideshow</b>: photos advance on their own, six seconds each or at the pace you choose. The wheel zooms.</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>The Wall in photos</b>: up to ten pictures side by side, each in its own slideshow.</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>Hover over a folder</b>: its photos cycle on its thumbnail, without opening it.</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>Two separate collections</b>: each with its own folders, favorites and keywords. A photo never ends up among the scenes.</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>Every format</b>, iPhone HEIC included, automatically turned upright.</span></li>
+          </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ DUPLICATES -->
+  <section class="section" id="doublons" style="padding-top:0">
+    <div class="container">
+      <div class="feature flip">
+        <div class="feature-copy">
+          <span class="eyebrow reveal">Duplicates</span>
+          <h2 class="h2 reveal" data-delay="1">Keep the best. <em>Free up the rest.</em></h2>
+          <p class="lead reveal" data-delay="2">Prisme spots the same scene grabbed from several tube sites, even renamed, even re-encoded in another quality. In each group, the best copy comes first: the highest resolution, then the largest file.</p>
+        </div>
+        <div class="reveal" data-delay="1">
+          <div class="app" role="img" aria-label="Duplicates: a group of three copies, the best one marked to keep, the other two checked">
+            <div class="app-titlebar"><img src="/assets/img/prisme.png" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
+            <div style="padding:16px;background:#16191e;display:grid;gap:10px">
+              <div style="font-size:12px;color:#8b94a1;line-height:1.5"><b style="color:#e9eef4;font-weight:600">41 duplicate groups</b> — 58 extra files, <span style="color:#4fc28a;font-weight:600">up to 212 GB to reclaim</span></div>
+              <div class="dupe-row" style="background:#1a2a22;box-shadow:inset 0 0 0 1px rgba(79,194,138,.35)">
+                <div class="art a4" style="aspect-ratio:16/10;border-radius:6px"></div>
+                <div><b style="color:#fff;font-size:12.5px">milf_hotel_suite_4K.mp4</b><div style="color:#8b94a1;font-size:11px;margin-top:3px">2160p · 6.8 GB · 38:12</div></div>
+                <span style="font-size:11px;color:#4fc28a;font-weight:600;white-space:nowrap">✓ keep</span>
+              </div>
+              <div class="dupe-row" style="background:#1a1f27;box-shadow:inset 0 0 0 1px #2b323d">
+                <div class="art a4" style="aspect-ratio:16/10;border-radius:6px;filter:saturate(.7)"></div>
+                <div><b style="color:#cdd5df;font-size:12.5px">xhamster_milf_hotel (2).mp4</b><div style="color:#8b94a1;font-size:11px;margin-top:3px">1080p instead of 2160p · 3.7 GB less</div></div>
+                <span style="width:18px;height:18px;border-radius:5px;background:#ef6a5b;display:grid;place-items:center;color:#fff;font-size:11px">✓</span>
+              </div>
+              <div class="dupe-row" style="background:#1a1f27;box-shadow:inset 0 0 0 1px #2b323d">
+                <div class="art a4" style="aspect-ratio:16/10;border-radius:6px;filter:saturate(.5) blur(.5px)"></div>
+                <div><b style="color:#cdd5df;font-size:12.5px">MILF Hotel Suite 720p.avi</b><div style="color:#8b94a1;font-size:11px;margin-top:3px">720p instead of 2160p · 4.3 GB less</div></div>
+                <span style="width:18px;height:18px;border-radius:5px;background:#ef6a5b;display:grid;place-items:center;color:#fff;font-size:11px">✓</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:4px"><span class="chip">Not duplicates</span><span class="chip" style="background:#3a2226;color:#ffc2c7;box-shadow:inset 0 0 0 1px #8c3b52">Del · 2 checked</span></div>
+            </div>
+          </div>
+        </div>
+        <ul class="checks feature-more reveal" data-delay="3">
+            <li><svg><use href="#i-check"/></svg><span><b>Identical copies</b>: same size down to the byte, then three parts of the file compared (beginning, middle, end). Never blindly.</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>Other encodings</b>: recognized by their frames, with duration as a safeguard.</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>Nothing is deleted without you</b>: the best one is marked “✓ keep”, the others are checked, and you confirm. “Not duplicates” sets a group aside for good.</span></li>
+          </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ REMOTE ACCESS -->
+  <section class="section" id="distance" style="padding-top:0">
+    <div class="container">
+      <div class="feature">
+        <div class="feature-copy">
+          <span class="eyebrow reveal">Remote access</span>
+          <h2 class="h2 reveal" data-delay="1">Your collection, <em>in your pocket.</em></h2>
+          <p class="lead reveal" data-delay="2">From your phone or your TV, wherever you are, browse your folders and favorites, search and watch your videos while Prisme runs on your PC. Nothing is downloaded, nothing stays in your phone's gallery. Scan the QR code, enter your password, that's it.</p>
+        </div>
+        <div class="remote-visual reveal" data-delay="1">
+          <div class="phone" aria-hidden="true">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <div class="phone-head"><img src="/assets/img/prisme.png" alt=""> My porn <span>Connected</span></div>
+              <div class="phone-grid">
+                <div class="art a9"></div><div class="art a2"></div><div class="art a6"></div><div class="art a12"></div><div class="art a7"></div>
+              </div>
+            </div>
+          </div>
+          <div class="qr-card">
+            <div class="qr"><img src="/assets/img/qr-demo.svg" alt="Sample QR code" width="180" height="180"></div>
+            <p>Scan to open your collection on this phone.</p>
+            <div class="lock"><svg><use href="#i-lock"/></svg>HTTPS · password required</div>
+            <div class="access-log">
+              <div><b>iPhone · Safari</b><span>2 min ago</span></div>
+              <div><b>Android · Chrome</b><span>yesterday, 11:14 pm</span></div>
+            </div>
+          </div>
+        </div>
+        <ul class="checks feature-more reveal" data-delay="3">
+            <li><svg><use href="#i-check"/></svg><span><b>On the TV too</b>: the <a href="/en/tv.html" style="text-decoration:underline">Prisme TV</a> app (Android TV, Fire TV) finds your PC by itself; you approve it with one click, and control it with the remote.</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>Have a NAS?</b> Watch your videos even with the PC off, whenever you want, wherever you want, on all your screens.</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>No port to open</b> on your router: Prisme sets everything up for you.</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>Password-protected</b>, never stored in plain text.</span></li>
+            <li><svg><use href="#i-check"/></svg><span><b>Access log</b>: which device, from which address, when, and what was watched, for how long.</span></li>
+          </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ DISCRETION -->
+  <section class="section" id="discretion" style="padding-top:0">
+    <div class="container">
+      <div class="privacy">
+        <div class="privacy-grid">
+          <div>
+            <span class="eyebrow reveal">Total discretion</span>
+            <h2 class="h2 reveal" data-delay="1">Someone's coming? <em>They won't see a thing.</em></h2>
+            <p class="lead reveal" data-delay="2">One key, and your porn disappears behind a perfectly boring utility screen, right down to the window title and its icon. Every video pauses, menus close. Another key or a double-click, and everything comes back exactly where you left it, after your PIN if you've set one.</p>
+          </div>
+          <div class="quiet-wrap reveal" data-delay="2">
+            <div class="quiet-demo" id="quietDemo" role="button" tabindex="0" aria-label="Toggle discreet mode">
+              <div class="q-app">
+                <div class="art a1"></div><div class="art a2"></div><div class="art a9"></div><div class="art a4"></div>
+                <div class="art a5"></div><div class="art a7"></div><div class="art a3"></div><div class="art a12"></div>
+                <div class="art a10"></div><div class="art a11"></div><div class="art a6"></div><div class="art a8"></div>
+              </div>
+              <div class="q-neutral" aria-hidden="true">
+                <h4>Backup indexing</h4>
+                <div class="q-sub">Scan in progress — 5,572 items checked, last file type: .docx</div>
+                <div class="q-bar"><i></i></div>
+                <table>
+                  <tr><th>Volume</th><th>Items</th><th>Size</th><th>Last pass</th></tr>
+                  <tr><td>Templates</td><td>82,824</td><td>69.8 GB</td><td>Sep 28 14:44</td></tr>
+                  <tr><td>Correspondence</td><td>31,869</td><td>282.9 GB</td><td>Sep 28 05:14</td></tr>
+                  <tr><td>Resources</td><td>22,073</td><td>204.6 GB</td><td>Sep 26 05:09</td></tr>
+                  <tr><td>Accounting</td><td>53,673</td><td>269.6 GB</td><td>Sep 26 18:05</td></tr>
+                  <tr><td>System backup</td><td>44,285</td><td>275.5 GB</td><td>Sep 27 16:33</td></tr>
+                  <tr><td>Archives 2023</td><td>11,671</td><td>246.5 GB</td><td>Sep 27 18:26</td></tr>
+                </table>
+              </div>
+            </div>
+            <span class="quiet-key">Click to try</span>
+          </div>
+        </div>
+
+        <div class="privacy-points">
+          <div class="reveal"><h4><svg><use href="#i-eyeoff"/></svg>Even from another window</h4><p>A shortcut hides Prisme even when you're in another program, without ever bringing it to the front.</p></div>
+          <div class="reveal" data-delay="1"><h4><svg><use href="#i-cloud-off"/></svg>100% local, zero telemetry</h4><p>Your videos, photos, favorites and searches stay on your computer. No statistics, no tracking: nothing leaves, except what you open yourself, such as remote access. The license is checked on your PC, offline.</p></div>
+          <div class="reveal"><h4><svg><use href="#i-folders"/></svg>Nothing written to your folders</h4><p>Favorites, index and thumbnails live separately, in the app's data. Only the session trash, a hidden folder, slips in for the length of your session.</p></div>
+          <div class="reveal" data-delay="1"><h4><svg><use href="#i-shield"/></svg>Hidden folders</h4><p>Choose the folders to hide: they disappear from all of Prisme, the Wall and remote access included. On the drive, nothing moves.</p></div>
+          <div class="reveal"><h4><svg><use href="#i-lock"/></svg>PIN code</h4><p>Four digits, asked when Prisme opens, when leaving discreet mode and to show hidden folders again. After five wrong attempts, you have to wait.</p></div>
+          <div class="reveal" data-delay="1"><h4><svg><use href="#i-card"/></svg>Nothing on your statement</h4><p>A neutral descriptor on your bank statement, which reveals neither the content nor the nature of the software.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ PERFORMANCE -->
+  <section class="section" id="vitesse" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Built for big collections</span>
+        <h2 class="h2 reveal" data-delay="1">Hundreds of thousands of files. <em>Zero waiting.</em></h2>
+        <p class="lead reveal" data-delay="2">Prisme has been tested on real porn collections of several terabytes, stored on NAS drives. It remembers everything it has already seen, prepares previews in advance, starting with the page you're looking at, and only rereads the drive in the background.</p>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><b>0.07<small>s</small></b><span>to redisplay a page of 40 thumbnails already seen</span></div>
+        <div class="stat"><b>300,000+</b><span>videos: the index is built for this scale, everything reappears on launch</span></div>
+        <div class="stat"><b>30</b><span>customizable shortcuts, each to the folder of your choice</span></div>
+        <div class="stat"><b>10</b><span>videos at once on the Wall, each with its own player</span></div>
+      </div>
+      <div class="perf-compare reveal">
+        <div class="perf-row slow"><span>First opening of a page on a NAS</span><div class="track"><i></i></div><b>33 s</b></div>
+        <div class="perf-row fast"><span>Second opening, once previews are ready</span><div class="track"><i></i></div><b>0.07 s</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ SAFETY -->
+  <section class="section" id="securite" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Safety</span>
+        <h2 class="h2 reveal" data-delay="1">Sort fast, <em>without ever losing a thing.</em></h2>
+        <p class="lead reveal" data-delay="2">Going fast means being free to make mistakes. Every decision can be reversed, every transfer goes all the way.</p>
+      </div>
+      <div class="safety">
+        <article class="safe reveal"><span class="safe-ico"><svg><use href="#i-undo"/></svg></span><h3>Everything can be undone</h3><p>Moves, deletions, renames: one gesture goes back up to two hundred decisions, and everything returns to its place.</p></article>
+        <article class="safe reveal" data-delay="1"><span class="safe-ico"><svg><use href="#i-trash"/></svg></span><h3>A session trash</h3><p>What you discard waits in a dedicated trash, where one click brings it back, until you close Prisme. It then goes to the Windows Recycle Bin; on a NAS, which doesn't have one, it is deleted for good.</p></article>
+        <article class="safe reveal" data-delay="2"><span class="safe-ico"><svg><use href="#i-copy"/></svg></span><h3>Never overwritten</h3><p>A file with the same name already exists at the destination? The new one simply gets a suffix. Nothing is replaced.</p></article>
+        <article class="safe reveal"><span class="safe-ico"><svg><use href="#i-refund"/></svg></span><h3>Background transfers</h3><p>Copying continues while you sort, in the order of your decisions. When closing, Prisme waits until everything has arrived.</p></article>
+        <article class="safe reveal" data-delay="1"><span class="safe-ico"><svg><use href="#i-star"/></svg></span><h3>Your favorites follow you</h3><p>Move a folder, rename a video, restore it from the trash: it stays in your favorites. They are backed up at every launch.</p></article>
+        <article class="safe reveal" data-delay="2"><span class="safe-ico"><svg><use href="#i-pencil"/></svg></span><h3>Rename in place</h3><p>Finally give your files and folders real names, without leaving the video. The extension is preserved automatically.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ PRICING -->
+  <section class="section" id="tarifs" style="padding-top:0">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow reveal">Pricing</span>
+        <h2 class="h2 reveal" data-delay="1">Simple, clear, <em>no surprises.</em></h2>
+        <p class="lead reveal" data-delay="2">Every plan includes every feature: sorting, previews and the Wall, web search and download, keywords, duplicates and favorites, discreet mode and remote access.</p>
+      </div>
+
+      <div class="trial-note reveal">
+        <span class="trial-note-ico"><svg><use href="#i-download"/></svg></span>
+        <p><b>Try it first, free, for 14 days.</b> <a href="/en/download.html" data-link="trial">Download Prisme</a> and use it with every feature, no credit card required. When the trial ends, choose your plan: nothing is ever charged without you.</p>
+      </div>
+
+      <div class="plans">
+        <article class="plan reveal">
+          <h3>Monthly</h3>
+          <p class="plan-desc">To get started with no commitment.</p>
+          <div class="price"><b>$4.99</b><span>/ month</span></div>
+          <p class="price-sub">No commitment, cancel anytime</p>
+          <ul>
+            <li><svg><use href="#i-tick"/></svg>All features</li>
+            <li><svg><use href="#i-tick"/></svg>All updates included</li>
+            <li><svg><use href="#i-tick"/></svg>Up to 2 computers</li>
+            <li><svg><use href="#i-tick"/></svg>Email support</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="/en/download.html" data-link="subscribe" data-checkout="monthly">Choose monthly</a>
+        </article>
+
+        <article class="plan featured reveal" data-delay="1">
+          <span class="plan-flag">2 months free</span>
+          <h3>Yearly</h3>
+          <p class="plan-desc">The same subscription, two months cheaper.</p>
+          <div class="price"><b>$49.90</b><span>/ year</span></div>
+          <p class="price-sub">That's $4.16 a month · cancel anytime</p>
+          <ul>
+            <li><svg><use href="#i-tick"/></svg>All features</li>
+            <li><svg><use href="#i-tick"/></svg>All updates included</li>
+            <li><svg><use href="#i-tick"/></svg>Up to 2 computers</li>
+            <li><svg><use href="#i-tick"/></svg>Priority email support</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="/en/download.html" data-link="subscribe" data-checkout="yearly">Choose yearly</a>
+        </article>
+
+        <article class="plan reveal" data-delay="2">
+          <span class="plan-flag plan-flag-launch">Launch offer</span>
+          <h3>Lifetime</h3>
+          <p class="plan-desc">One payment, yours forever.</p>
+          <div class="price"><s aria-label="Price after launch: $149">$149</s><b>$99</b><span>one time</span></div>
+          <p class="price-sub">First customers only, $149 afterwards</p>
+          <ul>
+            <li><svg><use href="#i-tick"/></svg>All features</li>
+            <li><svg><use href="#i-tick"/></svg>Version 1 updates included</li>
+            <li><svg><use href="#i-tick"/></svg>Up to 2 computers</li>
+            <li><svg><use href="#i-tick"/></svg>Perpetual license, no subscription</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="/en/download.html" data-link="lifetime" data-checkout="lifetime">Buy the license</a>
+        </article>
+      </div>
+
+      <p class="checkout-error" data-checkout-error role="alert" hidden>The checkout page couldn't open. Please try again in a moment, or <a href="mailto:contact@prisme.app" data-link="contact">email us</a>.</p>
+
+      <div class="plans-foot reveal">
+        <span><svg><use href="#i-card"/></svg>Secure payment by Stripe</span>
+        <span><svg><use href="#i-eyeoff"/></svg>Discreet descriptor on your statement</span>
+        <span><svg><use href="#i-refund"/></svg>14-day money-back guarantee</span>
+        <span><svg><use href="#i-mail"/></svg>A real human answers your questions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ FAQ -->
+  <section class="section" id="faq" style="padding-top:0">
+    <div class="container faq-grid">
+      <div class="section-head">
+        <span class="eyebrow reveal">Frequently asked questions</span>
+        <h2 class="h2 reveal" data-delay="1">Everything you're <em>wondering about.</em></h2>
+        <p class="lead reveal" data-delay="2">Another question? Write to us, we answer every message.</p>
+        <p class="reveal" data-delay="3" style="margin-top:28px"><a class="btn btn-ghost" href="mailto:contact@prisme.app" data-link="contact"><svg><use href="#i-mail"/></svg>Write to us</a></p>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>Does Prisme send my videos anywhere?</summary>
+          <div class="answer-body"><p>No. Prisme runs entirely on your computer. Your videos, photos, favorites, searches and thumbnails never leave your machine, and there is no telemetry.</p><p>The only exceptions are the ones you choose: remote access, which only opens once you've set a password, goes through a secure address and can be switched off in one click; and web search, which only sends the words you search for, never anything from your collection.</p></div>
+        </details>
+        <details>
+          <summary>Does Prisme modify my files?</summary>
+          <div class="answer-body"><p>Only when you ask it to: moving, renaming or discarding a video. Everything else (favorites, index, thumbnails) is stored separately, in the app's data. Only the session trash, a hidden folder, settles into your collection for the length of the session, and disappears when Prisme closes.</p><p>And every action can be undone.</p></div>
+        </details>
+        <details>
+          <summary>My videos are on a NAS or an external drive. Does it work?</summary>
+          <div class="answer-body"><p>Yes, and that's exactly where Prisme makes the difference. It has been optimized and measured on collections stored on NAS drives: what it has already seen appears instantly, previews are prepared in advance, and the drive is only reread in the background.</p><p>Good to know: a NAS has no Windows Recycle Bin. What you discard there stays recoverable for the whole session, then is deleted for good when Prisme closes.</p></div>
+        </details>
+        <details>
+          <summary>Can I watch from my phone?</summary>
+          <div class="answer-body"><p>Yes, from anywhere: set a password, scan the QR code, and browse your folders, search and watch your videos in your phone's browser. Nothing is downloaded to the phone.</p><p>Your PC does the streaming: it must stay on, without going to sleep, with Prisme open. The screen itself can turn off. If your videos are on a NAS that can run Docker, you can also, optionally, publish the library there: it then stays reachable with the PC off.</p></div>
+        </details>
+        <details>
+          <summary>What about the TV?</summary>
+          <div class="answer-body"><p>Yes, with the Prisme TV app, for Android TV, Google TV and Fire TV. On first launch, it finds Prisme on your network: you approve the TV with one click on the PC, and that's it. After that, it opens straight onto your library, to browse and watch with the remote.</p><p>Like any adult app, it isn't offered in the app stores: it installs in a few minutes from a file. <a href="/en/tv.html" style="text-decoration:underline">See how to install it</a>.</p></div>
+        </details>
+        <details>
+          <summary>Which formats are supported?</summary>
+          <div class="answer-body"><p>For videos: MP4, M4V, MKV, MOV, AVI, WMV, FLV, WEBM, MPG, TS, M2TS, VOB, 3GP, OGV, RMVB, ASF, DivX and F4V. For photos: JPEG, PNG, WebP, HEIC, GIF, BMP and TIFF. Each file's resolution and orientation are detected automatically.</p></div>
+        </details>
+        <details>
+          <summary>Can I download videos from my sites?</summary>
+          <div class="answer-body"><p>Yes. Prisme's search queries the sites you've saved and gathers their videos in a single window; one click on “Download” files them into your collection, in the best quality, including from sites that don't offer a download button. You can also paste the link of a video found elsewhere.</p><p>As with any download, you remain responsible for how you use it, in keeping with the sites' terms and their creators' rights.</p></div>
+        </details>
+        <details>
+          <summary>Is it legal?</summary>
+          <div class="answer-body"><p>Yes. Watching and collecting porn as an adult is legal, and Prisme is just a tool to organize it. You remain responsible for the files you own: Prisme is intended for adults, for legal content involving only consenting adults.</p></div>
+        </details>
+        <details>
+          <summary>Does Prisme handle photos too?</summary>
+          <div class="answer-body"><p>Yes. One click switches Prisme from your videos to your photos, with the same sorting, the same favorites, a slideshow and the Wall. The two collections stay separate: each has its own folders, favorites and keywords.</p></div>
+        </details>
+        <details>
+          <summary>What system does Prisme run on?</summary>
+          <div class="answer-body"><p>Prisme is a Windows application (Windows 10 and 11). A recent graphics card isn't necessary: an ordinary computer is enough.</p></div>
+        </details>
+        <details>
+          <summary>What if someone walks into the room?</summary>
+          <div class="answer-body"><p>A single key instantly replaces Prisme with a perfectly boring utility screen and pauses every video, even if you're in another window. When you come back, everything resumes exactly where you left it. With a PIN, no one else can get back to your collection, or open Prisme while you're away.</p></div>
+        </details>
+        <details>
+          <summary>What happens when the trial ends?</summary>
+          <div class="answer-body"><p>Nothing automatic: no credit card is required for the trial, so no surprise charges. Prisme discreetly counts the remaining days at the top of the window. At the end, it asks for a license key: choose a plan, paste the key you receive, and you get everything back, settings and favorites included. Your folders are never touched.</p></div>
+        </details>
+        <details>
+          <summary>How does payment work?</summary>
+          <div class="answer-body"><p>On Stripe's secure checkout page, by card. We never see your card numbers. The receipt and invoice arrive right away by email, at the address of your choice.</p></div>
+        </details>
+        <details>
+          <summary>How do I manage or cancel my subscription?</summary>
+          <div class="answer-body"><p>From “My account”: enter the email address you paid with, and a sign-in link is sent to you. There you'll find your invoices, can change your card, or cancel in one click. Cancellation takes effect at the end of the period already paid, at no cost.</p></div>
+        </details>
+        <details>
+          <summary>Can I get a refund?</summary>
+          <div class="answer-body"><p>Yes. Within 14 days of your first payment, a simple email is enough: we refund you in full, no questions asked.</p></div>
+        </details>
+        <details>
+          <summary>What appears on my bank statement?</summary>
+          <div class="answer-body"><p>A neutral descriptor that mentions neither the content nor the nature of the software. Your invoice is available in your customer area.</p></div>
+        </details>
+        <details>
+          <summary>Is Prisme a porn site?</summary>
+          <div class="answer-body"><p>No. Prisme is neither a porn site nor a content subscription: it's software that organizes and plays the porn you already have on your drives. It doesn't host, sell or distribute any videos.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ FINAL CALL -->
+  <section class="final">
+    <div class="container">
+      <img class="reveal" src="/assets/img/prisme.png" alt="" width="84" height="84">
+      <h2 class="display reveal" data-delay="1" style="font-size:clamp(2.4rem,5.6vw,4.6rem)">Take back control<br>of your <em>porn.</em></h2>
+      <p class="lead reveal" data-delay="2">Install Prisme, point it at your folder, and within minutes rediscover scenes you'd forgotten you had.</p>
+      <div class="hero-actions reveal" data-delay="3">
+        <div>
+          <a class="btn btn-primary" href="/en/download.html" data-link="trial"><svg><use href="#i-download"/></svg>Try it free</a>
+          <span class="btn-note">14 days · no credit card</span>
+        </div>
+        <a class="btn btn-ghost" href="#tarifs">See pricing <svg><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#top"><img src="/assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="/assets/img/prism-lettrage.png" alt="Prism" width="97" height="14"></a>
+        <p>The Windows software to sort, organize and watch your porn collection, videos and photos. 100% local.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#fonctionnalites">Features</a></li>
+          <li><a href="#mur">The Wall</a></li>
+          <li><a href="#discretion">Discretion</a></li>
+          <li><a href="#tarifs">Pricing</a></li>
+          <li><a href="/en/tv.html">Prisme TV</a></li>
+          <li><a href="/en/download.html" data-link="trial">Download</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="mailto:contact@prisme.app" data-link="contact">Contact</a></li>
+          <li><a href="#tarifs" data-link="account">My account</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/en/legal-notice.html">Legal notice</a></li>
+          <li><a href="/en/terms.html">Terms of sale</a></li>
+          <li><a href="/en/privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span><span class="age-badge">18+</span>Adults only. Prisme is software: it does not host or provide any pornographic content.</span>
+      <span>© <span data-year>2026</span> Prisme. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

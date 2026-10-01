@@ -25,6 +25,6 @@ window.PRISME_CONFIG = {
   // Netlify (voir le README). Les boutons de tarifs ouvrent alors la page de
   // paiement Stripe ; à false, ils mènent à la page d'accès anticipé.
   checkout: false,
-  // Adresse de repli quand on refuse le contrôle d'âge
-  exitUrl: "https://www.google.fr/"
+  // Adresse de repli quand on refuse le contrôle d'âge, selon la langue de la page
+  exitUrl: { fr: "https://www.google.fr/", en: "https://www.google.com/" }
 };

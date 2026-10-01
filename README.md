@@ -18,6 +18,43 @@ ce qui tient la promesse « rien n'est envoyé » jusque sur le site.
 | `merci.html` | Retour de Stripe après un paiement |
 | `tv.html` | Installer Prisme TV sur la télé (Fire TV, Android TV) |
 | `404.html` | Page introuvable |
+| `en/…` | Les mêmes pages en anglais (voir Langues) |
+
+## Langues
+
+Le site existe en français (à la racine) et en anglais (dans `en/`), chaque page
+ayant sa jumelle :
+
+| Français | Anglais |
+|---|---|
+| `/` | `/en/` |
+| `/telecharger.html` | `/en/download.html` |
+| `/tv.html` | `/en/tv.html` |
+| `/merci.html` | `/en/thanks.html` |
+| `/cgv.html` | `/en/terms.html` |
+| `/confidentialite.html` | `/en/privacy.html` |
+| `/mentions-legales.html` | `/en/legal-notice.html` |
+
+**La bascule est automatique** : la fonction `netlify/edge-functions/langue.js`
+regarde la langue du navigateur avant d'envoyer la page. Français → pages
+françaises ; toute autre langue → pages anglaises (redirection 302 vers la même
+page, ancre et paramètres compris). Le lien **FR / EN** de l'en-tête fixe le
+choix pour un an (cookie `prisme-lang`), qui passe alors avant le navigateur.
+Les robots (Google, aperçus de liens) ne sont jamais redirigés : chaque version
+est indexée à sa propre adresse, et les balises `hreflang` des pages et du
+`sitemap.xml` les relient.
+
+**Une modification se fait dans les deux langues** : le texte change dans la
+page française et dans sa jumelle de `en/`. Les textes écrits par le script
+(démo, mode discret, paiement) sont dans `assets/js/site.js`, objet `TEXT`.
+
+**Ajouter une langue** (allemand, espagnol…) : copier `en/` vers `de/` et
+traduire ; ajouter la colonne `de` au tableau `PAGES` de `langue.js`, un bloc
+`de` à `TEXT` dans `site.js` et à `LOCALES` dans `netlify/lib/stripe.mjs` ;
+compléter les balises `hreflang`, le sélecteur de langue et le `sitemap.xml`.
+
+**Prix** : euros sur les pages françaises, dollars sur les pages anglaises, au
+même montant. Les deux sont portés par les mêmes prix Stripe (voir plus bas).
 
 ## Voir le site en local
 
@@ -77,8 +114,10 @@ entre son e-mail, reçoit un lien, et y trouve factures, carte et résiliation.
    STRIPE_SECRET_KEY=sk_test_… SITE_URL=https://www.prisme.app npm run stripe:setup
    ```
    Le script crée le produit et ses trois prix (4,99 €/mois, 49,90 €/an, 99 € une
-   fois, TTC, retrouvés par leur *lookup key* `prisme_mensuel`, `prisme_annuel`,
-   `prisme_a_vie`), active l'espace client et déclare le webhook.
+   fois, TTC, et le même montant en dollars pour les pages anglaises, retrouvés
+   par leur *lookup key* `prisme_mensuel`, `prisme_annuel`, `prisme_a_vie`),
+   active l'espace client et déclare le webhook. Sur un compte déjà préparé
+   avant la version anglaise, le relancer ajoute les montants en dollars.
    Il affiche l'adresse de l'espace client et le secret du webhook. On peut le
    relancer sans risque : il ne crée que ce qui manque. Pour changer un prix,
    modifier le montant dans `scripts/stripe-setup.mjs` et relancer le script :
@@ -142,10 +181,15 @@ la précédente, la télé reste appairée.
 
 Certains éléments sont des propositions commerciales, à confirmer ou corriger :
 
-- [ ] **Prix** : 4,99 €/mois, 49,90 €/an, 149 € à vie, vendue 99 € en offre de lancement
-      (`index.html`, section `#tarifs`, et `scripts/stripe-setup.mjs`). À la fin de l'offre :
-      passer `prisme_a_vie` à 14900 dans le script et le relancer, retirer le prix barré et
-      le bandeau « Offre de lancement », corriger les CGV.
+- [ ] **Prix** : 4,99 €/mois, 49,90 €/an, 149 € à vie, vendue 99 € en offre de lancement,
+      et les mêmes montants en dollars (`index.html` et `en/index.html`, section `#tarifs`,
+      et `scripts/stripe-setup.mjs`). À la fin de l'offre : passer `prisme_a_vie` à 14900
+      (euros et dollars) dans le script et le relancer, retirer le prix barré et le bandeau
+      « Offre de lancement » dans les deux langues, corriger les CGV.
+- [ ] **Logiciel en anglais** : les pages anglaises citent les menus de Prisme et de
+      Prisme TV en anglais (« Trial », ⋯ › Help › License…, Remote sharing…). Ils doivent
+      exister tels quels dans les deux applications, sinon corriger `en/thanks.html` et
+      `en/tv.html`.
 - [ ] **Promesses** : essai 14 jours sans carte, 2 ordinateurs par licence,
       satisfait ou remboursé 14 jours, libellé bancaire discret, support par e-mail
 - [ ] **Nom de domaine** : `prisme.app` est utilisé partout en attendant
@@ -190,12 +234,15 @@ Certains éléments sont des propositions commerciales, à confirmer ou corriger
 assets/
   css/site.css      toute la mise en forme
   js/config.js      liens de vente et de contact
-  js/site.js        contrôle d'âge, navigation, démo, mode discret, formulaire, paiement
+  js/site.js        contrôle d'âge, navigation, démo, mode discret, formulaire, paiement,
+                    et leurs textes en français et en anglais
   fonts/            Inter, Instrument Serif, JetBrains Mono (licence OFL)
   img/              logo, icônes, image de partage
+en/                 les pages en anglais
 netlify/
+  edge-functions/   langue.js : chaque visiteur vers les pages de sa langue
   functions/        checkout, session, webhook, licence : paiement et licences
-  lib/stripe.mjs    formules, client Stripe, événements suivis
+  lib/stripe.mjs    formules, monnaie et pages de retour par langue, client Stripe, événements suivis
   lib/licence.mjs   fabrication et lecture des clés de licence
 scripts/
   stripe-setup.mjs  prépare le compte Stripe (produit, prix, espace client, webhook)
