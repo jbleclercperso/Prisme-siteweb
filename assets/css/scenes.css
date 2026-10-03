@@ -1,0 +1,20 @@
+/* Fausses photos de drone et de voyage (fabriquées, aucune image empruntée).
+   Elles remplacent les taches de couleur de .art ; le lent travelling imite un plan de drone. */
+.art[class*=' s'] { background-color: #0b0c10; background-size: 128% 128%; background-position: 50% 50%;
+  background-repeat: no-repeat; animation: flyover var(--dur, 16s) ease-in-out infinite alternate; }
+@keyframes flyover { from { background-position: 15% 25%; background-size: 124% 124%; }
+  to { background-position: 85% 75%; background-size: 138% 138%; } }
+.art[class*=' s']::after { background: radial-gradient(130% 100% at 50% 40%, transparent 62%, rgba(0,0,0,.3)); }
+.art.s1 { background-image: url("../img/scenes/s1.jpg"); --dur: 16s; }
+.art.s2 { background-image: url("../img/scenes/s2.jpg"); --dur: 19s; }
+.art.s3 { background-image: url("../img/scenes/s3.jpg"); --dur: 14s; }
+.art.s4 { background-image: url("../img/scenes/s4.jpg"); --dur: 21s; }
+.art.s5 { background-image: url("../img/scenes/s5.jpg"); --dur: 17s; }
+.art.s6 { background-image: url("../img/scenes/s6.jpg"); --dur: 15s; }
+.art.s7 { background-image: url("../img/scenes/s7.jpg"); --dur: 20s; }
+.art.s8 { background-image: url("../img/scenes/s8.jpg"); --dur: 18s; }
+.art.s9 { background-image: url("../img/scenes/s9.jpg"); --dur: 16s; }
+.art.s10 { background-image: url("../img/scenes/s10.jpg"); --dur: 22s; }
+.art.s11 { background-image: url("../img/scenes/s11.jpg"); --dur: 15s; }
+.art.s12 { background-image: url("../img/scenes/s12.jpg"); --dur: 19s; }
+@media (prefers-reduced-motion: reduce) { .art[class*=' s'] { animation: none; } }
