@@ -1,5 +1,7 @@
-# Déploiement Netlify : pages statiques, sans étape de construction, et trois
-# fonctions pour le paiement Stripe (netlify/functions, servies sous /api/…).
+# Déploiement Netlify : pages statiques, sans étape de construction, des
+# fonctions pour le paiement Stripe (netlify/functions, servies sous /api/…),
+# et une fonction « edge » qui envoie chaque visiteur vers les pages de sa
+# langue (netlify/edge-functions/langue.js).
 [build]
   publish = "."
 
@@ -9,6 +11,13 @@
 
 # Le site est publié depuis la racine du dépôt : ce qui n'est pas une page
 # (dépendances, fonctions, scripts, notes) ne doit pas être servi.
+# Une page anglaise introuvable : la page 404 en anglais. Sans « force »,
+# la règle ne joue que lorsque le fichier n'existe pas.
+[[redirects]]
+  from = "/en/*"
+  to = "/en/404.html"
+  status = 404
+
 # Prisme TV : l'adresse courte à taper dans Downloader, sur la télé.
 [[redirects]]
   from = "/tv.apk"

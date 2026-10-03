@@ -1,18 +1,25 @@
 // Ouvre une page de paiement Stripe Checkout pour l'une des trois formules.
 //
-// POST /api/checkout  { "plan": "monthly" | "yearly" | "lifetime" }
+// POST /api/checkout  { "plan": "monthly" | "yearly" | "lifetime", "lang": "fr" | "en",
+//                       "currency": "eur" | "usd" }
+// La monnaie est celle que la page a affichée ; à défaut, celle du pays.
 //   → 200 { "url": "https://checkout.stripe.com/…" }
-import { PLANS, json, siteOrigin, stripeClient } from "../lib/stripe.mjs";
+import { CURRENCIES, currencyFor } from "../lib/monnaie.mjs";
+import { LOCALES, PLANS, json, siteOrigin, stripeClient } from "../lib/stripe.mjs";
 
-export default async (req) => {
+export default async (req, context) => {
   if (req.method !== "POST") return json(405, { error: "method" });
 
   const stripe = stripeClient();
   if (!stripe) return json(503, { error: "not_configured" });
 
-  let plan;
+  let plan, site, currency;
   try {
-    plan = PLANS[(await req.json()).plan];
+    const body = await req.json();
+    const lang = LOCALES[body.lang] ? body.lang : "fr";
+    plan = PLANS[body.plan];
+    site = LOCALES[lang];
+    currency = CURRENCIES[lang].includes(body.currency) ? body.currency : currencyFor(lang, context.geo?.country?.code);
   } catch {
     plan = undefined;
   }
@@ -27,14 +34,15 @@ export default async (req) => {
     const params = {
       mode: plan.mode,
       line_items: [{ price: price.id, quantity: 1 }],
-      locale: "fr",
-      success_url: `${origin}/merci.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/index.html#tarifs`,
+      currency,
+      locale: site.locale,
+      success_url: `${origin}${site.success}?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}${site.cancel}`,
       allow_promotion_codes: true,
       billing_address_collection: "auto",
       custom_text: {
         submit: {
-          message: "En payant, vous acceptez les conditions de vente de Prisme et demandez l'accès immédiat au logiciel. Satisfait ou remboursé pendant 14 jours.",
+          message: site.submit,
         },
       },
       metadata: { plan: plan.lookupKey },

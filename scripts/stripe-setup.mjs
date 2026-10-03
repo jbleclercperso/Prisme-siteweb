@@ -6,7 +6,9 @@
 // Crée ce qui manque, et laisse tel quel ce qui existe déjà : on peut le
 // relancer sans risque, en mode test puis en mode réel (sk_live_…).
 //   1. le produit « Prisme » et ses trois prix (4,99 €/mois, 49,90 €/an,
-//      99 € une fois, TTC), retrouvés ensuite par leur lookup key. Si le montant a changé ici, un nouveau prix
+//      99 € une fois, TTC), chacun avec le même montant en dollars pour la
+//      version anglaise du site, retrouvés ensuite par leur lookup key. Si le
+//      montant en euros a changé ici, un nouveau prix
 //      reprend la lookup key et l'ancien est désactivé : les abonnements
 //      déjà en cours gardent leur prix d'origine ;
 //   2. l'espace client (portail Stripe) : factures, carte, résiliation, et
@@ -16,11 +18,14 @@
 import Stripe from "stripe";
 import { PLANS, WEBHOOK_EVENTS } from "../netlify/lib/stripe.mjs";
 
+// unit_amount en centimes d'euro, usd en cents : le même chiffre, pour
+// les pages anglaises (netlify/lib/stripe.mjs, LOCALES).
 const PRICES = {
-  [PLANS.monthly.lookupKey]: { unit_amount: 499, recurring: { interval: "month" }, nickname: "Prisme mensuel" },
-  [PLANS.yearly.lookupKey]: { unit_amount: 4990, recurring: { interval: "year" }, nickname: "Prisme annuel" },
-  [PLANS.lifetime.lookupKey]: { unit_amount: 9900, nickname: "Prisme à vie" },
+  [PLANS.monthly.lookupKey]: { unit_amount: 499, usd: 499, recurring: { interval: "month" }, nickname: "Prisme mensuel" },
+  [PLANS.yearly.lookupKey]: { unit_amount: 4990, usd: 4990, recurring: { interval: "year" }, nickname: "Prisme annuel" },
+  [PLANS.lifetime.lookupKey]: { unit_amount: 9900, usd: 9900, nickname: "Prisme à vie" },
 };
+const inDollars = (usd) => ({ usd: { unit_amount: usd, tax_behavior: "inclusive" } });
 
 const key = process.env.STRIPE_SECRET_KEY;
 if (!key) {
@@ -33,7 +38,9 @@ const live = key.startsWith("sk_live_");
 console.log(`Compte Stripe en mode ${live ? "RÉEL" : "test"}.\n`);
 
 // 1. Produit et prix
-const existing = await stripe.prices.list({ lookup_keys: Object.keys(PRICES), active: true, limit: 10 });
+const existing = await stripe.prices.list({
+  lookup_keys: Object.keys(PRICES), active: true, limit: 10, expand: ["data.currency_options"],
+});
 const found = new Map(existing.data.map((p) => [p.lookup_key, p]));
 let product = existing.data[0]?.product;
 if (!product) {
@@ -48,12 +55,18 @@ if (!product) {
   })).id;
   console.log("Produit créé :", product);
 }
-for (const [lookupKey, spec] of Object.entries(PRICES)) {
+for (const [lookupKey, { usd, ...spec }] of Object.entries(PRICES)) {
   const old = found.get(lookupKey);
   const same = old && old.unit_amount === spec.unit_amount
     && (old.recurring?.interval || null) === (spec.recurring?.interval || null);
   if (same) {
-    console.log(`Prix ${lookupKey} : déjà là (${old.id})`);
+    // Le montant en dollars, lui, se modifie sur place.
+    if (old.currency_options?.usd?.unit_amount === usd) {
+      console.log(`Prix ${lookupKey} : déjà là (${old.id})`);
+    } else {
+      await stripe.prices.update(old.id, { currency_options: inDollars(usd) });
+      console.log(`Prix ${lookupKey} : déjà là (${old.id}), montant en dollars posé à ${usd / 100} $`);
+    }
     continue;
   }
   // Un prix Stripe ne se modifie pas : on en crée un nouveau, qui reprend la
@@ -64,6 +77,7 @@ for (const [lookupKey, spec] of Object.entries(PRICES)) {
     tax_behavior: "inclusive",
     lookup_key: lookupKey,
     transfer_lookup_key: Boolean(old),
+    currency_options: inDollars(usd),
     ...spec,
   });
   if (old) {
@@ -78,7 +92,9 @@ for (const [lookupKey, spec] of Object.entries(PRICES)) {
 const configs = await stripe.billingPortal.configurations.list({ is_default: true, limit: 1 });
 const portalSettings = {
   business_profile: {
-    headline: "Prisme — votre abonnement, vos factures",
+    // Une seule page pour toutes les langues : le reste du portail suit la
+    // langue du navigateur.
+    headline: "Prisme — abonnement et factures · subscription & invoices",
     ...(site && { privacy_policy_url: `${site}/confidentialite.html`, terms_of_service_url: `${site}/cgv.html` }),
   },
   features: {
