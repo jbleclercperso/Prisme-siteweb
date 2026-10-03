@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Prisme — The software to sort and watch your porn collection</title>
-  <meta name="description" content="Prisme is the Windows software built for porn collections, videos and photos: ten previews at a glance, one key to file, automatic keywords, the Wall, slideshow, floating player, duplicates, discreet mode. 100% local.">
+  <meta name="description" content="Prisme is the Windows software built for porn collections, videos and photos: previews on hover, one key to file, automatic keywords, the Wall, slideshow, floating player, duplicates, repair of damaged videos, discreet mode. 100% local.">
   <meta name="rating" content="adult">
   <meta name="theme-color" content="#07080b">
   <link rel="canonical" href="https://www.prisme.app/en/">
@@ -155,7 +155,7 @@
         <ul class="trust-row reveal" data-delay="4">
           <li><svg><use href="#i-cloud-off"/></svg>100% local, nothing is sent</li>
           <li><svg><use href="#i-eyeoff"/></svg>Discreet mode in one key</li>
-          <li><svg><use href="#i-shield"/></svg>Nothing is ever deleted by mistake</li>
+          <li><svg><use href="#i-undo"/></svg>Every decision can be undone</li>
         </ul>
       </div>
 
@@ -259,11 +259,11 @@
       <div class="section-head center">
         <span class="eyebrow reveal">Interactive demo</span>
         <h2 class="h2 reveal" data-delay="1">Try it. <em>Right here, right now.</em></h2>
-        <p class="lead reveal" data-delay="2">Here is Prisme's video view, with videos to file by category. Press <kbd>6</kbd> <kbd>7</kbd> <kbd>8</kbd> to file (in Prisme, up to 30 customizable shortcuts), <kbd>Del</kbd> to discard, <kbd>Space</kbd> to skip, <kbd>1</kbd> to add to favorites. Or click the buttons.</p>
+        <p class="lead reveal" data-delay="2">Here is Prisme's video view, with its real gestures. Press <kbd>6</kbd> <kbd>7</kbd> <kbd>8</kbd> to file (in Prisme, up to 30 customizable shortcuts), <kbd>Del</kbd> to discard, <kbd>Space</kbd> to skip, <kbd>1</kbd> to add to favorites. Click the picture, drag across it, right-click, hold <kbd>Shift</kbd>.</p>
       </div>
 
       <div class="demo-wrap reveal">
-        <div class="app demo-app" id="demoApp" tabindex="0" aria-label="Interactive demo: sort porn videos just like in Prisme. Use the keys 6, 7, 8, 9, Del, Space, 1 and Ctrl+Z.">
+        <div class="app demo-app" id="demoApp" tabindex="0" aria-label="Interactive demo: sort porn videos just like in Prisme. Keys 6, 7, 8, 9, Del, Space, Enter, 1, arrows, Shift and Ctrl+Z; click, drag, right-click, scroll wheel and double-click on the picture.">
           <div class="app-titlebar"><img src="/assets/img/prisme.png" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
           <div class="app-header">
             <div class="seg hide-sm"><span>Folders</span><span class="on">Videos</span><span>Keywords</span><span>Wall</span></div>
@@ -300,7 +300,6 @@
         <aside class="demo-side" aria-live="polite">
           <span class="live-dot">Keyboard active</span>
           <h3>Your categories</h3>
-          <p class="hint">In Prisme, up to 30 folders (categories, performers, studios…) each get their own key.</p>
           <ul class="dest-list">
             <li data-dest="6"><span class="kbd">6</span> Amateur <span class="count">0</span></li>
             <li data-dest="7"><span class="kbd">7</span> POV <span class="count">0</span></li>
@@ -309,12 +308,20 @@
             <li data-dest="Delete" class="trash"><span class="kbd">Del</span> Trash <span class="count">0</span></li>
           </ul>
           <p class="demo-undo">Made a mistake? <kbd>Ctrl</kbd> + <kbd>Z</kbd> puts everything back.</p>
+          <ul class="gestures">
+            <li><b>Click</b> pause · <b>drag</b> scrub forward or back</li>
+            <li><b>Wheel</b> 5 s · <b>Shift + ← →</b> 10 s</li>
+            <li><b>Right-click</b> file it, from a ring menu</li>
+            <li><b>Hold Shift</b>: nine moments</li>
+            <li><b>Double-click</b> full screen · <b>← →</b> previous, next</li>
+          </ul>
           <div class="demo-stats">
             <div><b data-demo="done">0</b>videos sorted</div>
             <div><b data-demo="pace">—</b>per video</div>
           </div>
         </aside>
       </div>
+      <p class="demo-note">Browser demo: images stand in for your videos.</p>
     </div>
   </section>
 
@@ -339,9 +346,9 @@
         </article>
 
         <article class="tile span-2 reveal" data-delay="1">
-          <span class="tile-kicker">Previews</span>
+          <span class="tile-kicker">Previews &amp; video view</span>
           <h3>See everything without opening anything</h3>
-          <p>Click a folder: ten of its videos appear as thumbnails, from the first file to the last. Hover over one and a clip starts playing on a loop. During playback, five moments line up to the right of the picture, matched to scene changes: one click and you're there.</p>
+          <p>Hover over a folder: up to ten previews of its videos play on its thumbnail. Hover over a video: a clip starts playing on a loop. In its video view, five moments line up to the right of the picture, matched to scene changes: hover over one and playback jumps there. Hold Shift, and nine moments cover the picture.</p>
           <div class="tile-visual mini-strip" aria-hidden="true">
             <div class="art a7"></div><div class="art a7 hot" style="--x1:60%"></div><div class="art a7" style="--x1:80%;--y1:60%"></div><div class="art a7" style="--x1:20%;--y1:70%"></div><div class="art a7" style="--x1:50%;--y1:20%"></div>
           </div>
@@ -364,11 +371,11 @@
         </article>
 
         <article class="tile span-3 reveal" data-delay="1">
-          <span class="tile-kicker">Zoom</span>
-          <h3>6× zoom, right where you're looking</h3>
-          <p>Hold the click and scroll: the picture enlarges up to six times, centered exactly under the mouse. A right-click resets it. Without zoom, the wheel moves through the video, and dragging across the picture scrubs through all of it.</p>
-          <div class="tile-visual">
-            <div class="zoom-demo" aria-hidden="true"><div class="art a9"></div><span class="zlabel">×2.6</span></div>
+          <span class="tile-kicker">Multiple locations</span>
+          <h3>Your PC, external drive and NAS, all in one place</h3>
+          <p>Tick the locations you want to see: their folders and videos show up together, in every tab. Unplug a drive or switch off the NAS and it drops out of the lists, then comes back with everything Prisme knew about it.</p>
+          <div class="tile-visual roots-demo" aria-hidden="true">
+            <span class="root on"><i>✓</i>NAS</span><span class="root on"><i>✓</i>External drive</span><span class="root"><i></i>PC</span><span class="root-count">⌂ 2/3</span>
           </div>
         </article>
 
@@ -390,23 +397,44 @@
             </div>
           </div>
         </article>
-        <article class="tile span-2 reveal">
+        <article class="tile span-6 tile-wide reveal">
+          <div>
+            <span class="tile-kicker">AI Lab · beta</span>
+            <h3>Describe the scene, Prisme finds it</h3>
+            <p>“Redhead in the shower”, “outdoors, by a pool”: Prisme looks at the frames of your videos and shows you the ones closest to your words, at the exact moment. Dictate it if you prefer. And one click on ✦ turns the list into videos that look like the one you're watching, across all your folders. Everything is computed on your PC: nothing goes out to the Internet.</p>
+          </div>
+          <div class="tile-visual ai-demo" aria-hidden="true">
+            <div class="ai-query">redhead in the shower</div>
+            <div class="ai-results">
+              <div class="art a3"><b>0:42</b></div><div class="art a9"><b>12:08</b></div><div class="art a5"><b>3:15</b></div><div class="art a7"><b>21:40</b></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tile span-3 reveal">
           <span class="tile-kicker">Favorites</span>
           <h3>Your favorites, one click away</h3>
           <p>Star a scene, a photo or a performer's folder, and it joins your favorites. A dedicated tab, right next to the Wall, brings them all together. They follow you even when you move the files.</p>
           <div class="tile-visual fav-visual" aria-hidden="true"><span class="fav-star"><svg><use href="#i-star"/></svg></span><span class="seg"><span>Wall</span><span class="on">★ Favorites</span></span></div>
         </article>
 
-        <article class="tile span-2 reveal" data-delay="1">
-          <span class="tile-kicker">Random</span>
-          <h3>Let yourself be surprised</h3>
-          <p>A random video from all your porn, <b>never the same one twice</b> until you've seen everything, or only from the open folder. And Burst mode moves on by itself after eight seconds without a decision.</p>
+        <article class="tile span-3 reveal" data-delay="1">
+          <span class="tile-kicker">Undo</span>
+          <h3>Everything can be undone, even at full speed</h3>
+          <p>Moves, deletions, renames: Ctrl+Z goes back up to two hundred decisions. What you discard waits in the session trash, where one click brings it back for as long as Prisme is open.</p>
+          <div class="tile-visual undo-demo" aria-hidden="true"><span class="kbd">Ctrl</span><span class="kbd">Z</span><span class="trash-pill"><svg><use href="#i-trash"/></svg>Session trash · 12 · 3.48 GB</span></div>
         </article>
 
-        <article class="tile span-2 reveal" data-delay="2">
-          <span class="tile-kicker">Unwatched</span>
-          <h3>What you've never watched</h3>
-          <p>A filter keeps only what has been neither sorted nor watched for more than five seconds. Scenes forgotten at the bottom of the drive resurface, even on the Wall.</p>
+        <article class="tile span-6 tile-wide reveal">
+          <div>
+            <span class="tile-kicker">Repair</span>
+            <h3>Repair damaged videos</h3>
+            <p>Blocks of color, frozen frames, a video that won't open anymore: Prisme finds the damaged sections and rebuilds them, often with no loss at all. The original stays untouched, and you compare before and after, side by side.</p>
+          </div>
+          <div class="tile-visual repair-demo" aria-hidden="true">
+            <figure><div class="art a5 broken"></div><figcaption>Before · 3 damaged sections</figcaption></figure>
+            <figure><div class="art a5"></div><figcaption>After · rebuilt</figcaption></figure>
+          </div>
         </article>
 
         <article class="tile span-6 tile-wide reveal">
@@ -423,6 +451,27 @@
           </div>
         </article>
 
+      </div>
+
+      <div class="also reveal">
+        <h3>And also</h3>
+        <ul>
+          <li><b>Random without repeats</b>: never the same one twice until you've seen them all</li>
+          <li><b>Unwatched</b>: only what has been neither sorted nor watched</li>
+          <li><b>Filters and sorting</b>: vertical, horizontal, duration, resolution, date, size</li>
+          <li><b>6× zoom</b>, centered under the mouse</li>
+          <li><b>Full screen</b> with a double-click</li>
+          <li><b>Rename in place</b> with F2, without leaving the video</li>
+          <li><b>Never overwritten</b>: a name already taken gets a suffix</li>
+          <li><b>Background transfers</b>: you keep sorting while files copy</li>
+          <li><b>Side player</b>, to the right of the thumbnails</li>
+          <li><b>Ultra sort</b>: left-click to keep, right-click to delete</li>
+          <li><b>Destination tree</b>, to file with one click</li>
+          <li><b>Scene detection</b>, for more telling previews</li>
+          <li><b>Folder covers</b> that change every time you pass by</li>
+          <li><b>“Names with no words”</b>: your IMG_2041s and GX010123s gathered together</li>
+          <li><b>Burst</b>: the next one comes up by itself after eight seconds</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -679,52 +728,40 @@
 
         <div class="privacy-points">
           <div class="reveal"><h4><svg><use href="#i-eyeoff"/></svg>Even from another window</h4><p>A shortcut hides Prisme even when you're in another program, without ever bringing it to the front.</p></div>
-          <div class="reveal" data-delay="1"><h4><svg><use href="#i-cloud-off"/></svg>100% local, zero telemetry</h4><p>Your videos, photos, favorites and searches stay on your computer. No statistics, no tracking: nothing leaves, except what you open yourself, such as remote access. The license is checked on your PC, offline.</p></div>
-          <div class="reveal"><h4><svg><use href="#i-folders"/></svg>Nothing written to your folders</h4><p>Favorites, index and thumbnails live separately, in the app's data. Only the session trash, a hidden folder, slips in for the length of your session.</p></div>
           <div class="reveal" data-delay="1"><h4><svg><use href="#i-shield"/></svg>Hidden folders</h4><p>Choose the folders to hide: they disappear from all of Prisme, the Wall and remote access included. On the drive, nothing moves.</p></div>
-          <div class="reveal"><h4><svg><use href="#i-lock"/></svg>PIN code</h4><p>Four digits, asked when Prisme opens, when leaving discreet mode and to show hidden folders again. After five wrong attempts, you have to wait.</p></div>
-          <div class="reveal" data-delay="1"><h4><svg><use href="#i-card"/></svg>Nothing on your statement</h4><p>A neutral descriptor on your bank statement, which reveals neither the content nor the nature of the software.</p></div>
+          <div class="reveal" data-delay="1"><h4><svg><use href="#i-lock"/></svg>PIN code</h4><p>Four digits, asked when Prisme opens, when leaving discreet mode and to show hidden folders again. After five wrong attempts, you have to wait.</p></div>
+          <div class="reveal"><h4><svg><use href="#i-card"/></svg>Nothing on your statement</h4><p>A neutral descriptor on your bank statement, which reveals neither the content nor the nature of the software.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================================================================ PERFORMANCE -->
-  <section class="section" id="vitesse" style="padding-top:0">
+  <!-- ================================================================ TRUST -->
+  <section class="section" id="confiance" style="padding-top:0">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow reveal">Built for big collections</span>
-        <h2 class="h2 reveal" data-delay="1">Hundreds of thousands of files. <em>Zero waiting.</em></h2>
-        <p class="lead reveal" data-delay="2">Prisme has been tested on real porn collections of several terabytes, stored on NAS drives. It remembers everything it has already seen, prepares previews in advance, starting with the page you're looking at, and only rereads the drive in the background.</p>
+        <span class="eyebrow reveal">Trust</span>
+        <h2 class="h2 reveal" data-delay="1">Fast, safe, <em>and on your PC.</em></h2>
       </div>
-      <div class="stats reveal">
-        <div class="stat"><b>0.07<small>s</small></b><span>to redisplay a page of 40 thumbnails already seen</span></div>
-        <div class="stat"><b>300,000+</b><span>videos: the index is built for this scale, everything reappears on launch</span></div>
-        <div class="stat"><b>30</b><span>customizable shortcuts, each to the folder of your choice</span></div>
-        <div class="stat"><b>10</b><span>videos at once on the Wall, each with its own player</span></div>
-      </div>
-      <div class="perf-compare reveal">
-        <div class="perf-row slow"><span>First opening of a page on a NAS</span><div class="track"><i></i></div><b>33 s</b></div>
-        <div class="perf-row fast"><span>Second opening, once previews are ready</span><div class="track"><i></i></div><b>0.07 s</b></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================================ SAFETY -->
-  <section class="section" id="securite" style="padding-top:0">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow reveal">Safety</span>
-        <h2 class="h2 reveal" data-delay="1">Sort fast, <em>without ever losing a thing.</em></h2>
-        <p class="lead reveal" data-delay="2">Going fast means being free to make mistakes. Every decision can be reversed, every transfer goes all the way.</p>
-      </div>
-      <div class="safety">
-        <article class="safe reveal"><span class="safe-ico"><svg><use href="#i-undo"/></svg></span><h3>Everything can be undone</h3><p>Moves, deletions, renames: one gesture goes back up to two hundred decisions, and everything returns to its place.</p></article>
-        <article class="safe reveal" data-delay="1"><span class="safe-ico"><svg><use href="#i-trash"/></svg></span><h3>A session trash</h3><p>What you discard waits in a dedicated trash, where one click brings it back, until you close Prisme. It then goes to the Windows Recycle Bin; on a NAS, which doesn't have one, it is deleted for good.</p></article>
-        <article class="safe reveal" data-delay="2"><span class="safe-ico"><svg><use href="#i-copy"/></svg></span><h3>Never overwritten</h3><p>A file with the same name already exists at the destination? The new one simply gets a suffix. Nothing is replaced.</p></article>
-        <article class="safe reveal"><span class="safe-ico"><svg><use href="#i-refund"/></svg></span><h3>Background transfers</h3><p>Copying continues while you sort, in the order of your decisions. When closing, Prisme waits until everything has arrived.</p></article>
-        <article class="safe reveal" data-delay="1"><span class="safe-ico"><svg><use href="#i-star"/></svg></span><h3>Your favorites follow you</h3><p>Move a folder, rename a video, restore it from the trash: it stays in your favorites. They are backed up at every launch.</p></article>
-        <article class="safe reveal" data-delay="2"><span class="safe-ico"><svg><use href="#i-pencil"/></svg></span><h3>Rename in place</h3><p>Finally give your files and folders real names, without leaving the video. The extension is preserved automatically.</p></article>
+      <div class="safety trust3">
+        <article class="safe reveal">
+          <span class="safe-ico"><svg><use href="#i-signal"/></svg></span>
+          <h3>Fast at any scale</h3>
+          <p class="trust-figure"><b>300,000+</b> videos</p>
+          <p>Tested on real multi-terabyte collections stored on NAS drives. Prisme remembers what it has already seen and prepares previews ahead of time: a page you've already seen comes back in 0.07 s, instead of 33 s the first time.</p>
+        </article>
+        <article class="safe reveal" data-delay="1">
+          <span class="safe-ico"><svg><use href="#i-undo"/></svg></span>
+          <h3>Nothing lost by mistake</h3>
+          <p class="trust-figure"><b>200</b> undoable decisions</p>
+          <p>Ctrl+Z reverses moves, deletions and renames, and nothing is ever overwritten. The session trash keeps what you discard until you close Prisme: it then goes to the Windows Recycle Bin or, on a NAS that doesn't have one, is deleted for good.</p>
+        </article>
+        <article class="safe reveal" data-delay="2">
+          <span class="safe-ico"><svg><use href="#i-cloud-off"/></svg></span>
+          <h3>100% local, zero telemetry</h3>
+          <p class="trust-figure"><b>100%</b> local</p>
+          <p>Your videos, photos, favorites and searches stay on your computer, with no telemetry whatsoever. Remote sharing only opens if you choose to. Favorites, index and thumbnails live separately: nothing is written to your folders.</p>
+        </article>
       </div>
     </div>
   </section>
