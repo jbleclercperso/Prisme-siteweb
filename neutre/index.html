@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Prisme — Le logiciel pour trier et regarder vos vidéos et vos photos</title>
+  <meta name="description" content="Prisme trie, range et lit vos vidéos et vos photos au clavier : une touche par décision, la suivante s'affiche aussitôt. Logiciel Windows, 100 % local. Essai gratuit de 14 jours, puis 29 € à vie.">
+  <!-- PROVISOIRE : la version neutre vit sur le même domaine que la version principale (racine du site).
+       Elle n'est pas indexée tant que son adresse définitive n'est pas choisie ;
+       retirer cette ligne (et ajouter une balise canonical) à ce moment-là. -->
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07080b">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
+  <link rel="preload" href="../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/instrument-serif-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <link rel="stylesheet" href="../assets/css/scenes.css">
+  <link rel="stylesheet" href="../assets/css/clean.css">
+  <link rel="stylesheet" href="../assets/css/neutre.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <script src="../assets/js/config-neutre.js" defer></script>
+  <script src="../assets/js/neutre.js" defer></script>
+</head>
+<body>
+
+<!-- Pictogrammes (Lucide, licence ISC) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-drive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="2" y1="12" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><line x1="6" x2="6.01" y1="16" y2="16"/><line x1="10" x2="10.01" y1="16" y2="16"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></symbol>
+    <symbol id="i-folders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 17a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.9a2 2 0 0 1-1.69-.9l-.81-1.2a2 2 0 0 0-1.67-.9H8a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2Z"/><path d="M2 8v11a2 2 0 0 0 2 2h14"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M11.52 2.3a.53.53 0 0 1 .95 0l2.31 4.68a2.12 2.12 0 0 0 1.6 1.16l5.16.76a.53.53 0 0 1 .3.9l-3.74 3.64a2.12 2.12 0 0 0-.61 1.88l.88 5.14a.53.53 0 0 1-.77.56l-4.62-2.43a2.12 2.12 0 0 0-1.97 0L6.4 21.01a.53.53 0 0 1-.77-.56l.88-5.14a2.12 2.12 0 0 0-.61-1.88L2.16 9.8a.53.53 0 0 1 .3-.9l5.16-.76a2.12 2.12 0 0 0 1.6-1.16z"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></symbol>
+    <symbol id="i-refund" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-signal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/><path d="M22 4v16"/></symbol>
+    <symbol id="i-volx" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6A1.4 1.4 0 0 1 5.4 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></symbol>
+    <symbol id="i-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2.5a1 1 0 0 1-.8-.4l-.9-1.2A1 1 0 0 0 15 3h-2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z"/><path d="M20 21a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-2.9a1 1 0 0 1-.88-.55l-.42-.85a1 1 0 0 0-.92-.6H13a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z"/><path d="M3 5a2 2 0 0 0 2 2h3"/><path d="M3 3v13a2 2 0 0 0 2 2h3"/></symbol>
+    <symbol id="i-dots" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="i-cloud-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 2 20 20"/><path d="M5.78 5.78A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.31-.2"/><path d="M21.53 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7 7 0 0 0 9.66 5.02"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></symbol>
+    <symbol id="i-dices" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="12" height="12" x="2" y="10" rx="2" ry="2"/><path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6"/><path d="M6 18h.01"/><path d="M10 14h.01"/><path d="M15 6h.01"/><path d="M18 9h.01"/></symbol>
+    <symbol id="i-pip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 9V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h4"/><rect width="10" height="7" x="12" y="13" rx="2"/></symbol>
+    <symbol id="i-clapper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<!-- Navigation -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top" aria-label="Prisme, accueil">
+      <img src="../assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="../assets/img/prisme-lettrage.png" alt="Prisme" width="115" height="15">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#demo">Démo</a></li>
+      <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+      <li><a href="#mur">Le Mur</a></li>
+      <li><a href="#photos">Photos</a></li>
+      <li><a href="#tarifs">Tarif</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <!-- ============================================================
+           PROVISOIRE — SÉLECTEUR DE VERSION (neutre / racine du site)
+           À RETIRER AVANT TOUTE VALIDATION STRIPE, GOOGLE OU FACEBOOK :
+           la version neutre ne doit jamais renvoyer vers la version de la racine du site.
+           ============================================================ -->
+      <span class="ver-switch" aria-label="Version du site (provisoire)">
+        <a href="index.html" aria-current="page">Neutre</a>
+        <a href="../index.html">Adulte</a>
+      </span>
+      <a class="btn btn-primary btn-sm" href="telecharger.html" data-link="trial">Essai gratuit</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <!-- ================================================================ HERO -->
+  <section class="hero" id="top">
+    <div class="hero-glow"></div>
+    <div class="hero-grid"></div>
+
+    <div class="hero-logo" aria-hidden="true"><picture><source media="(max-width: 960px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="><img src="../assets/img/prisme-hero.webp" alt="" width="600" height="600" fetchpriority="high"></picture></div>
+
+    <div class="container">
+      <div class="hero-copy">
+        <a class="hero-pill reveal" href="#demo"><b>Windows</b> Le logiciel de tri pour vos vidéos et vos photos</a>
+        <h1 class="display reveal" data-delay="1">Toutes vos vidéos et photos.<br><em>Une touche</em> pour trier.</h1>
+        <p class="lead reveal" data-delay="2">Prisme trie, range et lit vos vidéos et vos photos au clavier. Survolez un dossier, ses aperçus défilent ; ouvrez une vidéo, cinq instants s'alignent à côté de l'image. Une touche pour décider, la suivante s'affiche aussitôt. Regardez-en jusqu'à dix à la fois, retrouvez-les d'un mot, sur votre disque, un disque externe ou un NAS.</p>
+        <div class="hero-actions reveal" data-delay="3">
+          <div>
+            <a class="btn btn-primary" href="telecharger.html" data-link="trial">
+              <svg><use href="#i-download"/></svg>
+              Essayer gratuitement
+            </a>
+            <span class="btn-note">14 jours · sans carte bancaire · puis 29 € à vie</span>
+          </div>
+          <a class="btn btn-ghost" href="#demo">Essayer la démo en ligne <svg><use href="#i-down"/></svg></a>
+        </div>
+        <ul class="trust-row reveal" data-delay="4">
+          <li><svg><use href="#i-cloud-off"/></svg>100 % local, rien n'est envoyé</li>
+          <li><svg><use href="#i-card"/></svg>Un seul paiement, pas d'abonnement</li>
+          <li><svg><use href="#i-undo"/></svg>Chaque geste s'annule</li>
+        </ul>
+      </div>
+
+      <!-- La planche, telle qu'elle est dans l'application -->
+      <div class="showcase reveal" data-delay="2">
+        <div class="app" aria-label="Aperçu de l'application Prisme : la planche des vidéos" role="img">
+          <div class="app-titlebar"><img src="../assets/img/prisme.png" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
+          <div class="app-header">
+            <span class="app-icon-btn hide-sm"><svg><use href="#i-clapper"/></svg></span>
+            <div class="seg"><span>Dossiers</span><span class="on">Vidéos</span><span>Mots-clés</span><span>Mur</span><span>★ Favoris</span></div>
+            <span class="app-icon-btn"><svg><use href="#i-up"/></svg></span>
+            <div class="crumbs"><b>Voyages</b><span class="hide-sm">· 1 284 vidéos · 612 Go</span></div>
+            <span class="spacer"></span>
+            <span class="app-icon-btn share hide-sm" title="Au hasard"><svg><use href="#i-dices"/></svg></span>
+            <span class="app-icon-btn hide-sm"><svg><use href="#i-tree"/></svg></span>
+            <span class="app-icon-btn"><svg><use href="#i-volx"/></svg></span>
+            <span class="app-icon-btn hide-sm"><svg><use href="#i-pip"/></svg></span>
+            <span class="app-icon-btn"><svg><use href="#i-dots"/></svg></span>
+          </div>
+          <div class="app-toolbar">
+            <span class="chip search">chercher…</span>
+            <span class="chip">Durée</span>
+            <span class="chip">Taille</span>
+            <span class="chip on">Résolution</span>
+            <span class="chip">Non vus</span>
+            <span class="chip">Tous formats</span>
+            <span class="chip">− 5 +</span>
+            <span class="chip">1–40 sur 1 284</span>
+          </div>
+          <div class="board">
+            <div class="card"><div class="art s1"><span class="badge-time">3:02</span></div><div class="card-cap">4K · <b>DJI_0412.MP4</b></div></div>
+            <div class="card"><div class="art s5"><span class="badge-time">5:12</span></div><div class="card-cap">4K · <b>lagon_vue_du_ciel.mp4</b></div></div>
+            <div class="card hot"><div class="art s3"><span class="badge-time">0:48</span><i class="prog"></i></div><div class="card-cap">4K · <b>IMG_2041.MOV</b></div></div>
+            <div class="card"><div class="art s2"><span class="badge-time">6:42</span></div><div class="card-cap">4K · <b>DJI_0098_sommet.MP4</b></div></div>
+            <div class="card"><div class="art s7"><span class="badge-time">4:16</span></div><div class="card-cap">2,7K · <b>GOPR0187.MP4</b></div></div>
+            <div class="card"><div class="art s6"><span class="badge-time">1:15</span></div><div class="card-cap">4K · <b>aurore_islande.mp4</b></div></div>
+            <div class="card"><div class="art s4"><span class="badge-time">3:40</span></div><div class="card-cap">4K · <b>dunes_maroc.mp4</b></div></div>
+            <div class="card"><div class="art s9"><span class="badge-time">16:00</span></div><div class="card-cap">1080p · <b>lac_annecy_famille.mp4</b></div></div>
+            <div class="card"><div class="art s10"><span class="badge-time">2:20</span></div><div class="card-cap">4K · <b>rizieres_DJI_0233.MP4</b></div></div>
+            <div class="card"><div class="art s8"><span class="badge-time">4:44</span></div><div class="card-cap">4K · <b>tokyo_nuit.mov</b></div></div>
+            <div class="card"><div class="art s11"><span class="badge-time">3:18</span></div><div class="card-cap">4K · <b>canyon_vol_03.mp4</b></div></div>
+            <div class="card"><div class="art s12"><span class="badge-time">27:33</span></div><div class="card-cap">1080p · <b>mariage_julie_tom.mp4</b></div></div>
+            <div class="card"><div class="art s1" style="--dur:23s"><span class="badge-time">2:29</span></div><div class="card-cap">4K · <b>DJI_0413.MP4</b></div></div>
+            <div class="card"><div class="art s5" style="--dur:21s"><span class="badge-time">0:40</span></div><div class="card-cap">1080p · <b>VID_20240812.mp4</b></div></div>
+            <div class="card"><div class="art s7" style="--dur:24s"><span class="badge-time">9:03</span></div><div class="card-cap">4K · <b>rando_GOPR0201.MP4</b></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formats -->
+  <section class="section-tight" aria-label="Formats pris en charge">
+    <div class="container">
+      <div class="formats reveal">
+        <span class="formats-label">Vos vidéos de drone, de caméra d'action, de téléphone, vos photos de vacances : sur disque local, disque externe ou NAS</span>
+        <b>MP4</b><b>MOV</b><b>MKV</b><b>AVI</b><b>WMV</b><b>WEBM</b><span class="formats-sep" aria-hidden="true"></span><b>JPEG</b><b>PNG</b><b>WEBP</b><b>HEIC</b><b>GIF</b><b>TIFF</b>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ================================================================ CONSTAT -->
+  <section class="section" id="constat">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Le constat</span>
+        <h2 class="h2 reveal" data-delay="1">Les vidéos s'accumulent.<br><em>Le tri, jamais.</em></h2>
+        <p class="lead reveal" data-delay="2">Des cartes SD vidées en vrac, des années de téléphone, des vacances, des vols de drone, des fêtes de famille. On se promet de trier un jour. Les logiciels habituels n'ont jamais été pensés pour ça.</p>
+      </div>
+      <div class="pains">
+        <article class="pain reveal">
+          <div class="pain-ico"><svg><use href="#i-folders"/></svg></div>
+          <h3>Des dossiers sans fin</h3>
+          <p><code>DCIM</code>, <code>Import 2023</code>, <code>Nouveau dossier (37)</code>… Vous savez que la vidéo est quelque part. Vous ne savez plus où.</p>
+        </article>
+        <article class="pain reveal" data-delay="1">
+          <div class="pain-ico"><svg><use href="#i-play"/></svg></div>
+          <h3>Ouvrir pour savoir</h3>
+          <p><code>DJI_0412.MP4</code> ne dit ni où, ni quand, ni quoi. Il faut lancer chaque vidéo, avancer, fermer, recommencer.</p>
+        </article>
+        <article class="pain reveal" data-delay="2">
+          <div class="pain-ico"><svg><use href="#i-copy"/></svg></div>
+          <h3>Des doublons partout</h3>
+          <p>La même vidéo copiée depuis le téléphone, la carte SD et le cloud, réencodée, renommée. Des centaines de gigaoctets pour rien.</p>
+        </article>
+        <article class="pain reveal" data-delay="3">
+          <div class="pain-ico"><svg><use href="#i-clock"/></svg></div>
+          <h3>Le tri remis à demain</h3>
+          <p>Clic droit, couper, chercher le dossier, coller… À la souris, trier deux mille fichiers prend un week-end. Alors on ne le fait pas.</p>
+        </article>
+      </div>
+      <p class="answer reveal"><img src="../assets/img/prisme.png" alt="" width="40" height="40">Prisme a été pensé pour ces quatre problèmes.</p>
+    </div>
+  </section>
+
+  <!-- ================================================================ ÉTAPES -->
+  <section class="section-tight" id="etapes" style="padding-top:0">
+    <div class="container">
+      <ol class="steps3 reveal">
+        <li><b>1</b><div><h3>Montrez votre dossier</h3><p>Disque, disque externe ou NAS. Prisme analyse en arrière-plan ; vous commencez tout de suite.</p></div></li>
+        <li><b>2</b><div><h3>Une touche par vidéo</h3><p>Voyages, famille, à monter, à supprimer : la suivante s'affiche aussitôt, la copie se fait toute seule.</p></div></li>
+        <li><b>3</b><div><h3>Retrouvez tout</h3><p>Favoris, mots-clés, recherche : votre vidéothèque est enfin rangée, et chaque vidéo se retrouve d'un mot.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================================================================ DÉMO
+       Démo simple (assets/js/neutre.js). #demoApp et #demoPlayer reprennent les
+       identifiants de la page principale (../index.html) : une démo plus fidèle, commune aux deux
+       versions, pourra remplacer celle-ci sans toucher au reste de la page. -->
+  <section class="section" id="demo" style="padding-top:0">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow reveal">Démo interactive</span>
+        <h2 class="h2 reveal" data-delay="1">Essayez. <em>Ici, maintenant.</em></h2>
+        <p class="lead reveal" data-delay="2">Voici la fiche de Prisme, avec une carte SD à vider. Appuyez sur <kbd>6</kbd> <kbd>7</kbd> <kbd>8</kbd> <kbd>9</kbd> pour ranger (dans Prisme, jusqu'à 30 raccourcis personnalisables), <kbd>Suppr</kbd> pour supprimer, <kbd>Espace</kbd> pour passer à la suivante, <kbd>1</kbd> pour mettre en favori, <kbd>Ctrl</kbd>+<kbd>Z</kbd> pour annuler. Ou touchez les boutons.</p>
+      </div>
+
+      <div class="demo-wrap reveal">
+        <div class="app demo-app" id="demoApp" tabindex="0" aria-label="Démo interactive : triez des vidéos comme dans Prisme. Utilisez les touches 6, 7, 8, 9, Suppr, Espace, 1 et Ctrl+Z.">
+          <div class="app-titlebar"><img src="../assets/img/prisme.png" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
+          <div class="app-header">
+            <div class="seg hide-sm"><span>Dossiers</span><span class="on">Vidéos</span><span>Mots-clés</span><span>Mur</span></div>
+            <span class="app-icon-btn"><svg><use href="#i-up"/></svg></span>
+            <div class="crumbs"><span class="hide-sm" data-demo="folder">Carte SD</span><i class="hide-sm">›</i><b data-demo="name">DJI_0412.MP4</b><span class="meta" data-demo="meta">2160p · 3,2 Go</span></div>
+          </div>
+          <div class="fiche">
+            <div class="player" id="demoPlayer">
+              <div class="art s1" data-demo="art"></div>
+              <span class="remain" data-demo="remain">−2:42</span>
+              <span class="res" data-demo="res">4K · DJI_0412.MP4</span>
+              <span class="bar"><i data-demo="bar"></i></span>
+              <span class="toast" data-demo="toast"></span>
+            </div>
+            <div class="strip" data-demo="strip" aria-label="Pellicule : cinq instants de la vidéo">
+              <div class="art s1"><span>0:18</span></div>
+              <div class="art s1"><span>0:55</span></div>
+              <div class="art s1"><span>1:31</span></div>
+              <div class="art s1"><span>2:07</span></div>
+              <div class="art s1"><span>2:44</span></div>
+            </div>
+          </div>
+          <div class="cmdbar">
+            <button class="cmd del" type="button" data-key="Delete"><b>Suppr</b><span>Supprimer</span></button>
+            <button class="cmd skip" type="button" data-key=" "><b>Espace</b><span>Suivante</span></button>
+            <button class="cmd" type="button" data-key="6"><b>6</b><span>Voyages</span></button>
+            <button class="cmd" type="button" data-key="7"><b>7</b><span>Famille</span></button>
+            <button class="cmd" type="button" data-key="8"><b>8</b><span>Drone</span></button>
+            <button class="cmd" type="button" data-key="9"><b>9</b><span>À monter</span></button>
+            <button class="fav" type="button" data-demo="fav" aria-pressed="false"><svg><use href="#i-star"/></svg><span>Favori</span></button>
+          </div>
+        </div>
+
+        <aside class="demo-side" aria-live="polite">
+          <span class="live-dot">Clavier actif</span>
+          <h3>Vos dossiers</h3>
+          <p class="hint">Dans Prisme, jusqu'à 30 dossiers (voyages, années, clients, projets…) reçoivent chacun leur touche.</p>
+          <ul class="dest-list">
+            <li data-dest="6"><span class="kbd">6</span> Voyages <span class="count">0</span></li>
+            <li data-dest="7"><span class="kbd">7</span> Famille <span class="count">0</span></li>
+            <li data-dest="8"><span class="kbd">8</span> Drone <span class="count">0</span></li>
+            <li data-dest="9"><span class="kbd">9</span> À monter <span class="count">0</span></li>
+            <li data-dest="Delete" class="trash"><span class="kbd">Suppr</span> Corbeille <span class="count">0</span></li>
+          </ul>
+          <p class="demo-undo">Une erreur ? <kbd>Ctrl</kbd> + <kbd>Z</kbd> remet tout en place.</p>
+          <div class="demo-stats">
+            <div><b data-demo="done">0</b>vidéos triées</div>
+            <div><b data-demo="pace">—</b>par vidéo</div>
+          </div>
+        </aside>
+      </div>
+      <!-- Données de la démo : lues par la démo fidèle commune (assets/js/site.js)
+           comme par la démo simple de assets/js/neutre.js. -->
+      <script type="application/json" id="demoData">{"items":[
+        {"name":"DJI_0412.MP4","res":"4K","meta":"2160p · 3,2 Go","dur":182,"art":"s1"},
+        {"name":"GOPR0187.MP4","res":"2,7K","meta":"1520p · 1,4 Go","dur":256,"art":"s7"},
+        {"name":"IMG_2041.MOV","res":"4K","meta":"2160p · 880 Mo","dur":48,"art":"s3"},
+        {"name":"lagon_vue_du_ciel.mp4","res":"4K","meta":"2160p · 2,1 Go","dur":312,"art":"s5"},
+        {"name":"mariage_julie_tom.mp4","res":"1080p","meta":"1080p · 4,3 Go","dur":1653,"art":"s12"},
+        {"name":"DJI_0098_sommet.MP4","res":"4K","meta":"2160p · 5,9 Go","dur":402,"art":"s2"},
+        {"name":"aurore_islande_timelapse.mp4","res":"4K","meta":"2160p · 1,1 Go","dur":75,"art":"s6"},
+        {"name":"dunes_maroc.mp4","res":"4K","meta":"2160p · 2,7 Go","dur":220,"art":"s4"},
+        {"name":"lac_annecy_famille.mp4","res":"1080p","meta":"1080p · 640 Mo","dur":960,"art":"s9"},
+        {"name":"rizieres_DJI_0233.MP4","res":"4K","meta":"2160p · 2,0 Go","dur":140,"art":"s10"},
+        {"name":"canyon_vol_03.mp4","res":"4K","meta":"2160p · 1,6 Go","dur":198,"art":"s11"},
+        {"name":"tokyo_nuit.mov","res":"4K","meta":"2160p · 3,3 Go","dur":284,"art":"s8"}],
+        "labels":{"6":"Voyages","7":"Famille","8":"Drone","9":"À monter","Delete":"Corbeille"}}</script>
+      <p class="demo-note">Démo dans le navigateur : des images à la place de vos vidéos.</p>
+    </div>
+  </section>
+
+  <!-- ================================================================ FONCTIONNALITÉS
+       La grille ne garde que des fonctions de poids moyen (une tuile chacune),
+       plus la tuile « Aperçus », porte d'entrée vers la fiche et la planche,
+       et la recherche par l'image (Labo IA, en bêta), voulue par l'utilisateur.
+       Les petites fonctions vont dans « Et aussi », en une ligne. -->
+  <section class="section" id="fonctionnalites" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Fonctionnalités</span>
+        <h2 class="h2 reveal" data-delay="1">Trier, retrouver, regarder. <em>Sans jamais attendre.</em></h2>
+        <p class="lead reveal" data-delay="2">Prisme n'est pas un lecteur de plus. C'est un outil de tri, affiné geste après geste, pour qu'entre la carte SD pleine et la vidéothèque rangée il n'y ait plus qu'une soirée.</p>
+      </div>
+
+      <div class="bento">
+        <article class="tile span-3 reveal">
+          <span class="tile-kicker">Aperçus</span>
+          <h3>Tout voir sans rien ouvrir</h3>
+          <p>Survolez un dossier : jusqu'à dix aperçus de ses vidéos défilent sur sa vignette. Ouvrez une vidéo : cinq instants s'alignent à côté de l'image, et il suffit d'en survoler un pour que la lecture y saute. Maintenez <kbd>Maj</kbd> : neuf instants recouvrent l'image.</p>
+          <div class="tile-visual mini-strip" aria-hidden="true">
+            <div class="art s9"></div><div class="art s9 hot" style="--dur:22s"></div><div class="art s9" style="--dur:18s"></div><div class="art s9" style="--dur:25s"></div><div class="art s9" style="--dur:20s"></div>
+          </div>
+        </article>
+
+        <article class="tile span-3 reveal" data-delay="1">
+          <span class="tile-kicker">Réparation · nouveau</span>
+          <h3>Réparez les vidéos abîmées</h3>
+          <p>Pavés de couleur, images qui se figent, vidéo qui ne s'ouvre plus : Prisme repère les passages abîmés et les reconstruit, souvent sans aucune perte. L'original reste intact, et vous comparez avant / après, côte à côte.</p>
+          <div class="tile-visual repair-demo" aria-hidden="true">
+            <div class="repair-pair">
+              <div><div class="art s11" style="animation:none"></div><i class="glitch g1"></i><i class="glitch g2"></i><i class="glitch g3"></i><em>Avant</em></div>
+              <div class="ok"><div class="art s11" style="animation:none"></div><em>Après</em></div>
+            </div>
+            <div class="repair-track"><i style="left:18%;width:3%"></i><i style="left:47%;width:2%"></i><i style="left:76%;width:4%"></i></div>
+            <div class="repair-meta"><span><b>3 passages abîmés</b> · 12 s sur 340 s</span><span>Reconstruire · sans perte</span></div>
+          </div>
+        </article>
+
+        <article class="tile span-3 reveal">
+          <span class="tile-kicker">Recherche par l'image · bêta</span>
+          <h3>Décrivez la scène, Prisme la retrouve</h3>
+          <p>« Un coucher de soleil sur la mer », « des enfants sur une plage » : Prisme regarde les images de vos vidéos et vous montre les plus proches de votre phrase. L'analyse se fait sur votre ordinateur, sans rien envoyer sur Internet.</p>
+          <div class="tile-visual ai-demo" aria-hidden="true">
+            <div class="ai-query">coucher de soleil sur la mer</div>
+            <div class="ai-results">
+              <div class="art s3"><b>98 %</b></div><div class="art s12"><b>91 %</b></div><div class="art s11"><b>84 %</b></div><div class="art s1"><b>79 %</b></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="tile span-3 reveal" data-delay="1">
+          <span class="tile-kicker">Clic droit</span>
+          <h3>Le menu radial</h3>
+          <p>Clic droit sur l'image : vos neuf premiers dossiers s'ouvrent en cercle autour de la souris. On range la vidéo sans arrêter la lecture.</p>
+          <div class="tile-visual">
+            <div class="radial" aria-hidden="true">
+              <span class="center"></span>
+              <span class="opt" style="--a:0deg"><b>6</b> Voyages</span>
+              <span class="opt sel" style="--a:72deg"><b>7</b> Famille</span>
+              <span class="opt" style="--a:144deg"><b>8</b> Drone</span>
+              <span class="opt" style="--a:216deg"><b>9</b> À monter</span>
+              <span class="opt" style="--a:288deg"><b>A</b> 2024</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="tile span-3 reveal">
+          <span class="tile-kicker">Mots-clés automatiques</span>
+          <h3>Vos catégories se créent toutes seules</h3>
+          <p>Prisme lit les noms de vos fichiers, les découpe et en tire des catégories : lieux, événements, appareils, prénoms. Sans rien saisir. Le jargon technique (<em>4K, x264…</em>) est écarté. Ajoutez vos propres mots-clés quand vous voulez, sans qu'aucun fichier ne bouge.</p>
+          <div class="tile-visual tags-demo" aria-hidden="true">
+            <div class="fname"><em class="w1">Bretagne</em>_<em class="w3">Plage</em>_<em class="w2">Anniversaire</em>_<s>4K</s>_<s>x264</s>.mp4</div>
+            <div class="tag-row">
+              <span class="tag t1">Bretagne <i>214</i></span>
+              <span class="tag t2">Anniversaire <i>96</i></span>
+              <span class="tag t3">Plage <i>71</i></span>
+              <span class="tag">Montagne <i>58</i></span>
+              <span class="tag">Mariage <i>43</i></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="tile span-3 reveal" data-delay="1">
+          <span class="tile-kicker">Recherche</span>
+          <h3>Retrouvez n'importe quel fichier en une ligne</h3>
+          <p>Un seul champ, une syntaxe simple, tolérante aux fautes de frappe.</p>
+          <div class="tile-visual search-demo" aria-hidden="true">
+            <div>plage coucher <span>les deux mots</span></div>
+            <div>mariage ou anniversaire <span>l'un ou l'autre</span></div>
+            <div>drone -nuit <span>sans un mot</span></div>
+            <div>"lac d'annecy" <span>l'expression exacte</span></div>
+            <div>~montagen <span>à peu près : « montagne »</span></div>
+          </div>
+        </article>
+
+        <article class="tile span-2 reveal">
+          <span class="tile-kicker">Favoris</span>
+          <h3>Vos meilleurs moments, à portée de clic</h3>
+          <p>La touche <kbd>1</kbd> met une étoile sur une vidéo, une photo ou un dossier, la touche <kbd>0</kbd> la retire. L'onglet ★ Favoris les réunit tous, et ils vous suivent quand vous déplacez les fichiers.</p>
+          <div class="tile-visual fav-visual" aria-hidden="true"><span class="fav-star"><svg><use href="#i-star"/></svg></span><span class="seg"><span>Mur</span><span class="on">★ Favoris</span></span></div>
+        </article>
+
+        <article class="tile span-2 reveal" data-delay="1">
+          <span class="tile-kicker">Annuler</span>
+          <h3>Une erreur ? Rien de grave</h3>
+          <p>Déplacements, suppressions, renommages : <kbd>Ctrl</kbd>+<kbd>Z</kbd> les annule. Ce que vous supprimez attend dans une corbeille de séance, d'où il revient d'un clic. À la fermeture, il part dans la corbeille de Windows ; sur un NAS, qui n'en a pas, il est effacé définitivement.</p>
+          <div class="tile-visual undo-demo" aria-hidden="true"><span class="kbd">Ctrl</span><span class="kbd">Z</span></div>
+        </article>
+
+        <article class="tile span-2 reveal" data-delay="2">
+          <span class="tile-kicker">Vos disques</span>
+          <h3>PC, disque externe et NAS, réunis</h3>
+          <p>Ajoutez vos dossiers où qu'ils soient : Prisme les présente comme une seule collection, à trier et à parcourir au même endroit.</p>
+          <div class="tile-visual roots-demo" aria-hidden="true">
+            <div><svg><use href="#i-monitor"/></svg>Ce PC <span>412</span></div>
+            <div><svg><use href="#i-drive"/></svg>Disque externe <span>1 038</span></div>
+            <div><svg><use href="#i-drive"/></svg>NAS <span>2 760</span></div>
+          </div>
+        </article>
+
+        <article class="tile span-6 tile-wide reveal">
+          <div>
+            <span class="tile-kicker">Lecteur flottant</span>
+            <h3>La vidéo continue, par-dessus tout le reste</h3>
+            <p>Vous ouvrez un dossier, votre logiciel de montage, un navigateur ? La vidéo passe dans une fenêtre toujours au premier plan, sans cadre, aux proportions de l'image. Déplacez-la, agrandissez-la, jusqu'au plein écran. Elle reprend à l'instant exact, et vous pouvez même y trier.</p>
+          </div>
+          <div class="tile-visual">
+            <div class="desk" aria-hidden="true">
+              <div class="desk-win"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="desk-float"><div class="art s5"></div><span class="badge-time">−2:40</span><span class="bar"><i></i></span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Et aussi : les petites fonctions, une ligne chacune -->
+      <div class="also reveal">
+        <h3>Et aussi</h3>
+        <ul>
+          <li><b>Hasard sans remise</b> : une vidéo au hasard, jamais deux fois la même avant d'avoir tout vu.</li>
+          <li><b>Non vus</b> : un filtre ne garde que ce que vous n'avez ni trié ni regardé.</li>
+          <li><b>Filtres et tris</b> : verticales, horizontales, durée, résolution.</li>
+          <li><b>Aperçu <kbd>Maj</kbd></b> : neuf instants de la vidéo, d'un coup d'œil.</li>
+          <li><b>Plein écran</b> d'un double-clic, <kbd>Échap</kbd> pour revenir.</li>
+          <li><b>Zoom ×6</b>, centré sous la souris.</li>
+          <li><b>Renommer sur place</b> avec <kbd>F2</kbd>, sans quitter la vidéo.</li>
+          <li><b>Jamais d'écrasement</b> : un fichier du même nom est suffixé, jamais remplacé.</li>
+          <li><b>Transferts en arrière-plan</b> : à la fermeture, Prisme attend que tout soit arrivé.</li>
+          <li><b>Lecteur de côté</b> : la vidéo reste à l'écran pendant que vous parcourez.</li>
+          <li><b>Ultra tri</b> : clic gauche, on garde ; clic droit, on supprime.</li>
+          <li><b>Arbre des destinations</b> : tous vos dossiers de rangement, d'un coup d'œil.</li>
+          <li><b>Repérage des plans</b> : la pellicule se cale sur les changements de plan.</li>
+          <li><b>Couvertures de dossiers</b> qui changent au fil de leurs vidéos.</li>
+          <li><b>Noms sans aucun mot</b> (<code>IMG_2041</code>, <code>GX010123</code>) réunis à part.</li>
+          <li><b>Rafale</b> : après une étoile, la suivante arrive toute seule.</li>
+          <li><b>Écran de repli</b> : passez à autre chose en un geste, cinq écrans au choix.</li>
+          <li><b>Dossiers masqués et code PIN</b> : ce qui est privé le reste.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ LE MUR -->
+  <section class="section" id="mur" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow reveal">Le Mur</span>
+        <h2 class="h2 reveal" data-delay="1">Jusqu'à dix vidéos à la fois. <em>Chacune son lecteur.</em></h2>
+        <p class="lead reveal" data-delay="2">Le Mur affiche de deux à dix vidéos côte à côte, qui jouent toutes en même temps. Idéal pour passer en revue des dizaines de plans de drone, ou les vidéos verticales de votre téléphone. Choisissez combien, choisissez le format, gardez les meilleures. Essayez ci-dessous.</p>
+      </div>
+      <div class="wall-layout">
+        <div class="reveal">
+          <div class="app wall-app" id="wallDemo">
+            <div class="app-titlebar"><img src="../assets/img/prisme.png" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
+            <div class="app-header wall-controls">
+              <div class="seg hide-sm"><span>Dossiers</span><span>Vidéos</span><span class="on">Mur</span><span>★ Favoris</span></div>
+              <span class="spacer"></span>
+              <div class="stepper" role="group" aria-label="Nombre de vidéos">
+                <button type="button" data-wall-step="-1" aria-label="Une vidéo de moins">−</button>
+                <b data-wall="count" aria-live="polite">5</b>
+                <button type="button" data-wall-step="1" aria-label="Une vidéo de plus">+</button>
+              </div>
+              <div class="seg seg-btn" role="group" aria-label="Format des vidéos">
+                <button type="button" data-wall-o="vertical" aria-pressed="true">Verticales</button>
+                <button type="button" data-wall-o="horizontal" aria-pressed="false">Horizontales</button>
+              </div>
+            </div>
+            <div class="wall" aria-label="Le Mur : vidéos jouées côte à côte"></div>
+          </div>
+        </div>
+        <ul class="checks wall-checks reveal" data-delay="1">
+          <li><svg><use href="#i-check"/></svg><span><b>De 2 à 10 vidéos à l'écran</b> : c'est vous qui choisissez combien.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Verticales ou horizontales</b> : le Mur choisit la disposition qui montre le plus d'image et remplit l'écran.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Chaque vidéo a son propre lecteur</b> : pause, avance, favori, ou une autre à la place, sans toucher aux voisines. Le son suit la souris.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>En plein écran</b> : le Mur entier, ou une seule vidéo en grand.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Jamais deux fois la même</b> : une vidéo ne repasse pas avant que toutes les autres aient défilé.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ PHOTOS -->
+  <section class="section" id="photos" style="padding-top:0">
+    <div class="container">
+      <div class="feature">
+        <div class="feature-copy">
+          <span class="eyebrow reveal">Photos</span>
+          <h2 class="h2 reveal" data-delay="1">Vos photos aussi. <em>Avec le même soin.</em></h2>
+          <p class="lead reveal" data-delay="2">Vacances, téléphone, appareil photo : un clic, et Prisme passe de vos vidéos à vos photos. Le même tri au clavier, les mêmes favoris, les mêmes dossiers, et des outils pensés pour l'image fixe.</p>
+        </div>
+        <div class="reveal" data-delay="1">
+          <div class="app" role="img" aria-label="Le Mur de photos de Prisme : six photos en diaporama côte à côte">
+            <div class="app-titlebar"><img src="../assets/img/prisme.png" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
+            <div class="app-header">
+              <span class="app-icon-btn kind"><svg><use href="#i-image"/></svg></span>
+              <div class="seg"><span class="hide-sm">Dossiers</span><span class="hide-sm">Photos</span><span class="on">Mur</span></div>
+              <span class="spacer"></span>
+              <span class="chip hide-sm">Diaporama · 6 s</span>
+              <span class="chip on">− 6 +</span>
+            </div>
+            <div class="pwall">
+              <div class="ppanel" style="--o:0s"><div class="art s2"></div><div class="art s9"></div><div class="art s6"></div></div>
+              <div class="ppanel" style="--o:-2.4s"><div class="art s4"></div><div class="art s11"></div><div class="art s3"></div></div>
+              <div class="ppanel" style="--o:-4.7s"><div class="art s5"></div><div class="art s10"></div><div class="art s7"></div></div>
+              <div class="ppanel" style="--o:-7.8s"><div class="art s8"></div><div class="art s1"></div><div class="art s12"></div></div>
+              <div class="ppanel" style="--o:-11.1s"><div class="art s7"></div><div class="art s3"></div><div class="art s2"></div></div>
+              <div class="ppanel" style="--o:-14.7s"><div class="art s10"></div><div class="art s6"></div><div class="art s4"></div></div>
+            </div>
+          </div>
+        </div>
+        <ul class="checks feature-more reveal" data-delay="3">
+          <li><svg><use href="#i-check"/></svg><span><b>Diaporama</b> : les photos défilent toutes seules, six secondes chacune ou au rythme que vous choisissez.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Le Mur en photos</b> : jusqu'à dix images côte à côte, chacune en diaporama.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Survolez un dossier</b> : ses photos défilent sur sa vignette, sans l'ouvrir.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Deux collections séparées</b> : chacune ses dossiers, ses favoris, ses mots-clés.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Tous les formats courants</b>, HEIC des iPhone compris, remis droits automatiquement.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ DOUBLONS -->
+  <section class="section" id="doublons" style="padding-top:0">
+    <div class="container">
+      <div class="feature flip">
+        <div class="feature-copy">
+          <span class="eyebrow reveal">Doublons</span>
+          <h2 class="h2 reveal" data-delay="1">Gardez le meilleur. <em>Libérez le reste.</em></h2>
+          <p class="lead reveal" data-delay="2">Prisme repère la même vidéo copiée plusieurs fois, même renommée, même réencodée dans une autre qualité. Dans chaque groupe, le meilleur exemplaire est mis en tête : la plus haute définition, puis le plus gros fichier.</p>
+        </div>
+        <div class="reveal" data-delay="1">
+          <div class="app" role="img" aria-label="Doublons : un groupe de trois exemplaires, le meilleur marqué à garder, les deux autres cochés">
+            <div class="app-titlebar"><img src="../assets/img/prisme.png" alt=""> Prisme <span class="win-ctrls"><i></i><i></i><i></i></span></div>
+            <div style="padding:16px;background:#16191e;display:grid;gap:10px">
+              <div style="font-size:12px;color:#8b94a1;line-height:1.5"><b style="color:#e9eef4;font-weight:600">41 groupes de doublons</b> — 58 fichiers en trop, <span style="color:#4fc28a;font-weight:600">jusqu'à 212 Go à récupérer</span></div>
+              <div class="dupe-row" style="background:#1a2a22;box-shadow:inset 0 0 0 1px rgba(79,194,138,.35)">
+                <div class="art s5" style="aspect-ratio:16/10;border-radius:6px"></div>
+                <div><b style="color:#fff;font-size:12.5px">lagon_vue_du_ciel_4K.mp4</b><div style="color:#8b94a1;font-size:11px;margin-top:3px">2160p · 6,8 Go · 5:12</div></div>
+                <span style="font-size:11px;color:#4fc28a;font-weight:600;white-space:nowrap">✓ à garder</span>
+              </div>
+              <div class="dupe-row" style="background:#1a1f27;box-shadow:inset 0 0 0 1px #2b323d">
+                <div class="art s5" style="aspect-ratio:16/10;border-radius:6px;filter:saturate(.7)"></div>
+                <div><b style="color:#cdd5df;font-size:12.5px">DJI_0233 (2).MP4</b><div style="color:#8b94a1;font-size:11px;margin-top:3px">1080p au lieu de 2160p · 3,7 Go de moins</div></div>
+                <span style="width:18px;height:18px;border-radius:5px;background:#ef6a5b;display:grid;place-items:center;color:#fff;font-size:11px">✓</span>
+              </div>
+              <div class="dupe-row" style="background:#1a1f27;box-shadow:inset 0 0 0 1px #2b323d">
+                <div class="art s5" style="aspect-ratio:16/10;border-radius:6px;filter:saturate(.5) blur(.5px)"></div>
+                <div><b style="color:#cdd5df;font-size:12.5px">lagon export whatsapp.mp4</b><div style="color:#8b94a1;font-size:11px;margin-top:3px">720p au lieu de 2160p · 4,3 Go de moins</div></div>
+                <span style="width:18px;height:18px;border-radius:5px;background:#ef6a5b;display:grid;place-items:center;color:#fff;font-size:11px">✓</span>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;margin-top:4px"><span class="chip">Pas des doublons</span><span class="chip" style="background:#3a2226;color:#ffc2c7;box-shadow:inset 0 0 0 1px #8c3b52">Suppr · 2 cochés</span></div>
+            </div>
+          </div>
+        </div>
+        <ul class="checks feature-more reveal" data-delay="3">
+          <li><svg><use href="#i-check"/></svg><span><b>Copies identiques</b> : même taille à l'octet près, puis trois passages du fichier comparés (début, milieu, fin). Jamais à l'aveugle.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Autres encodages</b> : reconnus à leurs images, avec la durée comme garde-fou.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Rien n'est supprimé sans vous</b> : le meilleur est marqué « ✓ à garder », les autres sont cochés, à vous de confirmer. « Pas des doublons » retire un groupe pour de bon.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ À DISTANCE -->
+  <section class="section" id="distance" style="padding-top:0">
+    <div class="container">
+      <div class="feature">
+        <div class="feature-copy">
+          <span class="eyebrow reveal">Accès à distance</span>
+          <h2 class="h2 reveal" data-delay="1">Votre vidéothèque, <em>dans votre poche.</em></h2>
+          <p class="lead reveal" data-delay="2">Depuis votre téléphone, où que vous soyez, parcourez vos dossiers et vos favoris, cherchez et regardez vos vidéos pendant que Prisme tourne sur votre PC. Rien n'est téléchargé sur le téléphone. Scannez le QR code, entrez votre mot de passe, c'est tout.</p>
+        </div>
+        <div class="remote-visual reveal" data-delay="1">
+          <div class="phone" aria-hidden="true">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <div class="m-head">
+                <div class="m-top"><img class="m-word" src="../assets/img/prisme-lettrage.png" alt=""><span class="m-tabs"><b class="on">Dossiers</b><b>Vidéos</b><b>Favoris</b></span></div>
+                <div class="m-search">Chercher un dossier, une vidéo…</div>
+              </div>
+              <div class="m-crumb">Mes vidéos › Voyages</div>
+              <div class="m-sec">Dossiers</div>
+              <div class="m-grid">
+                <div class="m-card"><div class="art s5"><span class="m-badge">24</span></div><div class="m-label">Polynésie 2024</div><div class="m-note">24 vidéos</div></div>
+                <div class="m-card"><div class="art s2"><span class="m-badge">41</span></div><div class="m-label">Alpes, hiver</div><div class="m-note">41 vidéos</div></div>
+              </div>
+              <div class="m-sec">Vidéos</div>
+              <div class="m-grid">
+                <div class="m-card"><div class="art s3"><span class="m-badge">0:48</span></div><div class="m-label">IMG_2041.MOV</div><div class="m-note"><span class="star">★</span> 4K</div></div>
+                <div class="m-card"><div class="art s6"><span class="m-badge">1:15</span></div><div class="m-label">aurore_islande.mp4</div><div class="m-note">4K</div></div>
+                <div class="m-card"><div class="art s10"><span class="m-badge">2:20</span></div><div class="m-label">rizieres_bali.MP4</div><div class="m-note">4K</div></div>
+                <div class="m-card"><div class="art s9"><span class="m-badge">16:00</span></div><div class="m-label">lac_annecy.mp4</div><div class="m-note">1080p</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="qr-card">
+            <div class="qr"><img src="../assets/img/qr-demo.svg" alt="QR code d'exemple" width="180" height="180"></div>
+            <p>Scannez pour ouvrir votre collection sur ce téléphone.</p>
+            <div class="lock"><svg><use href="#i-lock"/></svg>HTTPS · mot de passe requis</div>
+            <div class="access-log">
+              <div><b>iPhone · Safari</b><span>il y a 2 min</span></div>
+              <div><b>Android · Chrome</b><span>hier, 21:14</span></div>
+            </div>
+          </div>
+        </div>
+        <ul class="checks feature-more reveal" data-delay="3">
+          <li><svg><use href="#i-check"/></svg><span><b>Aucun port à ouvrir</b> sur votre box : Prisme met tout en place pour vous.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Protégé par mot de passe</b>, jamais stocké en clair.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Journal des accès</b> : quel appareil, quand, et ce qui a été regardé.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Un interrupteur</b> : coupez l'accès en un clic, à tout moment. Tant qu'il est ouvert, votre PC reste allumé, Prisme ouvert.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ CONFIANCE
+       Vie privée, vitesse et sécurité, réunies en une seule bande. -->
+  <section class="section trust-band" id="confiance" style="padding-top:0">
+    <div class="container">
+      <div class="privacy">
+        <div class="section-head">
+          <span class="eyebrow reveal">Confiance</span>
+          <h2 class="h2 reveal" data-delay="1">Vos fichiers sont <em>entre de bonnes mains.</em></h2>
+        </div>
+        <div class="trust3">
+          <div class="reveal">
+            <h3><svg><use href="#i-cloud-off"/></svg>Ils restent chez vous</h3>
+            <p>100 % local : aucun compte, aucune publicité, aucune télémétrie, rien n'est envoyé. Le partage à distance ne s'ouvre que si vous le décidez. Favoris, index et vignettes vivent à part, dans les données de l'application : vos dossiers restent propres.</p>
+          </div>
+          <div class="reveal" data-delay="1">
+            <h3><svg><use href="#i-signal"/></svg>Rapide, même sur un NAS</h3>
+            <span class="figure">0,07<small>s</small></span>
+            <p>pour réafficher une page de 40 vignettes déjà vue. Prisme prépare les aperçus à l'avance et ne relit le disque qu'en arrière-plan, même avec des centaines de milliers de fichiers.</p>
+          </div>
+          <div class="reveal" data-delay="2">
+            <h3><svg><use href="#i-shield"/></svg>Rien ne bouge sans vous</h3>
+            <p>Prisme ne déplace, ne renomme et ne supprime que ce que vous lui demandez, et chaque geste s'annule. Un fichier du même nom n'est jamais écrasé ; à la fermeture, Prisme attend que chaque copie soit arrivée.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ TARIF
+       À FAIRE avant d'ouvrir la vente : la licence à vie à 29 € et la licence à
+       offrir n'ont pas encore leur propre produit de paiement. Les boutons mènent
+       pour l'instant à l'accès anticipé (telecharger.html), ou au lien posé dans
+       assets/js/config-neutre.js. Ne PAS brancher ici le paiement Stripe de la
+       version principale (data-checkout, ../index.html) : son prix « à vie » est de 99 €. -->
+  <section class="section" id="tarifs" style="padding-top:0">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow reveal">Tarif</span>
+        <h2 class="h2 reveal" data-delay="1">Un seul paiement. <em>À vous pour toujours.</em></h2>
+        <p class="lead reveal" data-delay="2">Essayez Prisme gratuitement pendant 14 jours, avec toutes les fonctionnalités. S'il vous convainc, il est à vous pour 29 €, sans abonnement.</p>
+      </div>
+
+      <div class="plans">
+        <article class="plan reveal">
+          <h3>Essai</h3>
+          <p class="plan-desc">Toutes les fonctionnalités, sans limite, pour vous faire votre idée.</p>
+          <div class="price"><b>0 €</b><span>pendant 14 jours</span></div>
+          <p class="price-sub">Aucune carte bancaire demandée</p>
+          <ul>
+            <li><svg><use href="#i-tick"/></svg>Vidéos et photos : tri, aperçus, Mur</li>
+            <li><svg><use href="#i-tick"/></svg>Mots-clés, doublons, recherche, réparation</li>
+            <li><svg><use href="#i-tick"/></svg>Accès à distance</li>
+            <li><svg><use href="#i-tick"/></svg>Vos réglages conservés si vous continuez</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="telecharger.html" data-link="trial">Télécharger l'essai</a>
+        </article>
+
+        <article class="plan featured reveal" data-delay="1">
+          <span class="plan-flag">Prix de lancement</span>
+          <h3>Prisme à vie</h3>
+          <p class="plan-desc">Un seul paiement, à vous pour toujours. Toutes les fonctionnalités, toutes les mises à jour de la version 1.</p>
+          <div class="price"><b>29 €</b><span>une fois</span></div>
+          <p class="price-sub">TTC · licence perpétuelle · pas d'abonnement</p>
+          <ul>
+            <li><svg><use href="#i-tick"/></svg>Toutes les fonctionnalités</li>
+            <li><svg><use href="#i-tick"/></svg>Mises à jour de la version 1 incluses</li>
+            <li><svg><use href="#i-tick"/></svg>Jusqu'à 2 ordinateurs</li>
+            <li><svg><use href="#i-tick"/></svg>Un humain répond à vos questions</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="telecharger.html" data-link="lifetime">Acheter Prisme</a>
+        </article>
+
+        <article class="plan reveal" data-delay="2">
+          <h3>Prisme à offrir</h3>
+          <p class="plan-desc">Pour celui qui a 30 000 photos dans son téléphone et des cartes SD qui débordent.</p>
+          <div class="price"><b>29 €</b><span>une fois</span></div>
+          <p class="price-sub">Une carte cadeau par e-mail, à la date de votre choix</p>
+          <ul>
+            <li><svg><use href="#i-gift"/></svg>Un code à activer, valable un an</li>
+            <li><svg><use href="#i-tick"/></svg>La même licence à vie</li>
+            <li><svg><use href="#i-tick"/></svg>Envoi programmable, pour Noël ou un anniversaire</li>
+            <li><svg><use href="#i-tick"/></svg>Remboursable s'il n'est pas activé</li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="telecharger.html" data-link="gift">Offrir Prisme</a>
+        </article>
+      </div>
+
+      <div class="plans-foot reveal">
+        <span><svg><use href="#i-card"/></svg>Paiement sécurisé</span>
+        <span><svg><use href="#i-refund"/></svg>Satisfait ou remboursé 14 jours</span>
+        <span><svg><use href="#i-mail"/></svg>Un humain répond à vos questions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ FAQ -->
+  <section class="section" id="faq" style="padding-top:0">
+    <div class="container faq-grid">
+      <div class="section-head">
+        <span class="eyebrow reveal">Questions fréquentes</span>
+        <h2 class="h2 reveal" data-delay="1">Tout ce que vous <em>vous demandez.</em></h2>
+        <p class="lead reveal" data-delay="2">Une autre question ? Écrivez-nous, nous répondons à chaque message.</p>
+        <p class="reveal" data-delay="3" style="margin-top:28px"><a class="btn btn-ghost" href="mailto:contact@prisme.app" data-link="contact"><svg><use href="#i-mail"/></svg>Nous écrire</a></p>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>Prisme envoie-t-il mes vidéos quelque part ?</summary>
+          <div class="answer-body"><p>Non. Prisme est 100 % local : vos vidéos, vos photos, vos favoris, vos recherches et vos vignettes restent sur votre machine, et il n'y a aucune télémétrie. La recherche par l'image, elle aussi, se fait sur votre ordinateur.</p><p>Le partage à distance ne s'ouvre que si vous le décidez. Il passe par une adresse sécurisée (HTTPS) fournie par un service de tunnel, Cloudflare ou Tailscale : ce que vous regardez à distance transite par ce service. Et la licence ne transmet que sa propre clé, jamais rien de votre collection.</p></div>
+        </details>
+        <details>
+          <summary>Est-ce que Prisme modifie mes fichiers ?</summary>
+          <div class="answer-body"><p>Uniquement quand vous le lui demandez : déplacer, renommer ou supprimer une vidéo. Tout le reste (favoris, mots-clés, index, vignettes) est rangé à part, dans les données de l'application. Seule la corbeille de séance, un dossier masqué, s'installe dans votre collection le temps de la séance.</p><p>Et chaque action peut être annulée.</p></div>
+        </details>
+        <details>
+          <summary>Mes vidéos sont sur un NAS ou un disque externe. Ça marche ?</summary>
+          <div class="answer-body"><p>Oui. Prisme a été optimisé et mesuré sur des collections stockées sur NAS : ce qu'il a déjà vu s'affiche instantanément, les aperçus sont préparés à l'avance, et le disque n'est relu qu'en arrière-plan.</p><p>Bon à savoir : un NAS n'a pas de corbeille Windows. Ce que vous supprimez y reste récupérable pendant toute la séance, puis est effacé définitivement à la fermeture de Prisme.</p></div>
+        </details>
+        <details>
+          <summary>Puis-je regarder depuis mon téléphone ?</summary>
+          <div class="answer-body"><p>Oui, depuis n'importe où : posez un mot de passe, scannez le QR code, et parcourez vos dossiers, cherchez et regardez vos vidéos dans le navigateur du téléphone. Rien n'est téléchargé sur le téléphone.</p><p>C'est votre PC qui diffuse : il doit rester allumé, sans se mettre en veille, avec Prisme ouvert. L'écran, lui, peut s'éteindre.</p></div>
+        </details>
+        <details>
+          <summary>Prisme peut-il réparer une vidéo abîmée ?</summary>
+          <div class="answer-body"><p>Souvent, oui. Prisme décode la vidéo entière et vous dit combien de passages sont abîmés, par exemple « 3 passages abîmés, 12 s sur 340 s ». Vous choisissez ensuite comment réparer : reconstruire (recommandé, sans perte, pour les vidéos H.264 et H.265), figer la dernière image saine, couper les passages abîmés, masquer les blocs perdus, ou recoller l'enveloppe d'une vidéo qui ne s'ouvre plus.</p><p>La réparation est un nouveau fichier, « nom (réparée).mp4 », revérifié aussitôt ; l'original n'est jamais touché. Cela concerne les vidéos seulement, et ce qui a été réellement écrasé ne revient pas.</p></div>
+        </details>
+        <details>
+          <summary>Quels formats sont pris en charge ?</summary>
+          <div class="answer-body"><p>Pour les vidéos : MP4, M4V, MKV, MOV, AVI, WMV, FLV, WEBM, MPG, TS, M2TS, VOB, 3GP, OGV, RMVB, ASF, DivX et F4V. Pour les photos : JPEG, PNG, WebP, HEIC, GIF, BMP et TIFF. La définition et l'orientation de chaque fichier sont détectées automatiquement.</p></div>
+        </details>
+        <details>
+          <summary>Prisme gère-t-il aussi les photos ?</summary>
+          <div class="answer-body"><p>Oui. Un clic fait passer Prisme de vos vidéos à vos photos, avec le même tri, les mêmes favoris, un diaporama et le Mur. Les deux collections restent séparées : chacune a ses dossiers, ses favoris et ses mots-clés.</p></div>
+        </details>
+        <details>
+          <summary>Sur quel système fonctionne Prisme ?</summary>
+          <div class="answer-body"><p>Prisme est une application Windows (Windows 10 et 11). Une carte graphique récente n'est pas nécessaire : un ordinateur ordinaire suffit. Pas encore de version Mac.</p></div>
+        </details>
+        <details>
+          <summary>Pourquoi un seul paiement, et pas un abonnement ?</summary>
+          <div class="answer-body"><p>Parce qu'un logiciel qui tourne sur votre ordinateur, sans serveur à payer chaque mois, n'a pas de raison de vous coûter chaque mois. 29 €, une fois, et Prisme est à vous, avec les mises à jour de la version 1.</p></div>
+        </details>
+        <details>
+          <summary>Puis-je offrir Prisme ?</summary>
+          <div class="answer-body"><p>Oui : choisissez « Offrir Prisme », indiquez l'adresse e-mail du destinataire et la date d'envoi. Il reçoit un code à activer dans l'année. S'il n'est jamais activé, nous vous remboursons.</p></div>
+        </details>
+        <details>
+          <summary>Que se passe-t-il à la fin de l'essai ?</summary>
+          <div class="answer-body"><p>Rien d'automatique : aucune carte bancaire n'est demandée pour l'essai, donc aucun prélèvement surprise. À la fin, Prisme vous demande une clé de licence : achetez la licence à vie, collez la clé reçue, et vous retrouvez tout, réglages et favoris compris. Vos dossiers, eux, ne sont jamais touchés.</p></div>
+        </details>
+        <details>
+          <summary>Puis-je être remboursé ?</summary>
+          <div class="answer-body"><p>Oui. Pendant les 14 jours qui suivent votre paiement, un simple e-mail suffit : nous vous remboursons intégralement, sans justification.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ APPEL FINAL -->
+  <section class="final">
+    <div class="container">
+      <img class="reveal" src="../assets/img/prisme.png" alt="" width="84" height="84">
+      <h2 class="display reveal" data-delay="1" style="font-size:clamp(2.4rem,5.6vw,4.6rem)">Reprenez le contrôle<br>de vos <em>vidéos et photos.</em></h2>
+      <p class="lead reveal" data-delay="2">Installez Prisme, montrez-lui votre dossier, et redécouvrez en quelques minutes les souvenirs que vous aviez oublié posséder.</p>
+      <div class="hero-actions reveal" data-delay="3">
+        <div>
+          <a class="btn btn-primary" href="telecharger.html" data-link="trial"><svg><use href="#i-download"/></svg>Essayer gratuitement</a>
+          <span class="btn-note">14 jours · sans carte bancaire · puis 29 € à vie</span>
+        </div>
+        <a class="btn btn-ghost" href="#tarifs">Voir le tarif <svg><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#top"><img src="../assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="../assets/img/prisme-lettrage.png" alt="Prisme" width="115" height="15"></a>
+        <p>Le logiciel Windows pour trier, ranger et regarder vos vidéos et vos photos, au clavier. 100 % local.</p>
+      </div>
+      <div>
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+          <li><a href="#mur">Le Mur</a></li>
+          <li><a href="#confiance">Confiance</a></li>
+          <li><a href="#tarifs">Tarif</a></li>
+          <li><a href="telecharger.html" data-link="trial">Télécharger</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Aide</h4>
+        <ul>
+          <li><a href="#faq">Questions fréquentes</a></li>
+          <li><a href="mailto:contact@prisme.app" data-link="contact">Contact</a></li>
+          <li><a href="#tarifs" data-link="account">Mon compte</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="cgv.html">Conditions de vente</a></li>
+          <li><a href="confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Prisme est un logiciel : il n'héberge ni ne fournit aucun contenu.</span>
+      <span>© <span data-year>2026</span> Prisme. Tous droits réservés.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
