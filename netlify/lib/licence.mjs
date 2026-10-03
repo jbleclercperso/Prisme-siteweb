@@ -1,11 +1,16 @@
 // Les clés de licence de Prisme : fabriquées et signées ici, vérifiées par
-// Prisme seul, sans connexion (videosorter/licence.py).
+// Prisme seul, sans connexion (videosorter/licence.py, dans le logiciel).
 //
-//   PRISME1-<contenu en base64url>.<signature Ed25519 en base64url>
+//   PRISME1-<contenu>.<signature>
 //
-// Le contenu : { v: 1, p: formule, e: e-mail, c: client Stripe,
-//                s: abonnement Stripe, i: émise le, x: vaut jusqu'au }
-// (dates en secondes ; pas de x pour la licence à vie).
+// <contenu> et <signature> en base64 « url » sans remplissage. Le contenu est
+// un petit JSON, et la signature Ed25519 porte sur ses octets, tels quels :
+//   { plan: "mois" | "an" | "vie", expires: <secondes, 0 à vie>, email,
+//     issued: <émise le, secondes>, customer: <client Stripe>,
+//     subscription: <abonnement Stripe, pour les seuls abonnements> }
+// Le logiciel lit plan, expires et email ; customer et subscription servent
+// au site, pour prolonger un abonnement. C'est le format du logiciel : s'il
+// change là-bas, il change ici.
 //
 // La clé privée vit dans la variable PRISME_LICENCE_PRIVATE de Netlify
 // (`npm run licence:keys` la fabrique). Sans elle, aucune clé n'est émise :
@@ -18,6 +23,8 @@ export const PREFIX = "PRISME1-";
 export const GRACE = 7 * 86400;
 // Formule du site ↔ lookup key du prix Stripe.
 export const PLAN_OF_LOOKUP = { prisme_mensuel: "monthly", prisme_annuel: "yearly", prisme_a_vie: "lifetime" };
+// Formule du site ↔ formule écrite dans la clé, celle que lit le logiciel.
+export const KEY_PLAN = { monthly: "mois", yearly: "an", lifetime: "vie" };
 const LIVE = new Set(["active", "trialing", "past_due"]);
 
 export function privateKey() {
@@ -31,23 +38,25 @@ export function publicKeyBase64(key) {
 }
 
 export function makeKey(payload, key) {
-  const body = Buffer.from(JSON.stringify({ v: 1, ...payload })).toString("base64url");
-  const signature = crypto.sign(null, Buffer.from(body, "ascii"), key).toString("base64url");
-  return `${PREFIX}${body}.${signature}`;
+  const bytes = Buffer.from(JSON.stringify(payload), "utf8");
+  const signature = crypto.sign(null, bytes, key).toString("base64url");
+  return `${PREFIX}${bytes.toString("base64url")}.${signature}`;
 }
 
 // Le contenu d'une clé signée par nous, ou null.
 export function readKey(text, key) {
   text = String(text || "").replace(/\s+/g, "");
-  if (!text.startsWith(PREFIX)) return null;
+  if (!text.toUpperCase().startsWith(PREFIX)) return null;
   const [body, signature, extra] = text.slice(PREFIX.length).split(".");
   if (!body || !signature || extra !== undefined) return null;
   try {
-    const ok = crypto.verify(null, Buffer.from(body, "ascii"), crypto.createPublicKey(key),
-      Buffer.from(signature, "base64url"));
+    const bytes = Buffer.from(body, "base64url");
+    const ok = crypto.verify(null, bytes, crypto.createPublicKey(key), Buffer.from(signature, "base64url"));
     if (!ok) return null;
-    const payload = JSON.parse(Buffer.from(body, "base64url").toString("utf8"));
-    return payload && payload.v === 1 ? payload : null;
+    const payload = JSON.parse(bytes.toString("utf8"));
+    if (!payload || !["mois", "an", "vie"].includes(payload.plan)) return null;
+    payload.expires = Number(payload.expires) || 0;
+    return payload;
   } catch {
     return null;
   }
@@ -63,7 +72,7 @@ export function subscriptionKeyFields(subscription) {
   return {
     live: LIVE.has(subscription.status),
     ending: Boolean(subscription.cancel_at_period_end),
-    x: periodEnd(subscription) + GRACE,
+    expires: periodEnd(subscription) + GRACE,
   };
 }
 
@@ -73,17 +82,18 @@ export async function licenceForSession(stripe, session, key) {
   const plan = PLAN_OF_LOOKUP[session.metadata?.plan];
   if (!plan || !key || session.status !== "complete" || session.payment_status === "unpaid") return null;
   const payload = {
-    p: plan,
-    e: session.customer_details?.email || "",
-    c: typeof session.customer === "string" ? session.customer : session.customer?.id || "",
-    i: session.created,
+    plan: KEY_PLAN[plan],
+    expires: 0,
+    email: session.customer_details?.email || "",
+    issued: session.created,
+    customer: typeof session.customer === "string" ? session.customer : session.customer?.id || "",
   };
   if (plan !== "lifetime") {
     const id = typeof session.subscription === "string" ? session.subscription : session.subscription?.id;
     if (!id) return null;
     const subscription = await stripe.subscriptions.retrieve(id);
-    payload.s = id;
-    payload.x = subscriptionKeyFields(subscription).x;
+    payload.subscription = id;
+    payload.expires = subscriptionKeyFields(subscription).expires;
   }
   return makeKey(payload, key);
 }

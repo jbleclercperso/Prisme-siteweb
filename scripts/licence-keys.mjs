@@ -29,7 +29,7 @@ if (command === "issue") {
     console.error("Seule la licence à vie s'émet à la main : --plan lifetime.");
     process.exit(1);
   }
-  console.log(makeKey({ p: "lifetime", e: option("email") || "", c: "", i: Math.floor(Date.now() / 1000) }, key));
+  console.log(makeKey({ plan: "vie", expires: 0, email: option("email") || "", issued: Math.floor(Date.now() / 1000) }, key));
 } else {
   if (process.env.PRISME_LICENCE_PRIVATE) {
     console.error("PRISME_LICENCE_PRIVATE existe déjà : changer de paire invaliderait toutes les licences vendues.");

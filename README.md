@@ -146,6 +146,14 @@ Prisme s'essaie 14 jours, puis demande une **clé de licence** : un petit texte
 signé par le site (Ed25519), que Prisme vérifie seul, sans connexion. Personne
 ne peut en fabriquer sans la clé privée, qui ne vit que dans Netlify.
 
+**Le format est celui du logiciel** (`videosorter/licence.py`), et il ne doit
+changer qu'en même temps des deux côtés : `PRISME1-<contenu>.<signature>`, les
+deux en base64 « url » sans remplissage ; le contenu est un JSON
+`{ plan: "mois" | "an" | "vie", expires: <secondes, 0 à vie>, email, issued,
+customer, subscription }`, et la signature Ed25519 porte sur **ses octets**,
+tels quels. Le logiciel lit `plan`, `expires` et `email` ; `customer` et
+`subscription` servent au site pour prolonger un abonnement.
+
 - **Après l'achat**, la clé s'affiche sur `merci.html` (bouton « Copier ») et
   se range dans la fiche du client Stripe, champ `prisme_licence` : c'est là
   que le support la retrouve si elle est perdue.

@@ -3,7 +3,7 @@
 // la clé : rien de la collection.
 //
 // POST /api/licence  { "key": "PRISME1-…" }
-//   → 200 { "key": "PRISME1-…", "ending": false }   abonnement en cours
+//   → 200 { "key": "PRISME1-…", "ending": false }   abonnement en cours (clé plus longue)
 //   → 200 { "status": "ended" }                     abonnement terminé
 //   → 400 clé illisible ou pas de nous
 import { makeKey, privateKey, readKey, subscriptionKeyFields } from "../lib/licence.mjs";
@@ -22,14 +22,14 @@ export default async (req) => {
     payload = null;
   }
   if (!payload) return json(400, { error: "key" });
-  if (payload.p === "lifetime") return json(200, { key: makeKey(stripFields(payload), key), ending: false });
-  if (!payload.s) return json(400, { error: "key" });
+  if (payload.plan === "vie") return json(200, { key: makeKey(payload, key), ending: false });
+  if (!payload.subscription) return json(400, { error: "key" });
 
   try {
-    const subscription = await stripe.subscriptions.retrieve(payload.s);
+    const subscription = await stripe.subscriptions.retrieve(payload.subscription);
     const fields = subscriptionKeyFields(subscription);
     if (!fields.live) return json(200, { status: "ended" });
-    const fresh = makeKey({ ...stripFields(payload), i: Math.floor(Date.now() / 1000), x: fields.x }, key);
+    const fresh = makeKey({ ...payload, issued: Math.floor(Date.now() / 1000), expires: fields.expires }, key);
     return json(200, { key: fresh, ending: fields.ending });
   } catch (err) {
     if (err.statusCode === 404) return json(200, { status: "ended" });
@@ -38,8 +38,5 @@ export default async (req) => {
   }
 };
 
-function stripFields({ v, ...rest }) {
-  return rest;
-}
 
 export const config = { path: "/api/licence" };
