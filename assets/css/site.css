@@ -1966,3 +1966,36 @@ html.no-js .reveal { opacity: 1; transform: none; }
 .tv-remote td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--muted); }
 .tv-remote td:first-child { color: #fff; white-space: nowrap; font-weight: 600; }
 @media (max-width: 600px) { .tv-remote table, .tv-remote tbody, .tv-remote tr, .tv-remote td { display: block; } .tv-remote th { display: none; } .tv-remote td { border: 0; padding: 2px 0; } .tv-remote tr { padding: 10px 0; border-bottom: 1px solid var(--line); } }
+
+/* --------------------------------------------------------------------------
+   Tuiles ajoutées : plusieurs racines, annuler, réparer ; « Et aussi » ; Confiance
+   -------------------------------------------------------------------------- */
+.roots-demo { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.roots-demo .root { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 10px; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line-2); font-size: .88rem; color: var(--muted); }
+.roots-demo .root i { display: grid; place-items: center; width: 16px; height: 16px; border-radius: 4px; font-style: normal; font-size: 11px; box-shadow: inset 0 0 0 1px var(--line-2); }
+.roots-demo .root.on { color: var(--text); }
+.roots-demo .root.on i { background: var(--blue); color: #fff; box-shadow: none; }
+.roots-demo .root-count { font: 600 .85rem var(--mono); color: var(--muted); margin-left: auto; }
+.undo-demo { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.undo-demo .trash-pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; background: rgba(240,132,60,.12); color: var(--amber); font-size: .85rem; box-shadow: inset 0 0 0 1px rgba(240,132,60,.35); }
+.undo-demo .trash-pill svg { width: 15px; height: 15px; }
+.repair-demo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.repair-demo figure { margin: 0; display: grid; gap: 6px; }
+.repair-demo .art { aspect-ratio: 16 / 10; border-radius: 10px; }
+.repair-demo figcaption { font-size: .78rem; color: var(--muted); }
+.repair-demo .art.broken::before { content: ""; position: absolute; inset: 0; z-index: 2; background:
+  linear-gradient(90deg, transparent 12%, rgba(64,200,120,.55) 12% 30%, transparent 30% 55%, rgba(220,60,160,.5) 55% 70%, transparent 70%) 0 38% / 100% 14% no-repeat,
+  linear-gradient(90deg, rgba(60,90,255,.45) 0 22%, transparent 22% 64%, rgba(240,200,40,.45) 64% 86%, transparent 86%) 0 62% / 100% 10% no-repeat,
+  repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 6px, transparent 6px 14px) 0 40% / 100% 30% no-repeat; }
+.repair-demo .art { position: relative; overflow: hidden; }
+
+.also { margin-top: 28px; padding: 26px 28px; border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--line); }
+.also h3 { font-size: 1rem; margin-bottom: 14px; color: var(--muted); font-weight: 600; letter-spacing: .02em; }
+.also ul { list-style: none; margin: 0; padding: 0; columns: 3 260px; column-gap: 36px; }
+.also li { break-inside: avoid; padding: 6px 0 6px 16px; position: relative; font-size: .9rem; color: var(--muted); line-height: 1.45; }
+.also li::before { content: ""; position: absolute; left: 0; top: 13px; width: 6px; height: 6px; border-radius: 50%; background: var(--line-2); }
+.also li b { color: var(--text); font-weight: 600; }
+
+.trust3 .trust-figure { margin: 2px 0 10px; color: var(--muted); font-size: .9rem; }
+.trust3 .trust-figure b { font-size: 1.9rem; letter-spacing: -.02em; color: var(--text); margin-right: 6px; }
+@media (max-width: 860px) { .safety.trust3 { grid-template-columns: 1fr; } }
