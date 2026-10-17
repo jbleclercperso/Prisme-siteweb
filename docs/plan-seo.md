@@ -156,152 +156,182 @@ français.
 
 ---
 
-## 3. Architecture cible
+## 3. Architecture retenue (décidée le 17/10/2026)
 
-Toutes les nouvelles pages sont **neutres** (aucun mot, aucune image adulte,
-pas de `rating adult`, pas de contrôle d'âge), en français, avec des
-adresses en dossier. Elles mènent vers la **page produit neutre** et vers le
-téléchargement. Elles ne lient pas la version adulte.
+**Deux référencements séparés sur un même domaine.** La version grand public
+prend la racine ; toute la version adulte vit dans `/adulte/` (français) et
+`/en/adult/` (anglais), marquée comme telle (`rating adult`, `contentRating`,
+contrôle d'âge). C'est la séparation que Google demande pour un site qui mêle
+les deux : sans elle, il filtre le domaine entier. Une page grand public ne
+lie jamais la version adulte et n'en emploie pas le vocabulaire
+(`scripts/verifier.py` y veille) ; l'inverse est permis.
 
 ```
-/                          accueil (version adulte, inchangée sur le fond)
-/neutre/                   page produit grand public  ← devient indexable (décision A)
-/guides/                   le sommaire : tous les problèmes, par thème
-│
-├─ Trier et organiser
-│  ├─ /organiser-photos-videos-pc/        guide de fond (pilier)
-│  ├─ /logiciel-tri-photos-videos/        page produit « logiciel pour trier »
-│  └─ /trier-des-milliers-de-photos/      méthode pas à pas
-├─ Doublons
-│  └─ /doublons-videos-photos/            trouver et supprimer, même réencodés
-├─ Réparer
-│  └─ /reparer-video-corrompue/           MP4, MOV, MKV abîmés : gratuit d'abord, puis Prisme
-├─ Regarder
-│  ├─ /lire-plusieurs-videos-en-meme-temps/   le Mur
-│  ├─ /lecteur-video-toujours-au-premier-plan/ le lecteur flottant
-│  └─ /egaliser-volume-videos/            son trop bas, volume inégal
-├─ NAS, télé, téléphone
-│  ├─ /alternative-video-station-synology/
-│  ├─ /regarder-videos-pc-sur-tv/         Fire TV, Android TV, sans Plex
-│  └─ /plex-jellyfin-ou-prisme/           comparatif honnête
-├─ Retrouver
-│  └─ /retrouver-une-video-par-son-contenu/   recherche par description (bêta)
-└─ Alternatives
-   └─ /alternative-picasa/                visionneuse et tri local, Windows 10/11
+/                                      accueil grand public (ex-neutre/)
+/telecharger.html, /cgv.html…          téléchargement, pages légales (grand public)
+/guides/                               sommaire des guides grand public
+  /organiser-photos-videos-pc/         pilier
+  /logiciel-tri-photos-videos/         page produit « logiciel pour trier »
+  /trier-des-milliers-de-photos/
+  /doublons-videos-photos/
+  /reparer-video-corrompue/
+  /egaliser-volume-videos/
+  /lire-plusieurs-videos-en-meme-temps/
+  /lecteur-video-toujours-au-premier-plan/
+  /alternative-video-station-synology/
+  /regarder-videos-pc-sur-tv/
+  /plex-jellyfin-ou-prisme/
+  /retrouver-une-video-par-son-contenu/
+  /alternative-picasa/
+
+/adulte/                               accueil adulte (FR)      ⇄  /en/adult/
+/adulte/telecharger.html, tv.html…     ses pages (FR)           ⇄  /en/adult/download.html…
+/adulte/guides/                        sommaire des guides      ⇄  /en/adult/guides/
+  logiciel-organiser-collection-porno/                          ⇄  best-porn-organizer-software/
+  alternative-stash/                                            ⇄  stash-alternative/
+  trier-videos-porno/                                           ⇄  sort-porn-videos/
+  doublons-videos-porno/                                        ⇄  porn-duplicate-finder/
+  lecteur-video-porno-apercus/                                  ⇄  porn-video-player-previews/
+  mots-cles-recherche-ia-porno/                                 ⇄  auto-tag-porn-ai-search/
+  cacher-videos-porno-pc/                                       ⇄  hide-porn-on-pc/
+  plex-jellyfin-porno/                                          ⇄  plex-jellyfin-porn/
 ```
 
-### 3.1 Les pages, leurs mots-clés, leur priorité
+Les anciennes adresses (`/neutre/…`, `/merci.html`, `/en/…`, `/tv.html`)
+redirigent (`netlify.toml`). La version grand public n'a pas encore de
+traduction anglaise : `/en/…` mène pour l'instant à `/en/adult/…`.
 
-Priorité : **P1** = cette session, fort potentiel et concurrence faible ;
-**P2** = cette session si le temps le permet, sinon prochaine vague ;
-**P3** = plus tard.
+### 3.1 Grand public : les pages et leurs mots-clés
 
-| # | Adresse | Mot-clé principal | Secondaires | Intention | Prio |
-|---|---|---|---|---|---|
-| 1 | `/alternative-video-station-synology/` | alternative video station synology | remplacement video station, regarder vidéos NAS Synology sur TV / téléphone | comparatif | P1 |
-| 2 | `/reparer-video-corrompue/` | réparer vidéo corrompue | fichier mp4 corrompu que faire, vidéo endommagée, réparer avec VLC, mkv corrompu, vidéo GoPro illisible, sans l'envoyer en ligne | info → produit | P1 |
-| 3 | `/doublons-videos-photos/` | logiciel doublons vidéo | supprimer photos et vidéos en double sur PC, même vidéo en plusieurs résolutions, alternative dupeGuru | produit | P1 |
-| 4 | `/organiser-photos-videos-pc/` | organiser ses photos et vidéos sur PC | classer, ranger, faire le tri, arborescence, gestionnaire de photos et vidéos | info (pilier) | P1 |
-| 5 | `/logiciel-tri-photos-videos/` | logiciel pour trier ses photos et vidéos | logiciel tri photo Windows, trier ses vidéos, trier rapidement | produit | P1 |
-| 6 | `/regarder-videos-pc-sur-tv/` | regarder les vidéos du PC sur la TV | film PC sur Fire TV sans Plex, Fire TV Stick NAS, Android TV | info → produit | P1 |
-| 7 | `/egaliser-volume-videos/` | égaliser le son de plusieurs vidéos | vidéo son trop faible, augmenter le son d'une vidéo MP4 | info → produit | P1 |
-| 8 | `/plex-jellyfin-ou-prisme/` | plex ou jellyfin | alternative gratuite à Plex, Plex payant 2026 | comparatif | P1 |
-| 9 | `/lire-plusieurs-videos-en-meme-temps/` | lire plusieurs vidéos en même temps | regarder plusieurs vidéos à la fois, VLC plusieurs vidéos | info → produit | P2 |
-| 10 | `/lecteur-video-toujours-au-premier-plan/` | lecteur vidéo toujours au premier plan | VLC picture in picture Windows, lecteur flottant | info → produit | P2 |
-| 11 | `/trier-des-milliers-de-photos/` | comment trier des milliers de photos | trier ses photos rapidement, tri photo au clavier | info | P2 |
-| 12 | `/alternative-picasa/` | alternative Picasa Windows 10 / 11 | équivalent Picasa, alternative visionneuse photo Windows 11, diaporama photo aléatoire | comparatif | P2 |
-| 13 | `/retrouver-une-video-par-son-contenu/` | retrouver une vidéo par son contenu | rechercher dans ses vidéos, recherche par image locale | info → produit | P2 |
-| 14 | `/guides/` | guides photos et vidéos | — | sommaire | P1 |
-| — | `/regarder-ses-videos-sur-son-telephone/` | regarder ses vidéos du PC sur son téléphone | sans cloud, à distance | info | P3 |
-| — | Longue traîne réparation : erreur 0xc00d36c4, MP4 sans son, miniatures absentes dans l'Explorateur | | | info | P3 |
-| — | Alternatives : Google Photos (local), Adobe Bridge, Duplicate Video Search | | | comparatif | P3 |
-| — | Versions anglaises des pages | | | | P3 |
+| Adresse | Mot-clé principal | Secondaires | Intention |
+|---|---|---|---|
+| `/alternative-video-station-synology/` | alternative video station synology | remplacement video station, vidéos du NAS sur téléphone | comparatif |
+| `/reparer-video-corrompue/` | réparer vidéo corrompue | fichier mp4 corrompu que faire, vidéo endommagée, réparer avec VLC, mkv, GoPro, 0xc00d36c4 | info → produit |
+| `/doublons-videos-photos/` | logiciel doublons vidéo | supprimer vidéos en double sur PC, même vidéo en plusieurs résolutions, alternative dupeGuru | produit |
+| `/organiser-photos-videos-pc/` | organiser ses photos et vidéos sur PC | classer, ranger, faire le tri, arborescence, gestionnaire de fichiers | info (pilier) |
+| `/logiciel-tri-photos-videos/` | logiciel pour trier ses photos et vidéos | logiciel tri photo Windows, trier ses vidéos | produit |
+| `/regarder-videos-pc-sur-tv/` | regarder les vidéos du PC sur la TV | film PC sur Fire TV sans Plex, Fire TV Stick NAS | info → produit |
+| `/egaliser-volume-videos/` | égaliser le son de plusieurs vidéos | vidéo son trop faible, augmenter le son d'une vidéo MP4 | info → produit |
+| `/plex-jellyfin-ou-prisme/` | plex ou jellyfin | alternative gratuite à Plex, Plex payant | comparatif |
+| `/lire-plusieurs-videos-en-meme-temps/` | lire plusieurs vidéos en même temps | VLC plusieurs vidéos | info → produit |
+| `/lecteur-video-toujours-au-premier-plan/` | lecteur vidéo toujours au premier plan | VLC toujours au-dessus, image dans l'image | info → produit |
+| `/trier-des-milliers-de-photos/` | comment trier des milliers de photos | trier ses photos rapidement | info |
+| `/alternative-picasa/` | alternative Picasa Windows 10 / 11 | équivalent Picasa, diaporama photo aléatoire | comparatif |
+| `/retrouver-une-video-par-son-contenu/` | retrouver une vidéo par son contenu | recherche par image locale | info → produit |
 
-### 3.2 Gabarit de chaque page
+### 3.2 Adulte : les pages et leurs mots-clés
 
-- **Title** 50–65 caractères, mot-clé d'abord, « | Prisme » à la fin.
-- **Description** 140–160 caractères : le problème, la réponse, « Windows »,
-  « 100 % local » ou « essai gratuit » selon la page.
-- **Un H1** qui reprend la question telle qu'on la tape ; H2 = les sous-questions.
-- **La réponse d'abord**, en deux ou trois phrases (bloc « En bref »), puis le
-  détail. Les solutions gratuites quand elles existent (VLC, ffmpeg, Windows) :
-  c'est ce qui rend la page crédible et ce que Google récompense.
-- **Ce que fait Prisme**, sans exagération, puis **ses limites** (« ce qu'il ne
-  fait pas »), puis l'appel à l'essai.
-- **FAQ** de 3 à 5 questions issues des « Autres questions posées ».
-- Fil d'Ariane visible (Accueil › Guides › Page) + `BreadcrumbList`.
-- Données structurées : `Article` (ou `TechArticle`) avec auteur = Prisme
-  (organisation), `dateModified` ; `FAQPage` ; `SoftwareApplication` sur les
-  pages produit, **sans notes**.
-- Open Graph et Twitter complets, `canonical` sur elle-même.
-- Bloc « À lire aussi » : 3 liens vers les pages voisines.
+Les termes explicites n'ont aucune suggestion dans les moteurs (filtrage) :
+les volumes ne se mesurent pas, mais la concurrence est presque nulle,
+surtout en français. Rédaction sobre, sans image ni description explicite :
+« porno / porn » dans le titre, « vidéos pour adultes / adult » dans la
+description.
 
-### 3.3 Maillage interne
+| FR | EN | Mots-clés visés |
+|---|---|---|
+| `/adulte/` | `/en/adult/` | logiciel gestion vidéo porno, bibliothèque vidéo porno / adulte · porn organizer, porn collection manager windows |
+| `logiciel-organiser-collection-porno/` | `best-porn-organizer-software/` | quel logiciel pour organiser sa collection porno · best software to organize porn |
+| `alternative-stash/` | `stash-alternative/` | alternative à Stash · stash app alternative, stashapp windows client |
+| `trier-videos-porno/` | `sort-porn-videos/` | trier ses vidéos porno, classer · sort porn videos into folders |
+| `doublons-videos-porno/` | `porn-duplicate-finder/` | doublons vidéos porno · porn duplicate finder, different resolution |
+| `lecteur-video-porno-apercus/` | `porn-video-player-previews/` | lecteur avec aperçus, mur de vidéos · porn video player with previews |
+| `mots-cles-recherche-ia-porno/` | `auto-tag-porn-ai-search/` | taguer ses vidéos · porn tagger, auto tag porn, AI scene search |
+| `cacher-videos-porno-pc/` | `hide-porn-on-pc/` | cacher ses vidéos porno sur son PC, dossier secret · how to hide porn on pc |
+| `plex-jellyfin-porno/` | `plex-jellyfin-porn/` | plex / jellyfin porno · plex for porn, plex hide library |
 
-- **Le pilier** (`/organiser-photos-videos-pc/`) lie toutes les pages du thème
-  « trier » et chaque problème (doublons, réparation, TV) au bon paragraphe.
-- **Chaque page** lie : le pilier, la page produit neutre, 2 à 3 voisines
-  (« À lire aussi »), le téléchargement.
-- **`/guides/`** lie tout, par thème ; il est lié depuis l'en-tête et le pied de
-  page de chaque page neutre, et depuis le pied de page de la page produit.
-- Liens croisés obligatoires : réparation ↔ doublons (« libérer de la place ») ;
-  Video Station ↔ TV ↔ Plex/Jellyfin ; Mur ↔ lecteur flottant ↔ volume ;
-  Picasa ↔ trier des milliers de photos.
-- Ancres descriptives (« trouver les vidéos en double »), jamais « cliquez ici ».
+### 3.3 Gabarit de chaque page
+
+- **Title** 50–65 caractères, mot-clé d'abord, « | Prisme » à la fin ;
+  **description** 140–165 caractères.
+- **Un H1** qui reprend la question telle qu'on la tape ; « En bref » en tête :
+  la réponse avant le détail.
+- **Les solutions gratuites d'abord** quand elles existent (VLC, ffmpeg,
+  Windows, dupeGuru, VeraCrypt…), puis **ce que fait Prisme**, puis **ce qu'il
+  ne fait pas**, puis l'appel à l'essai.
+- **FAQ** de 3 à 5 questions ; fil d'Ariane visible ; « À lire aussi ».
+- Données structurées (écrites par `scripts/seo.py`) : Organization, WebSite,
+  WebPage + FAQPage, BreadcrumbList, TechArticle ; SoftwareApplication sur les
+  accueils et pages de téléchargement, **sans notes ni avis** ; HowTo sur les
+  pages TV. FAQPage et HowTo n'ont plus d'affichage enrichi chez Google, mais
+  restent lus par Bing et les moteurs à réponse.
+
+### 3.4 Maillage interne
+
+- Grand public : chaque guide lie le pilier ou la page produit, 3 voisins
+  (« À lire aussi », `scripts/gabarit.py`) et le téléchargement ; `/guides/` est
+  dans le menu et le pied de page de toutes les pages grand public, avec cinq
+  guides en lien direct.
+- Adulte : même logique, dans chaque langue ; « Guides » dans le menu et le
+  pied de page de toutes les pages adultes.
 
 ---
 
-## 4. Décisions à prendre (avant l'exécution)
+## 4. Ce qui a été fait (17/10/2026)
 
-**A. Où mènent les pages grand public ?**
-Recommandé : vers **`/neutre/`, rendu indexable** (canonical, retrait du
-`noindex`, sélecteur « Adulte » retiré de ses en-têtes), la version adulte
-restant à la racine avec son marquage. À terme, l'idéal est **deux domaines**
-(ou le grand public à la racine et l'adulte dans un sous-dossier), car un site
-majoritairement explicite peut être filtré en bloc. Attention : les deux
-versions n'affichent pas le même prix (29 € à vie côté neutre ; 4,99 €/mois,
-49,90 €/an, 99 € à vie côté adulte). Les nouvelles pages ne citeront **aucun
-prix**, seulement « essai gratuit de 14 jours ».
+1. **Séparation des deux versions** : neutre à la racine, adulte dans
+   `/adulte/` et `/en/adult/` ; redirections des anciennes adresses ; bascule
+   de langue (`langue.js`) et pages de retour de Stripe mises à jour.
+2. **Technique** : `scripts/seo.py` écrit titre, description, canonical,
+   hreflang, Open Graph, Twitter et données structurées de chaque page, plus
+   `sitemap.xml` (avec `lastmod` et hreflang) et `robots.txt`, à partir d'une
+   seule liste ; l'adresse du site est la constante `BASE` (aujourd'hui
+   `https://prisme-website.netlify.app`). Le grand titre de l'accueil ne passe
+   plus par l'animation d'entrée (LCP). Le `noindex` provisoire de la version
+   neutre et son sélecteur « Adulte » sont retirés.
+3. **Contenu** : 13 guides grand public + sommaire ; 8 guides adultes en
+   français et en anglais + sommaires (54 pages en tout).
+4. **Contrôle** : `scripts/verifier.py` (liens et ancres, un H1, `alt`, JSON-LD
+   lisible et types connus, séparation des versions, balises à jour) ;
+   propriétés obligatoires des données structurées vérifiées ; rendu bureau et
+   téléphone (375 px) vérifié dans un navigateur.
 
-**B. Quelle adresse dans les balises ?**
-Recommandé, en attendant un vrai domaine : **`https://prisme-website.netlify.app`**
-partout (canonical, sitemap, robots, OG, page TV), via une seule constante
-facile à remplacer. Le jour où un domaine est acheté et branché dans Netlify,
-l'ancienne adresse y redirige d'elle-même ; on remplace la constante et on
-renvoie le sitemap.
+## 5. Ce qui reste
 
-**C. Mise en ligne** : le site de production suit `claude/jolly-turing-14mvit`,
-et ses trois derniers commits ne sont pas en ligne. Je pousse sur la branche par
-défaut **et** sur `jolly-turing` (elles sont identiques) ; il faudra regarder
-dans Netlify pourquoi les derniers déploiements ne sont pas publiés.
+**De votre côté**
 
----
+- **Nom de domaine** (sans doute `prism-desktop.com`) : l'acheter, le brancher
+  dans Netlify, puis changer `BASE` dans `scripts/seo.py` et relancer le script.
+  Les adresses `contact@prisme.app` du site pointent vers un domaine qui n'est
+  pas le vôtre : à remplacer par une vraie adresse.
+- **Mise en ligne** : Netlify publie la branche `claude/jolly-turing-14mvit`,
+  dont la dernière publication date du 03/10. Le travail est sur la branche par
+  défaut `claude/stoic-lovelace-0b80zy`.
+- **Search Console** (une fois le domaine choisi, ou dès maintenant sur
+  l'adresse Netlify) : ajouter la propriété, envoyer `sitemap.xml`, demander
+  l'indexation des pages principales ; **Bing Webmaster Tools** (import depuis
+  la Search Console). Vérifier dans « Pages » que les pages neutres ne sont pas
+  classées explicites (SafeSearch) au bout de quelques semaines.
+- **Liens externes** : fiches logiciel (Clubic, 01net Télécharger,
+  Presse-Citron, Journal du Geek, AlternativeTo) ; réponses utiles sur les
+  forums Synology, Dealabs, Reddit (r/synology, r/DataHoarder, r/selfhosted,
+  r/stashapp pour la version adulte) ; proposition d'article à JustGeek ou
+  Korben. Pour la version adulte : annuaires d'outils et fils Reddit dédiés.
+- **Vérifier à la main**, depuis la France, en navigation privée, une dizaine
+  de requêtes clés (avec et sans SafeSearch) : la recherche n'a vu qu'un index
+  américain.
+- **Avis** : dès les premières ventes, de vrais avis, qui pourront alors
+  alimenter le balisage.
 
-## 5. Exécution prévue
+**À décider ou à vérifier dans le logiciel**
 
-1. **Technique sur l'existant** : adresse unique (décision B) dans toutes les
-   balises, le sitemap, le robots, la page TV ; titre de l'accueil visible dès
-   l'affichage (LCP) ; descriptions raccourcies ; OG et Twitter complets sur
-   toutes les pages indexables ; `SoftwareApplication` complété + `Organization`
-   + `WebSite` + `FAQPage` sur l'accueil (FR et EN) ; `HowTo` sur la page TV ;
-   `/neutre/` indexable si décision A ; `/docs/` masqué.
-2. **Gabarit** : en-tête, pied de page et style d'article communs aux pages
-   neutres (`assets/css/guide.css`), réutilisant l'identité du site.
-3. **Pages P1** (8 pages + sommaire), puis **P2** (5 pages).
-4. **Sitemap** avec `lastmod`, maillage, liens depuis les pieds de page.
-5. **Vérification** : rendu bureau et téléphone, liens internes (script),
-   validité du JSON-LD (analyse + règles schema.org), puis commit et push.
+- **Prisme TV** : la page TV adulte promet une appli qui « trouve le PC toute
+  seule » et que « Prisme demande d'autoriser » ; l'APK du site attend un
+  appairage que le logiciel actuel (`master`) ne fait pas. À vérifier avant
+  d'en faire une page de référencement (« regarder sa collection sur la télé »).
+- **Doublons de photos** : en cours d'ajout au logiciel ; la page
+  `/doublons-videos-photos/` en parlera dès qu'ils seront livrés.
+- **Téléchargement multi-sites** (version adulte) : forte demande (« porn
+  downloader »), mais risque juridique et vis-à-vis de Stripe ; pas de page
+  sans votre accord.
+- **Prix** : 29 € à vie côté grand public, 4,99 €/mois · 49,90 €/an · 99 € à vie
+  côté adulte ; les guides n'en citent aucun.
 
-## 6. Ce qui restera à faire de votre côté
+**Prochaines pages possibles**
 
-- Acheter un nom de domaine, le brancher dans Netlify, puis me laisser changer
-  la constante d'adresse.
-- Search Console : ajouter la propriété, envoyer le sitemap, demander
-  l'indexation des pages P1 ; Bing Webmaster Tools (import depuis la Search
-  Console en un clic).
-- Netlify : vérifier pourquoi les derniers commits ne sont pas en ligne.
-- Liens externes : fiches logiciel (Clubic, 01net Télécharger, Presse-Citron,
-  Journal du Geek), réponses utiles sur les forums Synology, Dealabs, Reddit
-  r/synology et r/france, proposition d'article à JustGeek ou Korben.
-- Dès les premières ventes : de vrais avis, qui pourront alors alimenter le
-  balisage.
+- Traduction anglaise de la version grand public (`/en/`) et de ses guides.
+- Grand public : regarder ses vidéos du PC sur son téléphone ; longue traîne
+  de la réparation (erreur 0xc00d36c4, MP4 sans son, miniatures absentes dans
+  l'Explorateur) ; alternatives à Google Photos (local), Adobe Bridge, Duplicate
+  Video Search.
+- Adulte : la télé (quand Prisme TV sera vérifiée) ; le téléchargement (si
+  vous le décidez).

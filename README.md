@@ -31,6 +31,7 @@ Les adresses d'avant ce partage (octobre 2026 : `/neutre/…`, `/merci.html`,
 | `telecharger.html` | Grand public : essai gratuit (pour l'instant formulaire d'accès anticipé) |
 | `cgv.html`, `confidentialite.html`, `mentions-legales.html` | Grand public : pages légales (modèles à compléter) |
 | `guides/…`, `<sujet>/index.html` | Grand public : une page par problème (doublons, réparation, NAS, télé…), voir `docs/plan-seo.md` |
+| `adulte/guides/…`, `adulte/<sujet>/`, `en/adult/guides/…`, `en/adult/<sujet>/` | Adulte : les guides, en français et en anglais (`scripts/gabarit.py`, `GUIDES_ADULTES`) |
 | `404.html` | Page introuvable (grand public) |
 | `adulte/index.html` | Adulte : démo, fonctionnalités, discrétion, tarifs, FAQ |
 | `adulte/telecharger.html`, `adulte/tv.html`, `adulte/merci.html`, `adulte/cgv.html`… | Adulte : essai, Prisme TV, retour de Stripe, pages légales |
@@ -47,9 +48,18 @@ FAQPage tirée de la FAQ de la page, BreadcrumbList, TechArticle, HowTo), et il
 écrit `sitemap.xml` et `robots.txt`.
 
 ```bash
+python scripts/gabarit.py     # en-tête, pied de page, « À lire aussi », sommaires des guides
 python scripts/seo.py         # après avoir ajouté une page ou changé un titre
 python scripts/verifier.py    # avant chaque envoi : liens, H1, JSON-LD, séparation des versions
 ```
+
+**Ajouter un guide** : copier un guide existant de la même version et de la
+même langue, réécrire le contenu de `<div class="container prose">` (fil
+d'Ariane, H1, « En bref », texte, FAQ en `<div class="faq">`), puis lui donner
+sa fiche dans `scripts/gabarit.py` (`GUIDES` et `VOISINS`, ou
+`GUIDES_ADULTES` et `VOISINS_ADULTES`) et dans `scripts/seo.py` (`guide(…)` ou
+`aguide(…)`), et lancer les trois scripts. Pour un guide adulte, ajouter aussi
+la paire à `PAGES` dans `netlify/edge-functions/langue.js`.
 
 **Nom de domaine** : la constante `BASE` de `scripts/seo.py` (aujourd'hui
 `https://prisme-website.netlify.app`, en attendant le vrai domaine). La
