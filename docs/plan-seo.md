@@ -146,6 +146,7 @@ français.
 ### 2.4 Ce que Prisme ne fait pas (on ne vise pas)
 
 - **Renommer en masse** : Prisme renomme un fichier à la fois (F2). Pas de page.
+- **Doublons de photos** : ajoutés au logiciel pendant ce travail ; la page doublons couvre vidéos et photos.
 - **Reconnaissance des visages**, retouche photo, sauvegarde du téléphone,
   synchronisation cloud : rien de tout cela. Les pages « alternative à
   Picasa / Google Photos » le disent.
@@ -318,8 +319,8 @@ description.
   seule » et que « Prisme demande d'autoriser » ; l'APK du site attend un
   appairage que le logiciel actuel (`master`) ne fait pas. À vérifier avant
   d'en faire une page de référencement (« regarder sa collection sur la télé »).
-- **Doublons de photos** : en cours d'ajout au logiciel ; la page
-  `/doublons-videos-photos/` en parlera dès qu'ils seront livrés.
+- **Doublons de photos** : ajoutés au logiciel le 17/10 (commit `d8dde05`) ;
+  les pages doublons (grand public et adulte) en parlent.
 - **Téléchargement multi-sites** (version adulte) : forte demande (« porn
   downloader »), mais risque juridique et vis-à-vis de Stripe ; pas de page
   sans votre accord.

@@ -35,8 +35,8 @@ GUIDES = {
         "Trier des milliers de photos",
         "Une méthode en trois passes pour venir à bout d'années de photos en retard.", "Trier et organiser"),
     "/doublons-videos-photos/": (
-        "Trouver les vidéos en double",
-        "Copies exactes, mais aussi la même vidéo réencodée dans une autre qualité.",
+        "Trouver les vidéos et photos en double",
+        "Copies exactes, mais aussi la même vidéo réencodée, la même photo convertie ou réduite.",
         "Doublons et place disque"),
     "/reparer-video-corrompue/": (
         "Réparer une vidéo corrompue",

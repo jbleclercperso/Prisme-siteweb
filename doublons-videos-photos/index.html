@@ -4,22 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <!-- seo : écrit par scripts/seo.py — corriger la fiche de la page là-bas, pas ici -->
-  <title>Trouver et supprimer les vidéos en double sur PC | Prisme</title>
-  <meta name="description" content="Copies exactes, mais aussi la même vidéo réencodée dans une autre qualité : comment retrouver tous les doublons, lesquels garder, et les outils gratuits.">
+  <title>Trouver les vidéos et photos en double sur PC | Prisme</title>
+  <meta name="description" content="La même vidéo réencodée, la même photo en HEIC et en JPEG réduit : comment retrouver tous les doublons, lesquels garder, et les outils gratuits.">
   <link rel="canonical" href="https://prisme-website.netlify.app/doublons-videos-photos/">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Prisme">
-  <meta property="og:title" content="Trouver et supprimer les vidéos en double sur PC | Prisme">
-  <meta property="og:description" content="Copies exactes, mais aussi la même vidéo réencodée dans une autre qualité : comment retrouver tous les doublons, lesquels garder, et les outils gratuits.">
+  <meta property="og:title" content="Trouver les vidéos et photos en double sur PC | Prisme">
+  <meta property="og:description" content="La même vidéo réencodée, la même photo en HEIC et en JPEG réduit : comment retrouver tous les doublons, lesquels garder, et les outils gratuits.">
   <meta property="og:url" content="https://prisme-website.netlify.app/doublons-videos-photos/">
   <meta property="og:image" content="https://prisme-website.netlify.app/assets/img/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Prisme, le logiciel de tri pour vos vidéos et vos photos">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Trouver et supprimer les vidéos en double sur PC | Prisme">
-  <meta name="twitter:description" content="Copies exactes, mais aussi la même vidéo réencodée dans une autre qualité : comment retrouver tous les doublons, lesquels garder, et les outils gratuits.">
+  <meta name="twitter:title" content="Trouver les vidéos et photos en double sur PC | Prisme">
+  <meta name="twitter:description" content="La même vidéo réencodée, la même photo en HEIC et en JPEG réduit : comment retrouver tous les doublons, lesquels garder, et les outils gratuits.">
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -65,7 +65,7 @@
     {
      "@type": "ListItem",
      "position": 3,
-     "name": "Vidéos en double",
+     "name": "Vidéos et photos en double",
      "item": "https://prisme-website.netlify.app/doublons-videos-photos/"
     }
    ]
@@ -73,8 +73,8 @@
   {
    "@type": "TechArticle",
    "@id": "https://prisme-website.netlify.app/doublons-videos-photos/#article",
-   "headline": "Trouver et supprimer les vidéos en double sur son PC",
-   "description": "Copies exactes, mais aussi la même vidéo réencodée dans une autre qualité : comment retrouver tous les doublons, lesquels garder, et les outils gratuits.",
+   "headline": "Trouver et supprimer les vidéos et photos en double sur son PC",
+   "description": "La même vidéo réencodée, la même photo en HEIC et en JPEG réduit : comment retrouver tous les doublons, lesquels garder, et les outils gratuits.",
    "inLanguage": "fr",
    "image": "https://prisme-website.netlify.app/assets/img/og.png",
    "mainEntityOfPage": {
@@ -99,8 +99,8 @@
    ],
    "@id": "https://prisme-website.netlify.app/doublons-videos-photos/#page",
    "url": "https://prisme-website.netlify.app/doublons-videos-photos/",
-   "name": "Trouver et supprimer les vidéos en double sur PC | Prisme",
-   "description": "Copies exactes, mais aussi la même vidéo réencodée dans une autre qualité : comment retrouver tous les doublons, lesquels garder, et les outils gratuits.",
+   "name": "Trouver les vidéos et photos en double sur PC | Prisme",
+   "description": "La même vidéo réencodée, la même photo en HEIC et en JPEG réduit : comment retrouver tous les doublons, lesquels garder, et les outils gratuits.",
    "inLanguage": "fr",
    "isPartOf": {
     "@id": "https://prisme-website.netlify.app/#site"
@@ -127,6 +127,14 @@
      "acceptedAnswer": {
       "@type": "Answer",
       "text": "En comparant des images prises aux mêmes moments dans chaque fichier, et en vérifiant que les durées concordent. Le nom, la taille et les octets ne servent à rien : une version 720p n'a presque rien en commun avec l'original 4K, sauf ses images."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Comment trouver les photos en double, même converties ou réduites ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "En comparant des empreintes de l'image plutôt que les fichiers : une photo HEIC et sa copie JPEG réduite n'ont rien en commun octet par octet, mais leurs images se ressemblent. dupeGuru (mode « Images »), Czkawka et Prisme le font ; Prisme respecte aussi l'orientation EXIF."
      }
     },
     {
@@ -192,14 +200,14 @@
 <main id="contenu">
   <article class="guide">
     <div class="container prose">
-      <nav class="ariane" aria-label="Fil d'Ariane"><ol><li><a href="/">Prisme</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">Vidéos en double</li></ol></nav>
-      <h1>Trouver et supprimer les vidéos en double sur son PC</h1>
-      <p class="lead">La même vidéo copiée depuis le téléphone, la carte SD et la sauvegarde, renommée en route, parfois réencodée dans une autre qualité : les doublons sont la première cause de disques pleins. Voici comment les retrouver tous, même ceux qui ne se ressemblent pas sur le papier, et lesquels garder.</p>
+      <nav class="ariane" aria-label="Fil d'Ariane"><ol><li><a href="/">Prisme</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">Vidéos et photos en double</li></ol></nav>
+      <h1>Trouver et supprimer les vidéos et photos en double sur son PC</h1>
+      <p class="lead">La même vidéo copiée depuis le téléphone, la carte SD et la sauvegarde, renommée en route, parfois réencodée dans une autre qualité. La même photo en HEIC sur le téléphone, en JPEG sur le PC, réduite par une messagerie. Les doublons sont la première cause de disques pleins. Voici comment les retrouver tous, même ceux qui ne se ressemblent pas sur le papier, et lesquels garder.</p>
 
       <div class="bref">
         <b class="bref-titre">En bref</b>
-        <p>Les copies exactes se trouvent facilement, et gratuitement : même taille à l'octet près, même contenu. Le vrai problème, ce sont les vidéos réencodées. Le même film en 4K et en 720p, ou la version renvoyée par une messagerie, n'a ni le même nom, ni la même taille, ni les mêmes octets.</p>
-        <p>Pour les repérer, il faut comparer les images elles-mêmes. Prisme le fait sur toute votre collection, PC, disque externe et NAS ensemble. Il met en tête le meilleur exemplaire et ne supprime rien sans vous.</p>
+        <p>Les copies exactes se trouvent facilement, et gratuitement : même taille à l'octet près, même contenu. Le vrai problème, ce sont les fichiers réenregistrés : la même vidéo en 4K et en 720p, la même photo réduite ou convertie. Ils n'ont ni le même nom, ni la même taille, ni les mêmes octets.</p>
+        <p>Pour les repérer, il faut comparer les images elles-mêmes. Prisme le fait sur toute votre collection, vidéos comme photos, PC, disque externe et NAS ensemble. Il met en tête le meilleur exemplaire et ne supprime rien sans vous.</p>
       </div>
 
       <h2>Les trois sortes de doublons</h2>
@@ -209,9 +217,10 @@
           <tr><td>Copie exacte</td><td><code>DJI_0412.MP4</code> et <code>DJI_0412 (2).MP4</code></td><td>Même taille à l'octet près, puis vérification du contenu</td></tr>
           <tr><td>Copie renommée</td><td><code>IMG_2041.MOV</code> devenu <code>anniversaire_lea.mov</code></td><td>Pareil : le nom ne compte pas, seul le contenu compte</td></tr>
           <tr><td>Autre encodage</td><td>La vidéo 4K d'origine et sa version 720p envoyée par messagerie</td><td>Comparer les images, avec la durée comme garde-fou</td></tr>
+          <tr><td>Photo réenregistrée</td><td><code>IMG_2041.HEIC</code> du téléphone et <code>IMG_2041.jpg</code> réduite pour l'envoyer</td><td>Comparer des empreintes de l'image, dans le bon sens (EXIF)</td></tr>
         </table>
       </div>
-      <p>La plupart des outils gratuits ne voient que les deux premières. Or c'est souvent la troisième qui pèse le plus lourd : des exports, des versions compressées pour les partager, des copies faites par différentes applications au fil des années.</p>
+      <p>La plupart des outils gratuits ne voient que les deux premières. Or ce sont souvent les autres qui pèsent le plus lourd : des exports, des versions compressées pour les partager, des copies faites par différentes applications au fil des années.</p>
 
       <h2>Avant de chercher : réunir tous les endroits</h2>
       <p>Un doublon a souvent son jumeau ailleurs : sur le disque externe de sauvegarde, sur le NAS, dans le dossier « Import » du PC. Une recherche qui ne regarde qu'un dossier passe à côté. Rassemblez donc dans la recherche tous les endroits où vivent vos vidéos, et gardez à l'esprit que <strong>deux exemplaires sur deux disques différents, c'est aussi une sauvegarde</strong> : avant de supprimer, demandez-vous si la copie en trop n'est pas votre seule copie de secours.</p>
@@ -220,25 +229,27 @@
       <ul>
         <li><strong>Copies exactes</strong> : dupeGuru, AllDup ou Czkawka les trouvent très bien, sur n'importe quel type de fichier. Ils comparent la taille puis le contenu.</li>
         <li><strong>Vidéos réencodées</strong> : Czkawka a un mode « vidéos similaires », qui compare des images extraites des vidéos. Il demande un peu de réglage, et la décision de ce qu'on garde reste entièrement manuelle.</li>
+        <li><strong>Photos similaires</strong> : dupeGuru (mode « Images ») et Czkawka comparent le contenu des photos. Attention aux rafales : deux photos presque identiques ne sont pas forcément des doublons.</li>
         <li><strong>Attention aux faux doublons</strong> : les morceaux d'un DVD (<code>VTS_01_1.VOB</code>, <code>VTS_01_2.VOB</code>…) et les segments d'une caméra ont souvent exactement la même taille, sans être le même fichier. Un outil qui ne compare que les tailles les proposera à tort.</li>
       </ul>
 
       <h2>Ce que fait Prisme</h2>
-      <p>Dans Prisme, une seule commande, « Chercher les doublons », trouve à la fois les copies exactes et les autres encodages, sur toutes les racines que vous lui avez montrées (dossier du PC, disque externe, NAS).</p>
+      <p>Dans Prisme, une seule commande, « Chercher les doublons », trouve à la fois les copies exactes et les fichiers réenregistrés, sur toutes les racines que vous lui avez montrées (dossier du PC, disque externe, NAS). Elle cherche dans la collection ouverte : les vidéos, ou, en mode Photos, les photos.</p>
       <ul>
         <li><strong>Les copies exactes</strong> : même taille à l'octet près, puis trois passages de chaque fichier comparés (début, milieu, fin). Les morceaux de DVD et les segments de caméra ne sont donc pas pris pour des doublons. Un groupe que Prisme n'a pas pu vérifier vous est proposé « à comparer », sans rien de coché.</li>
         <li><strong>Les autres encodages</strong> : reconnus à leurs images, avec la durée comme garde-fou. Deux vidéos de durées franchement différentes ne sont jamais déclarées identiques, quelle que soit la ressemblance d'une image.</li>
+        <li><strong>La même photo sous un autre poids</strong> : redimensionnée, recompressée ou convertie (JPEG, HEIC, PNG, WebP…), reconnue par deux empreintes de l'image et par son format. L'orientation EXIF est respectée : une photo rangée couchée retrouve sa copie debout. Deux photos qui se ressemblent sans être tout à fait la même (une rafale, deux retouches) forment un groupe « à comparer », sans rien de coché.</li>
         <li><strong>Le meilleur en tête</strong> : dans chaque groupe, l'exemplaire à garder est marqué « ✓ à garder ». C'est la plus haute définition, puis le plus gros fichier, puis le plus long. Vous pouvez croiser vos propres critères et désigner des dossiers à privilégier.</li>
-        <li><strong>Voir avant de décider</strong> : chaque copie s'affiche avec trois images prises aux mêmes moments, alignées d'une copie à l'autre, avec son chemin, sa définition, son poids et sa durée. « Comparer en vidéo » lit les copies côte à côte, au même instant.</li>
+        <li><strong>Voir avant de décider</strong> : chaque copie d'une vidéo s'affiche avec trois images prises aux mêmes moments, alignées d'une copie à l'autre, avec son chemin, sa définition, son poids et sa durée ; « Comparer en vidéo » lit les copies côte à côte, au même instant. Une photo s'affiche en grand, avec ses dimensions.</li>
         <li><strong>Rien n'est supprimé sans vous</strong> : les exemplaires en trop sont cochés d'office, à vous de confirmer. La suppression passe par la corbeille de la séance, et <kbd>Ctrl</kbd>+<kbd>Z</kbd> la reprend. « Pas des doublons » retire un groupe pour de bon : il ne reviendra plus.</li>
-        <li><strong>Rapide la deuxième fois</strong> : la première recherche est longue sur une grosse collection, mais tout ce qui est appris est gardé. Les suivantes sont presque immédiates.</li>
+        <li><strong>Rapide la deuxième fois</strong> : la première recherche est longue sur une grosse collection, mais tout ce qui est appris est gardé. Les suivantes ne relisent que les fichiers nouveaux ou modifiés.</li>
       </ul>
 
       <div class="limites">
-        <b class="limites-titre">Ce que Prisme ne fait pas (encore)</b>
+        <b class="limites-titre">Ce que Prisme ne fait pas</b>
         <ul>
-          <li>La recherche de doublons de Prisme porte aujourd'hui sur les vidéos. Pour les photos en double, utilisez en attendant dupeGuru ou Czkawka, qui ont un mode « images similaires ».</li>
-          <li>Il ne supprime jamais rien tout seul, et ne fusionne pas deux vidéos différentes en une seule.</li>
+                    <li>Il ne supprime jamais rien tout seul, et ne fusionne pas deux vidéos différentes en une seule.</li>
+          <li>Il ne lit pas les fichiers RAW des appareils photo.</li>
         </ul>
       </div>
 
@@ -247,7 +258,7 @@
 
       <div class="cta-guide">
         <h2>Combien de place vos doublons vous coûtent-ils ?</h2>
-        <p>Lancez la recherche de doublons de Prisme sur votre collection pendant l'essai gratuit de 14 jours : elle vous dit combien de groupes elle trouve et combien de gigaoctets vous pouvez récupérer.</p>
+        <p>Lancez la recherche de doublons de Prisme sur vos vidéos et vos photos pendant l'essai gratuit de 14 jours : elle vous dit combien de groupes elle trouve et combien de gigaoctets vous pouvez récupérer.</p>
         <div class="cta-actions"><a class="btn btn-primary" href="/telecharger.html" data-link="trial">Essayer gratuitement</a><a class="btn btn-ghost" href="/#fonctionnalites">Voir toutes les fonctions</a></div>
       </div>
 
@@ -261,6 +272,10 @@
           <details>
             <summary>Comment reconnaître la même vidéo en plusieurs résolutions ?</summary>
             <div class="answer-body"><p>En comparant des images prises aux mêmes moments dans chaque fichier, et en vérifiant que les durées concordent. Le nom, la taille et les octets ne servent à rien : une version 720p n'a presque rien en commun avec l'original 4K, sauf ses images.</p></div>
+          </details>
+          <details>
+            <summary>Comment trouver les photos en double, même converties ou réduites ?</summary>
+            <div class="answer-body"><p>En comparant des empreintes de l'image plutôt que les fichiers : une photo HEIC et sa copie JPEG réduite n'ont rien en commun octet par octet, mais leurs images se ressemblent. dupeGuru (mode « Images »), Czkawka et Prisme le font ; Prisme respecte aussi l'orientation EXIF.</p></div>
           </details>
           <details>
             <summary>Quel exemplaire faut-il garder ?</summary>
@@ -308,7 +323,7 @@
         <h4>Guides</h4>
         <ul>
           <li><a href="/organiser-photos-videos-pc/">Organiser ses photos et vidéos sur PC</a></li>
-          <li><a href="/doublons-videos-photos/">Trouver les vidéos en double</a></li>
+          <li><a href="/doublons-videos-photos/">Trouver les vidéos et photos en double</a></li>
           <li><a href="/reparer-video-corrompue/">Réparer une vidéo corrompue</a></li>
           <li><a href="/alternative-video-station-synology/">Remplacer Video Station sur un NAS Synology</a></li>
           <li><a href="/regarder-videos-pc-sur-tv/">Regarder les vidéos du PC sur la télé</a></li>

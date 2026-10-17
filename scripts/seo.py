@@ -155,10 +155,10 @@ PAGES = [
           "Prisme trie vos photos et vidéos au clavier : une touche range le fichier, le suivant "
           "s'affiche. Aperçus des vidéos, doublons, NAS. 100 % local, essai gratuit.",
           "Logiciel de tri"),
-    guide("doublons-videos-photos", "Trouver et supprimer les vidéos en double sur PC | Prisme",
-          "Copies exactes, mais aussi la même vidéo réencodée dans une autre qualité : comment "
-          "retrouver tous les doublons, lesquels garder, et les outils gratuits.",
-          "Vidéos en double"),
+    guide("doublons-videos-photos", "Trouver les vidéos et photos en double sur PC | Prisme",
+          "La même vidéo réencodée, la même photo en HEIC et en JPEG réduit : comment retrouver tous "
+          "les doublons, lesquels garder, et les outils gratuits.",
+          "Vidéos et photos en double"),
     guide("reparer-video-corrompue", "Réparer une vidéo corrompue (MP4, MOV, MKV) | Prisme",
           "Vidéo illisible, pavés de couleur, image figée : les solutions gratuites (VLC, ffmpeg), "
           "puis la réparation sans perte de Prisme, sur votre PC.",
