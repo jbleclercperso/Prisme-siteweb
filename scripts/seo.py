@@ -34,7 +34,7 @@ import sys
 # L'adresse du site. Provisoire : celle de Netlify, en attendant le nom de
 # domaine. Le jour où il est branché dans Netlify, l'ancienne adresse y
 # redirige d'elle-même ; il suffit de changer cette ligne et de relancer.
-BASE = "https://prisme-website.netlify.app"
+BASE = "https://prisme-desktop.com"
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OG_IMAGE = "/assets/img/og.png"  # 1200 × 630

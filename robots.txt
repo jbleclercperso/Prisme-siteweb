@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://prisme-website.netlify.app/sitemap.xml
+Sitemap: https://prisme-desktop.com/sitemap.xml

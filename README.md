@@ -5,8 +5,8 @@ et regarder une collection adulte, vidéos et photos (dépôt du logiciel :
 `jbleclercperso/Prisme`, dont le dossier de données s'appelle encore `VideoSorter`).
 
 Site statique : HTML, CSS et JavaScript sans framework ni étape de construction.
-Aucun traceur, aucune ressource tierce — polices et icônes sont hébergées ici,
-ce qui tient la promesse « rien n'est envoyé » jusque sur le site.
+Aucun cookie ni traceur publicitaire ; seule ressource tierce : la mesure d'audience
+anonyme et sans cookie Umami (`scripts/umami.py`). Polices et icônes sont hébergées ici.
 
 ## Deux sites en un
 
@@ -62,7 +62,7 @@ sa fiche dans `scripts/gabarit.py` (`GUIDES` et `VOISINS`, ou
 la paire à `PAGES` dans `netlify/edge-functions/langue.js`.
 
 **Nom de domaine** : la constante `BASE` de `scripts/seo.py` (aujourd'hui
-`https://prisme-website.netlify.app`, en attendant le vrai domaine). La
+`https://prisme-desktop.com`, domaine acheté chez IONOS en octobre 2026). La
 changer, relancer le script : tout suit. Le plan du référencement, les
 mots-clés visés et le maillage sont dans `docs/plan-seo.md` (non servi).
 

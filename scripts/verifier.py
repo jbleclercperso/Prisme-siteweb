@@ -6,7 +6,8 @@
 - les données structurées (JSON-LD) se lisent, et leurs types sont connus ;
 - une page de la version neutre ne lie jamais la version adulte, et n'en
   emploie pas le vocabulaire ;
-- les balises de scripts/seo.py sont à jour.
+- les balises de scripts/seo.py sont à jour ;
+- chaque page porte la mesure d'audience (scripts/umami.py).
 
 Rend 1 et liste les problèmes s'il y en a ; 0 sinon.
 """
@@ -127,6 +128,8 @@ def main():
             problemes.append(f"{rel} : pas de titre")
         if 'name="description"' not in src:
             problemes.append(f"{rel} : pas de description")
+        if "cloud.umami.is/script.js" not in src:
+            problemes.append(f"{rel} : pas de mesure d'audience (python scripts/umami.py)")
         # merci.html montre un H1 par état du paiement (un seul visible) : page non indexée.
         if p.h1 != 1 and not noindex:
             problemes.append(f"{rel} : {p.h1} H1")
