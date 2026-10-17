@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- seo : écrit par scripts/seo.py — corriger la fiche de la page là-bas, pas ici -->
+  <title>Réparer une vidéo corrompue (MP4, MOV, MKV) | Prisme</title>
+  <meta name="description" content="Vidéo illisible, pavés de couleur, image figée : les solutions gratuites (VLC, ffmpeg), puis la réparation sans perte de Prisme, sur votre PC.">
+  <link rel="canonical" href="https://prisme-website.netlify.app/reparer-video-corrompue/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Prisme">
+  <meta property="og:title" content="Réparer une vidéo corrompue (MP4, MOV, MKV) | Prisme">
+  <meta property="og:description" content="Vidéo illisible, pavés de couleur, image figée : les solutions gratuites (VLC, ffmpeg), puis la réparation sans perte de Prisme, sur votre PC.">
+  <meta property="og:url" content="https://prisme-website.netlify.app/reparer-video-corrompue/">
+  <meta property="og:image" content="https://prisme-website.netlify.app/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Prisme, le logiciel de tri pour vos vidéos et vos photos">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Réparer une vidéo corrompue (MP4, MOV, MKV) | Prisme">
+  <meta name="twitter:description" content="Vidéo illisible, pavés de couleur, image figée : les solutions gratuites (VLC, ffmpeg), puis la réparation sans perte de Prisme, sur votre PC.">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://prisme-website.netlify.app/#organisation",
+   "name": "Prisme",
+   "url": "https://prisme-website.netlify.app/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://prisme-website.netlify.app/assets/img/prisme-icon-512.png",
+    "width": 512,
+    "height": 512
+   }
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://prisme-website.netlify.app/#site",
+   "url": "https://prisme-website.netlify.app/",
+   "name": "Prisme",
+   "inLanguage": "fr",
+   "publisher": {
+    "@id": "https://prisme-website.netlify.app/#organisation"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://prisme-website.netlify.app/reparer-video-corrompue/#ariane",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Prisme",
+     "item": "https://prisme-website.netlify.app/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Guides",
+     "item": "https://prisme-website.netlify.app/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Réparer une vidéo",
+     "item": "https://prisme-website.netlify.app/reparer-video-corrompue/"
+    }
+   ]
+  },
+  {
+   "@type": "TechArticle",
+   "@id": "https://prisme-website.netlify.app/reparer-video-corrompue/#article",
+   "headline": "Réparer une vidéo corrompue : MP4, MOV ou MKV illisible",
+   "description": "Vidéo illisible, pavés de couleur, image figée : les solutions gratuites (VLC, ffmpeg), puis la réparation sans perte de Prisme, sur votre PC.",
+   "inLanguage": "fr",
+   "image": "https://prisme-website.netlify.app/assets/img/og.png",
+   "mainEntityOfPage": {
+    "@id": "https://prisme-website.netlify.app/reparer-video-corrompue/#page"
+   },
+   "datePublished": "2026-10-17",
+   "dateModified": "2026-10-17",
+   "author": {
+    "@id": "https://prisme-website.netlify.app/#organisation"
+   },
+   "publisher": {
+    "@id": "https://prisme-website.netlify.app/#organisation"
+   },
+   "about": {
+    "@id": "https://prisme-website.netlify.app/#logiciel"
+   }
+  },
+  {
+   "@type": [
+    "WebPage",
+    "FAQPage"
+   ],
+   "@id": "https://prisme-website.netlify.app/reparer-video-corrompue/#page",
+   "url": "https://prisme-website.netlify.app/reparer-video-corrompue/",
+   "name": "Réparer une vidéo corrompue (MP4, MOV, MKV) | Prisme",
+   "description": "Vidéo illisible, pavés de couleur, image figée : les solutions gratuites (VLC, ffmpeg), puis la réparation sans perte de Prisme, sur votre PC.",
+   "inLanguage": "fr",
+   "isPartOf": {
+    "@id": "https://prisme-website.netlify.app/#site"
+   },
+   "breadcrumb": {
+    "@id": "https://prisme-website.netlify.app/reparer-video-corrompue/#ariane"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://prisme-website.netlify.app/assets/img/og.png"
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Peut-on réparer une vidéo corrompue gratuitement ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Souvent, oui, quand le problème vient de l'index du fichier : VLC (Convertir / Enregistrer) ou ffmpeg ( ffmpeg -i entree.mp4 -c copy sortie.mp4 ) le refont sans perte. Pour les pavés de couleur, il faut un outil qui repère et traite les passages abîmés."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Pourquoi ma vidéo MP4 ne se lit pas sur Windows ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Le plus souvent, il manque le codec : les vidéos en HEVC (H.265) des téléphones récents demandent le module « Extensions vidéo HEVC » du Microsoft Store. Essayez VLC : s'il lit la vidéo, le fichier n'est pas abîmé."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Une vidéo réparée perd-elle en qualité ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Pas si l'on recopie les images sans les réencoder : c'est le cas quand on refait l'enveloppe, quand on coupe les passages abîmés, et avec la reconstruction de Prisme, qui retrouve les images d'origine. Figer et masquer réencodent la vidéo."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Peut-on récupérer les images vraiment effacées ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Non. Si des octets ont été écrasés, l'image qui était là n'existe plus. On peut seulement figer la dernière image saine, couper le passage, ou masquer les blocs perdus."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Faut-il envoyer sa vidéo à un site de réparation en ligne ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Ce n'est pas nécessaire : VLC, ffmpeg et Prisme réparent sur votre ordinateur, et votre vidéo ne quitte pas votre disque."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+  <!-- /seo -->
+  <meta name="theme-color" content="#07080b">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
+  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/clean.css">
+  <link rel="stylesheet" href="/assets/css/neutre.css">
+  <link rel="stylesheet" href="/assets/css/guide.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <script src="/assets/js/config-neutre.js" defer></script>
+  <script src="/assets/js/neutre.js" defer></script>
+</head>
+<body>
+
+<!-- en-tete : écrit par scripts/gabarit.py -->
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="nav is-scrolled" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="/" aria-label="Prisme, accueil">
+      <img src="/assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="/assets/img/prisme-lettrage.png" alt="Prisme" width="115" height="15">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#fonctionnalites">Fonctionnalités</a></li>
+      <li><a href="/#mur">Le Mur</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/#tarifs">Tarif</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/telecharger.html" data-link="trial">Essai gratuit</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<!-- /en-tete -->
+
+<main id="contenu">
+  <article class="guide">
+    <div class="container prose">
+      <nav class="ariane" aria-label="Fil d'Ariane"><ol><li><a href="/">Prisme</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">Réparer une vidéo</li></ol></nav>
+      <h1>Réparer une vidéo corrompue : MP4, MOV ou MKV illisible</h1>
+      <p class="lead">Une vidéo qui ne s'ouvre plus, des pavés de couleur qui envahissent l'image, une lecture qui se fige au milieu : avant de baisser les bras, voici ce qu'on peut tenter, dans l'ordre, du plus simple au plus poussé.</p>
+
+      <div class="bref">
+        <b class="bref-titre">En bref</b>
+        <p>Vérifiez d'abord que le fichier est complet et qu'il ne manque pas simplement un codec : c'est la cause la plus fréquente. Si la vidéo est réellement abîmée, une copie du fichier dans une nouvelle « enveloppe » (VLC ou ffmpeg, gratuits) règle les durées fausses et les fichiers qui refusent de s'ouvrir.</p>
+        <p>Pour les pavés de couleur et les images figées, il faut un outil qui repère les passages abîmés et les traite. C'est ce que fait Prisme, sur votre PC, sans envoyer la vidéo nulle part. Ce qui a été réellement écrasé, en revanche, ne revient jamais.</p>
+      </div>
+
+      <h2>D'abord, comprendre ce qui ne va pas</h2>
+      <p>« Vidéo corrompue » recouvre quatre situations très différentes. Le bon remède dépend de la vôtre :</p>
+      <div class="tableau">
+        <table>
+          <tr><th>Ce que vous voyez</th><th>La cause probable</th><th>Ce qui marche</th></tr>
+          <tr><td>La vidéo ne s'ouvre pas du tout, ou affiche une erreur comme 0xc00d36c4</td><td>Un codec manquant (souvent le HEVC des téléphones récents), ou l'index du fichier abîmé</td><td>Essayer un autre lecteur, puis refaire l'enveloppe du fichier</td></tr>
+          <tr><td>La durée est fausse, on ne peut pas avancer dans la vidéo</td><td>L'index du fichier (sa table des matières) est faux ou incomplet</td><td>Refaire l'enveloppe, sans réencoder</td></tr>
+          <tr><td>Des pavés de couleur, une mosaïque qui « bave » sur l'image</td><td>Des données perdues ou décalées au milieu du fichier (copie ou téléchargement troué)</td><td>Reconstruire les images décalées, ou couper, figer, masquer les passages abîmés</td></tr>
+          <tr><td>Le fichier fait 0 octet, ou s'arrête net très tôt</td><td>L'enregistrement ou la copie a été interrompu</td><td>Peu d'espoir ; pour une caméra, voir la section dédiée plus bas</td></tr>
+        </table>
+      </div>
+
+      <h2>Les vérifications gratuites, à faire en premier</h2>
+      <ol class="etapes">
+        <li><strong>Vérifiez que le fichier est complet.</strong> Comparez sa taille avec celle de l'original (sur la carte SD, le téléphone, le disque d'origine). Un téléchargement ou une copie interrompue donne souvent une vidéo qui démarre puis s'arrête. Recopier le fichier depuis sa source règle le problème sans rien réparer.</li>
+        <li><strong>Essayez un autre lecteur.</strong> VLC ou mpv lisent presque tout, y compris des fichiers un peu abîmés que le lecteur de Windows refuse. Si la vidéo passe dans VLC, elle n'est probablement pas corrompue : c'est le lecteur qui ne connaît pas son format.</li>
+        <li><strong>Installez le codec qui manque.</strong> L'erreur 0xc00d36c4 du lecteur de Windows vient souvent d'une vidéo en HEVC (H.265), le format des iPhone et de beaucoup de téléphones et caméras récents. Windows ne le lit qu'avec le module « Extensions vidéo HEVC » du Microsoft Store.</li>
+        <li><strong>Refaites l'enveloppe du fichier.</strong> Une vidéo, c'est un flux d'images et de son rangé dans un conteneur (MP4, MOV, MKV) qui porte un index. Copier les flux dans un conteneur neuf, sans réencoder, refait cet index : durée juste, avance rapide qui fonctionne. Dans VLC : Média › Convertir / Enregistrer, en gardant le flux d'origine. Avec ffmpeg, en ligne de commande :
+          <pre><code>ffmpeg -i video-abimee.mp4 -c copy video-recollee.mp4</code></pre>
+          L'option <code>-c copy</code> recopie les images telles quelles : aucune perte de qualité, et c'est presque instantané.</li>
+      </ol>
+
+      <div class="note-box">L'astuce souvent conseillée, renommer le fichier en .avi puis cocher « Toujours réparer » dans VLC, ne concerne vraiment que les fichiers AVI : VLC reconstruit alors leur index en mémoire, le temps de la lecture. Sur un MP4, elle ne répare rien.</div>
+
+      <h2>Pavés de couleur et images figées : réparer les passages abîmés</h2>
+      <p>Quand l'image se décompose en blocs de couleur, le fichier a perdu ou mélangé des données en route. Une vidéo n'enregistre pas chaque image en entier. Elle garde de temps en temps une image complète, l'image clé, puis seulement ce qui change d'une image à l'autre. Une seule donnée perdue et toutes les images suivantes sont calculées de travers, jusqu'à l'image clé suivante : d'où la mosaïque qui s'étale puis disparaît d'un coup.</p>
+      <p>Il y a deux cas, et ils ne se traitent pas de la même façon.</p>
+      <h3>Les images sont décalées, pas perdues</h3>
+      <p>C'est le cas le plus fréquent après une copie ou un téléchargement troué : quelques octets parasites se sont glissés dans le fichier. Toutes les images du bloc sont encore là, juste à côté de l'endroit où le lecteur les cherche. En suivant la chaîne des images dans les octets bruts, on peut les retrouver une à une et reconstruire la piste vidéo, avec les images d'origine et sans aucune perte.</p>
+      <h3>Les données sont effacées</h3>
+      <p>Quand des octets ont été écrasés (secteur défectueux, carte SD qui lâche), l'image qui était là n'existe plus. On ne peut alors que choisir comment le passage abîmé s'affiche :</p>
+      <ul>
+        <li><strong>figer</strong> la dernière image saine le temps du passage, le son continuant ;</li>
+        <li><strong>couper</strong> le passage, et la vidéo saute de quelques secondes ;</li>
+        <li><strong>masquer</strong> les blocs perdus avec le mouvement des images voisines, ce qui laisse une zone floue mais rien ne saute.</li>
+      </ul>
+      <p>Méfiez-vous des promesses de « restauration par IA » des images manquantes : en 2026, ces outils restent des prototypes de laboratoire. Un logiciel qui prétend faire revenir une image effacée invente ce qu'il affiche.</p>
+
+      <h2>Ce que fait Prisme</h2>
+      <p>Prisme est un logiciel Windows pour trier, ranger et regarder ses vidéos et ses photos. Il sait aussi réparer les vidéos abîmées, sans rien envoyer sur Internet. Dans le menu, « Réparer des vidéos abîmées… » traite la vidéo affichée, celles que vous avez cochées, ou toute la liste.</p>
+      <ol class="etapes">
+        <li><strong>Le diagnostic.</strong> Chaque vidéo est décodée en entier, et chaque erreur est datée. Prisme vous dit ce qu'il a trouvé, par exemple « 3 passages abîmés, 12 s sur 340 s », et de quel dégât il s'agit : des images <em>décalées</em>, récupérables, ou des données <em>effacées</em>.</li>
+        <li><strong>La réparation, au choix.</strong> <em>Reconstruire</em> retrouve les images décalées : c'est la vraie réparation, sans perte, pour les vidéos H.264 et H.265 (le format de l'immense majorité des téléphones, caméras et vidéos téléchargées). Sur une vidéo de test, 429 images illisibles sur 439 sont revenues. <em>Figer</em>, <em>Couper</em> et <em>Masquer</em> traitent ce qui est vraiment effacé. <em>Recoller l'enveloppe</em> s'occupe d'un fichier qui refuse de s'ouvrir ou dont la durée est fausse.</li>
+        <li><strong>La vérification.</strong> La réparation est un nouveau fichier, « nom (réparée) », vérifié à son tour. L'original n'est jamais modifié. « Regarder avant / après » ouvre les deux côte à côte et saute d'un passage abîmé au suivant.</li>
+        <li><strong>Le remplacement, si vous le décidez.</strong> « Remplacer les originales » met l'ancienne version dans la corbeille de la séance et donne son nom à la vidéo réparée.</li>
+      </ol>
+
+      <div class="limites">
+        <b class="limites-titre">Ce que Prisme ne fait pas</b>
+        <ul>
+          <li>Il ne fait pas revenir ce qui a été réellement effacé : il le fige, le coupe ou le masque, à votre choix.</li>
+          <li>Il répare les vidéos, pas les photos.</li>
+          <li>Il ne récupère pas les fichiers supprimés d'un disque ou d'une carte : pour cela, il faut un logiciel de récupération de données, et le faire avant d'écrire quoi que ce soit sur le support.</li>
+        </ul>
+      </div>
+
+      <h2>Les vidéos de GoPro, de drone et de téléphone</h2>
+      <p>Une caméra qui s'éteint en plein enregistrement (batterie à plat, carte retirée trop tôt) laisse souvent un fichier sans index. Les GoPro proposent en général de le réparer elles-mêmes : remettez la carte dans la caméra et allumez-la, une icône de réparation s'affiche sur l'écran. Pour les autres appareils, des outils libres comme <em>untrunc</em> reconstruisent l'index à partir d'une vidéo saine filmée par le même appareil. Dans tous les cas, travaillez sur une copie de la carte, jamais sur la carte elle-même.</p>
+
+      <h2>Et les sites de réparation en ligne ?</h2>
+      <p>Ils demandent d'envoyer la vidéo sur leurs serveurs. Pour un film de vacances ou une vidéo de famille, posez-vous la question : voulez-vous que vos souvenirs passent par un service dont vous ne savez rien ? Les outils cités ici, VLC, ffmpeg et Prisme, travaillent tous sur votre ordinateur.</p>
+
+      <div class="cta-guide">
+        <h2>Essayez la réparation de Prisme sur vos vidéos</h2>
+        <p>Essai gratuit de 14 jours, toutes les fonctions, sans carte bancaire. Le diagnostic vous dit en quelques instants si votre vidéo peut être reconstruite.</p>
+        <div class="cta-actions"><a class="btn btn-primary" href="/telecharger.html" data-link="trial">Essayer gratuitement</a><a class="btn btn-ghost" href="/#fonctionnalites">Voir toutes les fonctions</a></div>
+      </div>
+
+      <section class="guide-faq">
+        <h2>Questions fréquentes</h2>
+        <div class="faq">
+          <details>
+            <summary>Peut-on réparer une vidéo corrompue gratuitement ?</summary>
+            <div class="answer-body"><p>Souvent, oui, quand le problème vient de l'index du fichier : VLC (Convertir / Enregistrer) ou ffmpeg (<code>ffmpeg -i entree.mp4 -c copy sortie.mp4</code>) le refont sans perte. Pour les pavés de couleur, il faut un outil qui repère et traite les passages abîmés.</p></div>
+          </details>
+          <details>
+            <summary>Pourquoi ma vidéo MP4 ne se lit pas sur Windows ?</summary>
+            <div class="answer-body"><p>Le plus souvent, il manque le codec : les vidéos en HEVC (H.265) des téléphones récents demandent le module « Extensions vidéo HEVC » du Microsoft Store. Essayez VLC : s'il lit la vidéo, le fichier n'est pas abîmé.</p></div>
+          </details>
+          <details>
+            <summary>Une vidéo réparée perd-elle en qualité ?</summary>
+            <div class="answer-body"><p>Pas si l'on recopie les images sans les réencoder : c'est le cas quand on refait l'enveloppe, quand on coupe les passages abîmés, et avec la reconstruction de Prisme, qui retrouve les images d'origine. Figer et masquer réencodent la vidéo.</p></div>
+          </details>
+          <details>
+            <summary>Peut-on récupérer les images vraiment effacées ?</summary>
+            <div class="answer-body"><p>Non. Si des octets ont été écrasés, l'image qui était là n'existe plus. On peut seulement figer la dernière image saine, couper le passage, ou masquer les blocs perdus.</p></div>
+          </details>
+          <details>
+            <summary>Faut-il envoyer sa vidéo à un site de réparation en ligne ?</summary>
+            <div class="answer-body"><p>Ce n'est pas nécessaire : VLC, ffmpeg et Prisme réparent sur votre ordinateur, et votre vidéo ne quitte pas votre disque.</p></div>
+          </details>
+        </div>
+      </section>
+      <!-- voisins : écrit par scripts/gabarit.py -->
+      <nav class="voisins" aria-label="À lire aussi">
+        <h2>À lire aussi</h2>
+        <div class="voisins-grille">
+          <a href="/doublons-videos-photos/"><b>Trouver les vidéos en double</b><span>Copies exactes, mais aussi la même vidéo réencodée dans une autre qualité.</span></a>
+          <a href="/egaliser-volume-videos/"><b>Égaliser le son de plusieurs vidéos</b><span>Des vidéos trop basses, d&#x27;autres trop fortes : les remonter à la lecture ou pour de bon.</span></a>
+          <a href="/organiser-photos-videos-pc/"><b>Organiser ses photos et vidéos sur PC</b><span>La méthode complète : arborescence, noms, tri, doublons, sauvegarde.</span></a>
+        </div>
+      </nav>
+      <!-- /voisins -->
+    </div>
+  </article>
+</main>
+
+<!-- pied : écrit par scripts/gabarit.py -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/"><img src="/assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="/assets/img/prisme-lettrage.png" alt="Prisme" width="115" height="15"></a>
+        <p>Le logiciel Windows pour trier, ranger et regarder vos vidéos et vos photos, au clavier. 100 % local.</p>
+      </div>
+      <div>
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="/#fonctionnalites">Fonctionnalités</a></li>
+          <li><a href="/#mur">Le Mur</a></li>
+          <li><a href="/#confiance">Confiance</a></li>
+          <li><a href="/#tarifs">Tarif</a></li>
+          <li><a href="/telecharger.html" data-link="trial">Télécharger</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="/organiser-photos-videos-pc/">Organiser ses photos et vidéos sur PC</a></li>
+          <li><a href="/doublons-videos-photos/">Trouver les vidéos en double</a></li>
+          <li><a href="/reparer-video-corrompue/">Réparer une vidéo corrompue</a></li>
+          <li><a href="/alternative-video-station-synology/">Remplacer Video Station sur un NAS Synology</a></li>
+          <li><a href="/regarder-videos-pc-sur-tv/">Regarder les vidéos du PC sur la télé</a></li>
+          <li><a href="/guides/">Tous les guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Aide</h4>
+        <ul>
+          <li><a href="/#faq">Questions fréquentes</a></li>
+          <li><a href="mailto:contact@prisme.app" data-link="contact">Contact</a></li>
+          <li><a href="/#tarifs" data-link="account">Mon compte</a></li>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">Conditions de vente</a></li>
+          <li><a href="/confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Prisme est un logiciel : il n'héberge ni ne fournit aucun contenu.</span>
+      <span>© <span data-year>2026</span> Prisme. Tous droits réservés.</span>
+    </div>
+  </div>
+</footer>
+<!-- /pied -->
+
+</body>
+</html>

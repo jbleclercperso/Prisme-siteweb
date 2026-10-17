@@ -103,6 +103,11 @@ def page(file, url, lang, title, description, *, version="neutre", kind="page", 
                 kind=kind, group=group, index=index, og_title=og_title, published=published, crumb=crumb)
 
 
+def guide(slug, title, description, crumb, published="2026-10-17"):
+    return page(f"{slug}/index.html", f"/{slug}/", "fr", title, description, kind="guide",
+                crumb=crumb, published=published)
+
+
 PAGES = [
     # ------------------------------------------------------------ Grand public, français
     page("index.html", "/", "fr",
@@ -126,6 +131,68 @@ PAGES = [
          "Mentions légales du site Prisme.", kind="legal", group="mentions"),
     page("404.html", "/404.html", "fr", "Page introuvable — Prisme", "Cette page n'existe pas.",
          kind="404", index=False),
+
+    # ------------------------------------------------------------ Grand public, guides
+    # Une page par problème : voir docs/plan-seo.md (mots-clés visés) et
+    # scripts/gabarit.py (sommaire, « À lire aussi »).
+    page("guides/index.html", "/guides/", "fr",
+         "Guides photos et vidéos : trier, réparer, NAS, télé | Prisme",
+         "Doublons, vidéos abîmées, son trop bas, NAS Synology, télé : des guides concrets pour trier, "
+         "ranger, réparer et regarder vos vidéos et vos photos sur PC.",
+         kind="guides", crumb="Guides"),
+    guide("organiser-photos-videos-pc", "Organiser ses photos et vidéos sur PC : la méthode | Prisme",
+          "Rassembler, choisir une arborescence, trier en trois passes, supprimer les doublons, "
+          "sauvegarder : la méthode complète pour ranger photos et vidéos sur PC.",
+          "Organiser ses photos et vidéos"),
+    guide("logiciel-tri-photos-videos", "Logiciel pour trier ses photos et vidéos (Windows) | Prisme",
+          "Prisme trie vos photos et vidéos au clavier : une touche range le fichier, le suivant "
+          "s'affiche. Aperçus des vidéos, doublons, NAS. 100 % local, essai gratuit.",
+          "Logiciel de tri"),
+    guide("doublons-videos-photos", "Trouver et supprimer les vidéos en double sur PC | Prisme",
+          "Copies exactes, mais aussi la même vidéo réencodée dans une autre qualité : comment "
+          "retrouver tous les doublons, lesquels garder, et les outils gratuits.",
+          "Vidéos en double"),
+    guide("reparer-video-corrompue", "Réparer une vidéo corrompue (MP4, MOV, MKV) | Prisme",
+          "Vidéo illisible, pavés de couleur, image figée : les solutions gratuites (VLC, ffmpeg), "
+          "puis la réparation sans perte de Prisme, sur votre PC.",
+          "Réparer une vidéo"),
+    guide("egaliser-volume-videos", "Égaliser le son de plusieurs vidéos (volume trop bas) | Prisme",
+          "Des vidéos qu'on n'entend pas, d'autres trop fortes : égaliser le volume à la lecture "
+          "(VLC, Windows, Prisme) ou pour de bon avec ffmpeg, par lot.",
+          "Égaliser le son"),
+    guide("alternative-video-station-synology", "Alternative à Video Station : vidéos du NAS Synology | Prisme",
+          "Video Station a disparu de DSM 7.2.2 : Plex, Jellyfin, Synology Photos ou Prisme, les "
+          "solutions pour regarder les vidéos de votre NAS, comparées.",
+          "Remplacer Video Station"),
+    guide("regarder-videos-pc-sur-tv", "Regarder les vidéos du PC sur la TV, sans Plex | Prisme",
+          "Câble HDMI, DLNA, VLC sur Fire TV ou Android TV, Plex ou Jellyfin : comment regarder les "
+          "vidéos et films du PC ou du NAS sur la télé, et comment choisir.",
+          "Vidéos du PC sur la télé"),
+    guide("plex-jellyfin-ou-prisme", "Plex ou Jellyfin ? Comparatif, et quand choisir Prisme",
+          "Plex ou Jellyfin : prix, accès à distance, applications télé, vie privée. Et pour des vidéos "
+          "personnelles à trier, pourquoi les combiner avec Prisme.",
+          "Plex, Jellyfin ou Prisme"),
+
+    guide("lire-plusieurs-videos-en-meme-temps", "Lire plusieurs vidéos en même temps sur un écran | Prisme",
+          "Ouvrir plusieurs vidéos à la fois avec VLC, ou les regarder ensemble dans le Mur de Prisme : "
+          "de 2 à 10 vidéos, verticales et horizontales, chacune son lecteur.",
+          "Plusieurs vidéos à la fois"),
+    guide("lecteur-video-toujours-au-premier-plan", "Lecteur vidéo toujours au premier plan (Windows) | Prisme",
+          "Garder une vidéo par-dessus les autres fenêtres : VLC, mpv, PowerToys, image dans l'image, "
+          "et le lecteur flottant de Prisme, sans cadre et qui reprend à l'instant.",
+          "Lecteur toujours au premier plan"),
+    guide("trier-des-milliers-de-photos", "Trier des milliers de photos rapidement : la méthode | Prisme",
+          "Trois passes rapides, une décision par photo, au clavier : la méthode pour venir à bout de "
+          "milliers de photos et de vidéos en retard, et les outils pour aller vite.",
+          "Trier des milliers de photos"),
+    guide("retrouver-une-video-par-son-contenu", "Retrouver une vidéo par son contenu, sans cloud | Prisme",
+          "Décrire la scène et retrouver la vidéo : comment marche la recherche par le contenu, les outils "
+          "existants, et la recherche locale de Prisme, sans rien envoyer.",
+          "Retrouver une vidéo par son contenu"),
+    guide("alternative-picasa", "Alternative à Picasa pour Windows 10 et 11 | Prisme",
+          "Picasa est arrêté depuis 2016 : digiKam, XnView MP, FastStone, Photos de Windows ou Prisme, "
+          "les alternatives locales pour classer et regarder vos photos, comparées.",
+          "Alternative à Picasa"),
 
     # ------------------------------------------------------------ Adulte, français
     page("adulte/index.html", "/adulte/", "fr",
@@ -270,6 +337,8 @@ def donnees(p, source):
                "isPartOf": {"@id": site_id}}
     if p["kind"] == "home":
         webpage["about"] = {"@id": logiciel_id}
+    if p["kind"] == "guides":
+        webpage["@type"] = "CollectionPage"
 
     ariane = []
     if p["kind"] in ("guide", "guides"):

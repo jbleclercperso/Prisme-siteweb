@@ -1,0 +1,123 @@
+/* ==========================================================================
+   Prisme — les guides (une page par problème) et leur sommaire, /guides/
+   S'ajoute à site.css et clean.css. Version grand public uniquement.
+   ========================================================================== */
+
+.guide { padding: 130px 0 40px; }
+.guide .prose { max-width: 760px; margin: 0 auto; font-size: 1.04rem; line-height: 1.7; }
+.guide .prose > p, .guide .prose li { color: var(--text-2); }
+.guide .prose h1 { font-size: clamp(2rem, 4.6vw, 3.1rem); line-height: 1.08; margin: 14px 0 18px; }
+.guide .prose h2 { font-size: clamp(1.35rem, 2.6vw, 1.7rem); margin: 56px 0 16px; line-height: 1.2; }
+.guide .prose h3 { font-size: 1.12rem; margin: 32px 0 10px; color: var(--text); }
+.guide .prose ul, .guide .prose ol { padding-left: 1.25em; display: grid; gap: 8px; }
+.guide .prose li::marker { color: var(--dim); }
+/* Les listes sont des grilles : sans cela, un bloc de code trop long élargirait la page. */
+.guide .prose li { min-width: 0; }
+.guide .prose strong { color: var(--text); font-weight: 600; }
+.guide .prose code {
+  font-family: var(--mono); font-size: 0.86em; padding: 2px 6px; border-radius: 6px;
+  background: var(--surface-2); color: var(--text); overflow-wrap: anywhere;
+}
+.guide .prose pre {
+  margin: 18px 0; padding: 16px 18px; border-radius: 12px; overflow-x: auto;
+  background: #0f1217; box-shadow: inset 0 0 0 1px var(--line); font-size: 0.9rem; line-height: 1.55;
+}
+.guide .prose pre code { padding: 0; background: none; overflow-wrap: normal; }
+.guide .lead { margin-top: 0; }
+
+/* Fil d'Ariane */
+.ariane { font-size: 0.88rem; color: var(--dim); }
+.ariane ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.guide .prose .ariane ol { display: flex; padding: 0; gap: 6px; }
+.ariane li + li::before { content: "›"; margin-right: 6px; color: var(--dim); }
+.ariane a { color: var(--muted); text-decoration: none; }
+.ariane a:hover { color: var(--text); }
+.guide .prose .ariane li { color: var(--dim); }
+
+/* « En bref » : la réponse avant le détail */
+.bref {
+  margin: 28px 0 8px; padding: 20px 22px 20px 24px; border-radius: 14px; position: relative;
+  background: #0f1217; box-shadow: inset 0 0 0 1px var(--line-2);
+}
+.bref::before {
+  content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 3px;
+  background: var(--spectrum);
+}
+.bref b.bref-titre {
+  display: block; margin-bottom: 6px; font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim);
+}
+.bref p { margin: 0; color: var(--text); }
+.bref p + p { margin-top: 10px; }
+
+/* Ce que Prisme ne fait pas */
+.limites {
+  margin: 28px 0; padding: 18px 20px; border-radius: 14px;
+  background: rgba(240, 132, 60, 0.06); box-shadow: inset 0 0 0 1px rgba(240, 132, 60, 0.22);
+}
+.limites b.limites-titre { display: block; margin-bottom: 8px; color: var(--amber); font-weight: 600; }
+.guide .prose .limites ul { margin: 0; }
+
+/* Tableaux de comparaison */
+.tableau { margin: 22px 0; overflow-x: auto; border-radius: 14px; box-shadow: inset 0 0 0 1px var(--line); }
+.tableau table { width: 100%; border-collapse: collapse; font-size: 0.93rem; min-width: 560px; }
+.tableau th, .tableau td { padding: 11px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.tableau th { font-weight: 600; color: var(--text); background: #0f1217; }
+.tableau td { color: var(--text-2); }
+.tableau tr:last-child td { border-bottom: 0; }
+.tableau td:first-child { color: var(--text); font-weight: 500; }
+
+/* Étapes numérotées */
+.guide .prose ol.etapes { counter-reset: etape; list-style: none; padding: 0; gap: 14px; }
+.guide .prose ol.etapes > li {
+  counter-increment: etape; position: relative; padding: 16px 18px 16px 58px; border-radius: 14px;
+  background: #0f1217; box-shadow: inset 0 0 0 1px var(--line);
+}
+.guide .prose ol.etapes > li::before {
+  content: counter(etape); position: absolute; left: 18px; top: 15px; width: 26px; height: 26px;
+  display: grid; place-items: center; border-radius: 50%; font-size: 0.82rem; font-weight: 600;
+  background: var(--surface-3); color: var(--text);
+}
+
+/* Appel à l'essai */
+.cta-guide {
+  margin: 48px 0 8px; padding: clamp(22px, 3vw, 32px); border-radius: 18px; display: grid; gap: 14px;
+  background: radial-gradient(120% 140% at 0% 0%, rgba(76, 141, 255, 0.14), transparent 60%), #0f1217;
+  box-shadow: inset 0 0 0 1px var(--line-2);
+}
+.cta-guide h2 { margin: 0 !important; font-size: 1.3rem !important; }
+.cta-guide p { margin: 0; color: var(--text-2); }
+.cta-guide .cta-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+/* Les liens du texte (.prose a, dans site.css) ne doivent pas toucher aux boutons. */
+.guide .prose a.btn { text-decoration: none; }
+.guide .prose a.btn-primary { color: #0a0b0e; }
+.guide .prose a.btn-ghost { color: var(--text); }
+
+/* FAQ en fin de guide : reprend .faq de site.css */
+.guide-faq { margin-top: 56px; }
+.guide-faq h2 { margin-bottom: 8px !important; }
+
+/* À lire aussi */
+.voisins { margin: 56px 0 0; }
+.voisins h2 { font-size: 1.2rem !important; margin: 0 0 16px !important; }
+.voisins-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.guide .prose .voisins-grille a, .carte-guide {
+  display: grid; gap: 6px; padding: 16px 18px; border-radius: 14px; text-decoration: none;
+  background: #0f1217; box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow 0.2s, transform 0.2s;
+}
+.guide .prose .voisins-grille a:hover, .carte-guide:hover { box-shadow: inset 0 0 0 1px var(--line-2); transform: translateY(-2px); }
+.voisins-grille b, .carte-guide b { color: var(--text); font-weight: 600; line-height: 1.3; }
+.voisins-grille span, .carte-guide span { color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+
+/* Sommaire des guides */
+.guides-theme { margin-top: 48px; }
+.guides-theme h2 { font-size: 1.25rem; margin-bottom: 14px; }
+.guides-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+
+.maj { color: var(--dim); font-size: 0.88rem; margin-top: 40px; }
+
+@media (max-width: 640px) {
+  .guide { padding-top: 104px; }
+  .guide .prose { font-size: 1rem; }
+  .guide .prose ol.etapes > li { padding-left: 52px; }
+}
