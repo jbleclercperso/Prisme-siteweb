@@ -89,6 +89,63 @@ VOISINS = {
     "/alternative-picasa/": ["/trier-des-milliers-de-photos/", "/organiser-photos-videos-pc/", "/doublons-videos-photos/"],
 }
 
+# La version adulte a ses propres guides, en français et en anglais : chaque
+# sujet a sa page dans les deux langues, reliées par hreflang (scripts/seo.py).
+# Ils ne sont jamais liés depuis la version grand public.
+# (slug français, slug anglais), (titre, accroche) en français, puis en anglais.
+ADULTE = {"fr": "/adulte/", "en": "/en/adult/"}
+GUIDES_ADULTES = [
+    (("logiciel-organiser-collection-porno", "best-porn-organizer-software"),
+     ("Quel logiciel pour organiser sa collection porno ?", "Stash, Plex, Jellyfin ou Prisme : ce que chacun fait, pour qui."),
+     ("The best software to organize porn", "Stash, Plex, Jellyfin or Prisme: what each one does, and who it suits.")),
+    (("alternative-stash", "stash-alternative"),
+     ("Une alternative à Stash pour Windows", "Sans serveur ni navigateur : quand choisir Prisme, quand garder Stash."),
+     ("A Stash alternative for Windows", "No server, no browser: when to pick Prisme, when to keep Stash.")),
+    (("trier-videos-porno", "sort-porn-videos"),
+     ("Trier ses vidéos porno au clavier", "Une touche par catégorie, la suivante aussitôt : la méthode."),
+     ("Sort porn videos with the keyboard", "One key per category, the next video instantly: the method.")),
+    (("doublons-videos-porno", "porn-duplicate-finder"),
+     ("Doublons de vidéos porno", "La même scène, même dans une autre résolution : garder la meilleure."),
+     ("Porn duplicate finder", "The same scene, even at another resolution: keep the best one.")),
+    (("lecteur-video-porno-apercus", "porn-video-player-previews"),
+     ("Un lecteur avec aperçus et Mur de vidéos", "Voir le contenu sans ouvrir, dix vidéos à la fois, le lecteur flottant."),
+     ("A player with previews and a video Wall", "See inside without opening, ten videos at once, the floating player.")),
+    (("mots-cles-recherche-ia-porno", "auto-tag-porn-ai-search"),
+     ("Mots-clés automatiques et recherche par IA", "Des catégories tirées des noms, une scène retrouvée par sa description."),
+     ("Auto-tagging and AI scene search", "Categories from file names, a scene found from its description.")),
+    (("cacher-videos-porno-pc", "hide-porn-on-pc"),
+     ("Cacher ses vidéos porno sur son PC", "Ce qui protège vraiment, et l'écran de repli instantané."),
+     ("How to hide porn on your PC", "What actually protects it, and the instant cover screen.")),
+    (("plex-jellyfin-porno", "plex-jellyfin-porn"),
+     ("Plex ou Jellyfin pour le porno", "Ce qui marche, les limites, et les réglages pour rester privé."),
+     ("Plex or Jellyfin for porn", "What works, the limits, and the settings to stay private.")),
+]
+VOISINS_ADULTES = {  # par slug français ; le jumeau anglais suit
+    "logiciel-organiser-collection-porno": ["alternative-stash", "trier-videos-porno", "plex-jellyfin-porno"],
+    "alternative-stash": ["logiciel-organiser-collection-porno", "trier-videos-porno", "mots-cles-recherche-ia-porno"],
+    "trier-videos-porno": ["lecteur-video-porno-apercus", "doublons-videos-porno", "mots-cles-recherche-ia-porno"],
+    "doublons-videos-porno": ["trier-videos-porno", "logiciel-organiser-collection-porno", "lecteur-video-porno-apercus"],
+    "lecteur-video-porno-apercus": ["trier-videos-porno", "cacher-videos-porno-pc", "doublons-videos-porno"],
+    "mots-cles-recherche-ia-porno": ["trier-videos-porno", "alternative-stash", "lecteur-video-porno-apercus"],
+    "cacher-videos-porno-pc": ["lecteur-video-porno-apercus", "plex-jellyfin-porno", "logiciel-organiser-collection-porno"],
+    "plex-jellyfin-porno": ["cacher-videos-porno-pc", "logiciel-organiser-collection-porno", "alternative-stash"],
+}
+TEXTES = {"fr": {"voisins": "À lire aussi"}, "en": {"voisins": "Read next"}}
+
+
+def guides_adultes(lang):
+    """Les guides adultes d'une langue : adresse → (titre, accroche)."""
+    i = 0 if lang == "fr" else 1
+    return {ADULTE[lang] + slugs[i] + "/": (fr if lang == "fr" else en) for slugs, fr, en in GUIDES_ADULTES}
+
+
+def url_adulte(slug_fr, lang):
+    for slugs, _, _ in GUIDES_ADULTES:
+        if slugs[0] == slug_fr:
+            return ADULTE[lang] + slugs[0 if lang == "fr" else 1] + "/"
+    raise KeyError(slug_fr)
+
+
 # Les guides cités dans le pied de page de toutes les pages grand public.
 AU_PIED = ["/organiser-photos-videos-pc/", "/doublons-videos-photos/", "/reparer-video-corrompue/",
            "/alternative-video-station-synology/", "/regarder-videos-pc-sur-tv/"]
@@ -173,17 +230,18 @@ def pied():
 <!-- /pied -->"""
 
 
-def carte(u, tag="a", cls=""):
-    titre, accroche, _ = GUIDES[u]
+def carte(u, cls="", fiches=None):
+    titre, accroche = (fiches or GUIDES)[u][:2]
     c = f' class="{cls}"' if cls else ""
     return f'<a{c} href="{u}"><b>{html.escape(titre)}</b><span>{html.escape(accroche)}</span></a>'
 
 
-def voisins(u):
-    cartes = "\n          ".join(carte(v) for v in VOISINS[u])
+def voisins(u, liste=None, fiches=None, lang="fr"):
+    cartes = "\n          ".join(carte(v, fiches=fiches) for v in (liste or VOISINS[u]))
+    titre = TEXTES[lang]["voisins"]
     return f"""<!-- voisins : écrit par scripts/gabarit.py -->
-      <nav class="voisins" aria-label="À lire aussi">
-        <h2>À lire aussi</h2>
+      <nav class="voisins" aria-label="{titre}">
+        <h2>{titre}</h2>
         <div class="voisins-grille">
           {cartes}
         </div>
@@ -205,6 +263,22 @@ def sommaire():
         </div>
       </section>""")
     return "<!-- sommaire : écrit par scripts/gabarit.py -->\n" + "\n".join(blocs) + "\n      <!-- /sommaire -->"
+
+
+def sommaire_adulte(lang):
+    fiches = guides_adultes(lang)
+    cartes = "\n          ".join(carte(u, cls="carte-guide", fiches=fiches) for u in fiches)
+    return ("<!-- sommaire : écrit par scripts/gabarit.py -->\n      <section class=\"guides-theme\">\n"
+            "        <div class=\"guides-grille\">\n          " + cartes +
+            "\n        </div>\n      </section>\n      <!-- /sommaire -->")
+
+
+def adultes():
+    """Les pages des guides adultes : (fichier, langue, slug français, ou None pour le sommaire)."""
+    for lang in ("fr", "en"):
+        yield ADULTE[lang].strip("/") + "/guides/index.html", lang, None
+        for slugs, _, _ in GUIDES_ADULTES:
+            yield ADULTE[lang].strip("/") + "/" + slugs[0 if lang == "fr" else 1] + "/index.html", lang, slugs[0]
 
 
 def poser(texte, nom, contenu, defaut=None):
@@ -237,6 +311,21 @@ def main():
             t = poser(t, "voisins", voisins(url))
         if rel == "guides/index.html":
             t = poser(t, "sommaire", sommaire())
+        if t != avant:
+            f.write_text(t, encoding="utf-8", newline="\n")
+            changes.append(rel)
+    for rel, lang, slug in adultes():
+        f = ROOT / rel
+        if not f.exists():
+            print("absente :", rel)
+            continue
+        t = f.read_text(encoding="utf-8")
+        avant = t
+        if slug is None:
+            t = poser(t, "sommaire", sommaire_adulte(lang))
+        else:
+            liste = [url_adulte(v, lang) for v in VOISINS_ADULTES[slug]]
+            t = poser(t, "voisins", voisins(None, liste, guides_adultes(lang), lang))
         if t != avant:
             f.write_text(t, encoding="utf-8", newline="\n")
             changes.append(rel)

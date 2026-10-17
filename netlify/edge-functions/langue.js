@@ -24,6 +24,16 @@ const PAGES = [
   { fr: "/adulte/cgv.html", en: "/en/adult/terms.html" },
   { fr: "/adulte/confidentialite.html", en: "/en/adult/privacy.html" },
   { fr: "/adulte/mentions-legales.html", en: "/en/adult/legal-notice.html" },
+  // Les guides de la version adulte (scripts/gabarit.py, GUIDES_ADULTES)
+  { fr: "/adulte/guides/", en: "/en/adult/guides/" },
+  { fr: "/adulte/logiciel-organiser-collection-porno/", en: "/en/adult/best-porn-organizer-software/" },
+  { fr: "/adulte/alternative-stash/", en: "/en/adult/stash-alternative/" },
+  { fr: "/adulte/trier-videos-porno/", en: "/en/adult/sort-porn-videos/" },
+  { fr: "/adulte/doublons-videos-porno/", en: "/en/adult/porn-duplicate-finder/" },
+  { fr: "/adulte/lecteur-video-porno-apercus/", en: "/en/adult/porn-video-player-previews/" },
+  { fr: "/adulte/mots-cles-recherche-ia-porno/", en: "/en/adult/auto-tag-porn-ai-search/" },
+  { fr: "/adulte/cacher-videos-porno-pc/", en: "/en/adult/hide-porn-on-pc/" },
+  { fr: "/adulte/plex-jellyfin-porno/", en: "/en/adult/plex-jellyfin-porn/" },
 ];
 const LANGS = Object.keys(PAGES[0]);
 // La langue de ceux dont la langue n'a pas (encore) sa version.

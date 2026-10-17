@@ -92,8 +92,9 @@ TV_ETAPES = {
     ],
 }
 
-# Fil d'Ariane des guides.
-GUIDES = {"fr": ("Guides", "/guides/"), "en": ("Guides", "/en/guides/")}
+# Le sommaire des guides, selon la version et la langue (fil d'Ariane).
+GUIDES = {"neutre": {"fr": "/guides/", "en": "/en/guides/"},
+          "adulte": {"fr": "/adulte/guides/", "en": "/en/adult/guides/"}}
 ACCUEIL = {"neutre": {"fr": "/", "en": "/en/"}, "adulte": {"fr": "/adulte/", "en": "/en/adult/"}}
 
 
@@ -101,6 +102,12 @@ def page(file, url, lang, title, description, *, version="neutre", kind="page", 
          index=True, og_title=None, published=None, crumb=None):
     return dict(file=file, url=url, lang=lang, title=title, description=description, version=version,
                 kind=kind, group=group, index=index, og_title=og_title, published=published, crumb=crumb)
+
+
+def aguide(lang, slug, title, description, crumb, group, published="2026-10-17"):
+    base = "adulte" if lang == "fr" else "en/adult"
+    return page(f"{base}/{slug}/index.html", f"/{base}/{slug}/", lang, title, description,
+                version="adulte", kind="guide", crumb=crumb, group=group, published=published)
 
 
 def guide(slug, title, description, crumb, published="2026-10-17"):
@@ -196,9 +203,9 @@ PAGES = [
 
     # ------------------------------------------------------------ Adulte, français
     page("adulte/index.html", "/adulte/", "fr",
-         "Prisme — Le logiciel pour trier et regarder votre collection porno",
-         "Prisme, le logiciel Windows pour gérer votre collection porno : aperçus au survol, une touche "
-         "pour ranger, doublons, mode discret. 100 % local, essai gratuit.",
+         "Prisme — Logiciel de gestion de vidéos porno pour Windows",
+         "Le logiciel Windows pour trier, classer et regarder votre collection de vidéos pour adultes : "
+         "aperçus, une touche pour ranger, doublons, discrétion. 100 % local.",
          version="adulte", kind="home", group="adulte-accueil",
          og_title="Prisme — Des milliers de vidéos. Une touche pour décider."),
     page("adulte/telecharger.html", "/adulte/telecharger.html", "fr",
@@ -222,11 +229,79 @@ PAGES = [
     page("adulte/404.html", "/adulte/404.html", "fr", "Page introuvable — Prisme", "Cette page n'existe pas.",
          version="adulte", kind="404", index=False),
 
+    # ------------------------------------------------------------ Adulte, guides (français et anglais)
+    # Sobres, sans rien d'explicite : « porno » dans le titre, « vidéos pour
+    # adultes » dans la description (voir docs/plan-seo.md, version adulte).
+    page("adulte/guides/index.html", "/adulte/guides/", "fr",
+         "Guides : organiser et regarder sa collection porno | Prisme",
+         "Quel logiciel choisir, trier vite, retrouver les doublons, rester discret : des guides pour "
+         "organiser et regarder votre collection de vidéos pour adultes.",
+         version="adulte", kind="guides", crumb="Guides", group="adulte-guides"),
+    page("en/adult/guides/index.html", "/en/adult/guides/", "en",
+         "Guides: organize and watch your porn collection | Prisme",
+         "Which software to choose, how to sort fast, find duplicates and stay discreet: guides to "
+         "organize and watch your adult video collection.",
+         version="adulte", kind="guides", crumb="Guides", group="adulte-guides"),
+    aguide("fr", "logiciel-organiser-collection-porno",
+           "Quel logiciel pour organiser sa collection porno ? | Prisme",
+           "Stash, Plex, Jellyfin ou Prisme : comparatif honnête des logiciels pour gérer une collection "
+           "de vidéos pour adultes, ce que chacun fait et pour qui.", "Quel logiciel ?", "a-comparatif"),
+    aguide("en", "best-porn-organizer-software", "The best software to organize a porn collection | Prisme",
+           "Stash, Plex, Jellyfin or Prisme: an honest comparison of tools to manage an adult video "
+           "collection, what each one does and who it suits.", "Best porn organizer", "a-comparatif"),
+    aguide("fr", "alternative-stash", "Alternative à Stash (stashapp) pour Windows | Prisme",
+           "Stash est puissant, mais c'est un serveur. Prisme, application Windows sans serveur, pour "
+           "trier et regarder vos vidéos pour adultes : comparatif point par point.",
+           "Alternative à Stash", "a-stash"),
+    aguide("en", "stash-alternative", "Stash alternative for Windows, no server | Prisme",
+           "Stash is powerful, but it's a server. Prisme is a Windows app with no server, to sort and "
+           "watch your adult videos: a point-by-point comparison.", "Stash alternative", "a-stash"),
+    aguide("fr", "trier-videos-porno", "Trier ses vidéos porno au clavier | Prisme",
+           "Une touche par catégorie, la vidéo suivante aussitôt : la méthode pour ranger des milliers "
+           "de vidéos pour adultes en une soirée, et l'outil qui la rend instantanée.",
+           "Trier ses vidéos", "a-tri"),
+    aguide("en", "sort-porn-videos", "Sort porn videos into folders with one key | Prisme",
+           "One key per category, the next video instantly: the method to sort thousands of adult "
+           "videos in one evening, and the tool that makes it instant.", "Sort porn videos", "a-tri"),
+    aguide("fr", "doublons-videos-porno", "Doublons de vidéos porno, même en autre résolution | Prisme",
+           "La même scène en 720p et en 1080p, sous deux noms : comment retrouver tous les doublons de "
+           "vidéos pour adultes et garder la meilleure version.", "Doublons", "a-doublons"),
+    aguide("en", "porn-duplicate-finder", "Porn duplicate finder: same scene, any resolution | Prisme",
+           "The same scene in 720p and 1080p, under two names: how to find every duplicate in an adult "
+           "video collection and keep the best version.", "Duplicate finder", "a-doublons"),
+    aguide("fr", "lecteur-video-porno-apercus", "Lecteur vidéo porno avec aperçus et Mur | Prisme",
+           "Aperçus au survol, Mur de deux à dix vidéos, lecteur flottant toujours au premier plan : un "
+           "lecteur pensé pour une collection de vidéos pour adultes.", "Lecteur avec aperçus", "a-lecteur"),
+    aguide("en", "porn-video-player-previews", "Porn video player with previews and a Wall | Prisme",
+           "Hover previews, a Wall of two to ten videos, a floating player always on top: a player "
+           "built for an adult video collection.", "Player with previews", "a-lecteur"),
+    aguide("fr", "mots-cles-recherche-ia-porno", "Taguer ses vidéos porno et chercher par IA locale | Prisme",
+           "Des mots-clés tirés automatiquement des noms de fichiers, les séries reconnues, une scène "
+           "retrouvée par sa description, avec une IA qui tourne sur votre PC.",
+           "Mots-clés et recherche IA", "a-tags"),
+    aguide("en", "auto-tag-porn-ai-search", "Auto-tag porn and search scenes with local AI | Prisme",
+           "Keywords drawn automatically from file names, series recognized, a scene found from its "
+           "description, with an AI that runs on your PC.", "Auto-tagging and AI search", "a-tags"),
+    aguide("fr", "cacher-videos-porno-pc", "Cacher ses vidéos porno sur son PC : ce qui protège | Prisme",
+           "Dossier caché, compte Windows, BitLocker, VeraCrypt : ce qui protège vraiment une collection "
+           "de vidéos pour adultes, et l'écran de repli instantané de Prisme.",
+           "Cacher ses vidéos", "a-discretion"),
+    aguide("en", "hide-porn-on-pc", "How to hide porn on your PC (what really works) | Prisme",
+           "Hidden folders, Windows accounts, BitLocker, VeraCrypt: what really protects an adult video "
+           "collection, and Prisme's instant cover screen.", "Hide porn on your PC", "a-discretion"),
+    aguide("fr", "plex-jellyfin-porno", "Plex ou Jellyfin pour le porno : les limites | Prisme",
+           "Plex et Jellyfin lisent tout, mais ne trient rien et demandent des réglages pour rester "
+           "privés : ce qui marche pour une collection de vidéos pour adultes.",
+           "Plex ou Jellyfin pour le porno", "a-plex"),
+    aguide("en", "plex-jellyfin-porn", "Plex or Jellyfin for porn: what works, the limits | Prisme",
+           "Plex and Jellyfin play everything, but sort nothing and need some settings to stay private: "
+           "what works for an adult video collection.", "Plex or Jellyfin for porn", "a-plex"),
+
     # ------------------------------------------------------------ Adulte, anglais
     page("en/adult/index.html", "/en/adult/", "en",
-         "Prisme — The software to sort and watch your porn collection",
-         "Prisme is the Windows software to manage your porn collection: previews on hover, one key to "
-         "file, duplicates, discreet mode. 100% local, free trial.",
+         "Prisme — Porn organizer for Windows: sort, tag and watch",
+         "Prisme is the Windows porn organizer: previews on hover, one key to file each video, "
+         "duplicates, auto-tagging, discreet mode. 100% local, free trial.",
          version="adulte", kind="home", group="adulte-accueil",
          og_title="Prisme — Thousands of videos. One key to decide."),
     page("en/adult/download.html", "/en/adult/download.html", "en", "Download Prisme — 14-day free trial",
@@ -344,7 +419,7 @@ def donnees(p, source):
     if p["kind"] in ("guide", "guides"):
         ariane = [("Prisme", accueil)]
         if p["kind"] == "guide":
-            ariane.append((GUIDES[lang][0], BASE + GUIDES[lang][1]))
+            ariane.append(("Guides", BASE + GUIDES[p["version"]][lang]))
         ariane.append((p["crumb"] or h1(source), url))
     elif p["kind"] in ("download", "tv", "legal"):
         ariane = [("Prisme", accueil), (p["crumb"] or p["title"].split(" — ")[0], url)]
@@ -359,7 +434,7 @@ def donnees(p, source):
                       "image": BASE + OG_IMAGE, "mainEntityOfPage": {"@id": url + "#page"},
                       "datePublished": p["published"] or modifie(p), "dateModified": modifie(p),
                       "author": {"@id": ORGANISATION["@id"]}, "publisher": {"@id": ORGANISATION["@id"]},
-                      "about": {"@id": BASE + ACCUEIL["neutre"]["fr"] + "#logiciel"}})
+                      "about": {"@id": BASE + ACCUEIL[p["version"]]["fr"] + "#logiciel"}})
         webpage["primaryImageOfPage"] = {"@type": "ImageObject", "url": BASE + OG_IMAGE}
 
     if p["kind"] == "tv":
