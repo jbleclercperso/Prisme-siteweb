@@ -1,27 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url><loc>https://www.prisme.app/</loc><priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.prisme.app/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.prisme.app/en/"/></url>
-  <url><loc>https://www.prisme.app/en/</loc><priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.prisme.app/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.prisme.app/en/"/></url>
-  <url><loc>https://www.prisme.app/telecharger.html</loc><priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.prisme.app/telecharger.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.prisme.app/en/download.html"/></url>
-  <url><loc>https://www.prisme.app/en/download.html</loc><priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.prisme.app/telecharger.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.prisme.app/en/download.html"/></url>
-  <url><loc>https://www.prisme.app/tv.html</loc><priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.prisme.app/tv.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.prisme.app/en/tv.html"/></url>
-  <url><loc>https://www.prisme.app/en/tv.html</loc><priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://www.prisme.app/tv.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.prisme.app/en/tv.html"/></url>
-  <url><loc>https://www.prisme.app/cgv.html</loc><priority>0.2</priority></url>
-  <url><loc>https://www.prisme.app/en/terms.html</loc><priority>0.2</priority></url>
-  <url><loc>https://www.prisme.app/confidentialite.html</loc><priority>0.2</priority></url>
-  <url><loc>https://www.prisme.app/en/privacy.html</loc><priority>0.2</priority></url>
-  <url><loc>https://www.prisme.app/mentions-legales.html</loc><priority>0.2</priority></url>
-  <url><loc>https://www.prisme.app/en/legal-notice.html</loc><priority>0.2</priority></url>
+  <url><loc>https://prisme-website.netlify.app/</loc><lastmod>2026-10-17</lastmod>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/telecharger.html</loc><lastmod>2026-10-17</lastmod>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/cgv.html</loc><lastmod>2026-10-17</lastmod>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/confidentialite.html</loc><lastmod>2026-10-17</lastmod>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/mentions-legales.html</loc><lastmod>2026-10-17</lastmod>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/adulte/</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prisme-website.netlify.app/en/adult/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://prisme-website.netlify.app/adulte/"/>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/adulte/telecharger.html</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prisme-website.netlify.app/en/adult/download.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://prisme-website.netlify.app/adulte/telecharger.html"/>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/adulte/tv.html</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prisme-website.netlify.app/en/adult/tv.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://prisme-website.netlify.app/adulte/tv.html"/>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/adulte/cgv.html</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prisme-website.netlify.app/en/adult/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://prisme-website.netlify.app/adulte/cgv.html"/>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/adulte/confidentialite.html</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prisme-website.netlify.app/en/adult/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://prisme-website.netlify.app/adulte/confidentialite.html"/>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/adulte/mentions-legales.html</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prisme-website.netlify.app/en/adult/legal-notice.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://prisme-website.netlify.app/adulte/mentions-legales.html"/>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/en/adult/</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prisme-website.netlify.app/en/adult/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://prisme-website.netlify.app/adulte/"/>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/en/adult/download.html</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prisme-website.netlify.app/en/adult/download.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://prisme-website.netlify.app/adulte/telecharger.html"/>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/en/adult/tv.html</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prisme-website.netlify.app/en/adult/tv.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://prisme-website.netlify.app/adulte/tv.html"/>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/en/adult/terms.html</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prisme-website.netlify.app/en/adult/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://prisme-website.netlify.app/adulte/cgv.html"/>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/en/adult/privacy.html</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prisme-website.netlify.app/en/adult/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://prisme-website.netlify.app/adulte/confidentialite.html"/>
+  </url>
+  <url><loc>https://prisme-website.netlify.app/en/adult/legal-notice.html</loc><lastmod>2026-10-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://prisme-website.netlify.app/en/adult/legal-notice.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://prisme-website.netlify.app/adulte/mentions-legales.html"/>
+  </url>
 </urlset>

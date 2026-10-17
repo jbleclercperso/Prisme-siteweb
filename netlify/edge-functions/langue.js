@@ -12,15 +12,18 @@
 //
 // Ajouter une langue (de, es…) : sa colonne dans PAGES, et c'est tout.
 
-// Chaque page du site, dans chaque langue.
+// Chaque page du site, dans chaque langue. Deux sites en un : la version
+// grand public à la racine, la version adulte dans /adulte/ et /en/adult/.
+// Une page sans jumelle dans une langue (« en » absent) n'envoie personne
+// ailleurs : le visiteur reste sur la page qu'il a demandée.
 const PAGES = [
-  { fr: "/", en: "/en/" },
-  { fr: "/telecharger.html", en: "/en/download.html" },
-  { fr: "/tv.html", en: "/en/tv.html" },
-  { fr: "/merci.html", en: "/en/thanks.html" },
-  { fr: "/cgv.html", en: "/en/terms.html" },
-  { fr: "/confidentialite.html", en: "/en/privacy.html" },
-  { fr: "/mentions-legales.html", en: "/en/legal-notice.html" },
+  { fr: "/adulte/", en: "/en/adult/" },
+  { fr: "/adulte/telecharger.html", en: "/en/adult/download.html" },
+  { fr: "/adulte/tv.html", en: "/en/adult/tv.html" },
+  { fr: "/adulte/merci.html", en: "/en/adult/thanks.html" },
+  { fr: "/adulte/cgv.html", en: "/en/adult/terms.html" },
+  { fr: "/adulte/confidentialite.html", en: "/en/adult/privacy.html" },
+  { fr: "/adulte/mentions-legales.html", en: "/en/adult/legal-notice.html" },
 ];
 const LANGS = Object.keys(PAGES[0]);
 // La langue de ceux dont la langue n'a pas (encore) sa version.
@@ -28,11 +31,11 @@ const FALLBACK = "en";
 const COOKIE = "prisme-lang";
 const BOTS = /bot|crawl|spider|slurp|preview|facebookexternalhit|embedly|lighthouse|headless/i;
 
-// « /index.html », « /en », « /telecharger » : les autres façons d'écrire
+// « /index.html », « /en/adult », « /telecharger » : les autres façons d'écrire
 // l'adresse d'une page, que Netlify sert aussi.
 function normalize(path) {
   if (path.endsWith("/index.html")) path = path.slice(0, -"index.html".length);
-  if (LANGS.includes(path.slice(1))) return path + "/";
+  if (!path.endsWith("/") && locate(path + "/")) return path + "/";
   if (!path.endsWith("/") && !path.endsWith(".html")) path += ".html";
   return path;
 }
@@ -82,14 +85,14 @@ export default async (req) => {
   const chosen = url.searchParams.get("lang");
   if (chosen !== null) {
     url.searchParams.delete("lang");
-    if (!LANGS.includes(chosen)) return redirect(page[lang] + url.search);
+    if (!LANGS.includes(chosen) || !page[chosen]) return redirect(page[lang] + url.search);
     const cookie = `${COOKIE}=${chosen}; Path=/; Max-Age=31536000; SameSite=Lax; Secure`;
     return redirect(page[chosen] + url.search, cookie);
   }
 
   if (BOTS.test(req.headers.get("user-agent") || "")) return;
   const wanted = fromCookie(req.headers.get("cookie")) || fromBrowser(req.headers.get("accept-language"));
-  if (!wanted || wanted === lang) return;
+  if (!wanted || wanted === lang || !page[wanted]) return;
   return redirect(page[wanted] + url.search);
 };
 

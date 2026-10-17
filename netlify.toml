@@ -11,11 +11,71 @@
 
 # Le site est publié depuis la racine du dépôt : ce qui n'est pas une page
 # (dépendances, fonctions, scripts, notes) ne doit pas être servi.
-# Une page anglaise introuvable : la page 404 en anglais. Sans « force »,
-# la règle ne joue que lorsque le fichier n'existe pas.
+# Deux sites en un : la version grand public à la racine, la version adulte
+# dans /adulte/ et /en/adult/ (voir scripts/seo.py). Les adresses d'avant le
+# déménagement (octobre 2026) mènent à leur nouvelle place. Sans « force »,
+# une règle ne joue que lorsque le fichier n'existe pas : celles de /en/ se
+# tairont d'elles-mêmes quand les pages anglaises grand public existeront.
 [[redirects]]
-  from = "/en/*"
-  to = "/en/404.html"
+  from = "/neutre/*"
+  to = "/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/merci.html"
+  to = "/adulte/merci.html"
+  status = 301
+
+[[redirects]]
+  from = "/en/thanks.html"
+  to = "/en/adult/thanks.html"
+  status = 301
+
+[[redirects]]
+  from = "/en/"
+  to = "/en/adult/"
+  status = 302
+
+[[redirects]]
+  from = "/en/download.html"
+  to = "/en/adult/download.html"
+  status = 302
+
+[[redirects]]
+  from = "/en/tv.html"
+  to = "/en/adult/tv.html"
+  status = 302
+
+[[redirects]]
+  from = "/en/terms.html"
+  to = "/en/adult/terms.html"
+  status = 302
+
+[[redirects]]
+  from = "/en/privacy.html"
+  to = "/en/adult/privacy.html"
+  status = 302
+
+[[redirects]]
+  from = "/en/legal-notice.html"
+  to = "/en/adult/legal-notice.html"
+  status = 302
+
+[[redirects]]
+  from = "/tv.html"
+  to = "/adulte/tv.html"
+  status = 302
+
+# Une page introuvable : la page 404 de sa version et de sa langue.
+[[redirects]]
+  from = "/en/adult/*"
+  to = "/en/adult/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/adulte/*"
+  to = "/adulte/404.html"
   status = 404
 
 # Prisme TV : l'adresse courte à taper dans Downloader, sur la télé.
@@ -26,8 +86,8 @@
 
 [[redirects]]
   from = "/tv"
-  to = "/tv.html"
-  status = 301
+  to = "/adulte/tv.html"
+  status = 302
 
 [[headers]]
   for = "/telechargements/*.apk"
@@ -79,7 +139,13 @@
   force = true
 
 [[headers]]
-  for = "/merci.html"
+  for = "/adulte/merci.html"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/en/adult/thanks.html"
   [headers.values]
     X-Robots-Tag = "noindex"
     Cache-Control = "no-store"

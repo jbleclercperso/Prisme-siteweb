@@ -8,50 +8,89 @@ Site statique : HTML, CSS et JavaScript sans framework ni étape de construction
 Aucun traceur, aucune ressource tierce — polices et icônes sont hébergées ici,
 ce qui tient la promesse « rien n'est envoyé » jusque sur le site.
 
+## Deux sites en un
+
+Le même logiciel se présente à deux publics, chacun avec son référencement :
+
+- **la version grand public**, à la racine : trier, ranger et regarder ses
+  vidéos et ses photos. Elle ne lie jamais la version adulte et n'en emploie
+  pas le vocabulaire (`scripts/verifier.py` y veille) ;
+- **la version adulte**, dans `/adulte/` (français) et `/en/adult/` (anglais) :
+  contrôle d'âge, `<meta name="rating" content="adult">`, `contentRating:
+  adult`. Google demande précisément de regrouper ainsi le contenu explicite à
+  part, faute de quoi il filtre le domaine entier.
+
+Les adresses d'avant ce partage (octobre 2026 : `/neutre/…`, `/merci.html`,
+`/en/…`) redirigent vers leur nouvelle place (`netlify.toml`).
+
 ## Pages
 
 | Fichier | Rôle |
 |---|---|
-| `index.html` | Page d'accueil : démo interactive, fonctionnalités, discrétion, tarifs, FAQ |
-| `telecharger.html` | Essai gratuit — pour l'instant formulaire d'accès anticipé |
-| `cgv.html`, `confidentialite.html`, `mentions-legales.html` | Pages légales (modèles à compléter) |
-| `merci.html` | Retour de Stripe après un paiement |
-| `tv.html` | Installer Prisme TV sur la télé (Fire TV, Android TV) |
-| `404.html` | Page introuvable |
-| `en/…` | Les mêmes pages en anglais (voir Langues) |
+| `index.html` | Grand public : démo interactive, fonctionnalités, Mur, photos, doublons, accès à distance, tarif, FAQ |
+| `telecharger.html` | Grand public : essai gratuit (pour l'instant formulaire d'accès anticipé) |
+| `cgv.html`, `confidentialite.html`, `mentions-legales.html` | Grand public : pages légales (modèles à compléter) |
+| `guides/…`, `<sujet>/index.html` | Grand public : une page par problème (doublons, réparation, NAS, télé…), voir `docs/plan-seo.md` |
+| `404.html` | Page introuvable (grand public) |
+| `adulte/index.html` | Adulte : démo, fonctionnalités, discrétion, tarifs, FAQ |
+| `adulte/telecharger.html`, `adulte/tv.html`, `adulte/merci.html`, `adulte/cgv.html`… | Adulte : essai, Prisme TV, retour de Stripe, pages légales |
+| `en/adult/…` | Adulte, en anglais (voir Langues) |
+
+## Référencement
+
+**Les balises de référencement ne s'écrivent pas à la main.** Chaque page a sa
+fiche dans `scripts/seo.py` (adresse, langue, titre, description, version,
+nature) ; le script en tire, dans le `<head>`, entre les marques `seo` : titre,
+description, canonical, hreflang, Open Graph, Twitter, marquage adulte, données
+structurées schema.org (Organization, WebSite, WebPage, SoftwareApplication,
+FAQPage tirée de la FAQ de la page, BreadcrumbList, TechArticle, HowTo), et il
+écrit `sitemap.xml` et `robots.txt`.
+
+```bash
+python scripts/seo.py         # après avoir ajouté une page ou changé un titre
+python scripts/verifier.py    # avant chaque envoi : liens, H1, JSON-LD, séparation des versions
+```
+
+**Nom de domaine** : la constante `BASE` de `scripts/seo.py` (aujourd'hui
+`https://prisme-website.netlify.app`, en attendant le vrai domaine). La
+changer, relancer le script : tout suit. Le plan du référencement, les
+mots-clés visés et le maillage sont dans `docs/plan-seo.md` (non servi).
 
 ## Langues
 
-Le site existe en français (à la racine) et en anglais (dans `en/`), chaque page
-ayant sa jumelle :
+La version adulte existe en français (`/adulte/`) et en anglais (`/en/adult/`),
+chaque page ayant sa jumelle :
 
 | Français | Anglais |
 |---|---|
-| `/` | `/en/` |
-| `/telecharger.html` | `/en/download.html` |
-| `/tv.html` | `/en/tv.html` |
-| `/merci.html` | `/en/thanks.html` |
-| `/cgv.html` | `/en/terms.html` |
-| `/confidentialite.html` | `/en/privacy.html` |
-| `/mentions-legales.html` | `/en/legal-notice.html` |
+| `/adulte/` | `/en/adult/` |
+| `/adulte/telecharger.html` | `/en/adult/download.html` |
+| `/adulte/tv.html` | `/en/adult/tv.html` |
+| `/adulte/merci.html` | `/en/adult/thanks.html` |
+| `/adulte/cgv.html` | `/en/adult/terms.html` |
+| `/adulte/confidentialite.html` | `/en/adult/privacy.html` |
+| `/adulte/mentions-legales.html` | `/en/adult/legal-notice.html` |
+
+La version grand public est en français ; sa traduction anglaise ira dans
+`/en/` (les adresses `/en/…` redirigent pour l'instant vers `/en/adult/…`).
 
 **La bascule est automatique** : la fonction `netlify/edge-functions/langue.js`
 regarde la langue du navigateur avant d'envoyer la page. Français → pages
 françaises ; toute autre langue → pages anglaises (redirection 302 vers la même
-page, ancre et paramètres compris). Le lien **FR / EN** de l'en-tête fixe le
-choix pour un an (cookie `prisme-lang`), qui passe alors avant le navigateur.
-Les robots (Google, aperçus de liens) ne sont jamais redirigés : chaque version
-est indexée à sa propre adresse, et les balises `hreflang` des pages et du
-`sitemap.xml` les relient.
+page, ancre et paramètres compris), quand la page a une jumelle anglaise. Le
+lien **FR / EN** de l'en-tête fixe le choix pour un an (cookie `prisme-lang`),
+qui passe alors avant le navigateur. Les robots (Google, aperçus de liens) ne
+sont jamais redirigés : chaque version est indexée à sa propre adresse, et les
+balises `hreflang` des pages et du `sitemap.xml` les relient.
 
 **Une modification se fait dans les deux langues** : le texte change dans la
-page française et dans sa jumelle de `en/`. Les textes écrits par le script
+page française et dans sa jumelle anglaise. Les textes écrits par le script
 (démo, mode discret, paiement) sont dans `assets/js/site.js`, objet `TEXT`.
 
-**Ajouter une langue** (allemand, espagnol…) : copier `en/` vers `de/` et
+**Ajouter une langue** (allemand, espagnol…) : copier `en/adult/` vers `de/…` et
 traduire ; ajouter la colonne `de` au tableau `PAGES` de `langue.js`, un bloc
-`de` à `TEXT` dans `site.js` et à `LOCALES` dans `netlify/lib/stripe.mjs` ;
-compléter les balises `hreflang`, le sélecteur de langue et le `sitemap.xml`.
+`de` à `TEXT` dans `site.js` et à `LOCALES` dans `netlify/lib/stripe.mjs`, et
+les fiches des pages dans `scripts/seo.py`.
 
 **Prix** : toujours en euros sur les pages françaises. Sur les pages anglaises,
 en euros pour un visiteur de la zone euro (un Allemand, un Espagnol…) et en
@@ -206,9 +245,10 @@ Certains éléments sont des propositions commerciales, à confirmer ou corriger
       corriger `en/thanks.html` et `en/tv.html`.
 - [ ] **Promesses** : essai 14 jours sans carte, 2 ordinateurs par licence,
       satisfait ou remboursé 14 jours, libellé bancaire discret, support par e-mail
-- [ ] **Nom de domaine** : `prisme.app` est utilisé partout en attendant
-      (`index.html` balises `canonical`/`og:*`, `robots.txt`, `sitemap.xml`,
-      adresses `contact@prisme.app`)
+- [ ] **Nom de domaine** : pas encore acheté (sans doute `prism-desktop.com`).
+      Les balises utilisent l'adresse Netlify (`BASE` dans `scripts/seo.py`) ;
+      les adresses `contact@prisme.app` pointent vers un domaine qui n'est pas
+      le nôtre et doivent être remplacées
 - [ ] **Pages légales** : compléter les passages `[entre crochets]` et faire relire
 - [ ] **Prestataire de paiement** : Stripe est branché, mais ses conditions
       excluent les contenus pour adultes. Un logiciel qui organise des fichiers

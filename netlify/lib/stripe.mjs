@@ -23,16 +23,16 @@ export const PLANS = {
 export const LOCALES = {
   fr: {
     locale: "fr",
-    success: "/merci.html",
-    cancel: "/index.html#tarifs",
+    success: "/adulte/merci.html",
+    cancel: "/adulte/#tarifs",
     submit: "En payant, vous acceptez les conditions de vente de Prisme et demandez l'accès immédiat au logiciel. Satisfait ou remboursé pendant 14 jours.",
   },
   en: {
     // « auto » : la page Stripe suit la langue du navigateur (un Allemand
     // la voit en allemand), le site n'ayant pas encore toutes les langues.
     locale: "auto",
-    success: "/en/thanks.html",
-    cancel: "/en/#tarifs",
+    success: "/en/adult/thanks.html",
+    cancel: "/en/adult/#tarifs",
     submit: "By paying, you accept Prisme's terms of sale and request immediate access to the software. 14-day money-back guarantee.",
   },
 };
