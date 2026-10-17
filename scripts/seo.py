@@ -59,19 +59,19 @@ LOGICIEL = {
         "en": "Windows software to sort, organize, find and watch your videos and photos with the "
               "keyboard: previews on hover, video Wall, duplicates, repair of damaged videos, access "
               "from your phone and TV. 100% local.",
-        "offres": {"fr": {"@type": "Offer", "price": "29", "priceCurrency": "EUR",
-                          "description": "Licence à vie, après un essai gratuit de 14 jours"},
-                   "en": {"@type": "Offer", "price": "29", "priceCurrency": "EUR",
-                          "description": "Lifetime licence, after a 14-day free trial"}},
+        "offres": {"fr": {"@type": "AggregateOffer", "lowPrice": "4.99", "highPrice": "49",
+                          "priceCurrency": "EUR", "offerCount": "3"},
+                   "en": {"@type": "AggregateOffer", "lowPrice": "4.99", "highPrice": "49",
+                          "priceCurrency": "EUR", "offerCount": "3"}},
     },
     "adulte": {
         "fr": "Logiciel Windows pour trier, organiser et regarder une collection de vidéos et de "
               "photos pornographiques. 100 % local.",
         "en": "Windows software to sort, organize and watch a collection of pornographic videos "
               "and photos. 100% local.",
-        "offres": {"fr": {"@type": "AggregateOffer", "lowPrice": "4.99", "highPrice": "99",
+        "offres": {"fr": {"@type": "AggregateOffer", "lowPrice": "4.99", "highPrice": "49",
                           "priceCurrency": "EUR", "offerCount": "3"},
-                   "en": {"@type": "AggregateOffer", "lowPrice": "4.99", "highPrice": "99",
+                   "en": {"@type": "AggregateOffer", "lowPrice": "4.99", "highPrice": "49",
                           "priceCurrency": "USD", "offerCount": "3"}},
     },
 }
@@ -128,6 +128,8 @@ PAGES = [
          "Téléchargez Prisme, le logiciel Windows pour trier et regarder vos vidéos et vos photos. "
          "Essai gratuit de 14 jours, toutes les fonctions, sans carte bancaire.",
          kind="download", group="telecharger"),
+    page("merci.html", "/merci.html", "fr", "Merci — Prisme", "Votre commande Prisme.",
+         kind="merci", index=False),
     page("cgv.html", "/cgv.html", "fr", "Conditions générales de vente — Prisme",
          "Conditions générales de vente du logiciel Prisme : licence, essai gratuit, paiement, "
          "remboursement.", kind="legal", group="cgv"),

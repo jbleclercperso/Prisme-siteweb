@@ -4,7 +4,11 @@
 // (Site › Configuration › Environment variables), jamais dans le code :
 //   STRIPE_SECRET_KEY      clé secrète (sk_test_… pour essayer, sk_live_… en vrai)
 //   STRIPE_WEBHOOK_SECRET  secret de signature du webhook (whsec_…)
-//   STRIPE_AUTOMATIC_TAX   « on » pour laisser Stripe Tax calculer la TVA (facultatif)
+//   STRIPE_TAX_RATE_ID     taux « TVA 20 % » INCLUS (txr_…), posé sur les paiements en euros
+//   STRIPE_AUTOMATIC_TAX   « on » pour laisser Stripe Tax calculer la TVA (facultatif, remplace le taux)
+//   RESEND_API_KEY         envoi de la clé de licence par e-mail (lib/courriel.mjs, facultatif)
+//   PAIEMENTS_URL, PAIEMENTS_ANON_KEY, PAIEMENTS_SECRET
+//                          table commune des paiements (lib/paiements.mjs, facultatif)
 import Stripe from "stripe";
 
 // Les prix sont retrouvés par leur « lookup key », posée par
@@ -21,6 +25,14 @@ export const PLANS = {
 // prix en dollars sont des « options de monnaie » des mêmes prix Stripe
 // (scripts/stripe-setup.mjs), sous la même lookup key.
 export const LOCALES = {
+  // La version grand public (à la racine du site) : en français, sans jamais
+  // renvoyer vers la version adulte, ni au retour de Stripe.
+  neutre: {
+    locale: "fr",
+    success: "/merci.html",
+    cancel: "/#tarifs",
+    submit: "En payant, vous acceptez les conditions de vente de Prisme et demandez l'accès immédiat au logiciel. Satisfait ou remboursé pendant 14 jours.",
+  },
   fr: {
     locale: "fr",
     success: "/adulte/merci.html",
@@ -46,6 +58,7 @@ export const WEBHOOK_EVENTS = [
   "invoice.paid",
   "invoice.payment_failed",
   "customer.subscription.deleted",
+  "charge.refunded",
 ];
 
 export function stripeClient() {

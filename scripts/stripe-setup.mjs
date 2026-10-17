@@ -5,8 +5,8 @@
 //
 // Crée ce qui manque, et laisse tel quel ce qui existe déjà : on peut le
 // relancer sans risque, en mode test puis en mode réel (sk_live_…).
-//   1. le produit « Prisme » et ses trois prix (4,99 €/mois, 49,90 €/an,
-//      99 € une fois, TTC), chacun avec le même montant en dollars pour la
+//   1. le produit « Prisme » et ses trois prix (4,99 €/mois, 29 €/an,
+//      49 € une fois, TTC), chacun avec le même montant en dollars pour la
 //      version anglaise du site, retrouvés ensuite par leur lookup key. Si le
 //      montant en euros a changé ici, un nouveau prix
 //      reprend la lookup key et l'ancien est désactivé : les abonnements
@@ -22,8 +22,8 @@ import { PLANS, WEBHOOK_EVENTS } from "../netlify/lib/stripe.mjs";
 // les pages anglaises (netlify/lib/stripe.mjs, LOCALES).
 const PRICES = {
   [PLANS.monthly.lookupKey]: { unit_amount: 499, usd: 499, recurring: { interval: "month" }, nickname: "Prisme mensuel" },
-  [PLANS.yearly.lookupKey]: { unit_amount: 4990, usd: 4990, recurring: { interval: "year" }, nickname: "Prisme annuel" },
-  [PLANS.lifetime.lookupKey]: { unit_amount: 9900, usd: 9900, nickname: "Prisme à vie" },
+  [PLANS.yearly.lookupKey]: { unit_amount: 2900, usd: 2900, recurring: { interval: "year" }, nickname: "Prisme annuel" },
+  [PLANS.lifetime.lookupKey]: { unit_amount: 4900, usd: 4900, nickname: "Prisme à vie" },
 };
 const inDollars = (usd) => ({ usd: { unit_amount: usd, tax_behavior: "inclusive" } });
 

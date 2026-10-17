@@ -60,10 +60,11 @@
    ],
    "description": "Logiciel Windows pour trier, ranger, retrouver et regarder ses vidéos et ses photos, au clavier : aperçus au survol, Mur de vidéos, doublons, réparation des vidéos abîmées, accès depuis le téléphone et la télé. 100 % local.",
    "offers": {
-    "@type": "Offer",
-    "price": "29",
+    "@type": "AggregateOffer",
+    "lowPrice": "4.99",
+    "highPrice": "49",
     "priceCurrency": "EUR",
-    "description": "Licence à vie, après un essai gratuit de 14 jours"
+    "offerCount": "3"
    },
    "publisher": {
     "@id": "https://prisme-desktop.com/#organisation"
@@ -152,18 +153,10 @@
     },
     {
      "@type": "Question",
-     "name": "Pourquoi un seul paiement, et pas un abonnement ?",
+     "name": "Abonnement ou licence à vie ?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Parce qu'un logiciel qui tourne sur votre ordinateur, sans serveur à payer chaque mois, n'a pas de raison de vous coûter chaque mois. 29 €, une fois, et Prisme est à vous, avec les mises à jour de la version 1."
-     }
-    },
-    {
-     "@type": "Question",
-     "name": "Puis-je offrir Prisme ?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Oui : choisissez « Offrir Prisme », indiquez l'adresse e-mail du destinataire et la date d'envoi. Il reçoit un code à activer dans l'année. S'il n'est jamais activé, nous vous remboursons."
+      "text": "Au choix. 4,99 € par mois ou 29 € par an, sans engagement : vous arrêtez quand vous voulez. Ou 49 € une seule fois, et Prisme est à vous pour toujours, avec les mises à jour de la version 1. Toutes les formules ont toutes les fonctionnalités."
      }
     },
     {
@@ -287,7 +280,7 @@
               <svg><use href="#i-download"/></svg>
               Essayer gratuitement
             </a>
-            <span class="btn-note">14 jours · sans carte bancaire · puis 29 € à vie</span>
+            <span class="btn-note">14 jours · sans carte bancaire · puis dès 2,42 € par mois</span>
           </div>
           <a class="btn btn-ghost" href="#demo">Essayer la démo en ligne <svg><use href="#i-down"/></svg></a>
         </div>
@@ -857,66 +850,71 @@
   </section>
 
   <!-- ================================================================ TARIF
-       À FAIRE avant d'ouvrir la vente : la licence à vie à 29 € et la licence à
-       offrir n'ont pas encore leur propre produit de paiement. Les boutons mènent
-       pour l'instant à l'accès anticipé (telecharger.html), ou au lien posé dans
-       assets/js/config-neutre.js. Ne PAS brancher ici le paiement Stripe de la
-       version principale (data-checkout, ../index.html) : son prix « à vie » est de 99 €. -->
+       Paiement Stripe intégré (assets/js/neutre.js, data-checkout) : mêmes prix
+       Stripe que la version adulte (lookup keys prisme_mensuel, prisme_annuel,
+       prisme_a_vie), retour sur /merci.html. -->
   <section class="section" id="tarifs" style="padding-top:0">
     <div class="container">
       <div class="section-head center">
         <span class="eyebrow reveal">Tarif</span>
-        <h2 class="h2 reveal" data-delay="1">Un seul paiement. <em>À vous pour toujours.</em></h2>
-        <p class="lead reveal" data-delay="2">Essayez Prisme gratuitement pendant 14 jours, avec toutes les fonctionnalités. S'il vous convainc, il est à vous pour 29 €, sans abonnement.</p>
+        <h2 class="h2 reveal" data-delay="1">Essayez d'abord. <em>Choisissez ensuite.</em></h2>
+        <p class="lead reveal" data-delay="2">Essayez Prisme gratuitement pendant 14 jours, avec toutes les fonctionnalités. S'il vous convainc, gardez-le au mois, à l'année, ou une fois pour toujours.</p>
+      </div>
+
+      <div class="trial-note reveal">
+        <span class="trial-note-ico"><svg><use href="#i-download"/></svg></span>
+        <p><b>Essayez d'abord, gratuitement, pendant 14 jours.</b> <a href="telecharger.html" data-link="trial">Téléchargez Prisme</a> et servez-vous-en avec toutes les fonctionnalités, sans carte bancaire. À la fin de l'essai, choisissez votre formule : rien n'est jamais prélevé sans vous.</p>
       </div>
 
       <div class="plans">
         <article class="plan reveal">
-          <h3>Essai</h3>
-          <p class="plan-desc">Toutes les fonctionnalités, sans limite, pour vous faire votre idée.</p>
-          <div class="price"><b>0 €</b><span>pendant 14 jours</span></div>
-          <p class="price-sub">Aucune carte bancaire demandée</p>
+          <h3>Mensuel</h3>
+          <p class="plan-desc">Pour commencer sans vous engager.</p>
+          <div class="price"><b>4,99 €</b><span>/ mois</span></div>
+          <p class="price-sub">Sans engagement, résiliable à tout moment</p>
           <ul>
-            <li><svg><use href="#i-tick"/></svg>Vidéos et photos : tri, aperçus, Mur</li>
-            <li><svg><use href="#i-tick"/></svg>Mots-clés, doublons, recherche, réparation</li>
-            <li><svg><use href="#i-tick"/></svg>Accès à distance</li>
-            <li><svg><use href="#i-tick"/></svg>Vos réglages conservés si vous continuez</li>
+            <li><svg><use href="#i-tick"/></svg>Toutes les fonctionnalités</li>
+            <li><svg><use href="#i-tick"/></svg>Toutes les mises à jour incluses</li>
+            <li><svg><use href="#i-tick"/></svg>Jusqu'à 2 ordinateurs</li>
+            <li><svg><use href="#i-tick"/></svg>Un humain répond à vos questions</li>
           </ul>
-          <a class="btn btn-ghost btn-block" href="telecharger.html" data-link="trial">Télécharger l'essai</a>
+          <a class="btn btn-ghost btn-block" href="telecharger.html" data-checkout="monthly">Choisir le mensuel</a>
         </article>
 
         <article class="plan featured reveal" data-delay="1">
-          <span class="plan-flag">Prix de lancement</span>
-          <h3>Prisme à vie</h3>
-          <p class="plan-desc">Un seul paiement, à vous pour toujours. Toutes les fonctionnalités, toutes les mises à jour de la version 1.</p>
-          <div class="price"><b>29 €</b><span>une fois</span></div>
-          <p class="price-sub">TTC · licence perpétuelle · pas d'abonnement</p>
+          <span class="plan-flag">Moitié prix</span>
+          <h3>Annuel</h3>
+          <p class="plan-desc">Le même abonnement, deux fois moins cher.</p>
+          <div class="price"><b>29 €</b><span>/ an</span></div>
+          <p class="price-sub">Soit 2,42 € par mois · résiliable à tout moment</p>
+          <ul>
+            <li><svg><use href="#i-tick"/></svg>Toutes les fonctionnalités</li>
+            <li><svg><use href="#i-tick"/></svg>Toutes les mises à jour incluses</li>
+            <li><svg><use href="#i-tick"/></svg>Jusqu'à 2 ordinateurs</li>
+            <li><svg><use href="#i-tick"/></svg>Un humain répond à vos questions</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="telecharger.html" data-checkout="yearly">Choisir l'annuel</a>
+        </article>
+
+        <article class="plan reveal" data-delay="2">
+          <h3>À vie</h3>
+          <p class="plan-desc">Un seul paiement, à vous pour toujours.</p>
+          <div class="price"><b>49 €</b><span>une fois</span></div>
+          <p class="price-sub">Licence perpétuelle, sans abonnement</p>
           <ul>
             <li><svg><use href="#i-tick"/></svg>Toutes les fonctionnalités</li>
             <li><svg><use href="#i-tick"/></svg>Mises à jour de la version 1 incluses</li>
             <li><svg><use href="#i-tick"/></svg>Jusqu'à 2 ordinateurs</li>
             <li><svg><use href="#i-tick"/></svg>Un humain répond à vos questions</li>
           </ul>
-          <a class="btn btn-primary btn-block" href="telecharger.html" data-link="lifetime">Acheter Prisme</a>
-        </article>
-
-        <article class="plan reveal" data-delay="2">
-          <h3>Prisme à offrir</h3>
-          <p class="plan-desc">Pour celui qui a 30 000 photos dans son téléphone et des cartes SD qui débordent.</p>
-          <div class="price"><b>29 €</b><span>une fois</span></div>
-          <p class="price-sub">Une carte cadeau par e-mail, à la date de votre choix</p>
-          <ul>
-            <li><svg><use href="#i-gift"/></svg>Un code à activer, valable un an</li>
-            <li><svg><use href="#i-tick"/></svg>La même licence à vie</li>
-            <li><svg><use href="#i-tick"/></svg>Envoi programmable, pour Noël ou un anniversaire</li>
-            <li><svg><use href="#i-tick"/></svg>Remboursable s'il n'est pas activé</li>
-          </ul>
-          <a class="btn btn-ghost btn-block" href="telecharger.html" data-link="gift">Offrir Prisme</a>
+          <a class="btn btn-ghost btn-block" href="telecharger.html" data-checkout="lifetime">Acheter la licence</a>
         </article>
       </div>
 
+      <p class="checkout-error" data-checkout-error role="alert" hidden>La page de paiement n'a pas pu s'ouvrir. Réessayez dans un instant, ou <a href="mailto:contact@prisme.app" data-link="contact">écrivez-nous</a>.</p>
+
       <div class="plans-foot reveal">
-        <span><svg><use href="#i-card"/></svg>Paiement sécurisé</span>
+        <span><svg><use href="#i-card"/></svg>Paiement sécurisé par Stripe</span>
         <span><svg><use href="#i-refund"/></svg>Satisfait ou remboursé 14 jours</span>
         <span><svg><use href="#i-mail"/></svg>Un humain répond à vos questions</span>
       </div>
@@ -966,12 +964,8 @@
           <div class="answer-body"><p>Prisme est une application Windows (Windows 10 et 11). Une carte graphique récente n'est pas nécessaire : un ordinateur ordinaire suffit. Pas encore de version Mac.</p></div>
         </details>
         <details>
-          <summary>Pourquoi un seul paiement, et pas un abonnement ?</summary>
-          <div class="answer-body"><p>Parce qu'un logiciel qui tourne sur votre ordinateur, sans serveur à payer chaque mois, n'a pas de raison de vous coûter chaque mois. 29 €, une fois, et Prisme est à vous, avec les mises à jour de la version 1.</p></div>
-        </details>
-        <details>
-          <summary>Puis-je offrir Prisme ?</summary>
-          <div class="answer-body"><p>Oui : choisissez « Offrir Prisme », indiquez l'adresse e-mail du destinataire et la date d'envoi. Il reçoit un code à activer dans l'année. S'il n'est jamais activé, nous vous remboursons.</p></div>
+          <summary>Abonnement ou licence à vie ?</summary>
+          <div class="answer-body"><p>Au choix. 4,99 € par mois ou 29 € par an, sans engagement : vous arrêtez quand vous voulez. Ou 49 € une seule fois, et Prisme est à vous pour toujours, avec les mises à jour de la version 1. Toutes les formules ont toutes les fonctionnalités.</p></div>
         </details>
         <details>
           <summary>Que se passe-t-il à la fin de l'essai ?</summary>
@@ -994,7 +988,7 @@
       <div class="hero-actions reveal" data-delay="3">
         <div>
           <a class="btn btn-primary" href="telecharger.html" data-link="trial"><svg><use href="#i-download"/></svg>Essayer gratuitement</a>
-          <span class="btn-note">14 jours · sans carte bancaire · puis 29 € à vie</span>
+          <span class="btn-note">14 jours · sans carte bancaire · puis dès 2,42 € par mois</span>
         </div>
         <a class="btn btn-ghost" href="#tarifs">Voir le tarif <svg><use href="#i-arrow"/></svg></a>
       </div>

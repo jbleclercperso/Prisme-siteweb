@@ -60,10 +60,11 @@
    ],
    "description": "Logiciel Windows pour trier, ranger, retrouver et regarder ses vidéos et ses photos, au clavier : aperçus au survol, Mur de vidéos, doublons, réparation des vidéos abîmées, accès depuis le téléphone et la télé. 100 % local.",
    "offers": {
-    "@type": "Offer",
-    "price": "29",
+    "@type": "AggregateOffer",
+    "lowPrice": "4.99",
+    "highPrice": "49",
     "priceCurrency": "EUR",
-    "description": "Licence à vie, après un essai gratuit de 14 jours"
+    "offerCount": "3"
    },
    "publisher": {
     "@id": "https://prisme-desktop.com/#organisation"
@@ -186,10 +187,10 @@
       <div class="download-card">
         <div>
           <span class="eyebrow">Télécharger</span>
-          <h1 class="display" style="font-size:clamp(2.4rem,5vw,4rem);margin-top:20px">Prisme arrive <em>très bientôt.</em></h1>
-          <p class="lead" style="margin-top:24px">Nous mettons la dernière main à la version publique. Laissez votre adresse : vous serez parmi les premiers à pouvoir l'essayer, au prix de lancement de 29 € la licence à vie.</p>
-          <div data-download-ready hidden style="margin-top:32px">
-            <a class="btn btn-primary" href="#" data-link="trial"><svg><use href="#i-download"/></svg>Télécharger Prisme pour Windows</a>
+          <h1 class="display" style="font-size:clamp(2.4rem,5vw,4rem);margin-top:20px">Essayez Prisme <em>14 jours.</em></h1>
+          <p class="lead" style="margin-top:24px">Toutes les fonctionnalités, sans carte bancaire. À la fin de l'essai, gardez-le si vous voulez : au mois, à l'année ou à vie.</p>
+          <div style="margin-top:32px">
+            <a class="btn btn-primary" href="https://github.com/jbleclercperso/prisme-mises-a-jour/releases/latest/download/Prisme-installation.exe" data-link="trial"><svg><use href="#i-download"/></svg>Télécharger Prisme pour Windows</a>
             <span class="btn-note">Essai gratuit de 14 jours · sans carte bancaire</span>
           </div>
           <ul class="req-list">
@@ -200,26 +201,16 @@
             <li>Essai <span>14 jours gratuits, toutes fonctionnalités, sans carte bancaire</span></li>
           </ul>
         </div>
-        <div class="form" id="waitlist">
-          <!-- Formulaire Netlify distinct de celui de la page principale (« acces-anticipe »),
-               pour savoir de quelle version vient chaque inscription. -->
-          <form name="acces-anticipe-neutre" method="POST" data-netlify="true" netlify-honeypot="societe" action="telecharger.html?merci">
-            <input type="hidden" name="form-name" value="acces-anticipe-neutre">
-            <p hidden><label>Ne pas remplir : <input name="societe"></label></p>
-            <h2 class="h3" style="margin-bottom:8px">Accès anticipé</h2>
-            <p class="muted" style="margin:0 0 24px;font-size:.95rem">Un seul e-mail le jour du lancement. Pas de publicité, pas de revente.</p>
-            <label for="email">Votre adresse e-mail</label>
-            <input id="email" type="email" name="email" required autocomplete="email" placeholder="vous@exemple.fr">
-            <label class="consent"><input type="checkbox" name="accord" required> <span>J'accepte de recevoir l'e-mail de lancement de Prisme.</span></label>
-            <button class="btn btn-primary btn-block" type="submit">Me prévenir du lancement</button>
-            <p class="fine">Un seul e-mail, aucune revente de votre adresse. Voir notre <a href="confidentialite.html" style="text-decoration:underline">politique de confidentialité</a>.</p>
-            <p class="fine" data-form-error hidden style="color:var(--red)">L'envoi n'a pas abouti. Réessayez dans un instant, ou écrivez-nous directement.</p>
-          </form>
-          <div class="form-ok" role="status">
-            <img src="/assets/img/prisme.png" alt="" width="56" height="56" style="margin:0 auto 18px;border-radius:14px">
-            <h2 class="h3">C'est noté.</h2>
-            <p class="muted">Vous recevrez un seul e-mail, le jour où Prisme sera disponible.</p>
-          </div>
+        <div class="form">
+          <h2 class="h3" style="margin-bottom:8px">Après l'essai</h2>
+          <p class="muted" style="margin:0 0 20px;font-size:.95rem">Rien n'est prélevé sans vous. Si Prisme vous plaît, choisissez votre formule :</p>
+          <ul class="req-list" style="margin-top:0">
+            <li>Mensuel <span>4,99 € par mois, sans engagement</span></li>
+            <li>Annuel <span>29 € par an, sans engagement</span></li>
+            <li>À vie <span>49 €, une seule fois</span></li>
+          </ul>
+          <a class="btn btn-ghost btn-block" href="/#tarifs" style="margin-top:20px">Voir les formules</a>
+          <p class="fine">Votre clé de licence arrive par e-mail dès le paiement : collez-la dans Prisme, vos réglages de l'essai sont conservés.</p>
         </div>
       </div>
     </div>

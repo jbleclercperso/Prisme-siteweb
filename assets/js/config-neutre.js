@@ -1,27 +1,23 @@
 /*
- * Réglages de la version neutre du site (dossier /neutre/).
+ * Réglages de la version grand public du site (à la racine).
  *
  * Chaque bouton porte un attribut data-link="…". Quand la valeur
  * correspondante ci-dessous est renseignée, le bouton pointe vers elle ;
- * laissée vide, il garde son lien par défaut (telecharger.html, qui propose
- * pour l'instant l'accès anticipé).
+ * laissée vide, il garde son lien par défaut.
  *
- * À FAIRE avant d'ouvrir la vente : la licence à vie à 29 € et la licence à
- * offrir n'ont pas encore de produit de paiement. Ne réutilisez pas le prix
- * Stripe « à vie » de la page principale (99 €) : créez-leur leurs propres
- * produits, puis collez ici leurs liens de paiement.
+ * Le paiement passe par le paiement Stripe intégré (checkout: true) : les
+ * boutons de tarifs data-checkout="monthly" | "yearly" | "lifetime" ouvrent
+ * la page de paiement Stripe, et le retour se fait sur /merci.html.
  */
 window.PRISME_CONFIG = {
   links: {
-    // Page ou fichier de l'essai gratuit (ex. « https://…/Prisme-Setup.exe »)
-    trial: "",
-    // Lien de paiement de la licence à vie (29 €)
-    lifetime: "",
-    // Lien de paiement de la licence à offrir (carte cadeau, 29 €)
-    gift: "",
-    // Espace client (factures, licence)
-    account: "",
+    // L'installateur de la version vendue (essai de 14 jours, puis clé de
+    // licence), publié par prisme-logiciel/construire.py --edition vendue
+    trial: "https://github.com/jbleclercperso/prisme-mises-a-jour/releases/latest/download/Prisme-installation.exe",
+    // Espace client Stripe : factures, carte, résiliation (connexion par e-mail)
+    account: "https://billing.stripe.com/p/login/8x25kD0cR5HRdd6c5t5os00",
     // Adresse de contact
     contact: "mailto:contact@prisme.app"
-  }
+  },
+  checkout: true
 };

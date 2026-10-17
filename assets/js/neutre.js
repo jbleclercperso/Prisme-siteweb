@@ -124,4 +124,82 @@
     });
     renderWall();
   }
+  /* ------------------------------------------------------------ Paiement Stripe */
+  // Mêmes boutons que la version adulte (data-checkout="monthly" | "yearly" |
+  // "lifetime"), mais le retour de Stripe se fait sur /merci.html, jamais vers
+  // la version adulte (lang « neutre », netlify/lib/stripe.mjs).
+  var T = {
+    opening: "Ouverture du paiement…",
+    copy: "Copier la clé", copied: "Copiée",
+    plans: { monthly: "Prisme, formule mensuelle", yearly: "Prisme, formule annuelle", lifetime: "Prisme à vie" }
+  };
+  if (cfg.checkout && window.fetch) {
+    var checkoutError = $("[data-checkout-error]");
+    var reset = function (btn) {
+      btn.removeAttribute("aria-busy");
+      btn.textContent = btn.getAttribute("data-label") || btn.textContent;
+    };
+    $$("[data-checkout]").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (btn.getAttribute("aria-busy") === "true") return;
+        btn.setAttribute("data-label", btn.textContent);
+        btn.setAttribute("aria-busy", "true");
+        btn.textContent = T.opening;
+        if (checkoutError) checkoutError.hidden = true;
+        fetch("/api/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ plan: btn.getAttribute("data-checkout"), lang: "neutre", currency: "eur" })
+        }).then(function (r) {
+          return r.json().then(function (data) {
+            if (!r.ok || !data.url) throw new Error(data.error || r.status);
+            location.href = data.url;
+          });
+        }).catch(function () {
+          reset(btn);
+          if (checkoutError) checkoutError.hidden = false;
+        });
+      });
+    });
+    window.addEventListener("pageshow", function (e) {
+      if (e.persisted) $$("[data-checkout][aria-busy]").forEach(reset);
+    });
+  }
+
+  /* ------------------------------------------------------------ Remerciement après paiement */
+  var thanks = $("#thanks");
+  if (thanks) {
+    var sid = (location.search.match(/[?&]session_id=([^&]+)/) || [])[1];
+    var show = function (state, data) {
+      thanks.setAttribute("data-state", state);
+      if (data && data.email) $$("[data-thanks-email]", thanks).forEach(function (el) { el.textContent = data.email; });
+      var box = $("[data-thanks-licence]", thanks);
+      if (box && data && data.licence) {
+        $("[data-thanks-key]", box).textContent = data.licence;
+        box.hidden = false;
+        var copy = $("[data-copy-key]", box);
+        copy.addEventListener("click", function () {
+          var done = function () { copy.textContent = T.copied; setTimeout(function () { copy.textContent = T.copy; }, 1800); };
+          if (navigator.clipboard) navigator.clipboard.writeText(data.licence).then(done, function () {});
+          else {
+            var range = document.createRange(); range.selectNodeContents($("[data-thanks-key]", box));
+            var sel = getSelection(); sel.removeAllRanges(); sel.addRange(range);
+          }
+        });
+      }
+      if (data && data.plan) $$("[data-thanks-plan]", thanks).forEach(function (el) {
+        el.textContent = T.plans[data.plan] || "Prisme";
+      });
+    };
+    if (!sid || !window.fetch) show("unknown");
+    else {
+      fetch("/api/session?session_id=" + encodeURIComponent(sid)).then(function (r) {
+        return r.json().then(function (data) {
+          if (!r.ok) throw new Error(data.error || r.status);
+          show(data.status === "paid" ? "paid" : data.status === "pending" ? "pending" : "unknown", data);
+        });
+      }).catch(function () { show("unknown"); });
+    }
+  }
 })();

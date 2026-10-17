@@ -12,9 +12,9 @@ const EURO = new Set([
   "GP", "MQ", "GF", "RE", "YT", "PM", "BL", "MF",
 ]);
 
-export const CURRENCIES = { fr: ["eur"], en: ["usd", "eur"] };
+export const CURRENCIES = { neutre: ["eur"], fr: ["eur"], en: ["usd", "eur"] };
 
 export function currencyFor(lang, country) {
-  if (lang === "fr") return "eur";
+  if (lang === "fr" || lang === "neutre") return "eur";
   return EURO.has(String(country || "").toUpperCase()) ? "eur" : "usd";
 }

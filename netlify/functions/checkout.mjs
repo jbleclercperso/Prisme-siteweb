@@ -1,6 +1,6 @@
 // Ouvre une page de paiement Stripe Checkout pour l'une des trois formules.
 //
-// POST /api/checkout  { "plan": "monthly" | "yearly" | "lifetime", "lang": "fr" | "en",
+// POST /api/checkout  { "plan": "monthly" | "yearly" | "lifetime", "lang": "neutre" | "fr" | "en",
 //                       "currency": "eur" | "usd" }
 // La monnaie est celle que la page a affichée ; à défaut, celle du pays.
 //   → 200 { "url": "https://checkout.stripe.com/…" }
@@ -13,10 +13,10 @@ export default async (req, context) => {
   const stripe = stripeClient();
   if (!stripe) return json(503, { error: "not_configured" });
 
-  let plan, site, currency;
+  let plan, site, currency, lang;
   try {
     const body = await req.json();
-    const lang = LOCALES[body.lang] ? body.lang : "fr";
+    lang = LOCALES[body.lang] ? body.lang : "fr";
     plan = PLANS[body.plan];
     site = LOCALES[lang];
     currency = CURRENCIES[lang].includes(body.currency) ? body.currency : currencyFor(lang, context.geo?.country?.code);
@@ -45,7 +45,8 @@ export default async (req, context) => {
           message: site.submit,
         },
       },
-      metadata: { plan: plan.lookupKey },
+      // lang : la langue de l'e-mail qui envoie la clé (lib/courriel.mjs).
+      metadata: { plan: plan.lookupKey, lang },
     };
     if (plan.mode === "payment") {
       // Un achat unique ne crée ni client ni facture par défaut : sans eux,
@@ -56,7 +57,20 @@ export default async (req, context) => {
     } else {
       params.subscription_data = { metadata: { plan: plan.lookupKey } };
     }
-    if (process.env.STRIPE_AUTOMATIC_TAX === "on") params.automatic_tax = { enabled: true };
+    if (process.env.STRIPE_AUTOMATIC_TAX === "on") {
+      params.automatic_tax = { enabled: true };
+    } else if (currency === "eur" && process.env.STRIPE_TAX_RATE_ID) {
+      // Paiement en euros (France et zone euro) : la TVA française de 20 %, COMPRISE dans le prix
+      // affiché, apparaît sur le reçu. En dollars (hors Europe), pas de TVA. Un taux mal réglé
+      // chez Stripe (non inclus, autre pourcentage, archivé) ferait payer un autre montant que
+      // celui affiché : on refuse plutôt d'ouvrir le paiement.
+      const rate = await stripe.taxRates.retrieve(process.env.STRIPE_TAX_RATE_ID);
+      if (!rate.active || !rate.inclusive || Number(rate.percentage) !== 20) {
+        console.error("taux de TVA à revoir", rate.id, rate.percentage, rate.inclusive, rate.active);
+        return json(503, { error: "tax_rate" });
+      }
+      params.line_items[0].tax_rates = [rate.id];
+    }
 
     const session = await stripe.checkout.sessions.create(params);
     return json(200, { url: session.url });
