@@ -246,13 +246,13 @@ PAGES = [
     # adultes » dans la description (voir docs/plan-seo.md, version adulte).
     page("adulte/guides/index.html", "/adulte/guides/", "fr",
          "Guides : organiser et regarder sa collection porno | Prisme",
-         "Quel logiciel choisir, trier vite, retrouver les doublons, rester discret : des guides pour "
-         "organiser et regarder votre collection de vidéos pour adultes.",
+         "Trier vite, retrouver une vidéo, éliminer les doublons, réparer, rester discret et regarder "
+         "sur la télé : les guides pratiques de Prisme.",
          version="adulte", kind="guides", crumb="Guides", group="adulte-guides"),
     page("en/adult/guides/index.html", "/en/adult/guides/", "en",
          "Guides: organize and watch your porn collection | Prisme",
-         "Which software to choose, how to sort fast, find duplicates and stay discreet: guides to "
-         "organize and watch your adult video collection.",
+         "Sort faster, find any video, remove duplicates, repair files, stay private and watch on TV: "
+         "Prisme's practical guides for adult collections.",
          version="adulte", kind="guides", crumb="Guides", group="adulte-guides"),
     aguide("fr", "logiciel-organiser-collection-porno",
            "Logiciel complet pour organiser sa bibliothèque porno | Prisme",
