@@ -128,10 +128,10 @@
     },
     {
      "@type": "Question",
-     "name": "Do I need Plex or Jellyfin to watch NAS videos?",
+     "name": "Do I need a media server to watch NAS videos?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Not for simple local use. They become useful for broad client-app support, transcoding and remote access. Prisme focuses on sorting and viewing the local library."
+      "text": "Not for local use with Prisme. Its browser access and Prisme TV let you browse and watch the library over the network without installing another catalog."
      }
     },
     {
@@ -147,7 +147,7 @@
      "name": "How do I keep the library off the family TV?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Use a dedicated share and account, disable automatic media indexing and do not add that library to household DLNA, Plex or Jellyfin servers."
+      "text": "Use a dedicated share and account, disable automatic media indexing and do not add that library to household media services."
      }
     }
    ]
@@ -261,11 +261,11 @@
       <h2>Prepare the NAS before adding media</h2>
 <ol><li>Create a dedicated share, separate from family photos and public folders.</li><li>Create a specific user with a long password and no guest access.</li><li>Disable global media indexing if it automatically publishes thumbnails to shared apps.</li><li>Enable snapshots when available, then prepare a backup to another disk or location.</li><li>Map the share as a Windows network drive using the dedicated account.</li></ol><p>Volume encryption mainly protects drives removed from the enclosure. Day-to-day privacy also depends on accounts, permissions and timely NAS updates.</p>
       <h2>Choose a stable folder tree</h2>
-<p>The network path should rarely change. Keep the tree shallow and reserve an inbox folder for new files. Main categories should be broad enough for a fast decision; keywords and favorites can add detail without multiplying folders.</p><p>Avoid naming the tree after an application. If you stop using Plex, Jellyfin, Stash or Prisme, the folders should remain understandable. Files should never require a proprietary database just to be found again.</p>
+<p>The network path should rarely change. Keep the tree shallow and reserve an inbox folder for new files. Main categories should be broad enough for a fast decision; keywords and favorites can add detail without multiplying folders.</p><p>Avoid naming the tree after an application. Even if you change software one day, the folders should remain understandable. Files should never require a proprietary database just to be found again.</p>
       <h2>Sort the NAS from Windows with Prisme</h2>
 <p>Prisme can add the network drive as a root alongside local disks. Hover previews avoid opening every file, and up to 29 destinations can be assigned to keys. Moving a file within one share is usually fast because the NAS mainly changes its logical location.</p><p>Prisme groups exact duplicates and re-encoded video variants, placing the best candidate first. Delete only after analysis is complete and the backup is verified. Use Ethernet for the first index and for large moves between volumes when Wi-Fi is slow.</p>
       <h2>Watch without making the NAS public</h2>
-<p>On the local network, Prisme can expose the selected library through a password-protected browser view and the Prisme TV app. Plex or Jellyfin fit better when you need many client apps, transcoding or remote access; in that case, use separate accounts and verify exactly which libraries are shared.</p><p>For access away from home, prefer a VPN into your network over a directly exposed port. Disable UPnP when unused, enable two-factor authentication on the NAS and review connection logs.</p><div class="limites"><b class="limites-titre">A NAS is not a backup</b><p>RAID mainly protects against one drive failing. It does not protect against deletion, ransomware, a filing mistake, theft or fire. Keep at least one independent, disconnected or off-site copy.</p></div>
+<p>On the local network, Prisme gives access to the selected library through a password-protected browser view and the Prisme TV app. You can browse, search and watch the collection on several screens without moving it or publishing it to an outside service.</p><p>For access away from home, prefer a VPN into your network over a directly exposed port. Disable UPnP when unused, enable two-factor authentication on the NAS and review connection logs.</p><div class="limites"><b class="limites-titre">A NAS is not a backup</b><p>RAID mainly protects against one drive failing. It does not protect against deletion, ransomware, a filing mistake, theft or fire. Keep at least one independent, disconnected or off-site copy.</p></div>
 
       <div class="cta-guide">
         <h2>Sort the NAS without copying the library to the PC</h2>
@@ -281,8 +281,8 @@
             <div class="answer-body"><p>Yes, when Windows can access the share with write permission. Add the mapped drive or network path as a root and test moves on a small folder first.</p></div>
           </details>
           <details>
-            <summary>Do I need Plex or Jellyfin to watch NAS videos?</summary>
-            <div class="answer-body"><p>Not for simple local use. They become useful for broad client-app support, transcoding and remote access. Prisme focuses on sorting and viewing the local library.</p></div>
+            <summary>Do I need a media server to watch NAS videos?</summary>
+            <div class="answer-body"><p>Not for local use with Prisme. Its browser access and Prisme TV let you browse and watch the library over the network without installing another catalog.</p></div>
           </details>
           <details>
             <summary>Does RAID back up the collection?</summary>
@@ -290,7 +290,7 @@
           </details>
           <details>
             <summary>How do I keep the library off the family TV?</summary>
-            <div class="answer-body"><p>Use a dedicated share and account, disable automatic media indexing and do not add that library to household DLNA, Plex or Jellyfin servers.</p></div>
+            <div class="answer-body"><p>Use a dedicated share and account, disable automatic media indexing and do not add that library to household media services.</p></div>
           </details>
         </div>
       </section>
@@ -298,9 +298,9 @@
       <nav class="voisins" aria-label="Read next">
         <h2>Read next</h2>
         <div class="voisins-grille">
-          <a href="/en/adult/plex-jellyfin-porn/"><b>Plex or Jellyfin for porn</b><span>What works, the limits, and the settings to stay private.</span></a>
-          <a href="/en/adult/best-porn-organizer-software/"><b>The best software to organize porn</b><span>Stash, Plex, Jellyfin or Prisme: what each one does, and who it suits.</span></a>
+          <a href="/en/adult/best-porn-organizer-software/"><b>The complete software to organize a porn collection</b><span>Sort, find, watch, repair and protect the whole library in one application.</span></a>
           <a href="/en/adult/porn-duplicate-finder/"><b>Porn duplicate finder</b><span>The same scene, even at another resolution: keep the best one.</span></a>
+          <a href="/en/adult/hide-porn-on-pc/"><b>How to hide porn on your PC</b><span>What actually protects it, and the instant cover screen.</span></a>
         </div>
       </nav>
       <!-- /voisins -->

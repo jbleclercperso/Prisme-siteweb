@@ -118,11 +118,11 @@ def guide(slug, title, description, crumb, published="2026-10-17"):
 PAGES = [
     # ------------------------------------------------------------ Grand public, français
     page("index.html", "/", "fr",
-         "Prisme — Trier, ranger et regarder vos vidéos et photos sur PC",
-         "Le logiciel Windows pour trier vos vidéos et photos au clavier : aperçus au survol, doublons, "
-         "réparation, NAS et télé. 100 % local. Essai gratuit 14 jours.",
+         "Prisme — Le logiciel le plus complet pour organiser vos vidéos",
+         "Le logiciel Windows le plus complet pour trier, organiser et visionner vos vidéos et photos : "
+         "tri rapide, recherche, doublons, réparation, NAS et télé.",
          kind="home", group="accueil",
-         og_title="Prisme — Toutes vos vidéos et photos. Une touche pour trier."),
+         og_title="Prisme — Le logiciel le plus complet pour vos vidéos et photos"),
     page("telecharger.html", "/telecharger.html", "fr",
          "Télécharger Prisme pour Windows — essai gratuit de 14 jours",
          "Téléchargez Prisme, le logiciel Windows pour trier et regarder vos vidéos et vos photos. "
@@ -213,11 +213,11 @@ PAGES = [
           "Organiser ses vidéos téléchargées", published="2026-10-18"),
     # ------------------------------------------------------------ Adulte, français
     page("adulte/index.html", "/adulte/", "fr",
-         "Prisme — Logiciel de gestion de vidéos porno pour Windows",
-         "Le logiciel Windows pour trier, classer et regarder votre collection de vidéos pour adultes : "
-         "aperçus, une touche pour ranger, doublons, discrétion. 100 % local.",
+         "Prisme — Le logiciel porno le plus complet sur Windows",
+         "Le logiciel Windows le plus complet pour trier, organiser et visionner votre bibliothèque "
+         "porno : tri rapide, recherche, doublons, réparation et discrétion.",
          version="adulte", kind="home", group="adulte-accueil",
-         og_title="Prisme — Des milliers de vidéos. Une touche pour décider."),
+         og_title="Prisme — Le logiciel porno le plus complet sur Windows"),
     page("adulte/telecharger.html", "/adulte/telecharger.html", "fr",
          "Télécharger Prisme — Essai gratuit de 14 jours",
          "Téléchargez Prisme pour Windows et essayez-le gratuitement pendant 14 jours, sans carte "
@@ -255,19 +255,12 @@ PAGES = [
          "organize and watch your adult video collection.",
          version="adulte", kind="guides", crumb="Guides", group="adulte-guides"),
     aguide("fr", "logiciel-organiser-collection-porno",
-           "Quel logiciel pour organiser sa collection porno ? | Prisme",
-           "Stash, Plex, Jellyfin ou Prisme : comparatif honnête des logiciels pour gérer une collection "
-           "de vidéos pour adultes, ce que chacun fait et pour qui.", "Quel logiciel ?", "a-comparatif"),
-    aguide("en", "best-porn-organizer-software", "The best software to organize a porn collection | Prisme",
-           "Stash, Plex, Jellyfin or Prisme: an honest comparison of tools to manage an adult video "
-           "collection, what each one does and who it suits.", "Best porn organizer", "a-comparatif"),
-    aguide("fr", "alternative-stash", "Alternative à Stash (stashapp) pour Windows | Prisme",
-           "Stash est puissant, mais c'est un serveur. Prisme, application Windows sans serveur, pour "
-           "trier et regarder vos vidéos pour adultes : comparatif point par point.",
-           "Alternative à Stash", "a-stash"),
-    aguide("en", "stash-alternative", "Stash alternative for Windows, no server | Prisme",
-           "Stash is powerful, but it's a server. Prisme is a Windows app with no server, to sort and "
-           "watch your adult videos: a point-by-point comparison.", "Stash alternative", "a-stash"),
+           "Logiciel complet pour organiser sa bibliothèque porno | Prisme",
+           "Prisme réunit tri rapide, aperçus, recherche, doublons, réparation, Mur multividéo, NAS et "
+           "discrétion pour organiser et visionner une collection adulte.", "Logiciel complet", "a-comparatif"),
+    aguide("en", "best-porn-organizer-software", "Complete porn library organizer for Windows | Prisme",
+           "Prisme combines fast filing, previews, search, duplicates, repair, a multi-video Wall, NAS "
+           "support and privacy tools to organize and watch an adult collection.", "Complete organizer", "a-comparatif"),
     aguide("fr", "trier-videos-porno", "Trier ses vidéos porno au clavier | Prisme",
            "Une touche par catégorie, la vidéo suivante aussitôt : la méthode pour ranger des milliers "
            "de vidéos pour adultes en une soirée, et l'outil qui la rend instantanée.",
@@ -301,29 +294,6 @@ PAGES = [
     aguide("en", "hide-porn-on-pc", "How to hide porn on your PC (what really works) | Prisme",
            "Hidden folders, Windows accounts, BitLocker, VeraCrypt: what really protects an adult video "
            "collection, and Prisme's instant cover screen.", "Hide porn on your PC", "a-discretion"),
-    aguide("fr", "plex-jellyfin-porno", "Plex ou Jellyfin pour le porno : les limites | Prisme",
-           "Plex et Jellyfin lisent tout, mais ne trient rien et demandent des réglages pour rester "
-           "privés : ce qui marche pour une collection de vidéos pour adultes.",
-           "Plex ou Jellyfin pour le porno", "a-plex"),
-    aguide("en", "plex-jellyfin-porn", "Plex or Jellyfin for porn: what works, the limits | Prisme",
-           "Plex and Jellyfin play everything, but sort nothing and need some settings to stay private: "
-           "what works for an adult video collection.", "Plex or Jellyfin for porn", "a-plex"),
-    aguide("fr", "alternative-the-vault", "Alternative à The Vault pour organiser ses vidéos porno | Prisme",
-           "The Vault ou Prisme : comparatif des deux logiciels locaux pour organiser des photos et vidéos "
-           "pour adultes sur Windows, avec leurs forces, limites et usages.",
-           "Alternative à The Vault", "a-the-vault", published="2026-10-18"),
-    aguide("en", "the-vault-alternative", "The Vault alternative for Windows | Prisme",
-           "The Vault or Prisme: compare two local Windows tools for organizing adult photos and videos, "
-           "including their strengths, limitations and best use cases.",
-           "The Vault alternative", "a-the-vault", published="2026-10-18"),
-    aguide("fr", "alternative-nsfw-manager", "Alternative à NSFW Manager pour Windows | Prisme",
-           "NSFW Manager détecte et isole le contenu sensible ; Prisme aide à trier, ranger et regarder une "
-           "collection pour adultes. Comparatif pour choisir le bon outil.",
-           "Alternative à NSFW Manager", "a-nsfw-manager", published="2026-10-18"),
-    aguide("en", "nsfw-manager-alternative", "NSFW Manager alternative for Windows | Prisme",
-           "NSFW Manager detects and quarantines sensitive media; Prisme helps sort, file and watch an "
-           "adult collection. Compare them and choose the right tool.",
-           "NSFW Manager alternative", "a-nsfw-manager", published="2026-10-18"),
     aguide("fr", "organiser-collection-porno-nas", "Organiser une collection porno sur un NAS | Prisme",
            "Une méthode privée pour organiser une collection de vidéos pour adultes sur un NAS : dossiers "
            "réseau, tri Windows, doublons, sauvegardes et accès depuis la télé.",
@@ -335,11 +305,11 @@ PAGES = [
 
     # ------------------------------------------------------------ Adulte, anglais
     page("en/adult/index.html", "/en/adult/", "en",
-         "Prisme — Porn organizer for Windows: sort, tag and watch",
-         "Prisme is the Windows porn organizer: previews on hover, one key to file each video, "
-         "duplicates, auto-tagging, discreet mode. 100% local, free trial.",
+         "Prisme — The most complete porn library organizer for Windows",
+         "The most complete Windows software to sort, organize and watch a porn library: fast filing, "
+         "search, duplicates, repair, NAS support and privacy tools.",
          version="adulte", kind="home", group="adulte-accueil",
-         og_title="Prisme — Thousands of videos. One key to decide."),
+         og_title="Prisme — The most complete software for your porn library"),
     page("en/adult/download.html", "/en/adult/download.html", "en", "Download Prisme — 14-day free trial",
          "Download Prisme for Windows and try it free for 14 days, no credit card required: the "
          "software to sort and watch your porn collection.",

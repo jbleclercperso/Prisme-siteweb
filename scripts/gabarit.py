@@ -106,11 +106,8 @@ VOISINS = {
 ADULTE = {"fr": "/adulte/", "en": "/en/adult/"}
 GUIDES_ADULTES = [
     (("logiciel-organiser-collection-porno", "best-porn-organizer-software"),
-     ("Quel logiciel pour organiser sa collection porno ?", "Stash, Plex, Jellyfin ou Prisme : ce que chacun fait, pour qui."),
-     ("The best software to organize porn", "Stash, Plex, Jellyfin or Prisme: what each one does, and who it suits.")),
-    (("alternative-stash", "stash-alternative"),
-     ("Une alternative à Stash pour Windows", "Sans serveur ni navigateur : quand choisir Prisme, quand garder Stash."),
-     ("A Stash alternative for Windows", "No server, no browser: when to pick Prisme, when to keep Stash.")),
+     ("Le logiciel complet pour organiser sa collection porno", "Trier, retrouver, visionner, réparer et protéger toute la bibliothèque dans une seule application."),
+     ("The complete software to organize a porn collection", "Sort, find, watch, repair and protect the whole library in one application.")),
     (("trier-videos-porno", "sort-porn-videos"),
      ("Trier ses vidéos porno au clavier", "Une touche par catégorie, la suivante aussitôt : la méthode."),
      ("Sort porn videos with the keyboard", "One key per category, the next video instantly: the method.")),
@@ -126,31 +123,18 @@ GUIDES_ADULTES = [
     (("cacher-videos-porno-pc", "hide-porn-on-pc"),
      ("Cacher ses vidéos porno sur son PC", "Ce qui protège vraiment, et l'écran de repli instantané."),
      ("How to hide porn on your PC", "What actually protects it, and the instant cover screen.")),
-    (("plex-jellyfin-porno", "plex-jellyfin-porn"),
-     ("Plex ou Jellyfin pour le porno", "Ce qui marche, les limites, et les réglages pour rester privé."),
-     ("Plex or Jellyfin for porn", "What works, the limits, and the settings to stay private.")),
-    (("alternative-the-vault", "the-vault-alternative"),
-     ("Une alternative à The Vault", "Application de bureau ou bibliothèque visuelle : choisir selon sa façon de ranger."),
-     ("A The Vault alternative", "Desktop workflow or visual library: choose around the way you organize.")),
-    (("alternative-nsfw-manager", "nsfw-manager-alternative"),
-     ("Une alternative à NSFW Manager", "Détecter du contenu sensible ou organiser une collection : deux besoins différents."),
-     ("An NSFW Manager alternative", "Detect sensitive media or organize a collection: two different jobs.")),
     (("organiser-collection-porno-nas", "organize-porn-collection-nas"),
      ("Organiser une collection porno sur un NAS", "Dossiers réseau, tri, doublons, sauvegarde et accès privé, sans déplacer la bibliothèque."),
      ("Organize a porn collection on a NAS", "Network folders, sorting, duplicates, backups and private access without moving the library.")),
 ]
 VOISINS_ADULTES = {  # par slug français ; le jumeau anglais suit
-    "logiciel-organiser-collection-porno": ["alternative-stash", "alternative-the-vault", "organiser-collection-porno-nas"],
-    "alternative-stash": ["logiciel-organiser-collection-porno", "trier-videos-porno", "mots-cles-recherche-ia-porno"],
+    "logiciel-organiser-collection-porno": ["trier-videos-porno", "lecteur-video-porno-apercus", "organiser-collection-porno-nas"],
     "trier-videos-porno": ["lecteur-video-porno-apercus", "doublons-videos-porno", "mots-cles-recherche-ia-porno"],
     "doublons-videos-porno": ["trier-videos-porno", "logiciel-organiser-collection-porno", "lecteur-video-porno-apercus"],
     "lecteur-video-porno-apercus": ["trier-videos-porno", "cacher-videos-porno-pc", "doublons-videos-porno"],
-    "mots-cles-recherche-ia-porno": ["trier-videos-porno", "alternative-stash", "lecteur-video-porno-apercus"],
-    "cacher-videos-porno-pc": ["lecteur-video-porno-apercus", "plex-jellyfin-porno", "logiciel-organiser-collection-porno"],
-    "plex-jellyfin-porno": ["cacher-videos-porno-pc", "logiciel-organiser-collection-porno", "alternative-stash"],
-    "alternative-the-vault": ["logiciel-organiser-collection-porno", "alternative-stash", "trier-videos-porno"],
-    "alternative-nsfw-manager": ["logiciel-organiser-collection-porno", "mots-cles-recherche-ia-porno", "cacher-videos-porno-pc"],
-    "organiser-collection-porno-nas": ["plex-jellyfin-porno", "logiciel-organiser-collection-porno", "doublons-videos-porno"],
+    "mots-cles-recherche-ia-porno": ["trier-videos-porno", "logiciel-organiser-collection-porno", "lecteur-video-porno-apercus"],
+    "cacher-videos-porno-pc": ["lecteur-video-porno-apercus", "organiser-collection-porno-nas", "logiciel-organiser-collection-porno"],
+    "organiser-collection-porno-nas": ["logiciel-organiser-collection-porno", "doublons-videos-porno", "cacher-videos-porno-pc"],
 }
 TEXTES = {"fr": {"voisins": "À lire aussi"}, "en": {"voisins": "Read next"}}
 
@@ -158,7 +142,12 @@ TEXTES = {"fr": {"voisins": "À lire aussi"}, "en": {"voisins": "Read next"}}
 def guides_adultes(lang):
     """Les guides adultes d'une langue : adresse → (titre, accroche)."""
     i = 0 if lang == "fr" else 1
-    return {ADULTE[lang] + slugs[i] + "/": (fr if lang == "fr" else en) for slugs, fr, en in GUIDES_ADULTES}
+    fiches = {ADULTE[lang] + slugs[i] + "/": (fr if lang == "fr" else en) for slugs, fr, en in GUIDES_ADULTES}
+    if lang == "fr":
+        fiches["/adulte/tv.html"] = ("Regarder sa collection sur la télé", "Retrouver sa bibliothèque Prisme sur grand écran, avec la télécommande.")
+    else:
+        fiches["/en/adult/tv.html"] = ("Watch your collection on TV", "Browse your Prisme library on the big screen with the remote.")
+    return fiches
 
 
 def url_adulte(slug_fr, lang):

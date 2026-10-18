@@ -62,6 +62,48 @@
   to = "/adulte/tv.html"
   status = 302
 
+# Les anciens comparatifs adultes convergent vers le guide centré sur les
+# besoins et les fonctions de Prisme. Ils ne sont plus proposés dans le site.
+[[redirects]]
+  from = "/adulte/alternative-stash/"
+  to = "/adulte/logiciel-organiser-collection-porno/"
+  status = 301
+
+[[redirects]]
+  from = "/adulte/plex-jellyfin-porno/"
+  to = "/adulte/logiciel-organiser-collection-porno/"
+  status = 301
+
+[[redirects]]
+  from = "/adulte/alternative-the-vault/"
+  to = "/adulte/logiciel-organiser-collection-porno/"
+  status = 301
+
+[[redirects]]
+  from = "/adulte/alternative-nsfw-manager/"
+  to = "/adulte/logiciel-organiser-collection-porno/"
+  status = 301
+
+[[redirects]]
+  from = "/en/adult/stash-alternative/"
+  to = "/en/adult/best-porn-organizer-software/"
+  status = 301
+
+[[redirects]]
+  from = "/en/adult/plex-jellyfin-porn/"
+  to = "/en/adult/best-porn-organizer-software/"
+  status = 301
+
+[[redirects]]
+  from = "/en/adult/the-vault-alternative/"
+  to = "/en/adult/best-porn-organizer-software/"
+  status = 301
+
+[[redirects]]
+  from = "/en/adult/nsfw-manager-alternative/"
+  to = "/en/adult/best-porn-organizer-software/"
+  status = 301
+
 # Une page introuvable : la page 404 de sa version et de sa langue.
 [[redirects]]
   from = "/en/adult/*"

@@ -6,7 +6,7 @@ concurrents) sont résumés ici ; les tableaux complets restent dans les notes
 de travail.
 
 > Mise à jour du 18/10/2026 : le chantier décrit ci-dessous est terminé dans
-> la copie de travail locale. Elle contient 63 pages, dont 57 indexables, et
+> la copie de travail locale. Elle contient 55 pages, dont 49 indexables, et
 > passe `scripts/verifier.py` ainsi que `scripts/audit-seo.py` sans erreur.
 > Rien n'a été publié : les observations « en ligne » restent donc distinctes
 > de l'état local prêt à relire.
@@ -192,15 +192,11 @@ lie jamais la version adulte et n'en emploie pas le vocabulaire
 /adulte/telecharger.html, tv.html…     ses pages (FR)           ⇄  /en/adult/download.html…
 /adulte/guides/                        sommaire des guides      ⇄  /en/adult/guides/
   logiciel-organiser-collection-porno/                          ⇄  best-porn-organizer-software/
-  alternative-stash/                                            ⇄  stash-alternative/
   trier-videos-porno/                                           ⇄  sort-porn-videos/
   doublons-videos-porno/                                        ⇄  porn-duplicate-finder/
   lecteur-video-porno-apercus/                                  ⇄  porn-video-player-previews/
   mots-cles-recherche-ia-porno/                                 ⇄  auto-tag-porn-ai-search/
   cacher-videos-porno-pc/                                       ⇄  hide-porn-on-pc/
-  plex-jellyfin-porno/                                          ⇄  plex-jellyfin-porn/
-  alternative-the-vault/                                       ⇄  the-vault-alternative/
-  alternative-nsfw-manager/                                    ⇄  nsfw-manager-alternative/
   organiser-collection-porno-nas/                               ⇄  organize-porn-collection-nas/
 ```
 
@@ -240,15 +236,11 @@ description.
 |---|---|---|
 | `/adulte/` | `/en/adult/` | logiciel gestion vidéo porno, bibliothèque vidéo porno / adulte · porn organizer, porn collection manager windows |
 | `logiciel-organiser-collection-porno/` | `best-porn-organizer-software/` | quel logiciel pour organiser sa collection porno · best software to organize porn |
-| `alternative-stash/` | `stash-alternative/` | alternative à Stash · stash app alternative, stashapp windows client |
 | `trier-videos-porno/` | `sort-porn-videos/` | trier ses vidéos porno, classer · sort porn videos into folders |
 | `doublons-videos-porno/` | `porn-duplicate-finder/` | doublons vidéos porno · porn duplicate finder, different resolution |
 | `lecteur-video-porno-apercus/` | `porn-video-player-previews/` | lecteur avec aperçus, mur de vidéos · porn video player with previews |
 | `mots-cles-recherche-ia-porno/` | `auto-tag-porn-ai-search/` | taguer ses vidéos · porn tagger, auto tag porn, AI scene search |
 | `cacher-videos-porno-pc/` | `hide-porn-on-pc/` | cacher ses vidéos porno sur son PC, dossier secret · how to hide porn on pc |
-| `plex-jellyfin-porno/` | `plex-jellyfin-porn/` | plex / jellyfin porno · plex for porn, plex hide library |
-| `alternative-the-vault/` | `the-vault-alternative/` | alternative The Vault · The Vault alternative for Windows |
-| `alternative-nsfw-manager/` | `nsfw-manager-alternative/` | alternative NSFW Manager · sensitive media organizer |
 | `organiser-collection-porno-nas/` | `organize-porn-collection-nas/` | organiser collection porno NAS · porn collection NAS |
 
 ### 3.3 Gabarit de chaque page
@@ -290,13 +282,13 @@ description.
    `https://prisme-desktop.com`). Le grand titre de l'accueil ne passe
    plus par l'animation d'entrée (LCP). Le `noindex` provisoire de la version
    neutre et son sélecteur « Adulte » sont retirés.
-3. **Contenu** : 15 guides grand public + sommaire ; 11 guides adultes en
-   français et leurs 11 équivalents anglais + sommaires (63 pages en tout,
-   57 indexables). Le silo grand public possède une page-pilier qui compare les
+3. **Contenu** : 15 guides grand public + sommaire ; 7 guides adultes en
+   français et leurs 7 équivalents anglais + sommaires (55 pages en tout,
+   49 indexables). Le silo grand public possède une page-pilier qui compare les
    grandes familles d'outils, mais les pages de marque y restent limitées aux
-   intentions déjà fortes (Picasa, Plex/Jellyfin et Video Station). La page
-   pilier adulte compare aussi The Vault et NSFW Manager et renvoie vers le
-   guide NAS.
+   intentions déjà fortes (Picasa, Plex/Jellyfin et Video Station). Le silo
+   adulte ne cite aucun concurrent : il démontre l'étendue de Prisme par les
+   besoins couverts et renvoie vers les guides spécialisés, le NAS et Prisme TV.
 4. **Contrôle** : `scripts/verifier.py` (liens et ancres, un H1, `alt`, JSON-LD
    lisible et types connus, séparation des versions, balises à jour) et
    `scripts/audit-seo.py` (canoniques, hreflang réciproques, sitemap, unicité,

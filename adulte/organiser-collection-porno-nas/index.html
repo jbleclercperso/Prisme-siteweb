@@ -128,10 +128,10 @@
     },
     {
      "@type": "Question",
-     "name": "Faut-il Plex ou Jellyfin pour regarder les vidéos du NAS ?",
+     "name": "Faut-il un serveur multimédia pour regarder les vidéos du NAS ?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Non pour un usage local simple. Ils deviennent utiles pour leurs nombreuses applications clientes, le transcodage et l'accès distant. Prisme privilégie le tri et la lecture de la bibliothèque locale."
+      "text": "Non pour un usage local avec Prisme. Son accès par navigateur et Prisme TV permettent de parcourir et regarder la bibliothèque sur le réseau sans installer un autre catalogue."
      }
     },
     {
@@ -147,7 +147,7 @@
      "name": "Comment éviter que la bibliothèque apparaisse sur la télé familiale ?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Utilisez un partage et un compte dédiés, désactivez l'indexation multimédia automatique et ne partagez pas cette bibliothèque dans les serveurs DLNA, Plex ou Jellyfin utilisés par le foyer."
+      "text": "Utilisez un partage et un compte dédiés, désactivez l'indexation multimédia automatique et n'ajoutez pas cette bibliothèque aux services multimédias utilisés par le foyer."
      }
     }
    ]
@@ -261,11 +261,11 @@
       <h2>Préparer le NAS avant d'ajouter les médias</h2>
 <ol><li>Créez un partage dédié, séparé des photos familiales et des dossiers publics.</li><li>Créez un utilisateur propre à cet usage, avec un mot de passe long et aucun accès invité.</li><li>Retirez l'indexation multimédia globale si elle publie automatiquement les miniatures vers des applications communes.</li><li>Activez les instantanés si le NAS les propose, puis préparez une sauvegarde vers un autre disque ou emplacement.</li><li>Sous Windows, montez le partage comme lecteur réseau avec ce compte dédié.</li></ol><p>Le chiffrement du volume protège surtout les disques retirés du NAS. Pour l'accès quotidien, les comptes, permissions et mises à jour du NAS sont tout aussi importants.</p>
       <h2>Choisir une arborescence stable</h2>
-<p>Le chemin réseau doit changer rarement. Gardez peu de niveaux et réservez un dossier d'arrivée pour les nouveaux fichiers. Les catégories principales doivent être assez larges pour qu'une décision soit rapide ; les mots-clés et favoris complètent ensuite les dossiers.</p><p>Évitez d'utiliser le nom d'une application dans l'arborescence. Si vous quittez Plex, Jellyfin, Stash ou Prisme, vos dossiers doivent rester compréhensibles. Les fichiers ne devraient jamais dépendre d'une base propriétaire pour être retrouvés.</p>
+<p>Le chemin réseau doit changer rarement. Gardez peu de niveaux et réservez un dossier d'arrivée pour les nouveaux fichiers. Les catégories principales doivent être assez larges pour qu'une décision soit rapide ; les mots-clés et favoris complètent ensuite les dossiers.</p><p>Évitez d'utiliser le nom d'une application dans l'arborescence. Même si vous changez un jour de logiciel, vos dossiers doivent rester compréhensibles. Les fichiers ne devraient jamais dépendre d'une base propriétaire pour être retrouvés.</p>
       <h2>Trier le NAS depuis Windows avec Prisme</h2>
 <p>Prisme ajoute le lecteur réseau comme une racine, aux côtés des disques locaux. Les aperçus évitent d'ouvrir chaque fichier ; jusqu'à 29 destinations reçoivent des touches. Un déplacement effectué dans le même partage reste généralement rapide, car le NAS change surtout l'emplacement logique du fichier.</p><p>Pour les doublons, Prisme compare les copies exactes et les vidéos réencodées, puis présente la meilleure version en tête. Faites les suppressions seulement après la fin de l'analyse et après vérification de la sauvegarde. Sur un Wi-Fi lent, privilégiez l'Ethernet pour la première indexation et les gros déplacements entre volumes.</p>
       <h2>Regarder sans rendre le NAS public</h2>
-<p>Sur le réseau local, Prisme peut donner accès à la bibliothèque depuis un navigateur protégé par mot de passe et via Prisme TV. Plex ou Jellyfin sont plus adaptés si vous avez besoin de nombreuses applications clientes, de transcodage ou d'accès distant ; configurez alors des comptes séparés et vérifiez exactement quelles bibliothèques sont partagées.</p><p>Pour l'extérieur, préférez un VPN vers votre réseau plutôt qu'une ouverture de port directe. Désactivez UPnP si vous ne l'utilisez pas, activez l'authentification à deux facteurs du NAS et consultez les journaux de connexion.</p><div class="limites"><b class="limites-titre">Un NAS n'est pas une sauvegarde</b><p>Le RAID protège surtout contre la panne d'un disque. Il ne protège pas d'une suppression, d'un rançongiciel, d'une erreur de tri, d'un vol ou d'un sinistre. Gardez au moins une copie indépendante et déconnectée ou hors site.</p></div>
+<p>Sur le réseau local, Prisme donne accès à la bibliothèque depuis un navigateur protégé par mot de passe et via Prisme TV. Vous pouvez ainsi parcourir, rechercher et regarder la collection sur plusieurs écrans sans la déplacer ni la publier sur un service extérieur.</p><p>Pour l'extérieur, préférez un VPN vers votre réseau plutôt qu'une ouverture de port directe. Désactivez UPnP si vous ne l'utilisez pas, activez l'authentification à deux facteurs du NAS et consultez les journaux de connexion.</p><div class="limites"><b class="limites-titre">Un NAS n'est pas une sauvegarde</b><p>Le RAID protège surtout contre la panne d'un disque. Il ne protège pas d'une suppression, d'un rançongiciel, d'une erreur de tri, d'un vol ou d'un sinistre. Gardez au moins une copie indépendante et déconnectée ou hors site.</p></div>
 
       <div class="cta-guide">
         <h2>Trier le NAS sans déplacer la bibliothèque sur le PC</h2>
@@ -281,8 +281,8 @@
             <div class="answer-body"><p>Oui, si Windows accède au partage réseau avec les droits nécessaires. Ajoutez le lecteur ou le chemin réseau comme racine, puis testez d'abord les déplacements sur un petit dossier.</p></div>
           </details>
           <details>
-            <summary>Faut-il Plex ou Jellyfin pour regarder les vidéos du NAS ?</summary>
-            <div class="answer-body"><p>Non pour un usage local simple. Ils deviennent utiles pour leurs nombreuses applications clientes, le transcodage et l'accès distant. Prisme privilégie le tri et la lecture de la bibliothèque locale.</p></div>
+            <summary>Faut-il un serveur multimédia pour regarder les vidéos du NAS ?</summary>
+            <div class="answer-body"><p>Non pour un usage local avec Prisme. Son accès par navigateur et Prisme TV permettent de parcourir et regarder la bibliothèque sur le réseau sans installer un autre catalogue.</p></div>
           </details>
           <details>
             <summary>Le RAID sauvegarde-t-il la collection ?</summary>
@@ -290,7 +290,7 @@
           </details>
           <details>
             <summary>Comment éviter que la bibliothèque apparaisse sur la télé familiale ?</summary>
-            <div class="answer-body"><p>Utilisez un partage et un compte dédiés, désactivez l'indexation multimédia automatique et ne partagez pas cette bibliothèque dans les serveurs DLNA, Plex ou Jellyfin utilisés par le foyer.</p></div>
+            <div class="answer-body"><p>Utilisez un partage et un compte dédiés, désactivez l'indexation multimédia automatique et n'ajoutez pas cette bibliothèque aux services multimédias utilisés par le foyer.</p></div>
           </details>
         </div>
       </section>
@@ -298,9 +298,9 @@
       <nav class="voisins" aria-label="À lire aussi">
         <h2>À lire aussi</h2>
         <div class="voisins-grille">
-          <a href="/adulte/plex-jellyfin-porno/"><b>Plex ou Jellyfin pour le porno</b><span>Ce qui marche, les limites, et les réglages pour rester privé.</span></a>
-          <a href="/adulte/logiciel-organiser-collection-porno/"><b>Quel logiciel pour organiser sa collection porno ?</b><span>Stash, Plex, Jellyfin ou Prisme : ce que chacun fait, pour qui.</span></a>
+          <a href="/adulte/logiciel-organiser-collection-porno/"><b>Le logiciel complet pour organiser sa collection porno</b><span>Trier, retrouver, visionner, réparer et protéger toute la bibliothèque dans une seule application.</span></a>
           <a href="/adulte/doublons-videos-porno/"><b>Doublons de vidéos porno</b><span>La même scène, même dans une autre résolution : garder la meilleure.</span></a>
+          <a href="/adulte/cacher-videos-porno-pc/"><b>Cacher ses vidéos porno sur son PC</b><span>Ce qui protège vraiment, et l&#x27;écran de repli instantané.</span></a>
         </div>
       </nav>
       <!-- /voisins -->

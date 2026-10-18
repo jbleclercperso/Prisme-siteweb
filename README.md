@@ -48,7 +48,7 @@ FAQPage tirée de la FAQ de la page, BreadcrumbList, TechArticle, HowTo), et il
 écrit `sitemap.xml` et `robots.txt`.
 
 ```bash
-python scripts/contenu-seo-2026.py  # régénère les huit guides ajoutés en octobre 2026
+python scripts/contenu-seo-2026.py  # régénère les quatre guides ajoutés en octobre 2026
 python scripts/gabarit.py            # en-tête, pied, maillage et sommaires
 python scripts/seo.py                # métadonnées, JSON-LD, sitemap et robots
 python scripts/verifier.py           # liens, H1, JSON-LD et séparation des versions
