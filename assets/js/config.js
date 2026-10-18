@@ -3,8 +3,7 @@
  *
  * Chaque bouton du site porte un attribut data-link="…". Quand la valeur
  * correspondante ci-dessous est renseignée, le bouton pointe vers elle ;
- * laissée vide, il garde son lien par défaut (la page de téléchargement,
- * qui propose pour l'instant l'accès anticipé).
+ * laissée vide, il garde son lien par défaut (la page de téléchargement).
  */
 window.PRISME_CONFIG = {
   links: {
@@ -23,7 +22,7 @@ window.PRISME_CONFIG = {
   },
   // Paiement Stripe intégré : passer à true une fois les clés posées dans
   // Netlify (voir le README). Les boutons de tarifs ouvrent alors la page de
-  // paiement Stripe ; à false, ils mènent à la page d'accès anticipé.
+  // paiement Stripe ; à false, ils mènent à la page de téléchargement.
   checkout: true,
   // Adresse de repli quand on refuse le contrôle d'âge, selon la langue de la page
   exitUrl: { fr: "https://www.google.fr/", en: "https://www.google.com/" }

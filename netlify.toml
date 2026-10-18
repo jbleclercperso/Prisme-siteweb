@@ -159,6 +159,17 @@
     X-Content-Type-Options = "nosniff"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# Le contenu adulte ne doit pas apparaître dans Google Images. Les pages
+# grand public conservent en revanche leurs images indexables.
+[[headers]]
+  for = "/adulte/*"
+  [headers.values]
+    X-Robots-Tag = "noimageindex"
+
+[[headers]]
+  for = "/en/adult/*"
+  [headers.values]
     X-Robots-Tag = "noimageindex"
 
 [[headers]]

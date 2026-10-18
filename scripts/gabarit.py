@@ -71,11 +71,19 @@ GUIDES = {
     "/alternative-picasa/": (
         "Une alternative à Picasa sur Windows 10 et 11",
         "Classer et regarder ses photos en local, sans compte ni cloud.", "Alternatives"),
+    "/trier-grand-dossier-videos/": (
+        "Trier un grand dossier de vidéos",
+        "Une méthode concrète pour décider vite, ranger par lots et reprendre sans se perdre.",
+        "Trier et organiser"),
+    "/organiser-videos-telechargees/": (
+        "Organiser ses vidéos téléchargées",
+        "Noms, dossiers, doublons et sauvegarde : remettre une vidéothèque locale au propre.",
+        "Trier et organiser"),
 }
 
 VOISINS = {
     "/organiser-photos-videos-pc/": ["/logiciel-tri-photos-videos/", "/doublons-videos-photos/", "/trier-des-milliers-de-photos/"],
-    "/logiciel-tri-photos-videos/": ["/organiser-photos-videos-pc/", "/doublons-videos-photos/", "/lire-plusieurs-videos-en-meme-temps/"],
+    "/logiciel-tri-photos-videos/": ["/trier-grand-dossier-videos/", "/organiser-photos-videos-pc/", "/doublons-videos-photos/"],
     "/trier-des-milliers-de-photos/": ["/organiser-photos-videos-pc/", "/alternative-picasa/", "/doublons-videos-photos/"],
     "/doublons-videos-photos/": ["/reparer-video-corrompue/", "/organiser-photos-videos-pc/", "/logiciel-tri-photos-videos/"],
     "/reparer-video-corrompue/": ["/doublons-videos-photos/", "/egaliser-volume-videos/", "/organiser-photos-videos-pc/"],
@@ -87,6 +95,8 @@ VOISINS = {
     "/plex-jellyfin-ou-prisme/": ["/alternative-video-station-synology/", "/regarder-videos-pc-sur-tv/", "/logiciel-tri-photos-videos/"],
     "/retrouver-une-video-par-son-contenu/": ["/organiser-photos-videos-pc/", "/doublons-videos-photos/", "/logiciel-tri-photos-videos/"],
     "/alternative-picasa/": ["/trier-des-milliers-de-photos/", "/organiser-photos-videos-pc/", "/doublons-videos-photos/"],
+    "/trier-grand-dossier-videos/": ["/logiciel-tri-photos-videos/", "/organiser-videos-telechargees/", "/doublons-videos-photos/"],
+    "/organiser-videos-telechargees/": ["/trier-grand-dossier-videos/", "/doublons-videos-photos/", "/organiser-photos-videos-pc/"],
 }
 
 # La version adulte a ses propres guides, en français et en anglais : chaque
@@ -119,9 +129,18 @@ GUIDES_ADULTES = [
     (("plex-jellyfin-porno", "plex-jellyfin-porn"),
      ("Plex ou Jellyfin pour le porno", "Ce qui marche, les limites, et les réglages pour rester privé."),
      ("Plex or Jellyfin for porn", "What works, the limits, and the settings to stay private.")),
+    (("alternative-the-vault", "the-vault-alternative"),
+     ("Une alternative à The Vault", "Application de bureau ou bibliothèque visuelle : choisir selon sa façon de ranger."),
+     ("A The Vault alternative", "Desktop workflow or visual library: choose around the way you organize.")),
+    (("alternative-nsfw-manager", "nsfw-manager-alternative"),
+     ("Une alternative à NSFW Manager", "Détecter du contenu sensible ou organiser une collection : deux besoins différents."),
+     ("An NSFW Manager alternative", "Detect sensitive media or organize a collection: two different jobs.")),
+    (("organiser-collection-porno-nas", "organize-porn-collection-nas"),
+     ("Organiser une collection porno sur un NAS", "Dossiers réseau, tri, doublons, sauvegarde et accès privé, sans déplacer la bibliothèque."),
+     ("Organize a porn collection on a NAS", "Network folders, sorting, duplicates, backups and private access without moving the library.")),
 ]
 VOISINS_ADULTES = {  # par slug français ; le jumeau anglais suit
-    "logiciel-organiser-collection-porno": ["alternative-stash", "trier-videos-porno", "plex-jellyfin-porno"],
+    "logiciel-organiser-collection-porno": ["alternative-stash", "alternative-the-vault", "organiser-collection-porno-nas"],
     "alternative-stash": ["logiciel-organiser-collection-porno", "trier-videos-porno", "mots-cles-recherche-ia-porno"],
     "trier-videos-porno": ["lecteur-video-porno-apercus", "doublons-videos-porno", "mots-cles-recherche-ia-porno"],
     "doublons-videos-porno": ["trier-videos-porno", "logiciel-organiser-collection-porno", "lecteur-video-porno-apercus"],
@@ -129,6 +148,9 @@ VOISINS_ADULTES = {  # par slug français ; le jumeau anglais suit
     "mots-cles-recherche-ia-porno": ["trier-videos-porno", "alternative-stash", "lecteur-video-porno-apercus"],
     "cacher-videos-porno-pc": ["lecteur-video-porno-apercus", "plex-jellyfin-porno", "logiciel-organiser-collection-porno"],
     "plex-jellyfin-porno": ["cacher-videos-porno-pc", "logiciel-organiser-collection-porno", "alternative-stash"],
+    "alternative-the-vault": ["logiciel-organiser-collection-porno", "alternative-stash", "trier-videos-porno"],
+    "alternative-nsfw-manager": ["logiciel-organiser-collection-porno", "mots-cles-recherche-ia-porno", "cacher-videos-porno-pc"],
+    "organiser-collection-porno-nas": ["plex-jellyfin-porno", "logiciel-organiser-collection-porno", "doublons-videos-porno"],
 }
 TEXTES = {"fr": {"voisins": "À lire aussi"}, "en": {"voisins": "Read next"}}
 

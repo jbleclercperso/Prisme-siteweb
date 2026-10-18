@@ -177,9 +177,10 @@ def main():
                 problemes.append(f"{rel} : marquage adulte sur une page neutre")
 
     seo = subprocess.run([sys.executable, str(ROOT / "scripts" / "seo.py"), "--verifier"],
-                         capture_output=True, text=True, encoding="utf-8")
+                         capture_output=True, text=True, encoding="utf-8", errors="replace")
     if seo.returncode:
-        problemes.append("scripts/seo.py : " + seo.stdout.strip().splitlines()[-1])
+        details = (seo.stdout + "\n" + seo.stderr).strip().splitlines()
+        problemes.append("scripts/seo.py : " + (details[-1] if details else "échec sans message"))
 
     for x in problemes:
         print(x)
