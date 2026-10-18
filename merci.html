@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- seo : écrit par scripts/seo.py — corriger la fiche de la page là-bas, pas ici -->
+  <title>Merci — Prisme</title>
+  <meta name="description" content="Votre commande Prisme.">
+  <meta name="robots" content="noindex">
+  <!-- /seo -->
+  <meta name="theme-color" content="#07080b">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/scenes.css">
+  <link rel="stylesheet" href="/assets/css/clean.css">
+  <link rel="stylesheet" href="/assets/css/neutre.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <script src="/assets/js/config-neutre.js" defer></script>
+  <script src="/assets/js/neutre.js" defer></script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="fa7edb23-d767-44d3-a035-756fc46c8453" data-domains="prisme-desktop.com,www.prisme-desktop.com"></script>
+  <script>(function(){try{var q=location.search;if(/[?&]pasmoi\b/.test(q))localStorage.setItem("umami.disabled","1");if(/[?&]moi\b/.test(q))localStorage.removeItem("umami.disabled")}catch(e){}document.addEventListener("click",function(e){var el=e.target.closest&&e.target.closest("a.btn,button");if(!el||!window.umami)return;var t=(el.getAttribute("aria-label")||el.textContent||"").replace(/\s+/g," ").trim().slice(0,50);if(!t)return;window.umami.track("Clic : "+t,{page:location.pathname})},true)})();</script>
+</head>
+<body>
+
+<!-- en-tete : écrit par scripts/gabarit.py -->
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="nav is-scrolled" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="/" aria-label="Prisme, accueil">
+      <img src="/assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="/assets/img/prisme-lettrage.png" alt="Prisme" width="115" height="15">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#fonctionnalites">Fonctionnalités</a></li>
+      <li><a href="/#mur">Le Mur</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/#tarifs">Tarif</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/telecharger.html" data-link="trial">Essai gratuit</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<!-- /en-tete -->
+
+<main id="contenu">
+  <section class="page">
+    <div class="container">
+      <div class="thanks" id="thanks" data-state="loading" aria-live="polite">
+        <img src="/assets/img/prisme.png" alt="" width="72" height="72">
+
+        <div class="thanks-state" data-when="loading">
+          <h1 class="display thanks-title">Un instant…</h1>
+          <p class="lead">Nous vérifions votre paiement auprès de Stripe.</p>
+        </div>
+
+        <div class="thanks-state" data-when="paid">
+          <span class="eyebrow">Paiement confirmé</span>
+          <h1 class="display thanks-title">Merci, <em>et bienvenue.</em></h1>
+          <p class="lead"><b data-thanks-plan>Prisme</b> est à vous. Votre clé et votre reçu partent à <b data-thanks-email>votre adresse</b>.</p>
+          <div class="licence-box" data-thanks-licence hidden>
+            <span class="licence-label">Votre clé de licence</span>
+            <code data-thanks-key></code>
+            <button class="btn btn-ghost btn-sm" type="button" data-copy-key>Copier la clé</button>
+            <p class="muted">Dans Prisme, cliquez sur la pastille « Essai » en haut de la fenêtre, collez la clé, puis « Valider la clé ». Gardez-la précieusement : elle sert aussi pour votre second ordinateur.</p>
+          </div>
+          <div class="thanks-actions">
+            <a class="btn btn-primary" href="telecharger.html" data-link="trial"><svg><use href="#i-download"/></svg>Télécharger Prisme</a>
+            <a class="btn btn-ghost" href="/#tarifs" data-link="account">Mon compte</a>
+          </div>
+          <p class="muted thanks-note">Déjà installé pour l'essai ? Vos réglages sont conservés. Factures, carte bancaire et résiliation se gèrent depuis « Mon compte », avec cette même adresse e-mail.</p>
+        </div>
+
+        <div class="thanks-state" data-when="pending">
+          <span class="eyebrow">Paiement en cours</span>
+          <h1 class="display thanks-title">Merci, <em>c'est presque fait.</em></h1>
+          <p class="lead">Votre banque confirme encore le paiement, ce qui peut prendre quelques jours pour un prélèvement. Votre clé partira à <b data-thanks-email>votre adresse</b> dès qu'il sera validé.</p>
+        </div>
+
+        <div class="thanks-state" data-when="unknown">
+          <h1 class="display thanks-title">Merci pour <em>votre visite.</em></h1>
+          <p class="lead">Nous ne retrouvons pas de paiement lié à cette page. Si vous venez de payer, le reçu de Stripe fait foi : vérifiez vos e-mails, ou écrivez-nous, nous répondons à chaque message.</p>
+          <div class="thanks-actions">
+            <a class="btn btn-ghost" href="mailto:contact@prisme.app" data-link="contact"><svg><use href="#i-mail"/></svg>Nous écrire</a>
+            <a class="btn btn-ghost" href="/#tarifs">Voir les tarifs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- pied : écrit par scripts/gabarit.py -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/"><img src="/assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="/assets/img/prisme-lettrage.png" alt="Prisme" width="115" height="15"></a>
+        <p>Le logiciel Windows pour trier, ranger et regarder vos vidéos et vos photos, au clavier. 100 % local.</p>
+      </div>
+      <div>
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="/#fonctionnalites">Fonctionnalités</a></li>
+          <li><a href="/#mur">Le Mur</a></li>
+          <li><a href="/#confiance">Confiance</a></li>
+          <li><a href="/#tarifs">Tarif</a></li>
+          <li><a href="/telecharger.html" data-link="trial">Télécharger</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="/organiser-photos-videos-pc/">Organiser ses photos et vidéos sur PC</a></li>
+          <li><a href="/doublons-videos-photos/">Trouver les vidéos et photos en double</a></li>
+          <li><a href="/reparer-video-corrompue/">Réparer une vidéo corrompue</a></li>
+          <li><a href="/alternative-video-station-synology/">Remplacer Video Station sur un NAS Synology</a></li>
+          <li><a href="/regarder-videos-pc-sur-tv/">Regarder les vidéos du PC sur la télé</a></li>
+          <li><a href="/guides/">Tous les guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Aide</h4>
+        <ul>
+          <li><a href="/#faq">Questions fréquentes</a></li>
+          <li><a href="mailto:contact@prisme.app" data-link="contact">Contact</a></li>
+          <li><a href="/#tarifs" data-link="account">Mon compte</a></li>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">Conditions de vente</a></li>
+          <li><a href="/confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Prisme est un logiciel : il n'héberge ni ne fournit aucun contenu.</span>
+      <span>© <span data-year>2026</span> Prisme. Tous droits réservés.</span>
+    </div>
+  </div>
+</footer>
+<!-- /pied -->
+
+</body>
+</html>

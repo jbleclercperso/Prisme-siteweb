@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- seo : écrit par scripts/seo.py — corriger la fiche de la page là-bas, pas ici -->
+  <title>Retrouver une vidéo par son contenu, sans cloud | Prisme</title>
+  <meta name="description" content="Décrire la scène et retrouver la vidéo : comment marche la recherche par le contenu, les outils existants, et la recherche locale de Prisme, sans rien envoyer.">
+  <link rel="canonical" href="https://prisme-desktop.com/retrouver-une-video-par-son-contenu/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Prisme">
+  <meta property="og:title" content="Retrouver une vidéo par son contenu, sans cloud | Prisme">
+  <meta property="og:description" content="Décrire la scène et retrouver la vidéo : comment marche la recherche par le contenu, les outils existants, et la recherche locale de Prisme, sans rien envoyer.">
+  <meta property="og:url" content="https://prisme-desktop.com/retrouver-une-video-par-son-contenu/">
+  <meta property="og:image" content="https://prisme-desktop.com/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Prisme, le logiciel de tri pour vos vidéos et vos photos">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Retrouver une vidéo par son contenu, sans cloud | Prisme">
+  <meta name="twitter:description" content="Décrire la scène et retrouver la vidéo : comment marche la recherche par le contenu, les outils existants, et la recherche locale de Prisme, sans rien envoyer.">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://prisme-desktop.com/#organisation",
+   "name": "Prisme",
+   "url": "https://prisme-desktop.com/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://prisme-desktop.com/assets/img/prisme-icon-512.png",
+    "width": 512,
+    "height": 512
+   }
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://prisme-desktop.com/#site",
+   "url": "https://prisme-desktop.com/",
+   "name": "Prisme",
+   "inLanguage": "fr",
+   "publisher": {
+    "@id": "https://prisme-desktop.com/#organisation"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://prisme-desktop.com/retrouver-une-video-par-son-contenu/#ariane",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Prisme",
+     "item": "https://prisme-desktop.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Guides",
+     "item": "https://prisme-desktop.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Retrouver une vidéo par son contenu",
+     "item": "https://prisme-desktop.com/retrouver-une-video-par-son-contenu/"
+    }
+   ]
+  },
+  {
+   "@type": "TechArticle",
+   "@id": "https://prisme-desktop.com/retrouver-une-video-par-son-contenu/#article",
+   "headline": "Retrouver une vidéo par ce qu'elle montre, sans connaître son nom",
+   "description": "Décrire la scène et retrouver la vidéo : comment marche la recherche par le contenu, les outils existants, et la recherche locale de Prisme, sans rien envoyer.",
+   "inLanguage": "fr",
+   "image": "https://prisme-desktop.com/assets/img/og.png",
+   "mainEntityOfPage": {
+    "@id": "https://prisme-desktop.com/retrouver-une-video-par-son-contenu/#page"
+   },
+   "datePublished": "2026-10-17",
+   "dateModified": "2026-10-17",
+   "author": {
+    "@id": "https://prisme-desktop.com/#organisation"
+   },
+   "publisher": {
+    "@id": "https://prisme-desktop.com/#organisation"
+   },
+   "about": {
+    "@id": "https://prisme-desktop.com/#logiciel"
+   }
+  },
+  {
+   "@type": [
+    "WebPage",
+    "FAQPage"
+   ],
+   "@id": "https://prisme-desktop.com/retrouver-une-video-par-son-contenu/#page",
+   "url": "https://prisme-desktop.com/retrouver-une-video-par-son-contenu/",
+   "name": "Retrouver une vidéo par son contenu, sans cloud | Prisme",
+   "description": "Décrire la scène et retrouver la vidéo : comment marche la recherche par le contenu, les outils existants, et la recherche locale de Prisme, sans rien envoyer.",
+   "inLanguage": "fr",
+   "isPartOf": {
+    "@id": "https://prisme-desktop.com/#site"
+   },
+   "breadcrumb": {
+    "@id": "https://prisme-desktop.com/retrouver-une-video-par-son-contenu/#ariane"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://prisme-desktop.com/assets/img/og.png"
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Peut-on chercher une vidéo par ce qu'elle contient ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Oui, avec un outil qui analyse les images : Google Photos le fait en ligne, Immich sur un serveur auto-hébergé, Prisme directement sur le PC. La recherche de Windows, elle, ne voit que les noms de fichiers."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "La recherche par image envoie-t-elle mes vidéos sur Internet ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Pas avec Prisme : le modèle tourne sur votre ordinateur, et ni les vidéos ni les recherches ne quittent le PC. Seuls les fichiers du modèle sont téléchargés, une fois, au premier usage."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Faut-il une carte graphique puissante ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Non. Le moteur rapide de Prisme tourne sur le processeur d'un portable ordinaire. Une carte NVIDIA accélère l'indexation d'une grosse collection, et Prisme sait l'utiliser."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+  <!-- /seo -->
+  <meta name="theme-color" content="#07080b">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
+  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/clean.css">
+  <link rel="stylesheet" href="/assets/css/neutre.css">
+  <link rel="stylesheet" href="/assets/css/guide.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <script src="/assets/js/config-neutre.js" defer></script>
+  <script src="/assets/js/neutre.js" defer></script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="fa7edb23-d767-44d3-a035-756fc46c8453" data-domains="prisme-desktop.com,www.prisme-desktop.com"></script>
+  <script>(function(){try{var q=location.search;if(/[?&]pasmoi\b/.test(q))localStorage.setItem("umami.disabled","1");if(/[?&]moi\b/.test(q))localStorage.removeItem("umami.disabled")}catch(e){}document.addEventListener("click",function(e){var el=e.target.closest&&e.target.closest("a.btn,button");if(!el||!window.umami)return;var t=(el.getAttribute("aria-label")||el.textContent||"").replace(/\s+/g," ").trim().slice(0,50);if(!t)return;window.umami.track("Clic : "+t,{page:location.pathname})},true)})();</script>
+</head>
+<body>
+
+<!-- en-tete : écrit par scripts/gabarit.py -->
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="nav is-scrolled" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="/" aria-label="Prisme, accueil">
+      <img src="/assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="/assets/img/prisme-lettrage.png" alt="Prisme" width="115" height="15">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#fonctionnalites">Fonctionnalités</a></li>
+      <li><a href="/#mur">Le Mur</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/#tarifs">Tarif</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/telecharger.html" data-link="trial">Essai gratuit</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<!-- /en-tete -->
+
+<main id="contenu">
+  <article class="guide">
+    <div class="container prose">
+      <nav class="ariane" aria-label="Fil d'Ariane"><ol><li><a href="/">Prisme</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">Retrouver une vidéo par son contenu</li></ol></nav>
+      <h1>Retrouver une vidéo par ce qu'elle montre, sans connaître son nom</h1>
+      <p class="lead">« La vidéo de la plage au coucher du soleil », « celle où les enfants font du vélo » : on se souvient de ce qu'on a filmé, presque jamais du nom du fichier. Chercher une vidéo par son contenu est devenu possible sur son propre ordinateur, sans rien envoyer dans le cloud. Voici comment, et avec quelles limites.</p>
+
+      <div class="bref">
+        <b class="bref-titre">En bref</b>
+        <p>La recherche de Windows ne voit que les noms de fichiers. Les services en ligne (Google Photos et consorts) savent chercher dans les images, mais il faut leur envoyer toute sa collection.</p>
+        <p>Prisme le fait sur votre PC : un modèle d'intelligence artificielle regarde quelques images de chaque vidéo, puis vous montre celles qui correspondent le mieux à votre phrase. Rien ne quitte votre ordinateur. La fonction est encore en essai (bêta).</p>
+      </div>
+
+      <h2>Ce que permettent les outils habituels</h2>
+      <div class="tableau">
+        <table>
+          <tr><th>Outil</th><th>Cherche dans</th><th>À savoir</th></tr>
+          <tr><td>Recherche de Windows</td><td>Les noms de fichiers et de dossiers</td><td>Inutile pour <code>DJI_0412.MP4</code></td></tr>
+          <tr><td>Google Photos, iCloud…</td><td>Le contenu des photos et des vidéos</td><td>Il faut tout envoyer en ligne, et payer l'espace au-delà du quota gratuit</td></tr>
+          <tr><td>Immich (auto-hébergé)</td><td>Le contenu des photos et des vidéos</td><td>Libre et local, mais c'est un serveur à installer, souvent sur un NAS, par Docker</td></tr>
+          <tr><td>digiKam</td><td>Mots-clés, visages, images similaires</td><td>Pour les photos ; ne cherche pas une phrase dans les vidéos</td></tr>
+          <tr><td>Prisme</td><td>Le contenu des vidéos, décrit par une phrase</td><td>Sur le PC, en local ; en essai (bêta)</td></tr>
+        </table>
+      </div>
+      <p>En attendant, la meilleure aide reste un bon rangement : des dossiers par événement bien nommés font retrouver la plupart des vidéos (voir <a href="/organiser-photos-videos-pc/">organiser ses photos et vidéos sur PC</a>).</p>
+
+      <h2>Comment marche la recherche par le contenu</h2>
+      <p>Un modèle d'intelligence artificielle de la famille CLIP a appris, sur des millions d'images légendées, à rapprocher une image et une phrase. Il transforme chaque image en une « empreinte de sens », et votre phrase aussi. Les images dont l'empreinte est la plus proche de celle de la phrase sont celles qui la montrent. Pour une vidéo, on lui fait regarder quelques images bien choisies, et non la vidéo entière.</p>
+
+      <h2>Ce que fait Prisme</h2>
+      <p>Prisme est un logiciel Windows pour trier, ranger et regarder ses vidéos et ses photos. Son Labo IA, en essai, ajoute la recherche par description :</p>
+      <ul>
+        <li><strong>Décrivez la scène</strong>, en français : « un coucher de soleil sur la mer », « des enfants sur une plage ». Prisme montre les vidéos les plus proches, chacune à son meilleur moment ; un double-clic la lit à l'instant trouvé.</li>
+        <li><strong>Chaque idée de la phrase compte</strong> : une simple plage ne passe pas devant « des enfants sur une plage ». « -plage » ou « sans plage » écartent un mot.</li>
+        <li><strong>La recherche apprend</strong> : cochez les bons résultats, puis « Plus comme ça », et Prisme affine en tenant compte de vos exemples.</li>
+        <li><strong>Des vidéos qui se ressemblent</strong> : depuis n'importe quelle vidéo, un interrupteur fait de la liste les 150 vidéos les plus proches, tous dossiers confondus.</li>
+        <li><strong>Chercher à voix haute</strong> : un micro dans le champ de recherche. La reconnaissance vocale tourne elle aussi sur le PC, en français comme en anglais.</li>
+        <li><strong>Tout reste sur votre ordinateur</strong> : le modèle tourne sur le PC, dans son propre processus, à basse priorité, et Prisme reste fluide pendant l'indexation. Chaque vidéo n'est analysée qu'une fois (une vingtaine de kilo-octets d'index par vidéo), et l'on peut chercher dans ce qui est déjà indexé pendant que le reste avance.</li>
+        <li><strong>Plusieurs moteurs au choix</strong> : un rapide (une soixantaine de millisecondes par image sur un portable), un précis, plus lent et plus lourd, et un troisième à juger sur votre propre collection, que Prisme vous aide à comparer. Une carte graphique NVIDIA accélère tout, mais n'est pas obligatoire.</li>
+      </ul>
+
+      <div class="limites">
+        <b class="limites-titre">Ce que Prisme ne fait pas (ou pas encore)</b>
+        <ul>
+          <li>C'est une fonction en essai : les résultats sont souvent bons, pas toujours. Elle s'améliore à chaque version.</li>
+          <li>Le premier usage télécharge les bibliothèques et le modèle, plusieurs gigaoctets, une fois pour toutes. L'indexation d'une grosse collection prend du temps.</li>
+          <li>Il ne reconnaît pas les visages ni les personnes par leur nom.</li>
+          <li>Il cherche dans les images, pas dans ce qui est dit dans les vidéos.</li>
+        </ul>
+      </div>
+
+      <div class="cta-guide">
+        <h2>Essayez de retrouver une vidéo par une phrase</h2>
+        <p>Essai gratuit de 14 jours, toutes les fonctions, Labo IA compris, sans carte bancaire.</p>
+        <div class="cta-actions"><a class="btn btn-primary" href="/telecharger.html" data-link="trial">Essayer gratuitement</a><a class="btn btn-ghost" href="/#fonctionnalites">Voir toutes les fonctions</a></div>
+      </div>
+
+      <section class="guide-faq">
+        <h2>Questions fréquentes</h2>
+        <div class="faq">
+          <details>
+            <summary>Peut-on chercher une vidéo par ce qu'elle contient ?</summary>
+            <div class="answer-body"><p>Oui, avec un outil qui analyse les images : Google Photos le fait en ligne, Immich sur un serveur auto-hébergé, Prisme directement sur le PC. La recherche de Windows, elle, ne voit que les noms de fichiers.</p></div>
+          </details>
+          <details>
+            <summary>La recherche par image envoie-t-elle mes vidéos sur Internet ?</summary>
+            <div class="answer-body"><p>Pas avec Prisme : le modèle tourne sur votre ordinateur, et ni les vidéos ni les recherches ne quittent le PC. Seuls les fichiers du modèle sont téléchargés, une fois, au premier usage.</p></div>
+          </details>
+          <details>
+            <summary>Faut-il une carte graphique puissante ?</summary>
+            <div class="answer-body"><p>Non. Le moteur rapide de Prisme tourne sur le processeur d'un portable ordinaire. Une carte NVIDIA accélère l'indexation d'une grosse collection, et Prisme sait l'utiliser.</p></div>
+          </details>
+        </div>
+      </section>
+      <!-- voisins : écrit par scripts/gabarit.py -->
+      <nav class="voisins" aria-label="À lire aussi">
+        <h2>À lire aussi</h2>
+        <div class="voisins-grille">
+          <a href="/organiser-photos-videos-pc/"><b>Organiser ses photos et vidéos sur PC</b><span>La méthode complète : arborescence, noms, tri, doublons, sauvegarde.</span></a>
+          <a href="/doublons-videos-photos/"><b>Trouver les vidéos et photos en double</b><span>Copies exactes, mais aussi la même vidéo réencodée, la même photo convertie ou réduite.</span></a>
+          <a href="/logiciel-tri-photos-videos/"><b>Un logiciel pour trier ses photos et vidéos</b><span>Une touche par décision, la suivante s&#x27;affiche : trier des milliers de fichiers en une soirée.</span></a>
+        </div>
+      </nav>
+      <!-- /voisins -->
+    </div>
+  </article>
+</main>
+
+<!-- pied : écrit par scripts/gabarit.py -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/"><img src="/assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="/assets/img/prisme-lettrage.png" alt="Prisme" width="115" height="15"></a>
+        <p>Le logiciel Windows pour trier, ranger et regarder vos vidéos et vos photos, au clavier. 100 % local.</p>
+      </div>
+      <div>
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="/#fonctionnalites">Fonctionnalités</a></li>
+          <li><a href="/#mur">Le Mur</a></li>
+          <li><a href="/#confiance">Confiance</a></li>
+          <li><a href="/#tarifs">Tarif</a></li>
+          <li><a href="/telecharger.html" data-link="trial">Télécharger</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="/organiser-photos-videos-pc/">Organiser ses photos et vidéos sur PC</a></li>
+          <li><a href="/doublons-videos-photos/">Trouver les vidéos et photos en double</a></li>
+          <li><a href="/reparer-video-corrompue/">Réparer une vidéo corrompue</a></li>
+          <li><a href="/alternative-video-station-synology/">Remplacer Video Station sur un NAS Synology</a></li>
+          <li><a href="/regarder-videos-pc-sur-tv/">Regarder les vidéos du PC sur la télé</a></li>
+          <li><a href="/guides/">Tous les guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Aide</h4>
+        <ul>
+          <li><a href="/#faq">Questions fréquentes</a></li>
+          <li><a href="mailto:contact@prisme.app" data-link="contact">Contact</a></li>
+          <li><a href="/#tarifs" data-link="account">Mon compte</a></li>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">Conditions de vente</a></li>
+          <li><a href="/confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Prisme est un logiciel : il n'héberge ni ne fournit aucun contenu.</span>
+      <span>© <span data-year>2026</span> Prisme. Tous droits réservés.</span>
+    </div>
+  </div>
+</footer>
+<!-- /pied -->
+
+</body>
+</html>

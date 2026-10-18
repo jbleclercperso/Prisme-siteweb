@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- seo : écrit par scripts/seo.py — corriger la fiche de la page là-bas, pas ici -->
+  <title>Égaliser le son de plusieurs vidéos (volume trop bas) | Prisme</title>
+  <meta name="description" content="Des vidéos qu&#x27;on n&#x27;entend pas, d&#x27;autres trop fortes : égaliser le volume à la lecture (VLC, Windows, Prisme) ou pour de bon avec ffmpeg, par lot.">
+  <link rel="canonical" href="https://prisme-desktop.com/egaliser-volume-videos/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Prisme">
+  <meta property="og:title" content="Égaliser le son de plusieurs vidéos (volume trop bas) | Prisme">
+  <meta property="og:description" content="Des vidéos qu&#x27;on n&#x27;entend pas, d&#x27;autres trop fortes : égaliser le volume à la lecture (VLC, Windows, Prisme) ou pour de bon avec ffmpeg, par lot.">
+  <meta property="og:url" content="https://prisme-desktop.com/egaliser-volume-videos/">
+  <meta property="og:image" content="https://prisme-desktop.com/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Prisme, le logiciel de tri pour vos vidéos et vos photos">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Égaliser le son de plusieurs vidéos (volume trop bas) | Prisme">
+  <meta name="twitter:description" content="Des vidéos qu&#x27;on n&#x27;entend pas, d&#x27;autres trop fortes : égaliser le volume à la lecture (VLC, Windows, Prisme) ou pour de bon avec ffmpeg, par lot.">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://prisme-desktop.com/#organisation",
+   "name": "Prisme",
+   "url": "https://prisme-desktop.com/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://prisme-desktop.com/assets/img/prisme-icon-512.png",
+    "width": 512,
+    "height": 512
+   }
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://prisme-desktop.com/#site",
+   "url": "https://prisme-desktop.com/",
+   "name": "Prisme",
+   "inLanguage": "fr",
+   "publisher": {
+    "@id": "https://prisme-desktop.com/#organisation"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://prisme-desktop.com/egaliser-volume-videos/#ariane",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Prisme",
+     "item": "https://prisme-desktop.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Guides",
+     "item": "https://prisme-desktop.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Égaliser le son",
+     "item": "https://prisme-desktop.com/egaliser-volume-videos/"
+    }
+   ]
+  },
+  {
+   "@type": "TechArticle",
+   "@id": "https://prisme-desktop.com/egaliser-volume-videos/#article",
+   "headline": "Égaliser le son de plusieurs vidéos : fini les vidéos trop basses",
+   "description": "Des vidéos qu'on n'entend pas, d'autres trop fortes : égaliser le volume à la lecture (VLC, Windows, Prisme) ou pour de bon avec ffmpeg, par lot.",
+   "inLanguage": "fr",
+   "image": "https://prisme-desktop.com/assets/img/og.png",
+   "mainEntityOfPage": {
+    "@id": "https://prisme-desktop.com/egaliser-volume-videos/#page"
+   },
+   "datePublished": "2026-10-17",
+   "dateModified": "2026-10-17",
+   "author": {
+    "@id": "https://prisme-desktop.com/#organisation"
+   },
+   "publisher": {
+    "@id": "https://prisme-desktop.com/#organisation"
+   },
+   "about": {
+    "@id": "https://prisme-desktop.com/#logiciel"
+   }
+  },
+  {
+   "@type": [
+    "WebPage",
+    "FAQPage"
+   ],
+   "@id": "https://prisme-desktop.com/egaliser-volume-videos/#page",
+   "url": "https://prisme-desktop.com/egaliser-volume-videos/",
+   "name": "Égaliser le son de plusieurs vidéos (volume trop bas) | Prisme",
+   "description": "Des vidéos qu'on n'entend pas, d'autres trop fortes : égaliser le volume à la lecture (VLC, Windows, Prisme) ou pour de bon avec ffmpeg, par lot.",
+   "inLanguage": "fr",
+   "isPartOf": {
+    "@id": "https://prisme-desktop.com/#site"
+   },
+   "breadcrumb": {
+    "@id": "https://prisme-desktop.com/egaliser-volume-videos/#ariane"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://prisme-desktop.com/assets/img/og.png"
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Comment augmenter le son d'une vidéo MP4 trop basse ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "À la lecture, avec VLC (volume jusqu'à 125 %) ou un lecteur qui amplifie, comme Prisme. Pour corriger le fichier, avec ffmpeg : ffmpeg -i video.mp4 -c:v copy -af loudnorm -c:a aac video-ok.mp4 remonte le son sans toucher à l'image."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Comment mettre plusieurs vidéos au même volume ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "En les normalisant toutes au même niveau de référence, par exemple -16 LUFS, avec le filtre loudnorm de ffmpeg, appliqué à tout un dossier. Ou, sans modifier les fichiers, avec un lecteur qui égalise à la lecture."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Normaliser le son fait-il perdre en qualité ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "L'image ne bouge pas si on la recopie ( -c:v copy ). Le son, lui, est réencodé : à 192 kbit/s en AAC, la différence ne s'entend pas sur une vidéo de téléphone. L'égalisation à la lecture ne touche à rien."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+  <!-- /seo -->
+  <meta name="theme-color" content="#07080b">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
+  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/clean.css">
+  <link rel="stylesheet" href="/assets/css/neutre.css">
+  <link rel="stylesheet" href="/assets/css/guide.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <script src="/assets/js/config-neutre.js" defer></script>
+  <script src="/assets/js/neutre.js" defer></script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="fa7edb23-d767-44d3-a035-756fc46c8453" data-domains="prisme-desktop.com,www.prisme-desktop.com"></script>
+  <script>(function(){try{var q=location.search;if(/[?&]pasmoi\b/.test(q))localStorage.setItem("umami.disabled","1");if(/[?&]moi\b/.test(q))localStorage.removeItem("umami.disabled")}catch(e){}document.addEventListener("click",function(e){var el=e.target.closest&&e.target.closest("a.btn,button");if(!el||!window.umami)return;var t=(el.getAttribute("aria-label")||el.textContent||"").replace(/\s+/g," ").trim().slice(0,50);if(!t)return;window.umami.track("Clic : "+t,{page:location.pathname})},true)})();</script>
+</head>
+<body>
+
+<!-- en-tete : écrit par scripts/gabarit.py -->
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="nav is-scrolled" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="/" aria-label="Prisme, accueil">
+      <img src="/assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="/assets/img/prisme-lettrage.png" alt="Prisme" width="115" height="15">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#fonctionnalites">Fonctionnalités</a></li>
+      <li><a href="/#mur">Le Mur</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/#tarifs">Tarif</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/telecharger.html" data-link="trial">Essai gratuit</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<!-- /en-tete -->
+
+<main id="contenu">
+  <article class="guide">
+    <div class="container prose">
+      <nav class="ariane" aria-label="Fil d'Ariane"><ol><li><a href="/">Prisme</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">Égaliser le son</li></ol></nav>
+      <h1>Égaliser le son de plusieurs vidéos : fini les vidéos trop basses</h1>
+      <p class="lead">Une vidéo filmée de loin au téléphone qu'on n'entend pas, même le volume à fond, la suivante qui fait sursauter : le niveau sonore varie énormément d'une vidéo à l'autre. On peut le corriger à la lecture, sans toucher aux fichiers, ou pour de bon, en réécrivant leur son.</p>
+
+      <div class="bref">
+        <b class="bref-titre">En bref</b>
+        <p>Pour corriger à la lecture, gratuitement : le normaliseur de volume de VLC, ou l'égalisation de la sonie de Windows. Pour corriger les fichiers eux-mêmes, une à une ou par lot : ffmpeg et son filtre <code>loudnorm</code>.</p>
+        <p>Prisme, lui, remonte automatiquement les vidéos trop basses pendant la lecture, jusqu'à +30 dB, sans jamais baisser celles qui sont déjà fortes, et sans modifier vos fichiers.</p>
+      </div>
+
+      <h2>Pourquoi certaines vidéos sont-elles si basses ?</h2>
+      <p>Un téléphone posé sur une table, une caméra loin de la scène, un micro qui s'est réglé sur un bruit fort : beaucoup de vidéos personnelles sont enregistrées vingt à quarante décibels sous une vidéo ordinaire. Le problème n'est pas votre haut-parleur. La plupart des lecteurs, celui de Windows compris, s'arrêtent à 100 % du niveau du fichier : ils ne savent pas amplifier.</p>
+
+      <h2>Corriger à la lecture, sans toucher aux fichiers</h2>
+      <h3>Avec VLC</h3>
+      <p>Dans Outils › Préférences › Audio, cochez « Normaliser le volume ». VLC baisse alors les passages trop forts. Pour les vidéos trop basses, le curseur de volume de VLC monte jusqu'à 125 %, et plus loin avec les réglages avancés, au prix d'un son qui sature vite.</p>
+      <h3>Avec Windows</h3>
+      <p>Paramètres › Système › Son › votre haut-parleur › Améliorations audio : l'« égalisation de la sonie » rapproche les niveaux de tout ce que joue le PC. L'option dépend du pilote de la carte son, et n'existe pas partout.</p>
+
+      <h2>Corriger les fichiers, pour de bon</h2>
+      <p>Pour qu'une vidéo ait le bon niveau partout, sur la télé, sur le téléphone, chez les autres, il faut réécrire son son. ffmpeg, gratuit, le fait sans toucher à l'image :</p>
+      <pre><code>ffmpeg -i video.mp4 -c:v copy -af loudnorm=I=-16:TP=-1.5:LRA=11 -c:a aac -b:a 192k video-son-egalise.mp4</code></pre>
+      <p><code>-c:v copy</code> recopie l'image telle quelle, sans perte ; seul le son est recalculé, au niveau de référence des plateformes de vidéo (-16 LUFS). Pour tout un dossier, dans PowerShell :</p>
+      <pre><code>Get-ChildItem *.mp4 | ForEach-Object { ffmpeg -i $_.Name -c:v copy -af loudnorm=I=-16:TP=-1.5:LRA=11 -c:a aac -b:a 192k ("egalise_" + $_.Name) }</code></pre>
+      <p>Gardez les originaux jusqu'à ce que vous ayez vérifié le résultat : un son réencodé ne revient pas en arrière.</p>
+
+      <h2>Ce que fait Prisme</h2>
+      <p>Prisme est un logiciel Windows pour trier, ranger et regarder ses vidéos et ses photos. Comme on y enchaîne des centaines de vidéos de toutes origines, il égalise leur volume à la lecture :</p>
+      <ul>
+        <li><strong>Les vidéos trop basses sont remontées</strong>, jusqu'à +30 dB. Le gain suit le niveau moyen de la vidéo, lentement, pour que le son ne « pompe » pas.</li>
+        <li><strong>Rien n'est jamais baissé</strong> : une vidéo déjà forte passe telle quelle. Un limiteur empêche la saturation des vidéos qu'on remonte.</li>
+        <li><strong>Partout où l'on regarde</strong> : la fiche d'une vidéo, le lecteur flottant, le lecteur de côté et le Mur, où plusieurs vidéos jouent ensemble.</li>
+        <li><strong>Un interrupteur</strong>, dans le clic droit du haut-parleur de l'en-tête, pour l'arrêter à tout moment.</li>
+        <li><strong>Vos fichiers ne changent pas</strong> : le son est remonté au moment où il est joué.</li>
+      </ul>
+      <p>Le haut-parleur de Prisme a aussi son propre volume, réglable à la molette par pas de 5 %, et le choix de la sortie (casque, enceintes, écran). Et si Windows a choisi le profil « mains libres » d'un casque Bluetooth, qui ne joue presque rien hors d'un appel, Prisme prend tout seul la sortie stéréo du même casque.</p>
+
+      <div class="limites">
+        <b class="limites-titre">Ce que Prisme ne fait pas</b>
+        <ul>
+          <li>Il ne réécrit pas le son des fichiers : pour une vidéo à envoyer ou à regarder ailleurs, utilisez ffmpeg comme ci-dessus.</li>
+          <li>Il ne nettoie pas un son bruité ou un souffle : remonter le niveau remonte aussi le bruit.</li>
+        </ul>
+      </div>
+
+      <div class="cta-guide">
+        <h2>Enchaînez vos vidéos sans toucher au volume</h2>
+        <p>Essai gratuit de 14 jours, toutes les fonctions, sans carte bancaire.</p>
+        <div class="cta-actions"><a class="btn btn-primary" href="/telecharger.html" data-link="trial">Essayer gratuitement</a><a class="btn btn-ghost" href="/#fonctionnalites">Voir toutes les fonctions</a></div>
+      </div>
+
+      <section class="guide-faq">
+        <h2>Questions fréquentes</h2>
+        <div class="faq">
+          <details>
+            <summary>Comment augmenter le son d'une vidéo MP4 trop basse ?</summary>
+            <div class="answer-body"><p>À la lecture, avec VLC (volume jusqu'à 125 %) ou un lecteur qui amplifie, comme Prisme. Pour corriger le fichier, avec ffmpeg : <code>ffmpeg -i video.mp4 -c:v copy -af loudnorm -c:a aac video-ok.mp4</code> remonte le son sans toucher à l'image.</p></div>
+          </details>
+          <details>
+            <summary>Comment mettre plusieurs vidéos au même volume ?</summary>
+            <div class="answer-body"><p>En les normalisant toutes au même niveau de référence, par exemple -16 LUFS, avec le filtre <code>loudnorm</code> de ffmpeg, appliqué à tout un dossier. Ou, sans modifier les fichiers, avec un lecteur qui égalise à la lecture.</p></div>
+          </details>
+          <details>
+            <summary>Normaliser le son fait-il perdre en qualité ?</summary>
+            <div class="answer-body"><p>L'image ne bouge pas si on la recopie (<code>-c:v copy</code>). Le son, lui, est réencodé : à 192 kbit/s en AAC, la différence ne s'entend pas sur une vidéo de téléphone. L'égalisation à la lecture ne touche à rien.</p></div>
+          </details>
+        </div>
+      </section>
+      <!-- voisins : écrit par scripts/gabarit.py -->
+      <nav class="voisins" aria-label="À lire aussi">
+        <h2>À lire aussi</h2>
+        <div class="voisins-grille">
+          <a href="/lire-plusieurs-videos-en-meme-temps/"><b>Lire plusieurs vidéos en même temps</b><span>De 2 à 10 vidéos à l&#x27;écran, chacune son lecteur : passer en revue des dizaines de plans.</span></a>
+          <a href="/lecteur-video-toujours-au-premier-plan/"><b>Un lecteur vidéo toujours au premier plan</b><span>Garder la vidéo à l&#x27;écran pendant qu&#x27;on travaille dans une autre fenêtre.</span></a>
+          <a href="/reparer-video-corrompue/"><b>Réparer une vidéo corrompue</b><span>MP4, MOV ou MKV illisible, image qui se fige, pavés de couleur : que faire, dans l&#x27;ordre.</span></a>
+        </div>
+      </nav>
+      <!-- /voisins -->
+    </div>
+  </article>
+</main>
+
+<!-- pied : écrit par scripts/gabarit.py -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/"><img src="/assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="/assets/img/prisme-lettrage.png" alt="Prisme" width="115" height="15"></a>
+        <p>Le logiciel Windows pour trier, ranger et regarder vos vidéos et vos photos, au clavier. 100 % local.</p>
+      </div>
+      <div>
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="/#fonctionnalites">Fonctionnalités</a></li>
+          <li><a href="/#mur">Le Mur</a></li>
+          <li><a href="/#confiance">Confiance</a></li>
+          <li><a href="/#tarifs">Tarif</a></li>
+          <li><a href="/telecharger.html" data-link="trial">Télécharger</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="/organiser-photos-videos-pc/">Organiser ses photos et vidéos sur PC</a></li>
+          <li><a href="/doublons-videos-photos/">Trouver les vidéos et photos en double</a></li>
+          <li><a href="/reparer-video-corrompue/">Réparer une vidéo corrompue</a></li>
+          <li><a href="/alternative-video-station-synology/">Remplacer Video Station sur un NAS Synology</a></li>
+          <li><a href="/regarder-videos-pc-sur-tv/">Regarder les vidéos du PC sur la télé</a></li>
+          <li><a href="/guides/">Tous les guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Aide</h4>
+        <ul>
+          <li><a href="/#faq">Questions fréquentes</a></li>
+          <li><a href="mailto:contact@prisme.app" data-link="contact">Contact</a></li>
+          <li><a href="/#tarifs" data-link="account">Mon compte</a></li>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">Conditions de vente</a></li>
+          <li><a href="/confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Prisme est un logiciel : il n'héberge ni ne fournit aucun contenu.</span>
+      <span>© <span data-year>2026</span> Prisme. Tous droits réservés.</span>
+    </div>
+  </div>
+</footer>
+<!-- /pied -->
+
+</body>
+</html>

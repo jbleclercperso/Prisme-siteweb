@@ -1,0 +1,131 @@
+// Prépare le compte Stripe pour Prisme, en une commande :
+//
+//   npm install
+//   STRIPE_SECRET_KEY=sk_test_… SITE_URL=https://www.prisme.app npm run stripe:setup
+//
+// Crée ce qui manque, et laisse tel quel ce qui existe déjà : on peut le
+// relancer sans risque, en mode test puis en mode réel (sk_live_…).
+//   1. le produit « Prisme » et ses trois prix (4,99 €/mois, 29 €/an,
+//      49 € une fois, TTC), chacun avec le même montant en dollars pour la
+//      version anglaise du site, retrouvés ensuite par leur lookup key. Si le
+//      montant en euros a changé ici, un nouveau prix
+//      reprend la lookup key et l'ancien est désactivé : les abonnements
+//      déjà en cours gardent leur prix d'origine ;
+//   2. l'espace client (portail Stripe) : factures, carte, résiliation, et
+//      son adresse de connexion par e-mail, à reporter dans config.js ;
+//   3. avec SITE_URL, le webhook /api/webhook et son secret, à reporter
+//      dans les variables d'environnement de Netlify.
+import Stripe from "stripe";
+import { PLANS, WEBHOOK_EVENTS } from "../netlify/lib/stripe.mjs";
+
+// unit_amount en centimes d'euro, usd en cents : le même chiffre, pour
+// les pages anglaises (netlify/lib/stripe.mjs, LOCALES).
+const PRICES = {
+  [PLANS.monthly.lookupKey]: { unit_amount: 499, usd: 499, recurring: { interval: "month" }, nickname: "Prisme mensuel" },
+  [PLANS.yearly.lookupKey]: { unit_amount: 2900, usd: 2900, recurring: { interval: "year" }, nickname: "Prisme annuel" },
+  [PLANS.lifetime.lookupKey]: { unit_amount: 4900, usd: 4900, nickname: "Prisme à vie" },
+};
+const inDollars = (usd) => ({ usd: { unit_amount: usd, tax_behavior: "inclusive" } });
+
+const key = process.env.STRIPE_SECRET_KEY;
+if (!key) {
+  console.error("Il manque STRIPE_SECRET_KEY (Stripe › Développeurs › Clés API).");
+  process.exit(1);
+}
+const site = (process.env.SITE_URL || "").replace(/\/+$/, "");
+const stripe = new Stripe(key);
+const live = key.startsWith("sk_live_");
+console.log(`Compte Stripe en mode ${live ? "RÉEL" : "test"}.\n`);
+
+// 1. Produit et prix
+const existing = await stripe.prices.list({
+  lookup_keys: Object.keys(PRICES), active: true, limit: 10, expand: ["data.currency_options"],
+});
+const found = new Map(existing.data.map((p) => [p.lookup_key, p]));
+let product = existing.data[0]?.product;
+if (!product) {
+  const products = await stripe.products.search({ query: "metadata['app']:'prisme'" });
+  product = products.data[0]?.id;
+}
+if (!product) {
+  product = (await stripe.products.create({
+    name: "Prisme",
+    description: "Logiciel Windows pour trier, organiser et regarder une collection de vidéos et de photos.",
+    metadata: { app: "prisme" },
+  })).id;
+  console.log("Produit créé :", product);
+}
+for (const [lookupKey, { usd, ...spec }] of Object.entries(PRICES)) {
+  const old = found.get(lookupKey);
+  const same = old && old.unit_amount === spec.unit_amount
+    && (old.recurring?.interval || null) === (spec.recurring?.interval || null);
+  if (same) {
+    // Le montant en dollars, lui, se modifie sur place.
+    if (old.currency_options?.usd?.unit_amount === usd) {
+      console.log(`Prix ${lookupKey} : déjà là (${old.id})`);
+    } else {
+      await stripe.prices.update(old.id, { currency_options: inDollars(usd) });
+      console.log(`Prix ${lookupKey} : déjà là (${old.id}), montant en dollars posé à ${usd / 100} $`);
+    }
+    continue;
+  }
+  // Un prix Stripe ne se modifie pas : on en crée un nouveau, qui reprend la
+  // lookup key, et l'ancien ne peut plus être choisi.
+  const price = await stripe.prices.create({
+    product,
+    currency: "eur",
+    tax_behavior: "inclusive",
+    lookup_key: lookupKey,
+    transfer_lookup_key: Boolean(old),
+    currency_options: inDollars(usd),
+    ...spec,
+  });
+  if (old) {
+    await stripe.prices.update(old.id, { active: false });
+    console.log(`Prix ${lookupKey} : ${old.unit_amount / 100} € remplacé par ${spec.unit_amount / 100} € (${price.id})`);
+  } else {
+    console.log(`Prix ${lookupKey} : créé (${price.id})`);
+  }
+}
+
+// 2. Espace client
+const configs = await stripe.billingPortal.configurations.list({ is_default: true, limit: 1 });
+const portalSettings = {
+  business_profile: {
+    // Une seule page pour toutes les langues : le reste du portail suit la
+    // langue du navigateur.
+    headline: "Prisme — abonnement et factures · subscription & invoices",
+    ...(site && { privacy_policy_url: `${site}/confidentialite.html`, terms_of_service_url: `${site}/cgv.html` }),
+  },
+  features: {
+    invoice_history: { enabled: true },
+    payment_method_update: { enabled: true },
+    customer_update: { enabled: true, allowed_updates: ["email", "address"] },
+    subscription_cancel: { enabled: true, mode: "at_period_end" },
+  },
+  login_page: { enabled: true },
+};
+const portal = configs.data[0]
+  ? await stripe.billingPortal.configurations.update(configs.data[0].id, portalSettings)
+  : await stripe.billingPortal.configurations.create(portalSettings);
+console.log("\nEspace client prêt. Adresse à mettre dans assets/js/config.js, links.account :");
+console.log("  " + portal.login_page.url);
+
+// 3. Webhook
+if (!site) {
+  console.log("\nSans SITE_URL, le webhook n'est pas créé. Relancez avec SITE_URL=https://… une fois le site en ligne.");
+} else {
+  const url = `${site}/api/webhook`;
+  const hooks = await stripe.webhookEndpoints.list({ limit: 100 });
+  const hook = hooks.data.find((h) => h.url === url);
+  if (hook) {
+    await stripe.webhookEndpoints.update(hook.id, { enabled_events: WEBHOOK_EVENTS });
+    console.log(`\nWebhook déjà déclaré (${url}), événements mis à jour. Son secret reste celui d'origine.`);
+  } else {
+    const created = await stripe.webhookEndpoints.create({ url, enabled_events: WEBHOOK_EVENTS });
+    console.log(`\nWebhook créé : ${url}`);
+    console.log("Secret à mettre dans Netlify, variable STRIPE_WEBHOOK_SECRET :");
+    console.log("  " + created.secret);
+  }
+}
+console.log("\nTerminé.");

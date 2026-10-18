@@ -1,0 +1,172 @@
+# Déploiement Netlify : pages statiques, sans étape de construction, des
+# fonctions pour le paiement Stripe (netlify/functions, servies sous /api/…),
+# et une fonction « edge » qui envoie chaque visiteur vers les pages de sa
+# langue (netlify/edge-functions/langue.js).
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Le site est publié depuis la racine du dépôt : ce qui n'est pas une page
+# (dépendances, fonctions, scripts, notes) ne doit pas être servi.
+# Deux sites en un : la version grand public à la racine, la version adulte
+# dans /adulte/ et /en/adult/ (voir scripts/seo.py). Les adresses d'avant le
+# déménagement (octobre 2026) mènent à leur nouvelle place. Sans « force »,
+# une règle ne joue que lorsque le fichier n'existe pas : celles de /en/ se
+# tairont d'elles-mêmes quand les pages anglaises grand public existeront.
+[[redirects]]
+  from = "/neutre/*"
+  to = "/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/thanks.html"
+  to = "/en/adult/thanks.html"
+  status = 301
+
+[[redirects]]
+  from = "/en/"
+  to = "/en/adult/"
+  status = 302
+
+[[redirects]]
+  from = "/en/download.html"
+  to = "/en/adult/download.html"
+  status = 302
+
+[[redirects]]
+  from = "/en/tv.html"
+  to = "/en/adult/tv.html"
+  status = 302
+
+[[redirects]]
+  from = "/en/terms.html"
+  to = "/en/adult/terms.html"
+  status = 302
+
+[[redirects]]
+  from = "/en/privacy.html"
+  to = "/en/adult/privacy.html"
+  status = 302
+
+[[redirects]]
+  from = "/en/legal-notice.html"
+  to = "/en/adult/legal-notice.html"
+  status = 302
+
+[[redirects]]
+  from = "/tv.html"
+  to = "/adulte/tv.html"
+  status = 302
+
+# Une page introuvable : la page 404 de sa version et de sa langue.
+[[redirects]]
+  from = "/en/adult/*"
+  to = "/en/adult/404.html"
+  status = 404
+
+[[redirects]]
+  from = "/adulte/*"
+  to = "/adulte/404.html"
+  status = 404
+
+# Prisme TV : l'adresse courte à taper dans Downloader, sur la télé.
+[[redirects]]
+  from = "/tv.apk"
+  to = "/telechargements/Prisme-TV.apk"
+  status = 200
+
+[[redirects]]
+  from = "/tv"
+  to = "/adulte/tv.html"
+  status = 302
+
+[[headers]]
+  for = "/telechargements/*.apk"
+  [headers.values]
+    Content-Type = "application/vnd.android.package-archive"
+    Content-Disposition = "attachment; filename=Prisme-TV.apk"
+    Cache-Control = "no-cache"
+
+[[redirects]]
+  from = "/node_modules/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/scripts/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package-lock.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/docs/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/merci.html"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/adulte/merci.html"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/en/adult/thanks.html"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cloud.umami.is; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloud.umami.is https://gateway.umami.is; form-action 'self'; frame-ancestors 'none'; base-uri 'self'"
+    Referrer-Policy = "no-referrer"
+    X-Content-Type-Options = "nosniff"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Robots-Tag = "noimageindex"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

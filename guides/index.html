@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- seo : écrit par scripts/seo.py — corriger la fiche de la page là-bas, pas ici -->
+  <title>Guides photos et vidéos : trier, réparer, NAS, télé | Prisme</title>
+  <meta name="description" content="Doublons, vidéos abîmées, son trop bas, NAS Synology, télé : des guides concrets pour trier, ranger, réparer et regarder vos vidéos et vos photos sur PC.">
+  <link rel="canonical" href="https://prisme-desktop.com/guides/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Prisme">
+  <meta property="og:title" content="Guides photos et vidéos : trier, réparer, NAS, télé | Prisme">
+  <meta property="og:description" content="Doublons, vidéos abîmées, son trop bas, NAS Synology, télé : des guides concrets pour trier, ranger, réparer et regarder vos vidéos et vos photos sur PC.">
+  <meta property="og:url" content="https://prisme-desktop.com/guides/">
+  <meta property="og:image" content="https://prisme-desktop.com/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Prisme, le logiciel de tri pour vos vidéos et vos photos">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Guides photos et vidéos : trier, réparer, NAS, télé | Prisme">
+  <meta name="twitter:description" content="Doublons, vidéos abîmées, son trop bas, NAS Synology, télé : des guides concrets pour trier, ranger, réparer et regarder vos vidéos et vos photos sur PC.">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://prisme-desktop.com/#organisation",
+   "name": "Prisme",
+   "url": "https://prisme-desktop.com/",
+   "logo": {
+    "@type": "ImageObject",
+    "url": "https://prisme-desktop.com/assets/img/prisme-icon-512.png",
+    "width": 512,
+    "height": 512
+   }
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://prisme-desktop.com/#site",
+   "url": "https://prisme-desktop.com/",
+   "name": "Prisme",
+   "inLanguage": "fr",
+   "publisher": {
+    "@id": "https://prisme-desktop.com/#organisation"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://prisme-desktop.com/guides/#ariane",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Prisme",
+     "item": "https://prisme-desktop.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Guides",
+     "item": "https://prisme-desktop.com/guides/"
+    }
+   ]
+  },
+  {
+   "@type": "CollectionPage",
+   "@id": "https://prisme-desktop.com/guides/#page",
+   "url": "https://prisme-desktop.com/guides/",
+   "name": "Guides photos et vidéos : trier, réparer, NAS, télé | Prisme",
+   "description": "Doublons, vidéos abîmées, son trop bas, NAS Synology, télé : des guides concrets pour trier, ranger, réparer et regarder vos vidéos et vos photos sur PC.",
+   "inLanguage": "fr",
+   "isPartOf": {
+    "@id": "https://prisme-desktop.com/#site"
+   },
+   "breadcrumb": {
+    "@id": "https://prisme-desktop.com/guides/#ariane"
+   }
+  }
+ ]
+}
+</script>
+  <!-- /seo -->
+  <meta name="theme-color" content="#07080b">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
+  <link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/clean.css">
+  <link rel="stylesheet" href="/assets/css/neutre.css">
+  <link rel="stylesheet" href="/assets/css/guide.css">
+  <script>document.documentElement.classList.remove('no-js');</script>
+  <script src="/assets/js/config-neutre.js" defer></script>
+  <script src="/assets/js/neutre.js" defer></script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="fa7edb23-d767-44d3-a035-756fc46c8453" data-domains="prisme-desktop.com,www.prisme-desktop.com"></script>
+  <script>(function(){try{var q=location.search;if(/[?&]pasmoi\b/.test(q))localStorage.setItem("umami.disabled","1");if(/[?&]moi\b/.test(q))localStorage.removeItem("umami.disabled")}catch(e){}document.addEventListener("click",function(e){var el=e.target.closest&&e.target.closest("a.btn,button");if(!el||!window.umami)return;var t=(el.getAttribute("aria-label")||el.textContent||"").replace(/\s+/g," ").trim().slice(0,50);if(!t)return;window.umami.track("Clic : "+t,{page:location.pathname})},true)})();</script>
+</head>
+<body>
+
+<!-- en-tete : écrit par scripts/gabarit.py -->
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="nav is-scrolled" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="/" aria-label="Prisme, accueil">
+      <img src="/assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="/assets/img/prisme-lettrage.png" alt="Prisme" width="115" height="15">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#fonctionnalites">Fonctionnalités</a></li>
+      <li><a href="/#mur">Le Mur</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/#tarifs">Tarif</a></li>
+      <li><a href="/#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="/telecharger.html" data-link="trial">Essai gratuit</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<!-- /en-tete -->
+
+<main id="contenu">
+  <article class="guide">
+    <div class="container prose">
+      <nav class="ariane" aria-label="Fil d'Ariane"><ol><li><a href="/">Prisme</a></li><li aria-current="page">Guides</li></ol></nav>
+      <h1>Guides : trier, ranger, réparer et regarder ses vidéos et photos</h1>
+      <p class="lead">Des réponses concrètes aux problèmes de tous ceux qui ont trop de vidéos et de photos : les doublons, les fichiers abîmés, le son trop bas, le NAS, la télé. Chaque guide donne d'abord les solutions gratuites, puis ce que Prisme fait de plus, et ce qu'il ne fait pas.</p>
+      <!-- sommaire : écrit par scripts/gabarit.py -->
+      <section class="guides-theme">
+        <h2>Trier et organiser</h2>
+        <div class="guides-grille">
+          <a class="carte-guide" href="/organiser-photos-videos-pc/"><b>Organiser ses photos et vidéos sur PC</b><span>La méthode complète : arborescence, noms, tri, doublons, sauvegarde.</span></a>
+          <a class="carte-guide" href="/logiciel-tri-photos-videos/"><b>Un logiciel pour trier ses photos et vidéos</b><span>Une touche par décision, la suivante s&#x27;affiche : trier des milliers de fichiers en une soirée.</span></a>
+          <a class="carte-guide" href="/trier-des-milliers-de-photos/"><b>Trier des milliers de photos</b><span>Une méthode en trois passes pour venir à bout d&#x27;années de photos en retard.</span></a>
+        </div>
+      </section>
+      <section class="guides-theme">
+        <h2>Doublons et place disque</h2>
+        <div class="guides-grille">
+          <a class="carte-guide" href="/doublons-videos-photos/"><b>Trouver les vidéos et photos en double</b><span>Copies exactes, mais aussi la même vidéo réencodée, la même photo convertie ou réduite.</span></a>
+        </div>
+      </section>
+      <section class="guides-theme">
+        <h2>Réparer</h2>
+        <div class="guides-grille">
+          <a class="carte-guide" href="/reparer-video-corrompue/"><b>Réparer une vidéo corrompue</b><span>MP4, MOV ou MKV illisible, image qui se fige, pavés de couleur : que faire, dans l&#x27;ordre.</span></a>
+        </div>
+      </section>
+      <section class="guides-theme">
+        <h2>Regarder</h2>
+        <div class="guides-grille">
+          <a class="carte-guide" href="/egaliser-volume-videos/"><b>Égaliser le son de plusieurs vidéos</b><span>Des vidéos trop basses, d&#x27;autres trop fortes : les remonter à la lecture ou pour de bon.</span></a>
+          <a class="carte-guide" href="/lire-plusieurs-videos-en-meme-temps/"><b>Lire plusieurs vidéos en même temps</b><span>De 2 à 10 vidéos à l&#x27;écran, chacune son lecteur : passer en revue des dizaines de plans.</span></a>
+          <a class="carte-guide" href="/lecteur-video-toujours-au-premier-plan/"><b>Un lecteur vidéo toujours au premier plan</b><span>Garder la vidéo à l&#x27;écran pendant qu&#x27;on travaille dans une autre fenêtre.</span></a>
+        </div>
+      </section>
+      <section class="guides-theme">
+        <h2>NAS, télé et téléphone</h2>
+        <div class="guides-grille">
+          <a class="carte-guide" href="/alternative-video-station-synology/"><b>Remplacer Video Station sur un NAS Synology</b><span>Video Station a disparu de DSM : les solutions pour regarder ses vidéos du NAS.</span></a>
+          <a class="carte-guide" href="/regarder-videos-pc-sur-tv/"><b>Regarder les vidéos du PC sur la télé</b><span>Câble, partage réseau, Fire TV, Android TV : les solutions, du plus simple au plus complet.</span></a>
+          <a class="carte-guide" href="/plex-jellyfin-ou-prisme/"><b>Plex, Jellyfin ou Prisme ?</b><span>Un serveur de films ou un outil de tri : lequel choisir, et quand les combiner.</span></a>
+        </div>
+      </section>
+      <section class="guides-theme">
+        <h2>Retrouver</h2>
+        <div class="guides-grille">
+          <a class="carte-guide" href="/retrouver-une-video-par-son-contenu/"><b>Retrouver une vidéo par ce qu&#x27;elle montre</b><span>Décrire la scène et laisser l&#x27;ordinateur chercher, sans rien envoyer sur Internet.</span></a>
+        </div>
+      </section>
+      <section class="guides-theme">
+        <h2>Alternatives</h2>
+        <div class="guides-grille">
+          <a class="carte-guide" href="/alternative-picasa/"><b>Une alternative à Picasa sur Windows 10 et 11</b><span>Classer et regarder ses photos en local, sans compte ni cloud.</span></a>
+        </div>
+      </section>
+      <!-- /sommaire -->
+      <div class="cta-guide">
+        <h2>Prisme, le logiciel de tri pour vos vidéos et vos photos</h2>
+        <p>Une touche pour décider, la suivante s'affiche aussitôt. Logiciel Windows, 100 % local, essai gratuit de 14 jours sans carte bancaire.</p>
+        <div class="cta-actions"><a class="btn btn-primary" href="/telecharger.html" data-link="trial">Essayer gratuitement</a><a class="btn btn-ghost" href="/">Découvrir Prisme</a></div>
+      </div>
+    </div>
+  </article>
+</main>
+
+<!-- pied : écrit par scripts/gabarit.py -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/"><img src="/assets/img/prisme.png" alt="" width="32" height="32"><img class="brand-word" src="/assets/img/prisme-lettrage.png" alt="Prisme" width="115" height="15"></a>
+        <p>Le logiciel Windows pour trier, ranger et regarder vos vidéos et vos photos, au clavier. 100 % local.</p>
+      </div>
+      <div>
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="/#fonctionnalites">Fonctionnalités</a></li>
+          <li><a href="/#mur">Le Mur</a></li>
+          <li><a href="/#confiance">Confiance</a></li>
+          <li><a href="/#tarifs">Tarif</a></li>
+          <li><a href="/telecharger.html" data-link="trial">Télécharger</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="/organiser-photos-videos-pc/">Organiser ses photos et vidéos sur PC</a></li>
+          <li><a href="/doublons-videos-photos/">Trouver les vidéos et photos en double</a></li>
+          <li><a href="/reparer-video-corrompue/">Réparer une vidéo corrompue</a></li>
+          <li><a href="/alternative-video-station-synology/">Remplacer Video Station sur un NAS Synology</a></li>
+          <li><a href="/regarder-videos-pc-sur-tv/">Regarder les vidéos du PC sur la télé</a></li>
+          <li><a href="/guides/">Tous les guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Aide</h4>
+        <ul>
+          <li><a href="/#faq">Questions fréquentes</a></li>
+          <li><a href="mailto:contact@prisme.app" data-link="contact">Contact</a></li>
+          <li><a href="/#tarifs" data-link="account">Mon compte</a></li>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+          <li><a href="/cgv.html">Conditions de vente</a></li>
+          <li><a href="/confidentialite.html">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Prisme est un logiciel : il n'héberge ni ne fournit aucun contenu.</span>
+      <span>© <span data-year>2026</span> Prisme. Tous droits réservés.</span>
+    </div>
+  </div>
+</footer>
+<!-- /pied -->
+
+</body>
+</html>

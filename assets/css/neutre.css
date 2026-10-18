@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Prisme — version neutre du site (dossier /neutre/)
+   S'ajoute à site.css, scenes.css et clean.css, chargée en dernier.
+   ========================================================================== */
+
+/* PROVISOIRE : le petit sélecteur de version (neutre / racine du site).
+   À RETIRER (avec son HTML) avant toute validation Stripe, Google ou Facebook. */
+.ver-switch { display: inline-flex; gap: 2px; padding: 3px; margin-right: 6px; border-radius: 999px; background: rgba(255,255,255,.04); box-shadow: inset 0 0 0 1px var(--line-2); font-size: .74rem; font-family: var(--mono); letter-spacing: .04em; white-space: nowrap; }
+.ver-switch a { padding: 4px 10px; border-radius: 999px; color: var(--muted); }
+.ver-switch a:hover { color: var(--text); }
+.ver-switch a[aria-current="page"] { background: var(--surface-3); color: var(--text); }
+@media (max-width: 960px) {
+  /* Menu ouvert : on garde la marge latérale, et le sélecteur passe sous le bouton. */
+  .nav.is-open .nav-inner { padding-left: var(--gutter); padding-right: var(--gutter); }
+  .nav.is-open .nav-cta { flex-wrap: wrap; }
+  .nav.is-open .nav-cta .btn { flex: 1 1 100%; }
+  .nav.is-open .nav-cta .ver-switch { order: 5; margin: 6px 0 0; }
+}
+
+/* Les fausses photos (scenes.css) posent leur propre animation « flyover » :
+   on rend la main aux animations de la démo et du Mur de photos. */
+.player .art.fly-out { animation: flyout 0.55s var(--ease) forwards; }
+.player .art.fly-trash { animation: flytrash 0.55s var(--ease) forwards; }
+.player .art.fly-skip { animation: flyskip 0.5s var(--ease) forwards; }
+.player .art.fly-in { animation: flyin 0.55s var(--ease) both; }
+.ppanel .art[class*=' s'] { animation: flyover 18s ease-in-out infinite alternate, slide 18s linear infinite; }
+.ppanel .art[class*=' s']:nth-child(1) { animation-delay: 0s, var(--o, 0s); }
+.ppanel .art[class*=' s']:nth-child(2) { animation-delay: 0s, calc(var(--o, 0s) - 12s); }
+.ppanel .art[class*=' s']:nth-child(3) { animation-delay: 0s, calc(var(--o, 0s) - 6s); }
+@media (prefers-reduced-motion: reduce) {
+  .ppanel .art[class*=' s'] { animation: none; }
+  .ppanel .art[class*=' s']:first-child { opacity: 1; }
+}
+
+/* Démo : la pellicule réagit au survol, et une ligne honnête dessous */
+.strip .art { cursor: pointer; }
+.strip .art.hot { box-shadow: 0 0 0 1.5px var(--blue); }
+.demo-note { margin: 18px 0 0; text-align: center; font-size: 0.86rem; color: var(--dim); }
+
+/* Trois étapes */
+.steps3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.steps3 li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; padding: 22px; border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--line); }
+.steps3 b { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; font: 600 1.1rem var(--mono); color: #0a0b0e; background: var(--spectrum); }
+.steps3 h3 { font-size: 1.02rem; margin-bottom: 6px; }
+.steps3 p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+@media (max-width: 860px) { .steps3 { grid-template-columns: minmax(0, 1fr); } }
+
+/* Tuile « Réparez les vidéos abîmées » : avant / après, côte à côte */
+.repair-demo { display: grid; gap: 10px; }
+.repair-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.repair-pair > div { position: relative; overflow: hidden; aspect-ratio: 16 / 10; border-radius: 8px; background: #000; }
+.repair-pair .art { position: absolute; inset: 0; }
+.repair-pair em { position: absolute; left: 6px; top: 6px; z-index: 3; padding: 1px 7px; border-radius: 5px; font: 600 10px var(--mono); font-style: normal; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,.65); }
+.repair-pair .ok em { color: #9fe0bf; }
+.glitch { position: absolute; z-index: 2; display: block; }
+.glitch.g1 { left: 8%; top: 52%; width: 46%; height: 16%; background: repeating-linear-gradient(90deg, rgba(64,150,86,.92) 0 9px, rgba(140,60,132,.9) 9px 18px, rgba(96,112,44,.92) 18px 27px); }
+.glitch.g2 { left: 38%; top: 68%; width: 54%; height: 12%; background: repeating-linear-gradient(90deg, rgba(120,130,140,.95) 0 6px, rgba(84,92,104,.95) 6px 12px); }
+.glitch.g3 { left: 62%; top: 22%; width: 22%; height: 20%; background: repeating-linear-gradient(0deg, rgba(60,170,120,.85) 0 7px, rgba(30,90,70,.9) 7px 14px); }
+.repair-track { position: relative; height: 6px; border-radius: 4px; background: rgba(255,255,255,.07); }
+.repair-track i { position: absolute; top: 0; bottom: 0; border-radius: 3px; background: var(--red); }
+.repair-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px; font-size: 0.8rem; color: var(--muted); }
+.repair-meta b { color: var(--text-2); font-weight: 600; }
+
+/* Plusieurs racines : PC, disque externe, NAS réunis */
+.roots-demo { display: grid; gap: 8px; }
+.roots-demo div { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 9px; background: rgba(0,0,0,.3); box-shadow: inset 0 0 0 1px var(--line); font-size: 0.86rem; color: var(--text-2); }
+.roots-demo svg { width: 16px; height: 16px; color: var(--sky); flex: none; }
+.roots-demo span { margin-left: auto; font-family: var(--mono); font-size: 0.76rem; color: var(--dim); }
+
+/* Corbeille de séance */
+.undo-demo { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.undo-demo .kbd { font-size: 0.9rem; height: 2.3em; }
+
+/* « Et aussi » : une ligne par fonction */
+.also { margin-top: 16px; padding: clamp(22px, 3vw, 34px); border-radius: 22px; background: linear-gradient(180deg, var(--surface), var(--panel)); box-shadow: inset 0 0 0 1px var(--line); }
+.also h3 { font-size: 1.05rem; margin-bottom: 14px; }
+.also ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 32px; margin: 0; padding: 0; list-style: none; }
+.also li { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+.also li b { color: var(--text); font-weight: 600; }
+.also code { font-family: var(--mono); font-size: 0.82em; color: var(--text-2); }
+@media (max-width: 960px) { .also ul { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .also ul { grid-template-columns: minmax(0, 1fr); } }
+
+/* Confiance : vie privée, vitesse et sécurité en une seule bande */
+.trust-band .section-head { margin-bottom: clamp(30px, 4vw, 48px); }
+.trust3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(26px, 4vw, 48px); }
+.trust3 > div { display: grid; align-content: start; gap: 10px; }
+.trust3 h3 { display: flex; align-items: center; gap: 10px; font-size: 1.05rem; }
+.trust3 h3 svg { width: 19px; height: 19px; color: var(--blue); flex: none; }
+.trust3 p { margin: 0; color: var(--muted); font-size: 0.94rem; }
+.trust3 .figure { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1.1; color: var(--text); font-variant-numeric: tabular-nums; }
+.trust3 .figure small { font-size: 0.5em; color: var(--muted); font-weight: 500; letter-spacing: 0; margin-left: 4px; }
+@media (max-width: 900px) { .trust3 { grid-template-columns: minmax(0, 1fr); } }
+
+/* Tarif : la licence à offrir */
+.gift-note { font-size: .82rem; color: var(--dim); margin-top: 10px; }
+
+/* Téléphone : l'écran de la page mobile tient dans le cadre */
+.phone-screen .m-grid + .m-sec { padding-top: 2px; }
+
+/* Recherche par l'image (Labo IA, bêta) */
+.ai-demo { display: grid; gap: 10px; }
+.ai-query { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 12px; background: rgba(0,0,0,.35); box-shadow: inset 0 0 0 1px rgba(76,141,255,.45); font-size: .92rem; color: var(--text); }
+.ai-query::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--spectrum); flex: none; }
+.ai-results { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.ai-results .art { aspect-ratio: 16 / 10; border-radius: 6px; }
+.ai-results .art b { position: absolute; left: 5px; bottom: 4px; z-index: 2; font: 600 10px var(--mono); color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.8); }
+/* Sur un petit écran, le téléphone rétrécit (220 px) : les onglets doivent tenir. */
+@media (max-width: 480px) {
+  .phone-screen .m-head { padding-inline: 8px; }
+  .m-top { gap: 4px; }
+  .m-word { height: 7px; }
+  .m-tabs { gap: 2px; }
+  .m-tabs b { padding: 3px 4px; font-size: 7.5px; }
+}
