@@ -33,13 +33,21 @@ async function handle(event, stripe) {
           // L'e-mail de la clé, une seule fois par achat (Stripe peut rejouer l'événement).
           const client = await stripe.customers.retrieve(o.customer);
           if (client.metadata?.prisme_licence_envoyee !== o.id) {
-            const envoi = await envoyerLicence({
-              email: o.customer_details?.email,
-              licence,
-              planCle: KEY_PLAN[PLAN_OF_LOOKUP[o.metadata?.plan]],
-              lang: o.metadata?.lang === "en" ? "en" : "fr",
-              idempotence: `licence-${o.id}`,
-            });
+            // Un e-mail qui échoue (domaine pas encore vérifié chez Resend, panne) ne doit
+            // bloquer ni la vente ni sa trace : la clé reste affichée sur la page Merci et
+            // dans la fiche client Stripe, d'où le support la renvoie.
+            let envoi = "echec";
+            try {
+              envoi = await envoyerLicence({
+                email: o.customer_details?.email,
+                licence,
+                planCle: KEY_PLAN[PLAN_OF_LOOKUP[o.metadata?.plan]],
+                lang: o.metadata?.lang === "en" ? "en" : "fr",
+                idempotence: `licence-${o.id}`,
+              });
+            } catch (err) {
+              console.error("e-mail de la clé en échec", o.id, err.message);
+            }
             console.log("e-mail de la clé :", envoi, o.id);
             if (envoi === "envoye") {
               await stripe.customers.update(o.customer, { metadata: { prisme_licence_envoyee: o.id } });

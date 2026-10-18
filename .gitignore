@@ -1,3 +1,6 @@
 .DS_Store
 Thumbs.db
 node_modules/
+
+# État local de la commande de déploiement Netlify (ne jamais committer)
+.netlify

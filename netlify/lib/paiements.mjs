@@ -18,6 +18,26 @@ export function paiementsPrets() {
   return Boolean(process.env.PAIEMENTS_URL && process.env.PAIEMENTS_ANON_KEY && process.env.PAIEMENTS_SECRET);
 }
 
+/** Appelle une fonction de la base (rpc), avec le secret de Prisme. Lève une erreur si la base
+ *  n'est pas branchée ou refuse. Utilisé aussi par /api/activation (deux ordinateurs par licence,
+ *  migration 0048_prisme_activations.sql). */
+export async function appelerBase(fonction, corps) {
+  if (!paiementsPrets()) throw new Error("base non branchée (PAIEMENTS_URL, PAIEMENTS_ANON_KEY, PAIEMENTS_SECRET)");
+  const base = process.env.PAIEMENTS_URL.replace(/\/+$/, "");
+  const anon = process.env.PAIEMENTS_ANON_KEY;
+  const res = await fetch(`${base}/rest/v1/rpc/${fonction}`, {
+    method: "POST",
+    headers: { apikey: anon, Authorization: `Bearer ${anon}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ p_secret: process.env.PAIEMENTS_SECRET, ...corps }),
+    signal: AbortSignal.timeout(10_000),
+  });
+  if (!res.ok) {
+    const detail = await res.text().catch(() => "");
+    throw new Error(`${fonction} ${res.status} ${detail.slice(0, 200)}`);
+  }
+  return res.json();
+}
+
 /** Note un événement de paiement. Ne fait rien si la table n'est pas branchée ; lève une erreur
  *  si elle l'est mais refuse (le webhook répond alors 500 et Stripe rejouera l'événement). */
 export async function noterPaiement(ligne) {

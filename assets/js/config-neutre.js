@@ -17,7 +17,7 @@ window.PRISME_CONFIG = {
     // Espace client Stripe : factures, carte, résiliation (connexion par e-mail)
     account: "https://billing.stripe.com/p/login/8x25kD0cR5HRdd6c5t5os00",
     // Adresse de contact
-    contact: "mailto:contact@prisme.app"
+    contact: "mailto:contact@prisme-desktop.com"
   },
   checkout: true
 };

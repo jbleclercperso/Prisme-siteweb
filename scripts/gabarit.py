@@ -213,7 +213,7 @@ def pied():
         <h4>Aide</h4>
         <ul>
           <li><a href="/#faq">Questions fréquentes</a></li>
-          <li><a href="mailto:contact@prisme.app" data-link="contact">Contact</a></li>
+          <li><a href="mailto:contact@prisme-desktop.com" data-link="contact">Contact</a></li>
           <li><a href="/#tarifs" data-link="account">Mon compte</a></li>
           <li><a href="/mentions-legales.html">Mentions légales</a></li>
           <li><a href="/cgv.html">Conditions de vente</a></li>

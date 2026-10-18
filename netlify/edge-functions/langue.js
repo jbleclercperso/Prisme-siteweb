@@ -109,5 +109,6 @@ export default async (req) => {
 export const config = {
   path: "/*",
   excludedPath: ["/assets/*", "/api/*", "/telechargements/*", "/tv.apk", "/favicon.ico", "/robots.txt", "/sitemap.xml"],
-  method: ["GET", "HEAD"],
+  // Netlify n'accepte pas « HEAD » ici (manifeste refusé au déploiement du 18/10) : GET seul.
+  method: ["GET"],
 };

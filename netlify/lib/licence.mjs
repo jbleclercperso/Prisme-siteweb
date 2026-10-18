@@ -37,10 +37,30 @@ export function publicKeyBase64(key) {
   return crypto.createPublicKey(key).export({ format: "der", type: "spki" }).subarray(-32).toString("base64");
 }
 
-export function makeKey(payload, key) {
+export function makeKey(payload, key, prefix = PREFIX) {
   const bytes = Buffer.from(JSON.stringify(payload), "utf8");
   const signature = crypto.sign(null, bytes, key).toString("base64url");
-  return `${PREFIX}${bytes.toString("base64url")}.${signature}`;
+  return `${prefix}${bytes.toString("base64url")}.${signature}`;
+}
+
+// L'activation d'un ordinateur (deux au plus par licence, /api/activation) : un petit jeton
+// signé avec la même clé, sous un autre préfixe pour qu'on ne puisse jamais le prendre pour
+// une clé de licence. Prisme le garde et vérifie, sans connexion, qu'il désigne bien cette
+// licence ET cet ordinateur : recopier ses réglages sur un troisième PC ne suffit pas.
+//   { lid: <licence>, machine: <empreinte de l'ordinateur>, issued }
+export const ACTIVATION_PREFIX = "PRISMEA1-";
+export const MAX_ORDINATEURS = 2;
+
+export function makeActivation(payload, key) {
+  return makeKey(payload, key, ACTIVATION_PREFIX);
+}
+
+// L'identifiant stable d'une licence : l'abonnement Stripe (il ne change pas quand la clé se
+// prolonge), ou, pour la licence à vie, le client et la date d'achat. Même calcul dans
+// videosorter/licence.py (licence_id).
+export function licenceId(payload) {
+  if (payload.subscription) return String(payload.subscription);
+  return `${payload.customer || ""}:${Number(payload.issued) || 0}`;
 }
 
 // Le contenu d'une clé signée par nous, ou null.
