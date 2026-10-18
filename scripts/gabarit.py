@@ -142,12 +142,7 @@ TEXTES = {"fr": {"voisins": "À lire aussi"}, "en": {"voisins": "Read next"}}
 def guides_adultes(lang):
     """Les guides adultes d'une langue : adresse → (titre, accroche)."""
     i = 0 if lang == "fr" else 1
-    fiches = {ADULTE[lang] + slugs[i] + "/": (fr if lang == "fr" else en) for slugs, fr, en in GUIDES_ADULTES}
-    if lang == "fr":
-        fiches["/adulte/tv.html"] = ("Regarder sa collection sur la télé", "Retrouver sa bibliothèque Prisme sur grand écran, avec la télécommande.")
-    else:
-        fiches["/en/adult/tv.html"] = ("Watch your collection on TV", "Browse your Prisme library on the big screen with the remote.")
-    return fiches
+    return {ADULTE[lang] + slugs[i] + "/": (fr if lang == "fr" else en) for slugs, fr, en in GUIDES_ADULTES}
 
 
 def url_adulte(slug_fr, lang):
