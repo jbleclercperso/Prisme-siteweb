@@ -120,6 +120,8 @@ python -m http.server 8000
 ## Mettre en ligne
 
 **Netlify** (recommandé) : relier ce dépôt, sans commande de build, dossier publié `.`.
+**Branche publiée : `main`** (projet Netlify `prisme-website`, domaine prisme-desktop.com, réglé le
+18/10/2026). Un travail fait sur une autre branche n'est en ligne qu'une fois fusionné dans `main`.
 Netlify installe tout seul la seule dépendance (`stripe`, pour les fonctions de
 paiement). `netlify.toml` fixe les en-têtes de sécurité, le cache, et masque ce qui
 n'est pas une page (`node_modules`, `netlify/`, `scripts/`). Le formulaire d'accès
