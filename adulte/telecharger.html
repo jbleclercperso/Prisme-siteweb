@@ -166,7 +166,7 @@
   <div class="gate-card">
     <img src="/assets/img/prisme.png" alt="" width="64" height="64">
     <span class="gate-badge">18+</span>
-    <h2 id="gate-title">Réservé aux adultes</h2>
+    <strong class="gate-title" id="gate-title">Réservé aux adultes</strong>
     <p id="gate-desc">Prisme est un logiciel conçu pour organiser des collections de vidéos pour adultes. Ce site ne contient aucune image explicite, mais s'adresse exclusivement aux personnes majeures.</p>
     <div class="gate-actions">
       <button class="btn btn-primary btn-block" type="button" data-gate="enter">J'ai 18 ans ou plus — Entrer</button>
@@ -206,9 +206,9 @@
       <div class="download-card">
         <div>
           <span class="eyebrow">Télécharger</span>
-          <h1 class="display" style="font-size:clamp(2.4rem,5vw,4rem);margin-top:20px">Prisme arrive <em>très bientôt.</em></h1>
-          <p class="lead" style="margin-top:24px">Nous mettons la dernière main à la version publique. Laissez votre adresse : vous serez parmi les premiers à pouvoir l'essayer, avec un tarif de lancement réservé aux inscrits.</p>
-          <div data-download-ready hidden style="margin-top:32px">
+          <h1 class="display" style="font-size:clamp(2.4rem,5vw,4rem);margin-top:20px">Essayez Prisme <em>pendant 14 jours.</em></h1>
+          <p class="lead" style="margin-top:24px">Toutes les fonctionnalités, sans carte bancaire. Vos vidéos, vos photos et leur analyse restent sur votre ordinateur.</p>
+          <div data-download-ready style="margin-top:32px">
             <a class="btn btn-primary" href="#" data-link="trial"><svg><use href="#i-download"/></svg>Télécharger Prisme pour Windows</a>
             <span class="btn-note">Essai gratuit de 14 jours · sans carte bancaire</span>
           </div>
@@ -220,26 +220,18 @@
             <li>Essai <span>14 jours gratuits, toutes fonctionnalités, sans carte bancaire</span></li>
           </ul>
         </div>
-        <div class="form" id="waitlist">
-          <form name="acces-anticipe" method="POST" data-netlify="true" netlify-honeypot="societe" action="telecharger.html?merci">
-            <input type="hidden" name="form-name" value="acces-anticipe">
-            <input type="hidden" name="langue" value="fr">
-            <p hidden><label>Ne pas remplir : <input name="societe"></label></p>
-            <h2 class="h3" style="margin-bottom:8px">Accès anticipé</h2>
-            <p class="muted" style="margin:0 0 24px;font-size:.95rem">Un seul e-mail le jour du lancement. Pas de publicité, pas de revente.</p>
-            <label for="email">Votre adresse e-mail</label>
-            <input id="email" type="email" name="email" required autocomplete="email" placeholder="vous@exemple.fr">
-            <label class="consent"><input type="checkbox" name="majeur" required> <span>Je confirme être majeur·e et accepte de recevoir l'e-mail de lancement de Prisme.</span></label>
-            <button class="btn btn-primary btn-block" type="submit">Me prévenir du lancement</button>
-            <p class="fine">Conseil discrétion : utilisez l'adresse de votre choix. Voir notre <a href="confidentialite.html" style="text-decoration:underline">politique de confidentialité</a>.</p>
-            <p class="fine" data-form-error hidden style="color:var(--red)">L'envoi n'a pas abouti. Réessayez dans un instant, ou écrivez-nous directement.</p>
-          </form>
-          <div class="form-ok" role="status">
-            <img src="/assets/img/prisme.png" alt="" width="56" height="56" style="margin:0 auto 18px;border-radius:14px">
-            <h2 class="h3">C'est noté.</h2>
-            <p class="muted">Vous recevrez un seul e-mail, le jour où Prisme sera disponible.</p>
-          </div>
-        </div>
+        <aside class="form" aria-label="Informations sur l'essai">
+          <img src="/assets/img/prisme.png" alt="" width="56" height="56" style="margin:0 0 18px;border-radius:14px">
+          <h2 class="h3" style="margin-bottom:12px">Un vrai essai, pas une démo limitée</h2>
+          <ul class="req-list" style="margin-top:20px">
+            <li>Durée <span>14 jours</span></li>
+            <li>Fonctions <span>Toutes incluses</span></li>
+            <li>Paiement <span>Aucune carte demandée</span></li>
+            <li>Compte <span>Aucun compte à créer</span></li>
+            <li>Données <span>Traitement local sur le PC</span></li>
+          </ul>
+          <p class="fine">Besoin d'aide ? <a href="mailto:contact@prisme-desktop.com" data-link="contact" style="text-decoration:underline">contact@prisme-desktop.com</a></p>
+        </aside>
       </div>
     </div>
   </section>

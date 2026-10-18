@@ -4,6 +4,8 @@
   "type": "module",
   "description": "Site de Prisme : pages statiques, et quatre fonctions Netlify pour le paiement Stripe et les licences.",
   "scripts": {
+    "site:build": "python scripts/contenu-seo-2026.py && python scripts/gabarit.py && python scripts/seo.py && python scripts/umami.py",
+    "site:check": "python scripts/verifier.py && python scripts/audit-seo.py",
     "stripe:setup": "node scripts/stripe-setup.mjs",
     "licence:keys": "node scripts/licence-keys.mjs",
     "licence:issue": "node scripts/licence-keys.mjs issue"

@@ -141,6 +141,14 @@
       "@type": "Answer",
       "text": "Stash interroge des bases en ligne pour récupérer les fiches, si vous l'activez. Plex passe par un compte en ligne. Prisme est entièrement local : aucun compte, aucune télémétrie, et la recherche par IA tourne sur votre PC."
      }
+    },
+    {
+     "@type": "Question",
+     "name": "Quel logiciel choisir pour une collection stockée sur un NAS ?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Plex ou Jellyfin sont adaptés à la diffusion vers de nombreux appareils. Stash ajoute un catalogue spécialisé. Prisme est utile en amont pour trier dans les dossiers du NAS, trouver les doublons et conserver une arborescence compréhensible sans base de données."
+     }
     }
    ]
   }
@@ -204,7 +212,7 @@
   <div class="gate-card">
     <img src="/assets/img/prisme.png" alt="" width="64" height="64">
     <span class="gate-badge">18+</span>
-    <h2 id="gate-title">Réservé aux adultes</h2>
+    <strong class="gate-title" id="gate-title">Réservé aux adultes</strong>
     <p id="gate-desc">Prisme est un logiciel conçu pour organiser des collections de vidéos pour adultes. Ce site ne contient aucune image explicite, mais s'adresse exclusivement aux personnes majeures.</p>
     <div class="gate-actions">
       <button class="btn btn-primary btn-block" type="button" data-gate="enter">J'ai 18 ans ou plus — Entrer</button>
@@ -247,13 +255,15 @@
 
       <div class="bref">
         <b class="bref-titre">En bref</b>
-        <p><strong>Stash</strong> est la référence gratuite : un serveur qui catalogue chaque scène (actrices, studios, tags) et va chercher les fiches sur Internet. C'est puissant, mais à installer et à faire tourner comme un serveur. <strong>Plex et Jellyfin</strong> lisent tout mais ne sont pas faits pour ce contenu.</p>
-        <p><strong>Prisme</strong> est un logiciel Windows qu'on installe et qui marche. Il est pensé pour trier vite, au clavier, dans de vrais dossiers, regarder avec des aperçus, et rester discret. Il ne va pas chercher de fiches en ligne.</p>
+        <p><strong>Stash</strong> reste la référence gratuite pour créer un catalogue détaillé. <strong>The Vault</strong> privilégie une bibliothèque visuelle locale. <strong>NSFW Manager</strong> sert surtout à détecter et isoler du contenu sensible. <strong>Plex et Jellyfin</strong> sont d'excellents serveurs de lecture, mais n'aident guère au tri.</p>
+        <p><strong>Prisme</strong> est une application Windows pensée pour le problème situé en amont : prévisualiser, décider et ranger vite dans de vrais dossiers. Il ajoute ensuite les doublons, la recherche et la lecture, sans récupérer de fiches en ligne.</p>
       </div>
 
-      <h2>Les trois familles d'outils</h2>
+      <h2>Les familles d'outils ne répondent pas au même besoin</h2>
       <ul>
         <li><strong>Les catalogues spécialisés</strong> (Stash, Porn-Vault) : une base de données de vos scènes, consultée dans le navigateur, avec des métadonnées détaillées.</li>
+        <li><strong>Les bibliothèques visuelles locales</strong> (The Vault) : galerie, tags et fonctions hors ligne pour parcourir une collection.</li>
+        <li><strong>Les détecteurs</strong> (NSFW Manager) : ils cherchent et isolent les fichiers sensibles dispersés sur une machine ; ils ne remplacent pas une bibliothèque.</li>
         <li><strong>Les médiathèques généralistes</strong> (Plex, Jellyfin, Emby, Kodi) : faites pour les films et les séries, détournées pour ce contenu.</li>
         <li><strong>Les logiciels de bureau</strong> (Prisme) : une application qu'on ouvre sur le PC, qui travaille directement sur les dossiers.</li>
       </ul>
@@ -277,6 +287,15 @@
         </table>
       </div>
 
+      <h2>Choisir d'abord le problème à résoudre</h2>
+      <ul>
+        <li>Vous voulez des fiches par scène, studio ou interprète : commencez par <strong>Stash</strong>.</li>
+        <li>Vous cherchez une galerie gratuite, open source et disponible aussi sur Android : comparez <a href="/adulte/alternative-the-vault/">The Vault et Prisme</a>.</li>
+        <li>Vous devez d'abord retrouver du contenu sensible dispersé sur un PC : lisez le comparatif <a href="/adulte/alternative-nsfw-manager/">NSFW Manager ou Prisme</a>.</li>
+        <li>Votre collection vit sur un stockage réseau : suivez la méthode pour <a href="/adulte/organiser-collection-porno-nas/">organiser une collection sur un NAS</a>.</li>
+        <li>Vous voulez surtout déplacer rapidement chaque fichier vers le bon dossier : c'est le cœur de Prisme.</li>
+      </ul>
+
       <h2>Stash, si vous voulez un vrai catalogue</h2>
       <p>Stash est le projet libre le plus actif. Il analyse votre collection et identifie chaque scène par son empreinte, puis récupère sa fiche (titre, actrices, studio, date, tags) dans des bases communautaires. Vous la consultez ensuite comme un site privé, dans le navigateur. Si vous voulez tout savoir de chaque vidéo et chercher par actrice ou par studio, c'est l'outil. En contrepartie, c'est un serveur : il faut le lancer, régler l'analyse, générer les aperçus (long sur une grosse collection) et l'entretenir. Et il range dans sa base, pas dans vos dossiers. Voir notre page <a href="/adulte/alternative-stash/">alternative à Stash</a>.</p>
 
@@ -284,9 +303,9 @@
       <p>Ils lisent tout et ont de bonnes applications pour la télé, mais ne reconnaissent pas ce contenu et n'aident pas à le trier. Ils demandent aussi un peu de soin pour qu'une bibliothèque reste privée. Le détail est dans <a href="/adulte/plex-jellyfin-porno/">Plex ou Jellyfin pour le porno</a>.</p>
 
       <h2>Prisme, si votre problème est le désordre</h2>
-      <p>Prisme part d'un autre constat : la plupart des collections n'ont pas besoin de fiches, elles ont besoin d'être triées. Vous ouvrez un dossier, les aperçus de chaque vidéo défilent au survol. Une touche envoie la vidéo dans la bonne catégorie, la suivante s'affiche aussitôt. Une heure suffit pour ranger ce qui traînait depuis des mois.</p>
+      <p>Prisme part d'un autre constat : avant d'enrichir une collection, il faut souvent remettre de l'ordre dans les fichiers. Vous ouvrez un dossier, les aperçus de chaque vidéo défilent au survol. Une touche envoie la vidéo dans la bonne catégorie, la suivante s'affiche aussitôt.</p>
       <ul>
-        <li><strong>Trier</strong> : jusqu'à trente catégories, une touche chacune, le menu radial au clic droit, l'annulation de chaque geste (<a href="/adulte/trier-videos-porno/">en détail</a>).</li>
+        <li><strong>Trier</strong> : jusqu'à 29 catégories, une touche chacune, le menu radial au clic droit, l'annulation de chaque geste (<a href="/adulte/trier-videos-porno/">en détail</a>).</li>
         <li><strong>Regarder</strong> : aperçus au survol, le Mur de deux à dix vidéos, le lecteur flottant (<a href="/adulte/lecteur-video-porno-apercus/">en détail</a>).</li>
         <li><strong>Retrouver</strong> : mots-clés tirés automatiquement des noms de fichiers, recherche par description de scène avec une IA qui tourne sur le PC (<a href="/adulte/mots-cles-recherche-ia-porno/">en détail</a>).</li>
         <li><strong>Faire le ménage</strong> : doublons, même dans une autre résolution (<a href="/adulte/doublons-videos-porno/">en détail</a>), et réparation des vidéos abîmées.</li>
@@ -323,6 +342,10 @@
             <summary>Ces logiciels envoient-ils quelque chose sur Internet ?</summary>
             <div class="answer-body"><p>Stash interroge des bases en ligne pour récupérer les fiches, si vous l'activez. Plex passe par un compte en ligne. Prisme est entièrement local : aucun compte, aucune télémétrie, et la recherche par IA tourne sur votre PC.</p></div>
           </details>
+          <details>
+            <summary>Quel logiciel choisir pour une collection stockée sur un NAS ?</summary>
+            <div class="answer-body"><p>Plex ou Jellyfin sont adaptés à la diffusion vers de nombreux appareils. Stash ajoute un catalogue spécialisé. Prisme est utile en amont pour trier dans les dossiers du NAS, trouver les doublons et conserver une arborescence compréhensible sans base de données.</p></div>
+          </details>
         </div>
       </section>
       <!-- voisins : écrit par scripts/gabarit.py -->
@@ -330,8 +353,8 @@
         <h2>À lire aussi</h2>
         <div class="voisins-grille">
           <a href="/adulte/alternative-stash/"><b>Une alternative à Stash pour Windows</b><span>Sans serveur ni navigateur : quand choisir Prisme, quand garder Stash.</span></a>
-          <a href="/adulte/trier-videos-porno/"><b>Trier ses vidéos porno au clavier</b><span>Une touche par catégorie, la suivante aussitôt : la méthode.</span></a>
-          <a href="/adulte/plex-jellyfin-porno/"><b>Plex ou Jellyfin pour le porno</b><span>Ce qui marche, les limites, et les réglages pour rester privé.</span></a>
+          <a href="/adulte/alternative-the-vault/"><b>Une alternative à The Vault</b><span>Application de bureau ou bibliothèque visuelle : choisir selon sa façon de ranger.</span></a>
+          <a href="/adulte/organiser-collection-porno-nas/"><b>Organiser une collection porno sur un NAS</b><span>Dossiers réseau, tri, doublons, sauvegarde et accès privé, sans déplacer la bibliothèque.</span></a>
         </div>
       </nav>
       <!-- /voisins -->

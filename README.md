@@ -28,7 +28,7 @@ Les adresses d'avant ce partage (octobre 2026 : `/neutre/…`, `/merci.html`,
 | Fichier | Rôle |
 |---|---|
 | `index.html` | Grand public : démo interactive, fonctionnalités, Mur, photos, doublons, accès à distance, tarif, FAQ |
-| `telecharger.html` | Grand public : essai gratuit (pour l'instant formulaire d'accès anticipé) |
+| `telecharger.html` | Grand public : téléchargement et essai gratuit de 14 jours |
 | `cgv.html`, `confidentialite.html`, `mentions-legales.html` | Grand public : pages légales (modèles à compléter) |
 | `guides/…`, `<sujet>/index.html` | Grand public : une page par problème (doublons, réparation, NAS, télé…), voir `docs/plan-seo.md` |
 | `adulte/guides/…`, `adulte/<sujet>/`, `en/adult/guides/…`, `en/adult/<sujet>/` | Adulte : les guides, en français et en anglais (`scripts/gabarit.py`, `GUIDES_ADULTES`) |
@@ -48,9 +48,11 @@ FAQPage tirée de la FAQ de la page, BreadcrumbList, TechArticle, HowTo), et il
 écrit `sitemap.xml` et `robots.txt`.
 
 ```bash
-python scripts/gabarit.py     # en-tête, pied de page, « À lire aussi », sommaires des guides
-python scripts/seo.py         # après avoir ajouté une page ou changé un titre
-python scripts/verifier.py    # avant chaque envoi : liens, H1, JSON-LD, séparation des versions
+python scripts/contenu-seo-2026.py  # régénère les huit guides ajoutés en octobre 2026
+python scripts/gabarit.py            # en-tête, pied, maillage et sommaires
+python scripts/seo.py                # métadonnées, JSON-LD, sitemap et robots
+python scripts/verifier.py           # liens, H1, JSON-LD et séparation des versions
+python scripts/audit-seo.py          # canoniques, hreflang, sitemap, unicité et orphelins
 ```
 
 **Ajouter un guide** : copier un guide existant de la même version et de la
@@ -140,7 +142,7 @@ Les liens se règlent dans **`assets/js/config.js`** :
   Stripe intégré (Paddle, Lemon Squeezy, lien de paiement Stripe…).
 - `account` : espace client ; `contact` : adresse de contact.
 
-Laissés vides, les boutons mènent à la page d'accès anticipé.
+Laissés vides, les boutons conservent leur lien vers la page de téléchargement.
 
 ### Paiement Stripe
 
@@ -168,7 +170,7 @@ entre son e-mail, reçoit un lien, et y trouve factures, carte et résiliation.
    npm install
    STRIPE_SECRET_KEY=sk_test_… SITE_URL=https://prisme-desktop.com npm run stripe:setup
    ```
-   Le script crée le produit et ses trois prix (4,99 €/mois, 49,90 €/an, 99 € une
+   Le script crée le produit et ses trois prix (4,99 €/mois, 29 €/an, 49 € une
    fois, TTC, et le même montant en dollars pour les pages anglaises, retrouvés
    par leur *lookup key* `prisme_mensuel`, `prisme_annuel`, `prisme_a_vie`),
    active l'espace client et déclare le webhook. Sur un compte déjà préparé
@@ -244,21 +246,17 @@ la précédente, la télé reste appairée.
 
 Certains éléments sont des propositions commerciales, à confirmer ou corriger :
 
-- [ ] **Prix** : 4,99 €/mois, 49,90 €/an, 149 € à vie, vendue 99 € en offre de lancement,
-      et les mêmes montants en dollars (`index.html` et `en/index.html`, section `#tarifs`,
-      et `scripts/stripe-setup.mjs`). À la fin de l'offre : passer `prisme_a_vie` à 14900
-      (euros et dollars) dans le script et le relancer, retirer le prix barré et le bandeau
-      « Offre de lancement » dans les deux langues, corriger les CGV.
+- [ ] **Prix** : confirmer 4,99 €/mois, 29 €/an et 49 € à vie, avec les mêmes
+      montants en dollars (`index.html`, les deux accueils adultes et
+      `scripts/stripe-setup.mjs`).
 - [ ] **Logiciel en anglais** (prévu avant le lancement) : les pages anglaises citent les
       menus de Prisme et de Prisme TV en anglais (« Trial », ⋯ › Help › License…, Remote
       sharing…). Vérifier qu'ils portent ces noms dans les applications traduites, sinon
       corriger `en/thanks.html` et `en/tv.html`.
 - [ ] **Promesses** : essai 14 jours sans carte, 2 ordinateurs par licence,
       satisfait ou remboursé 14 jours, libellé bancaire discret, support par e-mail
-- [ ] **Nom de domaine** : pas encore acheté (sans doute `prism-desktop.com`).
-      Les balises utilisent l'adresse Netlify (`BASE` dans `scripts/seo.py`) ;
-      les adresses `contact@prisme-desktop.com` pointent vers un domaine qui n'est pas
-      le nôtre et doivent être remplacées
+- [x] **Nom de domaine et contact** : `prisme-desktop.com` dans les canoniques,
+      le sitemap et le robots.txt ; `contact@prisme-desktop.com` partout.
 - [ ] **Pages légales** : compléter les passages `[entre crochets]` et faire relire
 - [ ] **Prestataire de paiement** : Stripe est branché, mais ses conditions
       excluent les contenus pour adultes. Un logiciel qui organise des fichiers

@@ -136,8 +136,9 @@ PAGES = [
     page("confidentialite.html", "/confidentialite.html", "fr", "Confidentialité — Prisme",
          "Politique de confidentialité du logiciel Prisme et de son site : 100 % local, aucune "
          "télémétrie.", kind="legal", group="confidentialite"),
-    page("mentions-legales.html", "/mentions-legales.html", "fr", "Mentions légales — Prisme",
-         "Mentions légales du site Prisme.", kind="legal", group="mentions"),
+    page("mentions-legales.html", "/mentions-legales.html", "fr", "Mentions légales et informations éditeur | Prisme",
+         "Éditeur, hébergeur, propriété intellectuelle et coordonnées : les informations légales du site "
+         "et du logiciel Prisme.", kind="legal", group="mentions"),
     page("404.html", "/404.html", "fr", "Page introuvable — Prisme", "Cette page n'existe pas.",
          kind="404", index=False),
 
@@ -153,9 +154,9 @@ PAGES = [
           "Rassembler, choisir une arborescence, trier en trois passes, supprimer les doublons, "
           "sauvegarder : la méthode complète pour ranger photos et vidéos sur PC.",
           "Organiser ses photos et vidéos"),
-    guide("logiciel-tri-photos-videos", "Logiciel pour trier ses photos et vidéos (Windows) | Prisme",
-          "Prisme trie vos photos et vidéos au clavier : une touche range le fichier, le suivant "
-          "s'affiche. Aperçus des vidéos, doublons, NAS. 100 % local, essai gratuit.",
+    guide("logiciel-tri-photos-videos", "Quel logiciel pour trier photos et vidéos sur Windows ? | Prisme",
+          "Visionneuse, cloud, catalogue ou tri physique : choisissez le bon logiciel pour organiser "
+          "photos et vidéos, et découvrez le flux rapide de Prisme.",
           "Logiciel de tri"),
     guide("doublons-videos-photos", "Trouver les vidéos et photos en double sur PC | Prisme",
           "La même vidéo réencodée, la même photo en HEIC et en JPEG réduit : comment retrouver tous "
@@ -202,7 +203,14 @@ PAGES = [
           "Picasa est arrêté depuis 2016 : digiKam, XnView MP, FastStone, Photos de Windows ou Prisme, "
           "les alternatives locales pour classer et regarder vos photos, comparées.",
           "Alternative à Picasa"),
-
+    guide("trier-grand-dossier-videos", "Trier un grand dossier de vidéos rapidement | Prisme",
+          "Méthode en trois passes pour trier un dossier contenant des centaines ou milliers de vidéos : "
+          "décider vite, ranger au clavier, traiter les doublons et sauvegarder.",
+          "Trier un grand dossier de vidéos", published="2026-10-18"),
+    guide("organiser-videos-telechargees", "Organiser ses vidéos téléchargées sur Windows | Prisme",
+          "Noms de fichiers, arborescence, tri, doublons et sauvegarde : une méthode durable pour organiser "
+          "une grande collection de vidéos téléchargées légalement sur un PC.",
+          "Organiser ses vidéos téléchargées", published="2026-10-18"),
     # ------------------------------------------------------------ Adulte, français
     page("adulte/index.html", "/adulte/", "fr",
          "Prisme — Logiciel de gestion de vidéos porno pour Windows",
@@ -218,14 +226,16 @@ PAGES = [
     page("adulte/tv.html", "/adulte/tv.html", "fr", "Prisme TV — Votre bibliothèque sur la télé",
          "Installez Prisme TV sur Fire TV, Android TV ou Google TV : votre bibliothèque Prisme sur "
          "grand écran, à la télécommande.", version="adulte", kind="tv", group="adulte-tv"),
-    page("adulte/cgv.html", "/adulte/cgv.html", "fr", "Conditions générales de vente — Prisme",
-         "Conditions générales de vente du logiciel Prisme.", version="adulte", kind="legal",
+    page("adulte/cgv.html", "/adulte/cgv.html", "fr", "Conditions générales de vente du logiciel Prisme",
+         "Prix, licence, essai de 14 jours, paiement, résiliation et remboursement : les conditions "
+         "générales de vente du logiciel Prisme.", version="adulte", kind="legal",
          group="adulte-cgv"),
     page("adulte/confidentialite.html", "/adulte/confidentialite.html", "fr", "Confidentialité — Prisme",
          "Politique de confidentialité de Prisme : le logiciel fonctionne 100 % en local.",
          version="adulte", kind="legal", group="adulte-confidentialite"),
-    page("adulte/mentions-legales.html", "/adulte/mentions-legales.html", "fr", "Mentions légales — Prisme",
-         "Mentions légales du site Prisme.", version="adulte", kind="legal", group="adulte-mentions"),
+    page("adulte/mentions-legales.html", "/adulte/mentions-legales.html", "fr", "Mentions légales et informations éditeur | Prisme",
+         "Éditeur, hébergeur, propriété intellectuelle et coordonnées : les informations légales du site "
+         "et du logiciel Prisme.", version="adulte", kind="legal", group="adulte-mentions"),
     page("adulte/merci.html", "/adulte/merci.html", "fr", "Merci — Prisme", "Votre commande Prisme.",
          version="adulte", kind="merci", index=False),
     page("adulte/404.html", "/adulte/404.html", "fr", "Page introuvable — Prisme", "Cette page n'existe pas.",
@@ -298,6 +308,30 @@ PAGES = [
     aguide("en", "plex-jellyfin-porn", "Plex or Jellyfin for porn: what works, the limits | Prisme",
            "Plex and Jellyfin play everything, but sort nothing and need some settings to stay private: "
            "what works for an adult video collection.", "Plex or Jellyfin for porn", "a-plex"),
+    aguide("fr", "alternative-the-vault", "Alternative à The Vault pour organiser ses vidéos porno | Prisme",
+           "The Vault ou Prisme : comparatif des deux logiciels locaux pour organiser des photos et vidéos "
+           "pour adultes sur Windows, avec leurs forces, limites et usages.",
+           "Alternative à The Vault", "a-the-vault", published="2026-10-18"),
+    aguide("en", "the-vault-alternative", "The Vault alternative for Windows | Prisme",
+           "The Vault or Prisme: compare two local Windows tools for organizing adult photos and videos, "
+           "including their strengths, limitations and best use cases.",
+           "The Vault alternative", "a-the-vault", published="2026-10-18"),
+    aguide("fr", "alternative-nsfw-manager", "Alternative à NSFW Manager pour Windows | Prisme",
+           "NSFW Manager détecte et isole le contenu sensible ; Prisme aide à trier, ranger et regarder une "
+           "collection pour adultes. Comparatif pour choisir le bon outil.",
+           "Alternative à NSFW Manager", "a-nsfw-manager", published="2026-10-18"),
+    aguide("en", "nsfw-manager-alternative", "NSFW Manager alternative for Windows | Prisme",
+           "NSFW Manager detects and quarantines sensitive media; Prisme helps sort, file and watch an "
+           "adult collection. Compare them and choose the right tool.",
+           "NSFW Manager alternative", "a-nsfw-manager", published="2026-10-18"),
+    aguide("fr", "organiser-collection-porno-nas", "Organiser une collection porno sur un NAS | Prisme",
+           "Une méthode privée pour organiser une collection de vidéos pour adultes sur un NAS : dossiers "
+           "réseau, tri Windows, doublons, sauvegardes et accès depuis la télé.",
+           "Collection porno sur un NAS", "a-nas", published="2026-10-18"),
+    aguide("en", "organize-porn-collection-nas", "Organize a porn collection on a NAS | Prisme",
+           "A private workflow for an adult video collection on a NAS: network folders, Windows sorting, "
+           "duplicates, backups and access from the TV.",
+           "Porn collection on a NAS", "a-nas", published="2026-10-18"),
 
     # ------------------------------------------------------------ Adulte, anglais
     page("en/adult/index.html", "/en/adult/", "en",
@@ -313,13 +347,16 @@ PAGES = [
     page("en/adult/tv.html", "/en/adult/tv.html", "en", "Prisme TV — Your library on the TV",
          "Install Prisme TV on Fire TV, Android TV or Google TV: your Prisme library on the big screen, "
          "with the remote.", version="adulte", kind="tv", group="adulte-tv"),
-    page("en/adult/terms.html", "/en/adult/terms.html", "en", "Terms of sale — Prisme",
-         "Terms of sale for the Prisme software.", version="adulte", kind="legal", group="adulte-cgv"),
-    page("en/adult/privacy.html", "/en/adult/privacy.html", "en", "Privacy — Prisme",
-         "Prisme's privacy policy: the software runs 100% locally.", version="adulte", kind="legal",
+    page("en/adult/terms.html", "/en/adult/terms.html", "en", "Prisme software terms of sale and licence",
+         "Prices, licence, 14-day trial, payment, cancellation and refunds: read the terms of sale for "
+         "the Prisme Windows software.", version="adulte", kind="legal", group="adulte-cgv"),
+    page("en/adult/privacy.html", "/en/adult/privacy.html", "en", "Privacy policy for the Prisme Windows software",
+         "How the Prisme software and website handle data: local media processing, analytics, payment "
+         "information, retention and your privacy rights.", version="adulte", kind="legal",
          group="adulte-confidentialite"),
-    page("en/adult/legal-notice.html", "/en/adult/legal-notice.html", "en", "Legal notice — Prisme",
-         "Legal notice for the Prisme website.", version="adulte", kind="legal", group="adulte-mentions"),
+    page("en/adult/legal-notice.html", "/en/adult/legal-notice.html", "en", "Legal notice and publisher information | Prisme",
+         "Publisher, hosting provider, intellectual property and contact details for the Prisme website "
+         "and Windows software.", version="adulte", kind="legal", group="adulte-mentions"),
     page("en/adult/thanks.html", "/en/adult/thanks.html", "en", "Thank you — Prisme", "Your Prisme order.",
          version="adulte", kind="merci", index=False),
     page("en/adult/404.html", "/en/adult/404.html", "en", "Page not found — Prisme", "This page doesn't exist.",

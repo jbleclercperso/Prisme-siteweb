@@ -5,36 +5,37 @@ dans `netlify.toml`). Les relevés bruts de la recherche (mots-clés,
 concurrents) sont résumés ici ; les tableaux complets restent dans les notes
 de travail.
 
+> Mise à jour du 18/10/2026 : le chantier décrit ci-dessous est terminé dans
+> la copie de travail locale. Elle contient 63 pages, dont 57 indexables, et
+> passe `scripts/verifier.py` ainsi que `scripts/audit-seo.py` sans erreur.
+> Rien n'a été publié : les observations « en ligne » restent donc distinctes
+> de l'état local prêt à relire.
+
 ---
 
 ## 1. Audit du site existant
 
 ### 1.1 Ce qui est en ligne
 
-- Netlify, projet `prisme-website`, adresse **https://prisme-website.netlify.app**.
-- Branche de production : `claude/jolly-turing-14mvit`. La dernière mise en
-  ligne date du 03/10 (commit `8c04025`) : les trois commits suivants
-  (version neutre, anglais à jour, format des clés) sont sur la branche mais
-  **pas en ligne**. `/neutre/` répond 404 en production.
-- La branche par défaut du dépôt est `claude/stoic-lovelace-0b80zy`, au même
-  commit que `jolly-turing`. `main` est quasi vide.
+- Le domaine public est **https://prisme-desktop.com**.
+- Relevé du 18/10/2026 : la racine sert encore l'ancien accueil adulte,
+  `/guides/` répond 404, et le sitemap public ne contient que cinq URL avec
+  l'ancien domaine `www.prisme.app`.
+- Cette copie de travail corrige ces points, mais n'est volontairement pas
+  publiée. La mise en production devra faire l'objet d'une action séparée.
 
 ### 1.2 Le problème n° 1 : le nom de domaine
 
-Toutes les balises `canonical`, `hreflang`, `og:image`, le `sitemap.xml`, le
-`robots.txt` et les adresses `contact@` pointent vers **`www.prisme.app`**, qui
-**n'appartient pas au site** : il répond « erreur 530 » (Cloudflare, origine
-introuvable). Conséquences :
-
-- Google reçoit sur chaque page l'ordre « la vraie page est ailleurs », vers
-  une adresse morte. Au mieux il l'ignore, au pire il n'indexe rien.
-- Le sitemap déclaré est introuvable ; la Search Console ne peut pas être
-  reliée à un domaine qu'on ne possède pas.
-- **Bug visible des clients** : `tv.html` dit de taper `prisme.app/tv.apk`
-  dans Downloader. Sur la télé, cette adresse mène chez quelqu'un d'autre.
-- Les e-mails `contact@prisme.app` n'arrivent nulle part.
+Ce problème subsiste uniquement sur la version actuellement publiée. Dans la
+copie locale, toutes les balises `canonical`, `hreflang`, `og:image`, le
+`sitemap.xml` et le `robots.txt` utilisent **`prisme-desktop.com`**. L'adresse
+de contact unique est **`contact@prisme-desktop.com`**.
 
 ### 1.3 Le problème n° 2 : un site classé « adulte » face à des recherches grand public
+
+> Les sections 1.3 à 1.5 décrivent l'audit initial qui a motivé la séparation
+> des univers. Elles sont conservées comme historique ; les corrections sont
+> résumées aux sections 3 et 4.
 
 La racine du site (accueil, télécharger, TV, CGV…) est explicitement
 pornographique : titre « … votre collection porno », `<meta name="rating"
@@ -184,6 +185,8 @@ lie jamais la version adulte et n'en emploie pas le vocabulaire
   /plex-jellyfin-ou-prisme/
   /retrouver-une-video-par-son-contenu/
   /alternative-picasa/
+  /trier-grand-dossier-videos/
+  /organiser-videos-telechargees/
 
 /adulte/                               accueil adulte (FR)      ⇄  /en/adult/
 /adulte/telecharger.html, tv.html…     ses pages (FR)           ⇄  /en/adult/download.html…
@@ -196,6 +199,9 @@ lie jamais la version adulte et n'en emploie pas le vocabulaire
   mots-cles-recherche-ia-porno/                                 ⇄  auto-tag-porn-ai-search/
   cacher-videos-porno-pc/                                       ⇄  hide-porn-on-pc/
   plex-jellyfin-porno/                                          ⇄  plex-jellyfin-porn/
+  alternative-the-vault/                                       ⇄  the-vault-alternative/
+  alternative-nsfw-manager/                                    ⇄  nsfw-manager-alternative/
+  organiser-collection-porno-nas/                               ⇄  organize-porn-collection-nas/
 ```
 
 Les anciennes adresses (`/neutre/…`, `/merci.html`, `/en/…`, `/tv.html`)
@@ -210,7 +216,7 @@ traduction anglaise : `/en/…` mène pour l'instant à `/en/adult/…`.
 | `/reparer-video-corrompue/` | réparer vidéo corrompue | fichier mp4 corrompu que faire, vidéo endommagée, réparer avec VLC, mkv, GoPro, 0xc00d36c4 | info → produit |
 | `/doublons-videos-photos/` | logiciel doublons vidéo | supprimer vidéos en double sur PC, même vidéo en plusieurs résolutions, alternative dupeGuru | produit |
 | `/organiser-photos-videos-pc/` | organiser ses photos et vidéos sur PC | classer, ranger, faire le tri, arborescence, gestionnaire de fichiers | info (pilier) |
-| `/logiciel-tri-photos-videos/` | logiciel pour trier ses photos et vidéos | logiciel tri photo Windows, trier ses vidéos | produit |
+| `/logiciel-tri-photos-videos/` | logiciel pour trier ses photos et vidéos | comparatif logiciel tri photo vidéo Windows | comparatif → produit |
 | `/regarder-videos-pc-sur-tv/` | regarder les vidéos du PC sur la TV | film PC sur Fire TV sans Plex, Fire TV Stick NAS | info → produit |
 | `/egaliser-volume-videos/` | égaliser le son de plusieurs vidéos | vidéo son trop faible, augmenter le son d'une vidéo MP4 | info → produit |
 | `/plex-jellyfin-ou-prisme/` | plex ou jellyfin | alternative gratuite à Plex, Plex payant | comparatif |
@@ -219,6 +225,8 @@ traduction anglaise : `/en/…` mène pour l'instant à `/en/adult/…`.
 | `/trier-des-milliers-de-photos/` | comment trier des milliers de photos | trier ses photos rapidement | info |
 | `/alternative-picasa/` | alternative Picasa Windows 10 / 11 | équivalent Picasa, diaporama photo aléatoire | comparatif |
 | `/retrouver-une-video-par-son-contenu/` | retrouver une vidéo par son contenu | recherche par image locale | info → produit |
+| `/trier-grand-dossier-videos/` | trier un grand dossier de vidéos | trier des milliers de vidéos rapidement | méthode → produit |
+| `/organiser-videos-telechargees/` | organiser ses vidéos téléchargées | classer vidéothèque locale Windows | méthode → produit |
 
 ### 3.2 Adulte : les pages et leurs mots-clés
 
@@ -239,6 +247,9 @@ description.
 | `mots-cles-recherche-ia-porno/` | `auto-tag-porn-ai-search/` | taguer ses vidéos · porn tagger, auto tag porn, AI scene search |
 | `cacher-videos-porno-pc/` | `hide-porn-on-pc/` | cacher ses vidéos porno sur son PC, dossier secret · how to hide porn on pc |
 | `plex-jellyfin-porno/` | `plex-jellyfin-porn/` | plex / jellyfin porno · plex for porn, plex hide library |
+| `alternative-the-vault/` | `the-vault-alternative/` | alternative The Vault · The Vault alternative for Windows |
+| `alternative-nsfw-manager/` | `nsfw-manager-alternative/` | alternative NSFW Manager · sensitive media organizer |
+| `organiser-collection-porno-nas/` | `organize-porn-collection-nas/` | organiser collection porno NAS · porn collection NAS |
 
 ### 3.3 Gabarit de chaque page
 
@@ -267,7 +278,7 @@ description.
 
 ---
 
-## 4. Ce qui a été fait (17/10/2026)
+## 4. Ce qui a été fait (18/10/2026)
 
 1. **Séparation des deux versions** : neutre à la racine, adulte dans
    `/adulte/` et `/en/adult/` ; redirections des anciennes adresses ; bascule
@@ -276,29 +287,35 @@ description.
    hreflang, Open Graph, Twitter et données structurées de chaque page, plus
    `sitemap.xml` (avec `lastmod` et hreflang) et `robots.txt`, à partir d'une
    seule liste ; l'adresse du site est la constante `BASE` (aujourd'hui
-   `https://prisme-website.netlify.app`). Le grand titre de l'accueil ne passe
+   `https://prisme-desktop.com`). Le grand titre de l'accueil ne passe
    plus par l'animation d'entrée (LCP). Le `noindex` provisoire de la version
    neutre et son sélecteur « Adulte » sont retirés.
-3. **Contenu** : 13 guides grand public + sommaire ; 8 guides adultes en
-   français et en anglais + sommaires (54 pages en tout).
+3. **Contenu** : 15 guides grand public + sommaire ; 11 guides adultes en
+   français et leurs 11 équivalents anglais + sommaires (63 pages en tout,
+   57 indexables). Le silo grand public possède une page-pilier qui compare les
+   grandes familles d'outils, mais les pages de marque y restent limitées aux
+   intentions déjà fortes (Picasa, Plex/Jellyfin et Video Station). La page
+   pilier adulte compare aussi The Vault et NSFW Manager et renvoie vers le
+   guide NAS.
 4. **Contrôle** : `scripts/verifier.py` (liens et ancres, un H1, `alt`, JSON-LD
-   lisible et types connus, séparation des versions, balises à jour) ;
-   propriétés obligatoires des données structurées vérifiées ; rendu bureau et
-   téléphone (375 px) vérifié dans un navigateur.
+   lisible et types connus, séparation des versions, balises à jour) et
+   `scripts/audit-seo.py` (canoniques, hreflang réciproques, sitemap, unicité,
+   volume éditorial, maillage et pages orphelines). L'erreur d'encodage Windows
+   qui pouvait masquer un échec du sous-processus a été neutralisée.
+5. **Cohérence commerciale** : les pages de téléchargement adultes ne parlent
+   plus d'un lancement à venir ; elles présentent le même essai de 14 jours que
+   la version grand public. L'en-tête `noimageindex` est limité aux répertoires
+   adultes au lieu de bloquer aussi les images grand public.
 
 ## 5. Ce qui reste
 
 **De votre côté**
 
-- **Nom de domaine** (sans doute `prism-desktop.com`) : l'acheter, le brancher
-  dans Netlify, puis changer `BASE` dans `scripts/seo.py` et relancer le script.
-  Les adresses `contact@prisme.app` du site pointent vers un domaine qui n'est
-  pas le vôtre : à remplacer par une vraie adresse.
-- **Mise en ligne** : Netlify publie la branche `claude/jolly-turing-14mvit`,
-  dont la dernière publication date du 03/10. Le travail est sur la branche par
-  défaut `claude/stoic-lovelace-0b80zy`.
-- **Search Console** (une fois le domaine choisi, ou dès maintenant sur
-  l'adresse Netlify) : ajouter la propriété, envoyer `sitemap.xml`, demander
+- **Mise en ligne** : volontairement non faite. Relire le diff, fusionner la
+  copie locale dans le dépôt du site, lancer les deux audits, puis seulement
+  déclencher le déploiement lors d'une action séparée.
+- **Search Console** : ajouter ou vérifier la propriété du domaine, envoyer
+  `sitemap.xml`, demander
   l'indexation des pages principales ; **Bing Webmaster Tools** (import depuis
   la Search Console). Vérifier dans « Pages » que les pages neutres ne sont pas
   classées explicites (SafeSearch) au bout de quelques semaines.
@@ -324,15 +341,16 @@ description.
 - **Téléchargement multi-sites** (version adulte) : forte demande (« porn
   downloader »), mais risque juridique et vis-à-vis de Stripe ; pas de page
   sans votre accord.
-- **Prix** : 29 € à vie côté grand public, 4,99 €/mois · 49,90 €/an · 99 € à vie
-  côté adulte ; les guides n'en citent aucun.
+- **Prix** : confirmer la grille unique affichée dans les trois univers :
+  4,99 €/mois, 29 €/an ou 49 € à vie ; les guides n'en citent aucun.
 
-**Prochaines pages possibles**
+**Prochaines pages possibles, après observation des requêtes réelles**
 
 - Traduction anglaise de la version grand public (`/en/`) et de ses guides.
 - Grand public : regarder ses vidéos du PC sur son téléphone ; longue traîne
   de la réparation (erreur 0xc00d36c4, MP4 sans son, miniatures absentes dans
-  l'Explorateur) ; alternatives à Google Photos (local), Adobe Bridge, Duplicate
-  Video Search.
+  l'Explorateur). Une nouvelle page de marque ne sera créée que si la Search
+  Console révèle une intention qualifiée et suffisante ; pas de série
+  systématique de pages « alternative à ».
 - Adulte : la télé (quand Prisme TV sera vérifiée) ; le téléchargement (si
   vous le décidez).
