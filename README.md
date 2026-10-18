@@ -166,7 +166,7 @@ entre son e-mail, reçoit un lien, et y trouve factures, carte et résiliation.
 2. Préparer le compte, depuis ce dossier :
    ```bash
    npm install
-   STRIPE_SECRET_KEY=sk_test_… SITE_URL=https://www.prisme.app npm run stripe:setup
+   STRIPE_SECRET_KEY=sk_test_… SITE_URL=https://prisme-desktop.com npm run stripe:setup
    ```
    Le script crée le produit et ses trois prix (4,99 €/mois, 49,90 €/an, 99 € une
    fois, TTC, et le même montant en dollars pour les pages anglaises, retrouvés
@@ -257,7 +257,7 @@ Certains éléments sont des propositions commerciales, à confirmer ou corriger
       satisfait ou remboursé 14 jours, libellé bancaire discret, support par e-mail
 - [ ] **Nom de domaine** : pas encore acheté (sans doute `prism-desktop.com`).
       Les balises utilisent l'adresse Netlify (`BASE` dans `scripts/seo.py`) ;
-      les adresses `contact@prisme.app` pointent vers un domaine qui n'est pas
+      les adresses `contact@prisme-desktop.com` pointent vers un domaine qui n'est pas
       le nôtre et doivent être remplacées
 - [ ] **Pages légales** : compléter les passages `[entre crochets]` et faire relire
 - [ ] **Prestataire de paiement** : Stripe est branché, mais ses conditions

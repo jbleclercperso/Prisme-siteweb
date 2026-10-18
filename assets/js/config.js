@@ -19,7 +19,7 @@ window.PRISME_CONFIG = {
     // `npm run stripe:setup`) — factures, carte, résiliation.
     account: "https://billing.stripe.com/p/login/8x25kD0cR5HRdd6c5t5os00",
     // Adresse de contact
-    contact: "mailto:contact@prisme.app"
+    contact: "mailto:contact@prisme-desktop.com"
   },
   // Paiement Stripe intégré : passer à true une fois les clés posées dans
   // Netlify (voir le README). Les boutons de tarifs ouvrent alors la page de

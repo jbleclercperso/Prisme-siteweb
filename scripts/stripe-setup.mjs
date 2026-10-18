@@ -1,7 +1,7 @@
 // Prépare le compte Stripe pour Prisme, en une commande :
 //
 //   npm install
-//   STRIPE_SECRET_KEY=sk_test_… SITE_URL=https://www.prisme.app npm run stripe:setup
+//   STRIPE_SECRET_KEY=sk_test_… SITE_URL=https://prisme-desktop.com npm run stripe:setup
 //
 // Crée ce qui manque, et laisse tel quel ce qui existe déjà : on peut le
 // relancer sans risque, en mode test puis en mode réel (sk_live_…).
