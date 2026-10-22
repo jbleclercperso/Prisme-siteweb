@@ -27,6 +27,7 @@ const PAGES = [
   // Les guides de la version adulte (scripts/gabarit.py, GUIDES_ADULTES)
   { fr: "/adulte/guides/", en: "/en/adult/guides/" },
   { fr: "/adulte/logiciel-organiser-collection-porno/", en: "/en/adult/best-porn-organizer-software/" },
+  { fr: "/adulte/alternative-stash/", en: "/en/adult/stash-alternative/" },
   { fr: "/adulte/trier-videos-porno/", en: "/en/adult/sort-porn-videos/" },
   { fr: "/adulte/doublons-videos-porno/", en: "/en/adult/porn-duplicate-finder/" },
   { fr: "/adulte/lecteur-video-porno-apercus/", en: "/en/adult/porn-video-player-previews/" },

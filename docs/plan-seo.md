@@ -5,8 +5,8 @@ dans `netlify.toml`). Les relevés bruts de la recherche (mots-clés,
 concurrents) sont résumés ici ; les tableaux complets restent dans les notes
 de travail.
 
-> Mise à jour du 18/10/2026 : le chantier décrit ci-dessous est terminé dans
-> la copie de travail locale. Elle contient 55 pages, dont 49 indexables, et
+> Mise à jour du 22/10/2026 : le chantier décrit ci-dessous est terminé dans
+> la copie de travail locale. Elle contient 57 pages, dont 51 indexables, et
 > passe `scripts/verifier.py` ainsi que `scripts/audit-seo.py` sans erreur.
 > Rien n'a été publié : les observations « en ligne » restent donc distinctes
 > de l'état local prêt à relire.
@@ -126,9 +126,10 @@ suggestions et de variantes.
 
 ### 2.2 Les concurrents
 
-- **Organiser / trier ses vidéos** : presque personne en face. Le plus proche,
-  Fast Video Cataloger (local, recherche de scènes par IA), n'existe pas en
-  français.
+- **Organiser / trier ses vidéos** : le marché comprend désormais plusieurs
+  outils directs (VideoCull, SceneSort Pro, Diffractor, Video Hub App), en plus
+  de Fast Video Cataloger. Leur notoriété reste cependant trop limitée pour
+  justifier une page Prisme dédiée à chacun sans preuve d'une demande de marque.
 - **Doublons, réparation** : des « fermes » de comparatifs d'éditeurs
   (Tenorshare 4DDiG, Stellar, EaseUS, Cisdem) où l'éditeur se classe n° 1. Pages
   répétitives, souvent faibles ; EaseUS FR en 404, Repairit sans site FR.
@@ -283,12 +284,15 @@ description.
    plus par l'animation d'entrée (LCP). Le `noindex` provisoire de la version
    neutre et son sélecteur « Adulte » sont retirés.
 3. **Contenu** : 15 guides grand public + sommaire ; 7 guides adultes en
-   français et leurs 7 équivalents anglais + sommaires (55 pages en tout,
-   49 indexables). Le silo grand public possède une page-pilier qui compare les
+   français et leurs 7 équivalents anglais + sommaires, plus un comparatif
+   Stash approfondi dans chaque langue (57 pages en tout, 51 indexables). Le
+   silo grand public possède une page-pilier qui compare les
    grandes familles d'outils, mais les pages de marque y restent limitées aux
    intentions déjà fortes (Picasa, Plex/Jellyfin et Video Station). Le silo
-   adulte ne cite aucun concurrent : il démontre l'étendue de Prisme par les
-   besoins couverts et renvoie vers les guides spécialisés, le NAS et Prisme TV.
+   adulte démontre l'étendue de Prisme par les besoins couverts et renvoie vers
+   les guides spécialisés, le NAS et Prisme TV. Seul Stash reçoit un comparatif
+   de marque, lié discrètement depuis le guide-pilier et le sommaire, jamais
+   depuis le menu ni sous forme de carte mise en avant.
 4. **Contrôle** : `scripts/verifier.py` (liens et ancres, un H1, `alt`, JSON-LD
    lisible et types connus, séparation des versions, balises à jour) et
    `scripts/audit-seo.py` (canoniques, hreflang réciproques, sitemap, unicité,
