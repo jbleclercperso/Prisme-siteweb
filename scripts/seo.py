@@ -155,8 +155,8 @@ PAGES = [
           "sauvegarder : la méthode complète pour ranger photos et vidéos sur PC.",
           "Organiser ses photos et vidéos"),
     guide("logiciel-tri-photos-videos", "Quel logiciel pour trier photos et vidéos sur Windows ? | Prisme",
-          "Visionneuse, cloud, catalogue ou tri physique : choisissez le bon logiciel pour organiser "
-          "photos et vidéos, et découvrez le flux rapide de Prisme.",
+          "Comparez visionneuses, cloud, catalogues, Plex/Jellyfin et Prisme pour trier, organiser et "
+          "regarder une grande collection locale sous Windows.",
           "Logiciel de tri"),
     guide("doublons-videos-photos", "Trouver les vidéos et photos en double sur PC | Prisme",
           "La même vidéo réencodée, la même photo en HEIC et en JPEG réduit : comment retrouver tous "
@@ -261,6 +261,14 @@ PAGES = [
     aguide("en", "best-porn-organizer-software", "Complete porn library organizer for Windows | Prisme",
            "Prisme combines fast filing, previews, search, duplicates, repair, a multi-video Wall, NAS "
            "support and privacy tools to organize and watch an adult collection.", "Complete organizer", "a-comparatif"),
+    aguide("fr", "alternative-stash", "Alternative à Stash sur Windows : Prisme ou Stash ?",
+           "Stash ou Prisme : comparez catalogue web, tri physique, métadonnées, doublons, réparation "
+           "et lecture pour choisir le bon organisateur sous Windows.",
+           "Alternative à Stash", "a-stash", published="2026-10-22"),
+    aguide("en", "stash-alternative", "Stash alternative for Windows: Prisme or Stash?",
+           "Compare Stash and Prisme for cataloging, physical filing, metadata, duplicates, repair and "
+           "playback, then choose the right Windows organizer.",
+           "Stash alternative", "a-stash", published="2026-10-22"),
     aguide("fr", "trier-videos-porno", "Trier ses vidéos porno au clavier | Prisme",
            "Une touche par catégorie, la vidéo suivante aussitôt : la méthode pour ranger des milliers "
            "de vidéos pour adultes en une soirée, et l'outil qui la rend instantanée.",

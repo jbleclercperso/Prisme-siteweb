@@ -127,6 +127,15 @@ GUIDES_ADULTES = [
      ("Organiser une collection porno sur un NAS", "Dossiers réseau, tri, doublons, sauvegarde et accès privé, sans déplacer la bibliothèque."),
      ("Organize a porn collection on a NAS", "Network folders, sorting, duplicates, backups and private access without moving the library.")),
 ]
+
+# Ces pages répondent à une recherche de marque précise, mais restent hors des
+# cartes du centre de guides afin de ne pas détourner les visiteurs ordinaires.
+COMPARATIFS_ADULTES = [
+    (("alternative-stash", "stash-alternative"),
+     ("Alternative à Stash sur Windows", "Comparer deux méthodes : catalogue web ou tri complet dans de vrais dossiers."),
+     ("Stash alternative for Windows", "Compare two methods: a web catalog or a complete real-folder workflow.")),
+]
+
 VOISINS_ADULTES = {  # par slug français ; le jumeau anglais suit
     "logiciel-organiser-collection-porno": ["trier-videos-porno", "lecteur-video-porno-apercus", "organiser-collection-porno-nas"],
     "trier-videos-porno": ["lecteur-video-porno-apercus", "doublons-videos-porno", "mots-cles-recherche-ia-porno"],
@@ -135,6 +144,7 @@ VOISINS_ADULTES = {  # par slug français ; le jumeau anglais suit
     "mots-cles-recherche-ia-porno": ["trier-videos-porno", "logiciel-organiser-collection-porno", "lecteur-video-porno-apercus"],
     "cacher-videos-porno-pc": ["lecteur-video-porno-apercus", "organiser-collection-porno-nas", "logiciel-organiser-collection-porno"],
     "organiser-collection-porno-nas": ["logiciel-organiser-collection-porno", "doublons-videos-porno", "cacher-videos-porno-pc"],
+    "alternative-stash": ["logiciel-organiser-collection-porno", "trier-videos-porno", "doublons-videos-porno"],
 }
 TEXTES = {"fr": {"voisins": "À lire aussi"}, "en": {"voisins": "Read next"}}
 
@@ -145,8 +155,15 @@ def guides_adultes(lang):
     return {ADULTE[lang] + slugs[i] + "/": (fr if lang == "fr" else en) for slugs, fr, en in GUIDES_ADULTES}
 
 
+def pages_adultes(lang):
+    """Toutes les pages adultes habillées, comparatifs discrets compris."""
+    i = 0 if lang == "fr" else 1
+    return {ADULTE[lang] + slugs[i] + "/": (fr if lang == "fr" else en)
+            for slugs, fr, en in GUIDES_ADULTES + COMPARATIFS_ADULTES}
+
+
 def url_adulte(slug_fr, lang):
-    for slugs, _, _ in GUIDES_ADULTES:
+    for slugs, _, _ in GUIDES_ADULTES + COMPARATIFS_ADULTES:
         if slugs[0] == slug_fr:
             return ADULTE[lang] + slugs[0 if lang == "fr" else 1] + "/"
     raise KeyError(slug_fr)
@@ -283,7 +300,7 @@ def adultes():
     """Les pages des guides adultes : (fichier, langue, slug français, ou None pour le sommaire)."""
     for lang in ("fr", "en"):
         yield ADULTE[lang].strip("/") + "/guides/index.html", lang, None
-        for slugs, _, _ in GUIDES_ADULTES:
+        for slugs, _, _ in GUIDES_ADULTES + COMPARATIFS_ADULTES:
             yield ADULTE[lang].strip("/") + "/" + slugs[0 if lang == "fr" else 1] + "/index.html", lang, slugs[0]
 
 
@@ -331,7 +348,7 @@ def main():
             t = poser(t, "sommaire", sommaire_adulte(lang))
         else:
             liste = [url_adulte(v, lang) for v in VOISINS_ADULTES[slug]]
-            t = poser(t, "voisins", voisins(None, liste, guides_adultes(lang), lang))
+            t = poser(t, "voisins", voisins(None, liste, pages_adultes(lang), lang))
         if t != avant:
             f.write_text(t, encoding="utf-8", newline="\n")
             changes.append(rel)
